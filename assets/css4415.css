@@ -9584,7 +9584,7 @@ Sticky Menu
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
-  background-image: url(../Images/v2/bl-shape.png);
+  background-image: url(../images/v2/bl-shape.png);
 }
 
 .eight-banner-section .eight-banner-content {
@@ -10024,7 +10024,7 @@ Sticky Menu
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;
-  background-image: url(../Images/v2/s-shape2.png);
+  background-image: url(../images/v2/s-shape2.png);
 }
 
 .eight-service-section:after {
@@ -10038,7 +10038,7 @@ Sticky Menu
   z-index: -2;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../Images/v2/s-shape1.png);
+  background-image: url(../images/v2/s-shape1.png);
 }
 
 .eight-service-section .s-shape-bg1 {
@@ -10101,7 +10101,7 @@ Sticky Menu
   height: 678px;
   position: absolute;
   animation: spining 10s linear infinite;
-  background-image: url(../Images/v2/s-shape5.png);
+  background-image: url(../images/v2/s-shape5.png);
 }
 
 .eight-service-section .eight-service-text h2 {
@@ -10960,7 +10960,7 @@ Sticky Menu
 }
 
 .ei-screenshots-section .ei-screen-mobile-image {
-  background-image: url(../Images/v2/mobile-1.png);
+  background-image: url(../images/v2/mobile-1.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: block;
@@ -11068,7 +11068,7 @@ Sticky Menu
   width: 100%;
   z-index: 0;
   background-repeat: no-repeat;
-  background-image: url(../Images/v2/t-shape2.png);
+  background-image: url(../images/v2/t-shape2.png);
 }
 
 .ei-testimonial-section .ei-testimonial-img-text .test--quote-icon {
@@ -11113,7 +11113,7 @@ Sticky Menu
   width: 100%;
   z-index: 0;
   background-repeat: no-repeat;
-  background-image: url(../Images/v2/t-shape1.png);
+  background-image: url(../images/v2/t-shape1.png);
 }
 
 .ei-testimonial-section .ei-testimonial-img-text .ei-testimonial-img:after {
@@ -13293,7 +13293,7 @@ Sticky Menu
   position: absolute;
   background-repeat: no-repeat;
   transition: 0.3s all ease-in-out;
-  background-image: url(../Images/v2/s-shape1.png);
+  background-image: url(../images/v2/s-shape1.png);
 }
 
 .appseo-service-content .appseo-service-box {
@@ -20428,7 +20428,7 @@ Sticky Menu
   z-index: -2;
   bottom: -70px;
   left: -120px;
-  background-image: url(../Images/v2/fs2/Images/v2/index.html);
+  background-image: url(../images/v2/fs2/Images/v2/index.html);
 }
 
 .str-feature-section .str-feature-icon-text:hover {
@@ -20899,7 +20899,7 @@ Sticky Menu
   height: 20px;
   position: absolute;
   background-repeat: no-repeat;
-  background-image: url(../Images/v2/rv1/Images/v2/index.html);
+  background-image: url(../images/v2/rv1/Images/v2/index.html);
 }
 
 .str-work-process-section .str-work-process-content .col-lg-4:nth-child(2) .str-work-icon-text .icon-inner-shadow {
@@ -20928,7 +20928,7 @@ Sticky Menu
   height: 20px;
   position: absolute;
   background-repeat: no-repeat;
-  background-image: url(../Images/v2/rv2/Images/v2/index.html);
+  background-image: url(../images/v2/rv2/Images/v2/index.html);
 }
 
 .str-work-process-section .str-work-process-content .col-lg-4:nth-child(3) .str-work-icon-text .icon-inner-shadow {
