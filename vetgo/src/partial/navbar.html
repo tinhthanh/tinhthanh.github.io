@@ -1,0 +1,183 @@
+<b:tag class='navbar' name='div'>
+    <b:tag class='navIn secIn' name='div'>
+      <div class='navL'>
+        <b:section id='navbar-left' maxwidgets='2' showaddelement='true'>
+          <b:widget id='LinkList001' locked='true' title='Switch Language' type='LinkList' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='shownum'>2</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='text-1'>Lang</b:widget-setting>
+              <b:widget-setting name='link-1'>en</b:widget-setting>
+              <b:widget-setting name='text-0'>Lang</b:widget-setting>
+              <b:widget-setting name='link-2'>#</b:widget-setting>
+              <b:widget-setting name='link-0'>id</b:widget-setting>
+              <b:widget-setting name='text-2'>Custom Link</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+            <b:include name='content'/>
+          </b:includable>
+            <b:includable id='content'>
+            <ul class='mLang'>
+              <b:loop index='lang' values='data:links' var='link'>
+                <b:if cond='data:lang &lt;= 1'>
+                  <li>
+                    <b:class cond='data:link.name == &quot;Lang&quot;' name='u'/>
+                    <b:if cond='data:link.name == &quot;Lang&quot;'>
+                      
+                      <b:if cond='data:lang == 0'>
+                        <b:tag class='a' expr:data-text='data:link.target' expr:name='data:view.url == data:blog.url.canonical or data:view.url == data:blog.url.canonical params { m: &quot;1&quot; } ? &quot;span&quot; : &quot;a&quot;'>
+                          <b:attr cond='data:view.url != data:blog.url.canonical and data:view.url != data:blog.url.canonical params { m: &quot;1&quot; }' expr:value='data:blog.url.canonical' name='href'/>
+                          <b:attr cond='data:view.url != data:blog.url.canonical and data:view.url != data:blog.url.canonical params { m: &quot;1&quot; }' expr:value='data:link.target' name='aria-label'/>
+                        </b:tag>
+                        <b:else/>
+                        <b:tag class='a' expr:data-text='data:link.target' expr:name='data:view.url != data:view.url params { hl: data:link.target } ? &quot;a&quot; : &quot;span&quot;'>
+                          <b:attr cond='data:view.url != data:view.url params { hl: data:link.target }' expr:value='data:blog.url params { hl: data:link.target }' name='href'/>
+                          <b:attr cond='data:view.url != data:view.url params { hl: data:link.target }' expr:value='data:link.target' name='aria-label'/>
+                        </b:tag>
+                        <b:if cond='data:view.url == data:view.url params { hl: data:link.target }'>
+                          <script>/*<![CDATA[*/ window.onload = function() {var element = document.getElementById('mainCont'); element.classList.add('nLng'); }; /*]]>*/</script>
+                        </b:if>
+                      </b:if>
+                      
+                      <b:else/>
+                      
+                      <b:tag class='a' expr:data-text='data:link.name' expr:name='data:link.target != &quot;#&quot; ? &quot;a&quot; : &quot;span&quot;'>
+                        <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.target' name='href'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.name' name='aria-label'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' name='target' value='_blank'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' name='rel' value='noopener'/>
+                      </b:tag>
+                      
+                    </b:if>
+                  </li>
+                </b:if>
+              </b:loop>
+            </ul>
+          </b:includable>
+          </b:widget>
+          <b:widget id='LinkList002' locked='true' title='Social Media' type='LinkList' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='text-8'>Pinterest</b:widget-setting>
+              <b:widget-setting name='link-7'>#</b:widget-setting>
+              <b:widget-setting name='link-8'>#</b:widget-setting>
+              <b:widget-setting name='link-5'>#</b:widget-setting>
+              <b:widget-setting name='link-6'>#</b:widget-setting>
+              <b:widget-setting name='link-3'>#</b:widget-setting>
+              <b:widget-setting name='link-4'>#</b:widget-setting>
+              <b:widget-setting name='text-1'>Instagram</b:widget-setting>
+              <b:widget-setting name='text-0'>Facebook</b:widget-setting>
+              <b:widget-setting name='text-3'>Tiktok</b:widget-setting>
+              <b:widget-setting name='text-2'>Twitter</b:widget-setting>
+              <b:widget-setting name='text-5'>Telegram</b:widget-setting>
+              <b:widget-setting name='text-4'>Whatsapp</b:widget-setting>
+              <b:widget-setting name='text-7'>LinkedIn</b:widget-setting>
+              <b:widget-setting name='text-6'>Youtube</b:widget-setting>
+              <b:widget-setting name='shownum'>4</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='link-1'>#</b:widget-setting>
+              <b:widget-setting name='link-2'>#</b:widget-setting>
+              <b:widget-setting name='link-0'>#</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <b:include name='content'/>
+            </b:includable>
+            <b:includable id='content'>
+              <ul class='mSoc'>
+                <b:loop index='soc' values='data:links' var='link'>
+                  <b:if cond='data:soc &lt;= 5'>
+                    <li>
+                      <b:tag class='a tIc bIc' expr:name='data:link.target != &quot;#&quot; ? &quot;a&quot; : &quot;span&quot;'>
+                        <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.target' name='href'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' name='role' value='button'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.name' name='aria-label'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' name='target' value='_blank'/>
+                        <b:attr cond='data:link.target != &quot;#&quot;' name='rel' value='noopener'/>
+                        <b:if cond='data:link.name == &quot;Facebook&quot;'>
+                          <b:include name='facebook-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Instagram&quot;'/>
+                          <b:include name='instagram-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Twitter&quot;'/>
+                          <b:include name='twitter-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Youtube&quot;'/>
+                          <b:include name='youtube-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;LinkedIn&quot;'/>
+                          <b:include name='linkedIn-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Pinterest&quot;'/>
+                          <b:include name='pinterest-icon'/>
+                      
+                          <b:elseif cond='data:link.name == &quot;Whatsapp&quot;'/>
+                          <b:include name='whatsapp-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Telegram&quot;'/>
+                          <b:include name='telegram-icon'/>
+                        
+                          <b:elseif cond='data:link.name == &quot;Tiktok&quot;'/>
+                          <b:include name='tiktok-icon'/>
+                        
+                          <b:else/>
+                          <b:include name='circle-icon'/>
+                        </b:if>
+                      </b:tag>
+                    </li>
+                  </b:if>
+                </b:loop>
+              </ul>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </div>
+      <div class='navR'>
+        <b:section id='navbar-right' maxwidgets='2' showaddelement='true'>
+          <b:widget id='BlogSearch1' locked='true' title='Try &apos;Adventure&apos;' type='BlogSearch' version='2' visible='true'>
+            <b:includable id='main'>
+              <b:include name='content'/>
+            </b:includable>
+            <b:includable id='content'>
+              <b:include name='searchForm'/>
+            </b:includable>
+            <b:includable id='searchForm'>
+              <form class='srhF' expr:action='data:blog.searchUrl'>
+                <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+                <b:include name='urlParamsAsFormInput'/>
+                <input autocomplete='off' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:view.search.query ? data:view.search.query.escaped : data:title' id='searchIn' minlength='3' name='q' required='required' type='search'/>
+                <b:include name='searchSubmit'/>
+                <button aria-label='Clear' class='sb' data-text='Ã¢Å“â€¢' type='reset'/>
+                <span class='fCls'/>
+              </form>
+            </b:includable>
+            <b:includable id='searchSubmit'>
+              <label class='sb' for='searchIn'><b:include name='search-icon'/></label>
+            </b:includable>
+          </b:widget>
+          <b:widget cond='data:view.url != data:view.url params { amp: &quot;1&quot; }' id='TextList001' locked='true' title='Dark Button' type='TextList' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='shownum'>1</b:widget-setting>
+              <b:widget-setting name='sorting'>NONE</b:widget-setting>
+              <b:widget-setting name='item-0'>Dark</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <b:include name='content'/>
+            </b:includable>
+            <b:includable id='content'>
+              <ul class='headIc'>
+                <b:loop index='dark' values='data:items' var='item'>
+                  <b:if cond='data:dark &lt;= 0'>
+                    <li>
+                      <b:class cond='data:item == &quot;Dark&quot;' name='isDrk'/>
+                      <!--[ Dark mode button ]-->
+                      <span class='tDark tIc tDL bIc' expr:aria-label='data:item' onclick='darkMode()' role='button'><b:include name='moon-sun-icon'/></span>
+                    </li>
+                  </b:if>
+                </b:loop>
+              </ul>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </div>
+    </b:tag>
+  </b:tag>

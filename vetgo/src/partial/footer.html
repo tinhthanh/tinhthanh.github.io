@@ -1,0 +1,135 @@
+<footer>
+    <div class='secIn'>            
+      <!--[ Credit ]-->
+      <b:section class='cdtIn' id='credit-widget' maxwidgets='2' showaddelement='false'>
+        <b:widget id='HTML88' locked='true' title='Credit' type='HTML' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='content'/>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <div class='fotCd'>
+              <span class='credit'>
+                <b:if cond='data:content == &quot;&quot;'>
+                  &#169; <span id='getYear'><b:if cond='data:view.url != data:view.url params { amp: &quot;1&quot; }'><script>/*<![CDATA[*/ var d = new Date(); var n = d.getFullYear(); document.getElementById('getYear').innerHTML = n; /*]]>*/</script><b:else/>2021</b:if></span> <bdi><a expr:href='data:blog.homepageUrl.canonical'><data:blog.title/></a></bdi>
+                  <b:else/>
+                  <data:content/>
+                </b:if>
+              </span>
+              <span class='creator pSml'>Theme by <a href='https://theme.jagodesain.com'>Jago Desain</a></span>
+            </div>
+          </b:includable>
+        </b:widget>
+        <b:widget id='PageList88' locked='true' title='Footer Link' type='PageList' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"#","position":1,"title":"Disclaimer"},"link0":{"href":"#","position":0,"title":"Terms of Use"},"link4":{"href":"#","position":4,"title":"About"},"link3":{"href":"#","position":3,"title":"Contact"},"link2":{"href":"#","position":2,"title":"Privacy"}}]]></b:widget-setting>
+            <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <b:include name='pageList'/>
+          </b:includable>
+          <b:includable id='overflowButton'/>
+          <b:includable id='overflowablePageList'/>
+          <b:includable id='pageLink'>
+            <b:if cond='data:t &lt;= 4'>
+              <li>
+                <b:class cond='data:overflow' name='overflowable-item'/>
+                <b:class cond='data:link.isCurrentPage' name='selected'/>
+                <b:tag expr:name='data:link.href != &quot;#&quot; ? &quot;a&quot; : &quot;span&quot;'>
+                  <b:attr cond='data:link.href != &quot;#&quot;' expr:value='data:link.href' name='href'/>
+                  <data:link.title/>
+                </b:tag>
+              </li>
+            </b:if>
+          </b:includable>
+          <b:includable id='pageList'>
+            <b:tag class='ftI hidden' cond='!data:view.isLayoutMode' id='offFot' name='input' type='checkbox'/>
+            <label class='ftL' for='offFot'><b:include name='link-a-icon'/><b:include name='arow-up-icon'/></label>
+            <ul class='ftMn'>
+              <b:class cond='data:pageListClass' expr:name='data:pageListClass'/>
+              <b:loop index='t' values='data:links' var='link'>
+                <b:include name='pageLink'/>
+              </b:loop>
+            </ul>
+            <label class='fCls' for='offFot'/>
+          </b:includable>
+        </b:widget>
+        <b:widget id='LinkList88' locked='true' title='Social Media' type='LinkList' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='text-8'>Pinterest</b:widget-setting>
+            <b:widget-setting name='link-7'>#</b:widget-setting>
+            <b:widget-setting name='link-8'>#</b:widget-setting>
+            <b:widget-setting name='link-5'>#</b:widget-setting>
+            <b:widget-setting name='link-6'>#</b:widget-setting>
+            <b:widget-setting name='link-3'>#</b:widget-setting>
+            <b:widget-setting name='link-4'>#</b:widget-setting>
+            <b:widget-setting name='text-1'>Instagram</b:widget-setting>
+            <b:widget-setting name='text-0'>Facebook</b:widget-setting>
+            <b:widget-setting name='text-3'>Tiktok</b:widget-setting>
+            <b:widget-setting name='text-2'>Twitter</b:widget-setting>
+            <b:widget-setting name='text-5'>Telegram</b:widget-setting>
+            <b:widget-setting name='text-4'>Whatsapp</b:widget-setting>
+            <b:widget-setting name='text-7'>LinkedIn</b:widget-setting>
+            <b:widget-setting name='text-6'>Youtube</b:widget-setting>
+            <b:widget-setting name='shownum'>4</b:widget-setting>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='link-1'>#</b:widget-setting>
+            <b:widget-setting name='link-2'>#</b:widget-setting>
+            <b:widget-setting name='link-0'>#</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main'>
+            <b:include name='content'/>
+          </b:includable>
+          <b:includable id='content'>
+            <ul class='mSoc'>
+              <b:loop index='soc' values='data:links' var='link'>
+                <b:if cond='data:soc &lt;= 3'>
+                  <li>
+                    <b:tag class='a tIc bIc' expr:name='data:link.target != &quot;#&quot; ? &quot;a&quot; : &quot;span&quot;'>
+                      <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.target' name='href'/>
+                      <b:attr cond='data:link.target != &quot;#&quot;' name='role' value='button'/>
+                      <b:attr cond='data:link.target != &quot;#&quot;' expr:value='data:link.name' name='aria-label'/>
+                      <b:attr cond='data:link.target != &quot;#&quot;' name='target' value='_blank'/>
+                      <b:attr cond='data:link.target != &quot;#&quot;' name='rel' value='noopener'/>
+                      <b:if cond='data:link.name == &quot;Facebook&quot;'>
+                        <b:include name='facebook-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Instagram&quot;'/>
+                        <b:include name='instagram-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Twitter&quot;'/>
+                        <b:include name='twitter-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Youtube&quot;'/>
+                        <b:include name='youtube-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;LinkedIn&quot;'/>
+                        <b:include name='linkedIn-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Pinterest&quot;'/>
+                        <b:include name='pinterest-icon'/>
+                      
+                        <b:elseif cond='data:link.name == &quot;Whatsapp&quot;'/>
+                        <b:include name='whatsapp-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Telegram&quot;'/>
+                        <b:include name='telegram-icon'/>
+                        
+                        <b:elseif cond='data:link.name == &quot;Tiktok&quot;'/>
+                        <b:include name='tiktok-icon'/>
+                        
+                        <b:else/>
+                        <b:include name='circle-icon'/>
+                      </b:if>
+                    </b:tag>
+                  </li>
+                </b:if>
+              </b:loop>
+            </ul>
+          </b:includable>
+        </b:widget>
+      </b:section>
+    </div>
+  </footer>

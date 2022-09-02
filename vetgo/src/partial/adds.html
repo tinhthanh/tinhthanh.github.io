@@ -1,0 +1,26 @@
+<b:if cond='!data:view.isPreview'>
+    <!--[ Delete 'or data:blog.isMobileRequest' if you want to show ad in both(desktop and mobile) ]-->
+    <b:section cond='data:view.isLayoutMode or data:blog.isMobileRequest' id='anchor-ad' showaddelement='false'>
+      <b:widget id='HTML99' locked='true' title='Anchor ad placement(mobile only)' type='HTML' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='content'/>
+        </b:widget-settings>
+        <b:includable id='main'>
+          <!--[ Sticky ad ]-->
+          <input class='ancrI hidden' id='ancrI' type='checkbox'/>
+          <div class='ancrA'>
+            <label aria-label='Close Menu' class='ancrC' for='ancrI'/>
+            <div class='ancrCn'>
+              <b:if cond='data:content != &quot;&quot;'>
+                <data:content/>
+                    
+                <b:else/>
+                <!--[ Blank ad ]-->
+                <div class='adB' expr:data-text='data:messages.adsGoHere'/>
+              </b:if>
+            </div>
+          </div>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  </b:if>

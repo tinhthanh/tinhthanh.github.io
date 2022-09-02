@@ -1,0 +1,4 @@
+https://ebudezain.com/chia-teamplate-html-su-dung-gulp-header-footer-layout
+npm install gulp -g
+npm init
+npm install gulp gulp-file-include --save
