@@ -9798,7 +9798,10 @@ Sticky Menu
   display: inline-block;
   padding-bottom: 10px;
 }
-
+.cd-headline.clip  {
+  height: 225px;
+  overflow: hidden;
+}
 .cd-headline.clip .cd-words-wrapper {
   display: inline-block;
   position: relative;
