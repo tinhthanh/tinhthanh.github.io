@@ -158,7 +158,7 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 @charset "UTF-8";
 :root {
-  color1 : #22577e;
+  --color1 : #22577e;
 }
 /*!
  * animate.css -https://daneden.github.io/animate.css/
