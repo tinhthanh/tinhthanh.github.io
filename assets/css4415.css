@@ -159,6 +159,7 @@
 @charset "UTF-8";
 :root {
   --color1 : #22577e;
+  --color2 : #5584AC;
 }
 /*!
  * animate.css -https://daneden.github.io/animate.css/
@@ -9551,7 +9552,7 @@ theme.
 Sticky Menu
 -------------------------------- */
 .eisticky-menu-bg-overlay {
-  background-color: #9c00e2;
+  background-color:  var(--color2);
   animation-duration: 0.7s;
   animation-fill-mode: both;
   animation-name: fadeInDown;
