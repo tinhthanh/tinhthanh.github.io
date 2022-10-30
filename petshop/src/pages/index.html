@@ -2604,17 +2604,6 @@ select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-p
 </div>
 </div>
 <div class='btn-mua'>
-<b:loop values='data:post.enclosures' var='enclosure'>
- <b:if cond='data:enclosure.mimeType == &quot;aff&quot;'>
-<script>
-  $(document).ready(function() {
-    $(&#39;.chovaogio&#39;).addClass(&quot;d-none&quot;);
-    $(&#39;.afflink&#39;).removeClass(&quot;d-none&quot;);
-  });
-</script>
-<button class='btn btn-lg btn-gray btn-cart btn_buy add_to_cart afflink d-none' expr:onclick='&quot;window.open(&apos;&quot; + data:enclosure.url + &quot;&apos;, &apos;_blank&apos;); return false;&quot;' type='submit'>Tới gian hàng</button>
-</b:if>
-</b:loop>
 <button class='btn btn-lg btn-gray btn-cart btn_buy add_to_cart item_add chovaogio' data-role='addtocart' type='submit'>Thêm vào giỏ</button>
 </div>
 </div>
