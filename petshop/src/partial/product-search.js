@@ -33,6 +33,7 @@ function productsearch(e) {
             )
           );
         } catch (error) {}
+        const htmlCode = '<h1 style="display: none;" class="item_code" >'+ e.feed.entry[n].id.$t.split('-').pop() +'</h1>';
         var post_content = post.replace(/<\S[^>]*>/g, "");
         var giaban = 0;
         if (dataItem) {  
@@ -72,7 +73,7 @@ function productsearch(e) {
           date = ngay + "/" + thang + "/" + nam;
         var link = "location.href = " + "'" + t + "'";
         if (giaban != 0) {
-          var blog = '<div class="col-lg-4 col-md-4 col-sm-4 col-6"> <div class="evo-product-item simpleCart_shelfItem"> <div class="thumb-evo"> ' + sale + ' <a class="thumb-img" href="' + t + '" title="' + f + '"> <span class="tt-img"><span class="d-none item_link">' + t + '</span><img class="lazy item_thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + d + '" alt="' + f + '" /> </span> ' + thumb + ' </a> <form class="product-button hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart">' + buy + ' ' + linkpost + ' </form> </div> <a href="' + t + '" title="' + f + '" class="title item_name">' + f + '</a> <div class="flex-prices"> <strong class="product-price item_price">' + giaban + '  </strong> ' + cu + ' </div> </div> </div>';
+          var blog = '<div class="col-lg-4 col-md-4 col-sm-4 col-6"> <div class="evo-product-item simpleCart_shelfItem"> <div class="thumb-evo"> ' + sale + ' <a class="thumb-img" href="' + t + '" title="' + f + '"> <span class="tt-img"><span class="d-none item_link">' + t + '</span><img class="lazy item_thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + d + '" alt="' + f + '" /> </span> ' + thumb + ' </a> <form class="product-button hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart">' + buy + ' ' + linkpost + ' </form> </div> ' + htmlCode + ' <a href="' + t + '" title="' + f + '" class="title item_name">' + f + '</a> <div class="flex-prices"> <strong class="product-price item_price">' + giaban + '  </strong> ' + cu + ' </div> </div> </div>';
           $('.evo-sidebar-pro .group-product').removeClass('d-none');
           $('.evo-sidebar-pro .collection-category').removeClass('d-none');
           $('.sort-cate').removeClass('d-none');
