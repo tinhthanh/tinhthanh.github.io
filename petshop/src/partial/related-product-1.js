@@ -78,13 +78,10 @@ var swiper = new Swiper('.evo-owl-product', {
             const dataContent = entry.content.$t;
             let dataItem = null;
             try {
-              dataItem = JSON.parse(
-                atob(
-                  dataContent.match(
-                    /<div[^>]*?data-model=(["\'])?((?:.(?!\1|>))*.?)\1?/
-                  )[2]
-                )
-              );
+              const el  = document.createElement('div');
+              el.innerHTML = dataContent;
+             const dataModelStr = el.querySelector('div[data-model]').getAttribute('data-model')
+              dataItem = JSON.parse(atob(dataModelStr));
             } catch (error) {}
             const htmlCode = '<h1 style="display: none;" class="item_code" >'+ entry.id.$t.split('-').pop() +'</h1>';
             if (dataItem) { 

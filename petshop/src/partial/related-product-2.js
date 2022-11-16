@@ -38,14 +38,12 @@ window.addEventListener('DOMContentLoaded', function() {
             if ("content" in e.feed.entry[n]) var post = e.feed.entry[n].content.$t;
             else post = "summary" in e.feed.entry[n] ? e.feed.entry[n].summary.$t : "";
             let dataItem = null;
+          
             try {
-              dataItem = JSON.parse(
-                atob(
-                    post.match(
-                    /<div[^>]*?data-model=(["\'])?((?:.(?!\1|>))*.?)\1?/
-                  )[2]
-                )
-              );
+              const el  = document.createElement('div');
+              el.innerHTML = post;
+             const dataModelStr = el.querySelector('div[data-model]').getAttribute('data-model')
+              dataItem = JSON.parse(atob(dataModelStr));
             } catch (error) {}
              if (dataItem) {  
                 var giaban = dataItem.price;

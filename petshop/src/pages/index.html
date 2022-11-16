@@ -2509,7 +2509,7 @@ select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-p
 <b:include name='code-product'/>
 <section class='product product-margin'>
 <div class='container'>
-<div class='details-product product-bottom row simpleCart_shelfItem'>
+<div class='details-product product-bottom row simpleCart_shelfItem payment-details'>
 <div class='col-xl-5 col-lg-7 col-md-6 col-sm-12 col-12'>
 <div class='product-image-block relative'>
 <div class='swiper-container gallery-top'>
@@ -2539,6 +2539,7 @@ select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-p
 <div class='product-top clearfix'>
 <h1 class='title-head item_name'><data:post.title/></h1>
 <h1 style="display: none;" class="item_code" ><data:view.postId/></h1>
+<img  style="display: none;" class="item_thumb" expr:src='data:blog.postImageUrl' />
 <label class='d-none item_link'><data:post.url/></label>
 <div class='sku-product clearfix'>
 <span>
@@ -2562,14 +2563,11 @@ select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-p
            //<![CDATA[
                                 var dataItem = null;
                                 try {
-                                      dataItem = JSON.parse(
-                                        atob(
-                                          dataContent.match(
-                                            /<div[^>]*?data-model=(["\'])?((?:.(?!\1|>))*.?)\1?/
-                                          )[2]
-                                        )
-                                      );
-                                    } catch (error) {}
+                                    const el  = document.createElement('div');
+                                    el.innerHTML = dataContent;
+                                  const dataModelStr = el.querySelector('div[data-model]').getAttribute('data-model')
+                                    dataItem = JSON.parse(atob(dataModelStr));
+                                } catch (error) {}
                                     var giaban =  dataItem.price;
                                     var giacu = dataItem.oldPrice;
  
@@ -3276,14 +3274,11 @@ $('.item_add').click(function() {
     
                                     var dataItem = null;
                                     try {
-                                          dataItem = JSON.parse(
-                                            atob(
-                                              dataContent.match(
-                                                /<div[^>]*?data-model=(["\'])?((?:.(?!\1|>))*.?)\1?/
-                                              )[2]
-                                            )
-                                          );
-                                        } catch (error) {}
+                                      const el  = document.createElement('div');
+                                      el.innerHTML = dataContent;
+                                    const dataModelStr = el.querySelector('div[data-model]').getAttribute('data-model')
+                                      dataItem = JSON.parse(atob(dataModelStr));
+                                    } catch (error) {}
                                         if(dataItem) {
                                           var giaban =  dataItem.price;
                                           var giacu = dataItem.oldPrice;
@@ -4779,6 +4774,36 @@ Thiết kế bởi <a expr:title='data:content' href='/' rel='nofollow' target='
 						event: "click",
 						callback: function() {
 							var t = {};
+              if(	C.$(this).attr('class').includes('chovaogio')) {
+               console.log('hi')
+                $(".details-pro").find('[class*="item_"]').each(function(e, n) {
+								var r = C.$(n);
+								r.attr("class") && r.attr("class").match(/item_.+/) && !r.attr("class").match(/item_add/) && C.each(r.attr("class").split(" "), function(e) {
+									var n, a;
+									if (e.match(/item_.+/)) {
+										switch (e = e.split("_")[1], n = "", r.tag().toLowerCase()) {
+											case "input":
+											case "textarea":
+											case "select":
+												(a = r.attr("type")) && ("checkbox" !== a.toLowerCase() && "radio" !== a.toLowerCase() || !r.attr("checked")) && "text" !== a.toLowerCase() && "number" !== a.toLowerCase() || (n = r.val());
+												break;
+											case "img":
+												n = r.attr("src");
+												break;
+											default:
+												n = r.text()
+										}
+                    if(null !== n && "" !== n) {
+                      console.log(e.toLowerCase())
+                      t[e.toLowerCase()] = t[e.toLowerCase()] ? t[e.toLowerCase()] + ", " + n : n;
+                    } 
+										// null !== n && "" !== n && (t[e.toLowerCase()] = t[e.toLowerCase()] ? t[e.toLowerCase()] + ", " + n : n)
+									}
+								})
+							})
+              C.add(t);
+                return;
+              }
 							C.$(this).closest("." + p + "_shelfItem").descendants().each(function(e, n) {
 								var r = C.$(n);
 								r.attr("class") && r.attr("class").match(/item_.+/) && !r.attr("class").match(/item_add/) && C.each(r.attr("class").split(" "), function(e) {
