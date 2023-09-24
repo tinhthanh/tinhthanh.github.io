@@ -1,0 +1,27 @@
+<b:section id='id-menu-topbar' name='menu top bar' showaddelement='no'>
+    <b:widget id='LinkList4' locked='true' title='' type='LinkList' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='link-3'>/search/label/tin-tuc</b:widget-setting>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='link-4'>#</b:widget-setting>
+            <b:widget-setting name='text-1'>Tin tức</b:widget-setting>
+            <b:widget-setting name='link-1'>/search/label/tin-tuc</b:widget-setting>
+            <b:widget-setting name='text-0'>Khuyến mãi</b:widget-setting>
+            <b:widget-setting name='link-2'>/p/he-thong-cua-hang.html</b:widget-setting>
+            <b:widget-setting name='text-3'>Tin tức</b:widget-setting>
+            <b:widget-setting name='link-0'>/search/label/khuyen-mai</b:widget-setting>
+            <b:widget-setting name='text-2'>Hệ thống cửa hàng</b:widget-setting>
+            <b:widget-setting name='text-4'>Tuyển dụng</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+            <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+            <ul class='nav'>
+                <b:loop values='data:links' var='link'>
+                    <li class='nav-item'><a class='nav-link' expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a></li>
+                </b:loop>
+            </ul>
+        </b:includable>
+    </b:widget>
+</b:section>

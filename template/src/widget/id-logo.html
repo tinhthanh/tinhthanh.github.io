@@ -1,0 +1,49 @@
+<b:section id='id-logo' name='Logo' showaddelement='no'>
+    <b:widget id='Header1' locked='true' title='logo chính' type='Header' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='displayUrl'>https://2.bp.blogspot.com/-Cby1lStvNQo/YLsc0tSu7iI/AAAAAAAAEnE/pA-KO74IPy0djzGTEHB0BdJyVnZNtMPKwCK4BGAYYCw/s1600/logo.png</b:widget-setting>
+            <b:widget-setting name='displayHeight'>170</b:widget-setting>
+            <b:widget-setting name='sectionWidth'>1054</b:widget-setting>
+            <b:widget-setting name='useImage'>true</b:widget-setting>
+            <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+            <b:widget-setting name='imagePlacement'>REPLACE</b:widget-setting>
+            <b:widget-setting name='displayWidth'>397</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main' var='this'>
+            <div class='header-widget'>
+                <a class='logo-wrapper' expr:href='data:blog.homepageUrl' expr:title='data:blog.title'>
+                    <img class='img-responsive mx-auto d-block' expr:alt='data:blog.title' expr:height='data:height' expr:src='data:image' expr:width='data:width'/>
+                </a>
+            </div>
+        </b:includable>
+        <b:includable id='behindImageStyle'>
+            <b:if cond='data:sourceUrl'>
+                <b:include cond='data:this.image' data='{                    image: data:this.image,                    selector: &quot;.header-widget&quot;                  }' name='responsiveImageStyle'/>
+                <style type='text/css'>
+                    .header-widget {
+                        background-position: <data:blog.locale.languageAlignment/>;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                    }
+                </style>
+            </b:if>
+        </b:includable>
+        <b:includable id='description'>
+            <p>
+                <data:this.description/>
+            </p>
+        </b:includable>
+        <b:includable id='image'>
+            <a class='header-image-wrapper' expr:href='data:blog.homepageUrl'>
+                <b:include data='{                                                 image: data:image,                                                 altText: data:blog.title.escaped,                                                 originalWidth: data:width,                                                 originalHeight: data:height                                               }' name='responsiveImage'/>
+            </a>
+        </b:includable>
+        <b:includable id='title'>
+            <h1>
+                <b:tag cond='data:view.url != data:blog.homepageUrl' expr:href='data:blog.homepageUrl' name='a'>
+                    <data:title/>
+                </b:tag>
+            </h1>
+        </b:includable>
+    </b:widget>
+</b:section>

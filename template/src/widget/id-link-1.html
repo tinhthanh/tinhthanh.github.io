@@ -1,0 +1,32 @@
+<b:section id='id-link-1' name='Link 1' showaddelement='no'>
+    <b:widget id='LinkList10' locked='true' title='Về chúng tôi' type='LinkList' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='link-5'>/search/label/tin-tuc</b:widget-setting>
+            <b:widget-setting name='link-6'>/p/lien-he.html</b:widget-setting>
+            <b:widget-setting name='link-3'>/search/label/san-pham</b:widget-setting>
+            <b:widget-setting name='link-4'>#</b:widget-setting>
+            <b:widget-setting name='text-1'>Giới thiệu</b:widget-setting>
+            <b:widget-setting name='text-0'>Trang chủ</b:widget-setting>
+            <b:widget-setting name='text-3'>Sản phẩm mới về </b:widget-setting>
+            <b:widget-setting name='text-2'>Sản phẩm</b:widget-setting>
+            <b:widget-setting name='text-5'>Tin tức</b:widget-setting>
+            <b:widget-setting name='text-4'>Khuyến mãi trong ngày </b:widget-setting>
+            <b:widget-setting name='text-6'>Liên hệ</b:widget-setting>
+            <b:widget-setting name='sorting'>NONE</b:widget-setting>
+            <b:widget-setting name='link-1'>/p/gioi-thieu.html</b:widget-setting>
+            <b:widget-setting name='link-2'>/search/label/san-pham</b:widget-setting>
+            <b:widget-setting name='link-0'>/</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+            <h2 class='footer-title'><data:title/></h2>
+            <b:include name='content'/>
+        </b:includable>
+        <b:includable id='content'>
+            <div class='footer-menu'>
+                <b:loop values='data:links' var='link'>
+                    <a expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a>
+                </b:loop>
+            </div>
+        </b:includable>
+    </b:widget>
+</b:section>

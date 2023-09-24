@@ -1,0 +1,1811 @@
+<b:section class='content-area' cond='data:view.isSingleItem or data:view.search.query' id='content' name='Content' showaddelement='true'>
+    <b:widget id='Blog1' locked='true' title='Bài đăng trên Blog' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+            <b:widget-setting name='authorLabel'>Bởi</b:widget-setting>
+            <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+            <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showAuthor'>true</b:widget-setting>
+            <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+            <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='timestampLabel'>đăng lúc</b:widget-setting>
+            <b:widget-setting name='reactionsLabel'/>
+            <b:widget-setting name='showAuthorProfile'>true</b:widget-setting>
+            <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+            <b:widget-setting name='showLabels'>true</b:widget-setting>
+            <b:widget-setting name='showLocation'>false</b:widget-setting>
+            <b:widget-setting name='postLabelsLabel'>-</b:widget-setting>
+            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+            <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+            <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main' var='this'>
+            <b:if cond='data:view.isSingleItem'>
+                <div class='blog-posts hfeed'>
+                    <b:loop index='i' values='data:posts' var='post'>
+                        <b:include data='post' name='postCommentsAndAd'/>
+                    </b:loop>
+                </div>
+            </b:if>
+            <b:if cond='data:view.search.query'>
+                <b:include name='breadcrumb'/>
+                <b:include name='search-key'/>
+                <section class='signup search-main collections-container padding-top-20'>
+                    <div class='container margin-bottom-20'>
+                        <div class='row'>
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <h1 class='title-head text-center margin-bottom-20 margin-top-0'><data:blog.pageName/></h1>
+                            </div>
+                            <div class='col-lg-12 col-md-12 col-sm-12'>
+                                <div class='products-view-grid products row'>
+                                    <b:loop values='data:posts where (p =&gt; p.labels any (l =&gt; l.name != &quot;tin-tuc&quot;))' var='post'>
+                                        <b:include data='post' name='postSearch'/>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </b:if>
+        </b:includable>
+        <b:includable id='aboutPostAuthor'>
+            <div class='author-name'>
+                <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+        <span>
+          <data:post.author.name/>
+        </span>
+                </a>
+            </div>
+            <div>
+      <span class='author-desc'>
+        <data:post.author.aboutMe/>
+      </span>
+            </div>
+        </b:includable>
+        <b:includable id='addComments'>
+            <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick' expr:title='data:messages.comments' rel='follow' target='_blank'><data:messages.comments/></a>
+        </b:includable>
+        <b:includable id='blogThisShare'>
+            <b:with value='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=270,width=475\&quot;); return false;&quot;' var='onclick'>
+                <b:include name='platformShare'/>
+            </b:with>
+        </b:includable>
+        <b:includable id='breadcrumb' var='post'>
+            <section class='bread-crumb'>
+                <div class='container'>
+                    <ul class='breadcrumb' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
+                        <li class='home' itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                            <a expr:href='data:blog.homepageUrl' itemprop='item' title='Trang chủ'>
+  <span itemprop='name'>
+  Trang chủ
+  </span>
+                                <meta content='1' itemprop='position'/>
+                            </a>
+                        </li>
+                        <li itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                            <strong itemprop='name'>
+                                <data:blog.pageName/>
+                            </strong>
+                            <meta content='2' itemprop='position'/>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </b:includable>
+        <b:includable id='bylineByName' var='byline'>
+            <b:switch var='data:byline.name'>
+                <b:case value='share'/>
+                <b:include cond='data:post.shareUrl' name='postShareButtons'/>
+                <b:case value='comments'/>
+                <b:include cond='data:post.allowComments' name='postCommentsLink'/>
+                <b:case value='location'/>
+                <b:include cond='data:post.location' name='postLocation'/>
+                <b:case value='timestamp'/>
+                <b:include cond='not data:view.isPage' name='postTimestamp'/>
+                <b:case value='labels'/>
+                <b:include cond='data:post.labels' name='postLabels'/>
+                <b:case value='icons'/>
+                <b:include cond='data:post.emailPostUrl' name='emailPostIcon'/>
+            </b:switch>
+        </b:includable>
+        <b:includable id='bylineRegion' var='regionItems'>
+            <b:loop values='data:regionItems' var='byline'>
+                <b:include data='byline' name='bylineByName'/>
+            </b:loop>
+        </b:includable>
+        <b:includable id='commentAuthorAvatar'>
+            <div class='avatar-image-container'>
+                <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+            </div>
+        </b:includable>
+        <b:includable id='commentDeleteIcon' var='comment'>
+    <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+      <b:if cond='data:showCmtPopup'>
+        <div class='goog-toggle-button'>
+          <div class='goog-inline-block comment-action-icon'/>
+        </div>
+      <b:else/>
+        <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
+          <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+        </a>
+      </b:if>
+    </span>
+        </b:includable>
+        <b:includable id='commentForm' var='post'>
+            <div class='comment-form'>
+                <a name='comment-form'/>
+                <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+                <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+                    <p><data:this.messages.blogComment/></p>
+                </b:if>
+                <b:include data='post' name='commentFormIframeSrc'/>
+                <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' title='comment editor' width='100%'/>
+                <data:post.cmtfpIframe/>
+                <script>
+                    BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                </script>
+            </div>
+        </b:includable>
+        <b:includable id='commentFormIframeSrc' var='post'>
+            <a class='hidden' expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'><data:messages.postAComment/></a>
+        </b:includable>
+        <b:includable id='commentItem' var='comment'>
+            <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
+                <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
+                <div class='comment-block'>
+                    <div class='comment-author'>
+                        <b:if cond='data:comment.authorUrl'>
+                            <b:message name='messages.authorSaidWithLink'>
+                                <b:param expr:value='data:comment.author' name='authorName'/>
+                                <b:param expr:value='data:comment.authorUrl' name='authorUrl'/>
+                            </b:message>
+                            <b:else/>
+                            <b:message name='messages.authorSaid'>
+                                <b:param expr:value='data:comment.author' name='authorName'/>
+                            </b:message>
+                        </b:if>
+                    </div>
+                    <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
+                        <data:comment.body/>
+                    </div>
+                    <div class='comment-footer'>
+          <span class='comment-timestamp'>
+            <a expr:href='data:comment.url' title='comment permalink'>
+              <data:comment.timestamp/>
+            </a>
+            <b:include data='comment' name='commentDeleteIcon'/>
+          </span>
+                    </div>
+                </div>
+            </div>
+        </b:includable>
+        <b:includable id='commentList' var='comments'>
+            <div id='comments-block'>
+                <b:loop values='data:comments' var='comment'>
+                    <b:include data='comment' name='commentItem'/>
+                </b:loop>
+            </div>
+        </b:includable>
+        <b:includable id='commentPicker' var='post'>
+            <b:if cond='data:post.commentSource == 1'>
+                <b:include data='post' name='iframeComments'/>
+                <b:elseif cond='data:post.showThreadedComments'/>
+                <b:include data='post' name='threadedComments'/>
+                <b:else/>
+                <b:include data='post' name='comments'/>
+            </b:if>
+        </b:includable>
+        <b:includable id='comments' var='post'>
+            <div expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+                <b:if cond='data:post.allowComments'>
+                    <b:if cond='data:post.embedCommentForm'>
+                        <b:if cond='data:post.allowNewComments'>
+                            <b:include data='post' name='commentForm'/>
+                            <b:else/>
+                            <data:post.noNewCommentsText/>
+                        </b:if>
+                        <b:else/>
+                        <b:if cond='data:post.allowComments'>
+                            <b:include data='post' name='addComments'/>
+                        </b:if>
+                    </b:if>
+                </b:if>
+                <b:if cond='data:showCmtPopup'>
+                    <div id='comment-popup'>
+                        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+                        </iframe>
+                    </div>
+                </b:if>
+            </div>
+        </b:includable>
+        <b:includable id='commentsLink'>
+            <a class='comment-link' expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+                <b:include data='{ iconClass: &quot;touch-icon&quot; }' name='commentIcon'/>
+                <span class='num_comments'>
+                <b:if cond='data:post.numberOfComments &gt; 0'>
+                  <b:message name='messages.numberOfComments'>
+                    <b:param expr:value='data:post.numberOfComments' name='numComments'/>
+                  </b:message>
+                <b:else/>
+                  <data:messages.postAComment/>
+                </b:if>
+              </span>
+            </a>
+        </b:includable>
+        <b:includable id='commentsLinkIframe'>
+            <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
+        </b:includable>
+        <b:includable id='commentsTitle'>
+            <h3 class='title'><data:messages.comments/></h3>
+        </b:includable>
+        <b:includable id='defaultAdUnit'>
+            <ins class='adsbygoogle' data-ad-format='auto' expr:data-ad-client='data:adClientId ?: data:blog.adsenseClientId' expr:data-ad-host='data:blog.adsenseHostId' expr:data-analytics-uacct='data:blog.analyticsAccountNumber' expr:style='data:style ?: &quot;display: block;&quot;'/>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </b:includable>
+        <b:includable id='emailPostIcon'>
+    <span class='byline post-icons'>
+      <!-- email post links -->
+      <span class='item-action'>
+        <a expr:href='data:post.emailPostUrl' expr:title='data:messages.emailPost'>
+          <b:include data='{ iconClass: &quot;touch-icon sharing-icon&quot; }' name='emailIcon'/>
+        </a>
+      </span>
+    </span>
+        </b:includable>
+        <b:includable id='facebookShare'>
+            <b:with value='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=430,width=640\&quot;); return false;&quot;' var='onclick'>
+                <b:include name='platformShare'/>
+            </b:with>
+        </b:includable>
+        <b:includable id='feedLinks'>
+            <b:if cond='!data:view.isPost'>
+                <!-- Blog feed links -->
+                <b:if cond='data:feedLinks'>
+                    <div class='blog-feeds'>
+                        <b:include data='feedLinks' name='feedLinksBody'/>
+                    </div>
+                </b:if>
+                <b:else/> <!--Post feed links -->
+                <div class='post-feeds'>
+                    <b:loop values='data:posts' var='post'>
+                        <b:include cond='data:post.allowComments and data:post.feedLinks' data='post.feedLinks' name='feedLinksBody'/>
+                    </b:loop>
+                </div>
+            </b:if>
+        </b:includable>
+        <b:includable id='feedLinksBody' var='links'>
+            <div class='feed-links'>
+                <data:messages.subscribeTo/>
+                <b:loop values='data:links' var='f'>
+                    <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'>
+                        <data:f.name/> (<data:f.feedType/>)
+                    </a>
+                </b:loop>
+            </div>
+        </b:includable>
+        <b:includable id='footerBylines' var='post'>
+            <b:loop index='i' values='data:widgets.Blog.first.footerBylines' var='region'>
+                <b:if cond='data:region.items.any'>
+                    <div class='post-footer-line'>
+                        <b:class expr:name='&quot;post-footer-line-&quot; + (data:i + 1)'/>
+                        <b:include data='region.items' name='bylineRegion'/>
+                    </div>
+                </b:if>
+            </b:loop>
+        </b:includable>
+        <b:includable id='googlePlusShare'>
+            <div class='goog-inline-block google-plus-share-container'>
+                <g:plusone annotation='inline' expr:href='data:originalUrl.canonical.http' size='medium' source='blogger:blog:plusone'/>
+            </div>
+        </b:includable>
+        <b:includable id='headerByline'>
+            <b:if cond='data:widgets.Blog.first.headerByline'>
+                <div class='post-header'>
+                    <div class='post-header-line-1'>
+                        <b:with value='&quot;header-1&quot;' var='regionName'>
+                            <b:include data='data:widgets.Blog.first.headerByline.items' name='bylineRegion'/>
+                        </b:with>
+                    </div>
+                </div>
+            </b:if>
+        </b:includable>
+        <b:includable id='homePageLink'>
+            <a class='home-link' expr:href='data:blog.homepageUrl'>
+                <data:messages.home/>
+            </a>
+        </b:includable>
+        <b:includable id='iframeComments' var='post'>
+            <b:if cond='data:post.allowIframeComments'>
+                <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+                <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
+                <b:if cond='!data:post.embedCommentForm'>
+                    <b:include data='post' name='commentsLink'/>
+                </b:if>
+            </b:if>
+        </b:includable>
+        <b:includable id='inlineAd'>
+            <b:if cond='!data:view.isPreview'>
+                <b:if cond='data:this.adCode or data:this.adClientId or data:blog.adsenseClientId'>
+                    <!-- Ad -->
+                    <div class='inline-ad'>
+                        <b:if cond='data:this.adCode != &quot;&quot;'>
+                            <data:this.adCode/>
+                            <b:else/>
+                            <b:include cond='data:this.adClientId or data:blog.adsenseClientId' name='defaultAdUnit'/>
+                        </b:if>
+                    </div>
+                </b:if>
+                <b:else/>
+                <div class='inline-ad'>
+                    <div class='inline-ad-placeholder'>
+                        <span><b:message name='messages.adsGoHere'/></span>
+                    </div>
+                </div>
+            </b:if>
+        </b:includable>
+        <b:includable id='linkShare'>
+            <b:with value='&quot;window.prompt(\&quot;Copy to clipboard: Ctrl+C, Enter\&quot;, \&quot;&quot; + data:originalUrl + &quot;\&quot;); return false;&quot;' var='onclick'>
+                <b:include name='platformShare'/>
+            </b:with>
+        </b:includable>
+        <b:includable id='nextPageLink'>
+            <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+                <data:messages.olderPosts/>
+            </a>
+        </b:includable>
+        <b:includable id='otherSharingButton'>
+    <span class='sharing-platform-button sharing-element-other' expr:aria-label='data:messages.shareToOtherApps.escaped' expr:data-url='data:originalUrl' expr:title='data:messages.shareToOtherApps.escaped' role='menuitem' tabindex='-1'>
+      <b:with value='{key: &quot;sharingOther&quot;}' var='platform'>
+        <b:include name='sharingPlatformIcon'/>
+      </b:with>
+      <span class='platform-sharing-text'><data:messages.shareOtherApps.escaped/></span>
+    </span>
+        </b:includable>
+        <b:includable id='platformShare'>
+            <a expr:class='&quot;goog-inline-block sharing-&quot; + data:platform.key' expr:data-url='data:originalUrl' expr:href='data:shareUrl + &quot;&amp;target=&quot; + data:platform.target' expr:onclick='data:onclick ? data:onclick : &quot;&quot;' expr:title='data:platform.shareMessage' target='_blank'>
+      <span class='share-button-link-text'>
+        <data:platform.shareMessage/>
+      </span>
+            </a>
+        </b:includable>
+        <b:includable id='post' var='post'>
+            <div class='post'>
+                <b:include data='post' name='postMeta'/>
+                <b:if cond='data:view.isSingleItem'>
+                    <!-- Code Bài Viết -->
+                    <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+                        <b:if cond='data:view.isPage'>
+                            <b:include name='code-page'/>
+                            <b:include name='breadcrumb'/>
+                            <section class='evo-page-static page margin-top-20 margin-bottom-20'>
+                                <div class='container'>
+                                    <div class='row'>
+                                        <div class='col-xs-12 col-sm-12 col-md-12'>
+                                            <div class='page-title category-title'>
+                                                <h1 class='title-head'>
+                                                    <data:post.title/>
+                                                </h1>
+                                            </div>
+                                            <div class='content-page rte'>
+                                                <data:post.body/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </b:if>
+                        <b:if cond='data:blog.url == data:blog.homepageUrl path &quot;p/checkout.html&quot;'>
+                            <script>
+                                //<![CDATA[
+                                jQuery(document).ready(function(e) {
+                                    setInterval(function() {
+                                        var n = localStorage.getItem("simpleCart_items"),
+                                            r = "",
+                                            a = 0;
+                                        e.each(e.parseJSON(n), function(e, n) {
+                                            var t = "+ Order #: " + n.name + " ( " + String(n.price).replace(/(.)(?=(\d{3})+$)/g, "$1,") + " x " + n.quantity + " = " + String(n.price * n.quantity).replace(/(.)(?=(\d{3})+$)/g, "$1,") + " )\n";
+                                            r += t, a += n.price * n.quantity
+                                        }), r += "- Phí giao hàng: Thanh toán lúc nhận hàng \n", r += "- VAT (0%): " + String(0 * a).replace(/(.)(?=(\d{3})+$)/g, "$1,") + " đ\n";
+                                        var t = String(a + 0 * a + 0).replace(/(.)(?=(\d{3})+$)/g, "$1,");
+                                        r += "- Tổng thanh toán: " + t + " đ", e("#product-by-khoi-rom").val(r)
+                                    }, 0);
+                                    $("form#order").submit(function() {
+                                        simpleCart.empty()
+                                        setTimeout(function() {
+                                            location.href = "/p/thank-you.html"
+                                        }, 1)
+                                    });
+                                });
+                                //]]>
+                            </script>
+                            <style type='text/css'>
+                                /*<![CDATA[*/
+                                .checkout input[type=text]{width:100%;margin-bottom:20px;padding:12px;border:1px solid #ccc;border-radius:3px}
+                                .checkout label{margin-bottom:10px;display:block}
+                                .checkout .icon-container{margin-bottom:20px;padding:7px 0;font-size:24px}
+                                .checkout .btn-x{background-color:#4CAF50;color:white;padding:12px;margin:10px 0;border:none;width:100%;border-radius:3px;cursor:pointer;font-size:17px}
+                                .checkout .btn-x:hover{background-color:#45a049}
+                                .checkout a{color:#2196F3}
+                                .checkout hr{border:1px solid lightgrey}
+                                .checkout span.price{float:right;color:grey}
+                                h1.title-head{display:none}
+                                .khoirom-checkout-wrap .simpleCart_items .headerRow{display:none}
+                                .khoirom-checkout-wrap{display:block;width:100%;box-sizing:border-box}
+                                .khoirom-cart-checkout-wrap #contact .contact-form-name{margin-right:25px}
+                                .khoirom-checkout-details{text-align:center;font-family:Raleway;text-transform:capitalize;font-weight:bold;font-size:14px;letter-spacing:0.8px}
+                                .khoirom-checkout-wrap .itemRow{display:block;margin-bottom:15px;overflow:hidden;border:1px solid #eee;color:#111;padding:10px;position:relative}
+                                .khoirom-checkout-wrap .item-thumb{float:left;width:70px;margin-right:10px}
+                                .khoirom-checkout-wrap .item-thumb img{width:100%;vertical-align:middle;object-fit:cover}
+                                .khoirom-checkout-wrap .item-name{display:block;margin-bottom:10px;margin-right:12px;text-transform:capitalize;width:auto;margin:0;padding-bottom:5px;font-size:16px;font-weight:400;line-height:26px;margin-left:0;height:26px;overflow:hidden}
+                                .khoirom-checkout-wrap .item-price{font-size:14px;line-height:1.25;margin-bottom:10px;color:#085867;margin:0 0 10px}
+                                .khoirom-checkout-wrap .item-decrement,.khoirom-checkout-wrap .item-increment{width:20px;float:left;text-align:center}
+                                .khoirom-checkout-wrap .item-decrement,.khoirom-checkout-wrap .item-quantity{float:left;margin-right:5px;font-size:16px}
+                                .khoirom-checkout-wrap .item-decrement a,.khoirom-checkout-wrap .item-increment a{text-decoration:none;font-size:14px;text-align:center;color:#000;display:inline-block}
+                                .khoirom-checkout-wrap .item-quantity{margin:0 10px 0 5px}
+                                .khoirom-checkout-wrap .item-total{margin:12px 0 0 0;font-size:15px;color:#cc0f29;font-weight:700}
+                                .khoirom-checkout-wrap .item-increment{margin-right:10px;margin-top:3px}
+                                .khoirom-checkout-wrap .item-remove{float:right;right:0;top:0;color:#fa5555;line-height:16px}
+                                .khoirom-checkout-wrap .item-remove a{color:#0a0a0a;font-size:13px;font-weight:600}
+                                .khoirom-checkout-wrap .simpleCart_items{display:block;width:100%;box-sizing:border-box}
+                                .khoirom-checkout-wrap .khoirom-bot-element{display:block;width:100%;box-sizing:border-box;margin:10px 0 0}
+                                .khoirom-checkout-wrap .khoirom-cart-subtotal{font-family:'Righteous',cursive;letter-spacing:0.8px;margin-right:10px}
+                                .khoirom-checkout-wrap .simpleCart_total{color:#fa5555;font-weight:bold}
+                                /*]]>*/
+                            </style>
+                            <script src='https://cdn.jsdelivr.net/gh/giaodienblog/cdn@5a40f96/districts.min.js'/>
+                            <script>
+                                //<![CDATA[
+
+                                function select_district() {
+                                    var address_1 = '',
+                                        address_2 = '',
+                                        district = ''
+                                    if (address_2 = localStorage.getItem('address_2_saved')) {
+                                        $('select[name="calc_shipping_district"] option').each(function() {
+                                            if ($(this).text() == address_2) $(this).attr('selected', '')
+                                        })
+                                        $('.product-summary-wrap').attr('data-district', address_2)
+                                        $('input.billing_address_2').attr('value', address_2)
+                                    }
+                                    if (district = localStorage.getItem('district')) {
+                                        $('select[name="calc_shipping_district"]').html(district)
+                                        $('select[name="calc_shipping_district"]').on('change', function() {
+                                            var target = $(this).children('option:selected')
+                                            target.attr('selected', '')
+                                            $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+                                            address_2 = target.text()
+                                            $('.product-summary-wrap').attr('data-district', address_2)
+                                            $('input.billing_address_2').attr('value', address_2)
+                                            district = $('select[name="calc_shipping_district"]').html()
+                                            localStorage.setItem('district', district)
+                                            localStorage.setItem('address_2_saved', address_2)
+                                        })
+                                    }
+                                    $('select[name="calc_shipping_provinces"]').each(function() {
+                                        var $this = $(this),
+                                            stc = ''
+                                        c.forEach(function(i, e) {
+                                            e += +1
+                                            stc += '<option value=' + e + '>' + i + '</option>'
+                                            $this.html('<option value="">Tỉnh / Thành phố</option>' + stc)
+                                            if (address_1 = localStorage.getItem('address_1_saved')) {
+                                                $('select[name="calc_shipping_provinces"] option').each(function() {
+                                                    if ($(this).text() == address_1) $(this).attr('selected', '')
+                                                })
+                                                $('.product-summary-wrap').attr('data-province', address_1)
+                                                $('input.billing_address_1').attr('value', address_1)
+                                            }
+                                            $this.on('change', function(i) {
+                                                i = $this.children('option:selected').index() - 1
+                                                var str = '',
+                                                    r = $this.val()
+                                                if (r != '') {
+                                                    arr[i].forEach(function(el) {
+                                                        str += '<option value="' + el + '">' + el + '</option>'
+                                                        $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>' + str)
+                                                    })
+                                                    address_1 = $this.children('option:selected').text()
+                                                    district = $('select[name="calc_shipping_district"]').html()
+                                                    $('input.billing_address_1').attr('value', address_1)
+                                                    $('.product-summary-wrap').attr('data-province', address_1)
+                                                    localStorage.setItem('address_1_saved', address_1)
+                                                    localStorage.setItem('district', district)
+                                                    $('select[name="calc_shipping_district"]').on('change', function() {
+                                                        var target = $(this).children('option:selected')
+                                                        target.attr('selected', '')
+                                                        $('select[name="calc_shipping_district"] option').not(target).removeAttr('selected')
+                                                        address_2 = target.text()
+                                                        $('.product-summary-wrap').attr('data-district', address_2)
+                                                        $('input.billing_address_2').attr('value', address_2)
+                                                        district = $('select[name="calc_shipping_district"]').html()
+                                                        localStorage.setItem('district', district)
+                                                        localStorage.setItem('address_2_saved', address_2)
+                                                    })
+                                                } else {
+                                                    $('select[name="calc_shipping_district"]').html('<option value="">Quận / Huyện</option>')
+                                                    district = $('select[name="calc_shipping_district"]').html()
+                                                    $('.product-summary-wrap').attr('data-province', 'undefined')
+                                                    $('.product-summary-wrap').attr('data-district', 'undefined')
+                                                    localStorage.removeItem('district', district)
+                                                    localStorage.removeItem('address_2_saved', address_2)
+                                                    localStorage.removeItem('address_1_saved', address_1)
+                                                }
+                                            })
+                                        })
+                                    })
+                                }
+                                select_district();
+                                //]]>
+                            </script>
+                            <style type='text/css'>
+                                /*<![CDATA[*/
+                                button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0;padding:0;-webkit-appearance:none;-webkit-font-smoothing:inherit;border:none;background:transparent;line-height:normal}
+                                button:focus,input:focus,select:focus,textarea:focus{border:none;outline:none}
+                                button,input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+                                .btn{display:inline-block;border-radius:4px;font-weight:500;padding:0.5em 1.7em;box-sizing:border-box;text-align:center;cursor:pointer;transition:background-color 0.2s ease-in-out,color 0.2s ease-in-out;position:relative;background:#338dbc;color:white}
+                                .btn:hover{background:#286f94;color:white}
+                                .fieldset{margin:-0.45em;zoom:1}
+                                .fieldset:after,.fieldset:before{content:"";display:table}
+                                .fieldset:after{clear:both}
+                                .fieldset .field{width:100%;float:left;padding:0.45em;box-sizing:border-box}
+                                .fieldset .field .field-input-btn-wrapper{display:-webkit-flex;display:-ms-flexbox;display:flex}
+                                .fieldset .field .field-input-btn-wrapper .field-input-btn{width:auto;margin-left:0.9em;white-space:nowrap;padding-top:0;padding-bottom:0}
+                                .fieldset .field .field-input-btn-wrapper .field-input-wrapper{-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1}
+                                .fieldset .field .field-input-wrapper{position:relative}
+                                .fieldset .field .field-input-wrapper .field-label{font-size:0.85714em;font-weight:normal;position:absolute;top:0;width:100%;padding:0 0.93333em;z-index:1;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transform:translateY(3px);transform:translateY(3px);pointer-events:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;box-sizing:border-box;opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=" 0 ")";filter:alpha(opacity=0);color:#999999;transition:all 0.2s ease-out;margin:0.5em 0;margin-top:0.3em;display:block}
+                                .fieldset .field .field-input-wrapper .field-input{box-shadow:0 0 0 1px #d9d9d9;transition:all 0.2s ease-out;background-color:white;color:#333333;border-radius:4px;display:block;box-sizing:border-box;width:100%;padding:0.75em 2.8em 0.94em 0.8em;word-break:normal}
+                                .fieldset .field .field-input-wrapper .field-description{display:block;margin-left:25px;margin-top:2px}
+                                .fieldset .field .field-message{font-size:0.85714em}
+                                .fieldset .field .field-message.field-message-error{margin:0;display:none;margin:0.75em 0 0.25em;transition:all 0.3s ease-out;line-height:1.3em;color:#ff6d6d}
+                                .fieldset .field.field-active .field-input-wrapper .field-label{color:#737373}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-label{-webkit-transform:none;transform:none;opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=" 100 ")";filter:alpha(opacity=100)}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-input{padding-top:1.5em;padding-bottom:0.38em}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-webkit-input-placeholder{color:transparent}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-moz-placeholder{color:transparent}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-moz-placeholder{color:transparent}
+                                .fieldset .field.field-show-floating-label .field-input-wrapper .field-input::-ms-input-placeholder{color:transparent}
+                                .fieldset .field.field-error .field-input-wrapper .field-input{box-shadow:0 0 0 2px #ff6d6d}
+                                @media (min-width:750px){.field-half{width:50%!important}
+                                    .field-two-thirds{width:66.66667%!important}
+                                    .field-third{width:33.33333%!important}
+                                    select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-position:right center;background-image:url("https://1.bp.blogspot.com/-kQ_orgDJ40c/YLF0MGqRghI/AAAAAAAAEbI/bNcX4rxEQr82gDcjTOKosYaeXOnfj5ZKACLcBGAsYHQ/s0/ico-select.png");background-repeat:no-repeat;background-position:right 10px center;background-color:#fff!important;padding-right:28px;text-indent:0.01px;text-overflow:'';cursor:pointer}
+                                    .step-footer{z-index:2;position:relative;margin-top:1em;zoom:1;clear:both}
+                                    .step-footer:after,.step-footer:before{content:"";display:table}
+                                    .step-footer:after{clear:both}
+                                    .step-footer .step-footer-previous-link{cursor:pointer;display:block}
+                                    .step-footer .step-footer-previous-link .previous-link-icon{fill:#338dbc;transition:all 0.2s cubic-bezier(0.3,0,0,1);margin-right:0.25em}
+                                    .step-footer .step-footer-previous-link:hover .previous-link-icon{fill:#2b78a0;-webkit-transform:translateX(-5px);transform:translateX(-5px)}
+                                    .step-footer .step-footer-info{display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-ms-flex-align:center;align-items:center}
+                                    .section{position:relative}
+                                    .section.thank-you-checkout-info{padding-top:0.5em}
+                                    .section:first-child{padding-top:0}
+                                    .section .section-header{position:relative}
+                                    .section .section-content{zoom:1;margin-bottom:2em}
+                                    .section .section-content .section-content-text{margin-bottom:0.75em}
+                                    .section .section-content.no-mb,.section .section-content:last-child{margin-bottom:inherit}
+                                    .section .section-content:after,.section .section-content:before{content:"";display:table}
+                                    .section .section-content .content-box{box-shadow:0 0 0 1px #d9d9d9;border-radius:4px;background:#fff;color:#737373;margin-top:1em}
+                                /*]]>*/
+                            </style>
+                        </b:if>
+                        <!-- Breadcrumb -->
+                        <b:if cond='data:view.isPost'>
+                            <section class='bread-crumb'>
+                                <div class='container'>
+                                    <ul class='breadcrumb' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
+                                        <li class='home' itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                                            <a expr:href='data:blog.homepageUrl' itemprop='item' rel='tag'>
+                                                <span itemprop='name'>Trang chủ</span>
+                                                <meta content='1' itemprop='position'/>
+                                            </a>
+                                        </li>
+                                        <li itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                                            <a class='b-label' expr:href='data:post.labels.last.url' itemprop='item'>
+                  <span itemprop='name'>
+                    <data:post.labels.last.name/>
+                  </span>
+                                            </a>
+                                            <meta content='2' itemprop='position'/>
+                                        </li>
+                                        <li itemprop='itemListElement' itemscope='' itemtype='http://schema.org/ListItem'>
+                                            <a itemprop='item'>
+                                                <strong>
+                <span itemprop='name'>
+                  <data:blog.pageName/>
+                </span>
+                                                </strong>
+                                            </a>
+                                            <meta content='3' itemprop='position'/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </b:if>
+                        <!-- End Breadcrumb -->
+                        <b:if cond='data:post.labels any (l =&gt; l.name == &quot;san-pham&quot;)'>
+                            <b:include name='code-product'/>
+                            <section class='product product-margin'>
+                                <div class='container'>
+                                    <div class='details-product product-bottom row simpleCart_shelfItem'>
+                                        <div class='col-xl-5 col-lg-7 col-md-6 col-sm-12 col-12'>
+                                            <div class='product-image-block relative'>
+                                                <div class='swiper-container gallery-top'>
+                                                    <div class='swiper-wrapper' id='lightgallery'>
+                                                        <a class='swiper-slide' data-hash='0' expr:href='resizeImage(data:blog.postImageUrl,16000)' title='Click để xem'>
+                                                            <img class='img-responsive mx-auto d-block swiper-lazy item_thumb' expr:alt='data:post.title' expr:data-image='data:blog.postImageUrl' expr:data-src='data:blog.postImageUrl' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                                            <div class='swiper-lazy-preloader swiper-lazy-preloader-black'/>
+                                                        </a>
+                                                        <b:loop index='i' values='data:post.enclosures' var='enclosure'>
+                                                            <b:if cond='data:enclosure.mimeType in {&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/jpg&quot;}'>
+                                                                <a class='swiper-slide' expr:data-hash='data:i - 1' expr:href='data:enclosure.url' title='Click để xem'>
+                                                                    <img class='img-responsive mx-auto d-block swiper-lazy' expr:alt='data:post.title' expr:data-image='data:enclosure.url' expr:data-src='data:enclosure.url' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                                                    <div class='swiper-lazy-preloader swiper-lazy-preloader-black'/>
+                                                                </a>
+                                                            </b:if>
+                                                        </b:loop>
+                                                    </div>
+                                                </div>
+                                                <div class='swiper-container gallery-thumbs'>
+                                                    <div class='swiper-wrapper'>
+                                                        <div class='swiper-slide' data-hash='0'>
+                                                            <img class='swiper-lazy' expr:alt='data:post.title' expr:data-image='data:blog.postImageUrl' expr:data-src='data:blog.postImageUrl' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                                            <div class='swiper-lazy-preloader swiper-lazy-preloader-black'/>
+                                                        </div>
+                                                        <b:loop index='i' values='data:post.enclosures' var='enclosure'>
+                                                            <!-- Vong Lap Anh -->
+                                                            <b:if cond='data:enclosure.mimeType in {&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/jpg&quot;}'>
+                                                                <div class='swiper-slide' expr:data-hash='data:i - 1'>
+                                                                    <img class='swiper-lazy' expr:alt='data:post.title' expr:data-image='data:enclosure.url' expr:data-src='data:enclosure.url' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                                                    <div class='swiper-lazy-preloader swiper-lazy-preloader-black'/>
+                                                                </div>
+                                                            </b:if>
+                                                        </b:loop>
+                                                    </div>
+                                                    <div class='swiper-button-next'/>
+                                                    <div class='swiper-button-prev'/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12'>
+                                            <div class='details-pro row'>
+                                                <div class='col-xl-7'>
+                                                    <div class='product-top clearfix'>
+                                                        <h1 class='title-head item_name'><data:post.title/></h1><label class='d-none item_link'><data:post.url/></label>
+                                                        <div class='sku-product clearfix'>
+  <span>
+                    Tag: <strong><data:post.labels.first.name/></strong>
+  </span>
+                                                            <span class='variant-sku'>Mã sản phẩm: <strong><data:view.postId/></strong></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class='offers'>
+                                                        <div class='inventory_quantity d-none'>
+  <span class='a-stock a2'>
+                      Còn hàng
+  </span>
+                                                        </div>
+                                                        <div class='price-box clearfix'>
+  <span class='special-price'>
+  <b:loop values='data:post.enclosures' var='enclosure'>
+    <b:if cond='data:enclosure.url in {&quot;https://giaban.com&quot;,&quot;http://giaban.com&quot;}'>
+  <span class='price product-price item_price' expr:data-giaban='data:enclosure.mimeType'>
+  <data:enclosure.mimeType/>xxxxxxxx
+  </span>
+  </b:if>
+  </b:loop>
+  </span>
+                                                            <b:loop values='data:post.enclosures' var='enclosure'>
+                                                                <b:if cond='data:enclosure.mimeType != &quot;empty&quot;'>
+                                                                    <b:if cond='data:enclosure.url in {&quot;https://giacu.com&quot;,&quot;http://giacu.com&quot;}'>
+  <span class='old-price'> Giá thị trường: <del class='price product-price-old' expr:data-giacu='data:enclosure.mimeType'>
+  <data:enclosure.mimeType/>
+  </del>
+  </span>
+                                                                        <span class='save-price'>Tiết kiệm: <span class='price product-price-save'/>
+  </span>
+                                                                        <script>
+                                                                            //<![CDATA[
+                                                                            var giaban = $('span.product-price').attr('data-giaban').replace(/[^0-9\.]+/ig, "");
+                                                                            var giacu = $('del.product-price-old').attr('data-giacu').replace(/[^0-9\.]+/ig, "");
+                                                                            var giam = giacu - giaban;
+                                                                            var ok = String(giam).replace(/(.)(?=(\d{3})+$)/g, '$1,') + "₫";
+                                                                            $('span.product-price-save').html(ok);
+                                                                            console.log('Details tiet kiem');
+                                                                            //]]>
+                                                                        </script>
+                                                                    </b:if>  </b:if>
+                                                            </b:loop>
+                                                        </div>
+                                                    </div>
+                                                    <div class='form-product'>
+                                                        <div class='clearfix' id='add-to-cart-form'>
+                                                            <div class='form-groups evo-btn-cart clearfix '>
+                                                                <div class='qty-ant clearfix custom-btn-number '>
+                                                                    <label>Số lượng:</label>
+                                                                    <div class='custom custom-btn-numbers clearfix'>
+                                                                        <button class='btn-minus btn-cts' onclick='var result = document.getElementById(&apos;qty&apos;); var qty = result.value; if( !isNaN(qty) &amp; qty &gt; 1 ) result.value--;return false;' type='button'>&#8211;</button>
+                                                                        <input aria-label='Số lượng' autocomplete='off' class='qty input-text item_quantity' id='qty' maxlength='3' name='quantity' onchange='if(this.value == 0)this.value=1;' onkeypress='if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;' size='4' type='text' value='1'/>
+                                                                        <button class='btn-plus btn-cts' onclick='var result = document.getElementById(&apos;qty&apos;); var qty = result.value; if( !isNaN(qty)) result.value++;return false;' type='button'>+</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='btn-mua'>
+                                                                    <b:loop values='data:post.enclosures' var='enclosure'>
+                                                                        <b:if cond='data:enclosure.mimeType == &quot;aff&quot;'>
+                                                                            <script>
+                                                                                $(document).ready(function() {
+                                                                                    $(&#39;.chovaogio&#39;).addClass(&quot;d-none&quot;);
+                                                                                    $(&#39;.afflink&#39;).removeClass(&quot;d-none&quot;);
+                                                                                });
+                                                                            </script>
+                                                                            <button class='btn btn-lg btn-gray btn-cart btn_buy add_to_cart afflink d-none' expr:onclick='&quot;window.open(&apos;&quot; + data:enclosure.url + &quot;&apos;, &apos;_blank&apos;); return false;&quot;' type='submit'>Tới gian hàng</button>
+                                                                        </b:if>
+                                                                    </b:loop>
+                                                                    <button class='btn btn-lg btn-gray btn-cart btn_buy add_to_cart item_add chovaogio' data-role='addtocart' type='submit'>Thêm vào giỏ</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class='col-xl-5 d-none d-xl-block'>
+                                                    <div class='evo_onlineSupport'>
+                                                        <h2 class='supportTitle'>CHÚNG TÔI LUÔN SẴN SÀNG<br/>ĐỂ GIÚP ĐỠ BẠN</h2>
+                                                        <div class='supportimage'>
+                                                            <img alt='Hỗ trợ trực tuyến' class='lazy mx-auto d-block img-responsive' data-src='https://1.bp.blogspot.com/-46qksZooymg/YLxF9iwIaEI/AAAAAAAAErQ/-KQEYPq0AiMOKydp9-7zMfh16-JT0O3uQCLcBGAsYHQ/s0/evo_product_support.jpg' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                                        </div>
+                                                        <h3 class='supportTitle3'>Để được hỗ trợ tốt nhất. Hãy gọi</h3>
+                                                        <div class='phoneNumber'>
+                                                            <a href='tel:18006750' title='1800 6750'>1800 6750</a>
+                                                        </div>
+                                                        <div class='or'><span>HOẶC</span></div>
+                                                        <h3 class='supportTitle'>Chat hỗ trợ trực tuyến</h3>
+                                                        <a class='chatNow sprite-icon_chat' href='/p/lien-he.html' title='Chat với chúng tôi'>Chat với chúng tôi</a>
+                                                    </div>
+                                                </div>
+                                                <div class='col-xl-12 evo-product-tabs margin-bottom-15'>
+                                                    <h4 class='evo-product-tabs-title'>Thông tin sản phẩm</h4>
+                                                    <div class='evo-product-tabs-content'>
+                                                        <data:post.body/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='related-product'>
+                                    <div class='container'>
+                                        <div class='home-title'><a expr:href='data:post.labels.last.url' title='Sản phẩm liên quan'>Sản phẩm liên quan</a></div>
+                                        <div class='evo-owl-product swiper-container' expr:data-label='data:post.labels.last.name'>
+                                            <div class='swiper-wrapper loader'>
+                                            </div>
+                                            <div class='swiper-button-next'/>
+                                            <div class='swiper-button-prev'/>
+                                            <div class='swiper-pagination'/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='product-gray product_recent product-page-viewed'>
+                                    <div class='container'>
+                                        <div class='related-product'>
+                                            <div class='home-title'>Sản phẩm mới</div>
+                                            <div class='product-page-viewed-wrap evo-slick-product swiper-container'>
+                                                <div class='swiper-wrapper loader'>
+                                                </div>
+                                                <div class='swiper-button-next'/>
+                                                <div class='swiper-button-prev'/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <script>//<![CDATA[
+                            $('.item_add').click(function() {
+                                $(".cart_sidebar").toggleClass('active');
+                                $(".backdrop__body-backdrop___1rvky").addClass('active');
+                            });
+                            var galleryThumbs = new Swiper('.gallery-thumbs', {
+                                spaceBetween: 5,
+                                slidesPerView: 10,
+                                lazy: true,
+                                hashNavigation: true,
+                                watchSlidesVisibility: true,
+                                watchSlidesProgress: true,
+                                direction: 'vertical',
+                                loop: false,
+                                loopAdditionalSlides: 0,
+                                breakpoints: {
+                                    300: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 10,
+                                        direction: 'horizontal',
+                                    },
+                                    500: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 10,
+                                        direction: 'horizontal',
+                                    },
+                                    640: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 10,
+                                        direction: 'horizontal',
+                                    },
+                                    768: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 10,
+                                        direction: 'horizontal',
+                                    },
+                                    1024: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 10,
+                                    },
+                                },
+                                navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                },
+                            });
+                            var galleryTop = new Swiper('.gallery-top', {
+                                spaceBetween: 0,
+                                lazy: true,
+                                hashNavigation: true,
+                                thumbs: {
+                                    swiper: galleryThumbs
+                                }
+                            });
+                            $(document).ready(function() {
+                                $("#lightgallery").lightGallery({
+                                    thumbnail: false
+                                });
+                            });
+
+                            function scrollToxxs() {
+                                $('html, body').animate({
+                                    scrollTop: $('#evo-product-content-block').offset().top
+                                }, 'slow');
+                                return false;
+                            }
+
+                            var selectCallback = function(variant, selector) {
+                                /*begin variant image*/
+                                if (variant && variant.image) {
+                                    var originalImage = jQuery(".gallery-thumbs img");
+                                    var stickoriginalImage = jQuery(".evo-product-news img");
+                                    var newImage = variant.image;
+                                    var element = originalImage[0];
+                                    Bizweb.Image.switchImage(newImage, element, function(newImageSizedSrc, newImage, element) {
+                                        $('.gallery-thumbs .swiper-slide').each(function() {
+                                            var $this = $(this);
+                                            var imgThis = $this.find('img').attr('data-image');
+                                            if (newImageSizedSrc.split("?")[0] == imgThis.split("?")[0]) {
+                                                var pst = $this.attr('data-hash');
+                                                galleryTop.slideTo(pst, 1000, false);
+                                            }
+                                            jQuery(stickoriginalImage).attr('src', newImageSizedSrc);
+                                        });
+                                    });
+                                }
+                                /*end of variant image*/
+                            };
+                            jQuery(function($) {
+                                $('.selector-wrapper').hide();
+                                $('.selector-wrapper').css({
+                                    'text-align': 'left',
+                                    'margin-bottom': '15px'
+                                });
+                            });
+                            jQuery('.swatch :radio').change(function() {
+                                var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+                                var optionValue = jQuery(this).val();
+                                jQuery(this).closest('form').find('.single-option-selector').eq(optionIndex).val(optionValue).trigger('change');
+                            });
+
+                            $('.btn--view-more').on('click', function(e) {
+                                e.preventDefault();
+                                var $this = $(this);
+                                $this.parents('.evo-product-tabs').find('.evo-product-tabs-content').toggleClass('expanded');
+                                $(this).toggleClass('active');
+                                $('html, body').animate({
+                                    scrollTop: $('.evo-product-tabs').offset().top
+                                }, 'fast');
+                                return false;
+                            });
+                            $(document).on('click', '.btn-buy-now-click', function(e) {
+                                e.preventDefault();
+                                $('[data-role=addtocart]').click();
+                            });
+                            var swiper = new Swiper('.evo-owl-product', {
+                                slidesPerView: 4,
+                                spaceBetween: 15,
+                                slidesPerGroup: 2,
+                                navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                },
+                                breakpoints: {
+                                    300: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 7,
+                                    },
+                                    500: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 10,
+                                    },
+                                    640: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 10,
+                                    },
+                                    768: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 10,
+                                    },
+                                    1024: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 15,
+                                    },
+                                }
+                            });
+                            jQuery(document).ready(function($) {
+                                orientationChange();
+                            });
+
+                            function orientationChange() {
+                                if (window.addEventListener) {
+                                    window.addEventListener("orientationchange", function() {
+                                        location.reload();
+                                    });
+                                }
+                            }
+                            //]]></script>
+                            <script>
+                                //<![CDATA[
+                                window.addEventListener('DOMContentLoaded', function() {
+                                    $(".related-product .evo-owl-product .swiper-wrapper").each(function() {
+                                        var this_related = $(this);
+                                        var category = this_related.parent().attr("data-label");
+                                        $.ajax({
+                                            url: "/feeds/posts/default/-/" + category,
+                                            type: "get",
+                                            data: {
+                                                alt: "json",
+                                                "max-results": 8
+                                            },
+                                            dataType: "jsonp",
+                                            beforeSend: function() {},
+                                            success: function(k) {
+                                                getData(k);
+                                                awe_lazyloadImage();
+                                                this_related.find('.item_add').click(function() {
+                                                    $(".cart_sidebar").toggleClass('active');
+                                                    $(".backdrop__body-backdrop___1rvky").addClass('active');
+                                                });
+                                                var swiper = new Swiper('.evo-owl-product', {
+                                                    slidesPerView: 4,
+                                                    spaceBetween: 15,
+                                                    slidesPerGroup: 2,
+                                                    navigation: {
+                                                        nextEl: '.swiper-button-next',
+                                                        prevEl: '.swiper-button-prev',
+                                                    },
+                                                    breakpoints: {
+                                                        300: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 7,
+                                                        },
+                                                        500: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        640: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        768: {
+                                                            slidesPerView: 4,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        1024: {
+                                                            slidesPerView: 5,
+                                                            spaceBetween: 15,
+                                                        },
+                                                    }
+                                                });
+                                                $('.swiper-button-next').removeClass('swiper-button-disabled');
+                                            }
+                                        })
+
+                                        function getData(e) {
+                                            console.log( 'here',e);
+                                            var entry_post = e.feed.entry;
+                                            var linkaff = '';
+                                            var linkpost = '';
+                                            if (void 0 !== entry_post) {
+                                                for (var n = 0; n < e.feed.entry.length; n++) {
+                                                    var entry = e.feed.entry[n];
+                                                    for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                                                        if (e.feed.entry[n].link[s].rel === "alternate") {
+                                                            t = e.feed.entry[n].link[s].href;
+                                                            break
+                                                        }
+                                                    }
+                                                    var f = e.feed.entry[n].title.$t;
+                                                    if ("media$thumbnail" in e.feed.entry[n]) {
+                                                        d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w480-h480-p-k-no-nu");
+                                                    } else {
+                                                        d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w480-h480-p-k-no-nu/nth.png"
+                                                    }
+                                                    var thumb = '';
+                                                    for (var c = 0; c < entry.link.length; c++) {
+                                                        if (entry.link[c].rel == 'enclosure') {
+                                                            var entry_enclosure = entry.link[c].href;
+                                                            if (entry_enclosure == "http://giaban.com") {
+                                                                var giaban = entry.link[c].type
+                                                            }
+                                                            if (entry_enclosure == "http://giacu.com") {
+                                                                if (entry.link[c].type != "empty" && entry.link[c].type != "image/jpeg" && entry.link[c].type != "image/png") {
+                                                                    var giacu = entry.link[c].type;
+                                                                    var cu = '<span class="product-old-price">' + giacu + '</span>';
+                                                                    var price = giaban.replace(/[^0-9\.]+/ig, "");
+                                                                    var old = giacu.replace(/[^0-9\.]+/ig, "");
+                                                                    var giam = (100 * ((parseInt(price) - parseInt(old)) / parseInt(old))).toFixed(0);
+                                                                    var sale = '<span class="ant-sale"> ' + giam + '% </span>';
+                                                                } else {
+                                                                    cu = sale = ''
+                                                                }
+                                                            }
+                                                            if (entry_enclosure != "http://giaban.com" && entry_enclosure != "http://giacu.com") {
+                                                                if (entry.link[c].type == "image/jpeg" || entry.link[c].type == "image/png") {
+                                                                    thumb += '<span class="tt-img-roll-over"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + entry_enclosure.replace("s16000", "w480-h480-p-k-no-nu") + '" alt="' + f + '" /> </span>';
+                                                                }
+                                                            }
+                                                            if (entry.link[c].type == "aff") {
+                                                                var afflink = entry.link[c].href;
+                                                                buy = '<a href = "' + afflink + '" title="Tới gian hàng" class="action add_to_cart" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                                                linkpost = '<a href = "' + afflink + '" title="Tới gian hàng" class="action cart-button" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                                                            } else {
+                                                                buy = '<a href = "javascript:void(0)" title="Thêm vào giỏ" class="action add_to_cart item_add"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                                                linkpost = '<a title="Xem chi tiết" href="' + t + '" class="action cart-button"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                                                            }
+                                                        }
+                                                    }
+                                                    var content = '<div class="swiper-slide"> <div class="evo-product-item simpleCart_shelfItem"> <div class="thumb-evo"> ' + sale + ' <a class="thumb-img" href="' + t + '" title="' + f + '"><span class="d-none item_link">' + t + '</span><span class="tt-img"> <img class="lazy item_thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + d + '" alt="' + f + '" /> </span> ' + thumb + ' </a> <form class="product-button hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart">' + buy + ' ' + linkpost + ' </form> </div> <a href="' + t + '" title="' + f + '" class="title item_name">' + f + '</a> <div class="flex-prices"> <strong class="product-price item_price">' + giaban + '</strong> ' + cu + ' </div> </div> </div>';
+                                                    this_related.removeClass("loader")
+                                                    this_related.append(content)
+                                                }
+                                            } else {
+                                                var content = '<div class="alert alert-warning fade in green-alert show" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có sản phẩm nào trong danh mục này. </div>';
+                                                this_related.removeClass("loader")
+                                                this_related.append(content)
+                                            }
+                                        }
+                                    })
+                                })
+                                //]]>
+                            </script>
+                            <script>
+                                //<![CDATA[
+                                window.addEventListener('DOMContentLoaded', function() {
+                                    $(".related-product .product-page-viewed-wrap .swiper-wrapper").each(function() {
+                                        var this_viewed = $(this);
+                                        $.ajax({
+                                            url: "/feeds/posts/default/-/" + "san-pham",
+                                            type: "get",
+                                            data: {
+                                                alt: "json",
+                                                "max-results": 8
+                                            },
+                                            dataType: "jsonp",
+                                            beforeSend: function() {},
+                                            success: function(k) {
+                                                getData(k);
+                                                awe_lazyloadImage();
+                                                this_viewed.find('.item_add').click(function() {
+                                                    $(".cart_sidebar").toggleClass('active');
+                                                    $(".backdrop__body-backdrop___1rvky").addClass('active');
+                                                });
+                                                var swiper = new Swiper('.product-page-viewed-wrap.evo-slick-product', {
+                                                    slidesPerView: 4,
+                                                    spaceBetween: 15,
+                                                    slidesPerGroup: 2,
+                                                    navigation: {
+                                                        nextEl: '.swiper-button-next',
+                                                        prevEl: '.swiper-button-prev',
+                                                    },
+                                                    breakpoints: {
+                                                        300: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 7,
+                                                        },
+                                                        500: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        640: {
+                                                            slidesPerView: 2,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        768: {
+                                                            slidesPerView: 4,
+                                                            spaceBetween: 10,
+                                                        },
+                                                        1024: {
+                                                            slidesPerView: 5,
+                                                            spaceBetween: 15,
+                                                        },
+                                                    }
+                                                });
+                                                $('.swiper-button-next').removeClass('swiper-button-disabled');
+                                            }
+                                        })
+
+                                        function getData(e) {
+                                            var entry_post = e.feed.entry;
+                                            var linkaff = '';
+                                            var linkpost = '';
+                                            if (void 0 !== entry_post) {
+                                                for (var n = 0; n < e.feed.entry.length; n++) {
+                                                    var entry = e.feed.entry[n];
+                                                    for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                                                        if (e.feed.entry[n].link[s].rel === "alternate") {
+                                                            t = e.feed.entry[n].link[s].href;
+                                                            break
+                                                        }
+                                                    }
+                                                    var f = e.feed.entry[n].title.$t;
+                                                    if ("media$thumbnail" in e.feed.entry[n]) {
+                                                        d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w480-h480-p-k-no-nu");
+                                                    } else {
+                                                        d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w480-h480-p-k-no-nu/nth.png"
+                                                    }
+                                                    var thumb = '';
+                                                    for (var c = 0; c < entry.link.length; c++) {
+                                                        if (entry.link[c].rel == 'enclosure') {
+                                                            var entry_enclosure = entry.link[c].href;
+                                                            if (entry_enclosure == "http://giaban.com") {
+                                                                var giaban = entry.link[c].type
+                                                            }
+                                                            if (entry_enclosure == "http://giacu.com") {
+                                                                if (entry.link[c].type != "empty" && entry.link[c].type != "image/jpeg" && entry.link[c].type != "image/png") {
+                                                                    var giacu = entry.link[c].type;
+                                                                    var cu = '<span class="product-old-price">' + giacu + '</span>';
+                                                                    var price = giaban.replace(/[^0-9\.]+/ig, "");
+                                                                    var old = giacu.replace(/[^0-9\.]+/ig, "");
+                                                                    var giam = (100 * ((parseInt(price) - parseInt(old)) / parseInt(old))).toFixed(0);
+                                                                    var sale = '<span class="ant-sale"> ' + giam + '% </span>';
+                                                                } else {
+                                                                    cu = sale = ''
+                                                                }
+                                                            }
+                                                            if (entry_enclosure != "http://giaban.com" && entry_enclosure != "http://giacu.com") {
+                                                                if (entry.link[c].type == "image/jpeg" || entry.link[c].type == "image/png") {
+                                                                    thumb += '<span class="tt-img-roll-over"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + entry_enclosure.replace("s16000", "w480-h480-p-k-no-nu") + '" alt="' + f + '" /> </span>';
+                                                                }
+                                                            }
+                                                            if (entry.link[c].type == "aff") {
+                                                                var afflink = entry.link[c].href;
+                                                                buy = '<a href = "' + afflink + '" title="Tới gian hàng" class="action add_to_cart" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                                                linkpost = '<a href = "' + afflink + '" title="Tới gian hàng" class="action cart-button" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                                                            } else {
+                                                                buy = '<a href = "javascript:void(0)" title="Thêm vào giỏ" class="action add_to_cart item_add"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                                                linkpost = '<a title="Xem chi tiết" href="' + t + '" class="action cart-button"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                                                            }
+                                                        }
+                                                    }
+                                                    var content = '<div class="swiper-slide"> <div class="evo-product-item simpleCart_shelfItem"> <div class="thumb-evo"> ' + sale + ' <a class="thumb-img" href="' + t + '" title="' + f + '"><span class="d-none item_link">' + t + '</span><span class="tt-img"> <img class="lazy item_thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + d + '" alt="' + f + '" /> </span> ' + thumb + ' </a> <form class="product-button hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart">' + buy + ' ' + linkpost + ' </form> </div> <a href="' + t + '" title="' + f + '" class="title item_name">' + f + '</a> <div class="flex-prices"> <strong class="product-price item_price">' + giaban + '</strong> ' + cu + ' </div> </div> </div>';
+                                                    this_viewed.removeClass("loader")
+                                                    this_viewed.append(content)
+                                                }
+                                            } else {
+                                                var content = '<div class="alert alert-warning fade in green-alert show" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có sản phẩm nào trong danh mục này. </div>';
+                                                this_viewed.removeClass("loader")
+                                                this_viewed.append(content)
+                                            }
+                                        }
+                                    })
+                                })
+                                //]]>
+                            </script>
+                        </b:if>
+                        <b:if cond='data:post.labels any (l =&gt; l.name == &quot;tin-tuc&quot;)'>
+                            <b:include name='code-news'/>
+                            <div class='container article-wraper'>
+                                <article class='article-main'>
+                                    <div class='row'>
+                                        <div class='col-md-12 col-lg-9 col-sm-12'>
+                                            <div class='evo-article margin-bottom-10'>
+                                                <h1 class='title-head text-center'>
+                                                    <data:post.title/>
+                                                </h1>
+                                                <div class='blog-item-author text-center'>
+  <span>
+  <data:post.author.name/>
+  </span>
+                                                    <span>
+  <b:eval expr='data:post.date format &quot;dd/MM/yyyy&quot; '/>
+  </span>
+                                                </div>
+                                                <div class='article-details evo-toc-content'>
+                                                    <p><data:post.body/></p>
+                                                </div>
+                                            </div>
+                                            <div class='evo-article-toolbar'>
+                                                <div class='evo-article-toolbar-left clearfix'>
+                                                    <span class='evo-article-toolbar-head'>Bạn đang xem: </span>
+                                                    <span class='evo-article-toolbar-title' expr:title='data:post.title'><data:post.title/></span>
+                                                </div>
+                                                <div class='evo-article-toolbar-right'>
+                                                </div>
+                                            </div>
+                                            <div class='margin-top-10'>
+                                            </div>
+                                        </div>
+                                        <div class='col-md-12 col-lg-3 col-sm-12 blog-sidebar'>
+                                            <div class='aside-title'>Danh mục</div>
+                                            <ul class='navbar-pills nav-category'>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/thuc-an-dinh-duong' title='Thức ăn, dinh dưỡng'>Thức ăn, dinh dưỡng</a>
+                                                    <span class='Collapsible__Plus'/>
+                                                    <ul class='dropdown-menu'>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/thuc-an-hat-kho' title='Thức ăn hạt khô'>Thức ăn hạt khô</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/pate-nuoc-sot' title='Pate &amp; Nước sốt'>Pate &amp; Nước sốt</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/snack-banh-thuong' title='Snack &amp; Bánh thưởng'>Snack &amp; Bánh thưởng</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/vitamin-dinh-duong' title='Vitamin &amp; Dinh dưỡng'>Vitamin &amp; Dinh dưỡng</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/co-meo-catnip' title='Cỏ mèo &amp; Catnip'>Cỏ mèo &amp; Catnip</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/bat-an-binh-uong-nuoc' title='Bát ăn &amp; Bình uống nước'>Bát ăn &amp; Bình uống nước</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/ve-sinh-cham-soc' title='Vệ sinh, Chăm sóc'>Vệ sinh, Chăm sóc</a>
+                                                    <span class='Collapsible__Plus'/>
+                                                    <ul class='dropdown-menu'>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/khay-nha-ve-sinh' title='Khay &amp; Nhà vệ sinh'>Khay &amp; Nhà vệ sinh</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/cat-ve-sinh-cho-meo' title='Cát vệ sinh cho mèo'>Cát vệ sinh cho mèo</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/sua-tam-xit-duong' title='Sữa tắm &amp; Xịt dưỡng'>Sữa tắm &amp; Xịt dưỡng</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/luoc-chai-long-cat-mong' title='Lược chải lông &amp; Cắt móng'>Lược chải lông &amp; Cắt móng</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/do-dung-phu-kien' title='Đồ dùng, Phụ kiện'>Đồ dùng, Phụ kiện</a>
+                                                    <span class='Collapsible__Plus'/>
+                                                    <ul class='dropdown-menu'>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/quan-ao-trang-suc' title='Quần áo &amp; Trang sức'>Quần áo &amp; Trang sức</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/vong-co-day-dat' title='Vòng cổ &amp; Dây dắt'>Vòng cổ &amp; Dây dắt</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/tui-xach-long-van-chuyen' title='Túi xách &amp; Lồng vận chuyển'>Túi xách &amp; Lồng vận chuyển</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/do-choi-huan-luyen' title='Đồ chơi &amp; Huấn luyện'>Đồ chơi &amp; Huấn luyện</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/nha-chuong-nem' title='Nhà, chuồng, nệm'>Nhà, chuồng, nệm</a>
+                                                    <span class='Collapsible__Plus'/>
+                                                    <ul class='dropdown-menu'>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/nha-meo-nha-cay-cattree' title='Nhà mèo &amp; Nhà cây Cattree'>Nhà mèo &amp; Nhà cây Cattree</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/tru-cot-ban-cao-mong' title='Trụ cột &amp; Bàn cào móng'>Trụ cột &amp; Bàn cào móng</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/chuong-meo-1-2-3-tang' title='Chuồng mèo 1, 2, 3 tầng'>Chuồng mèo 1, 2, 3 tầng</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/o-nem-tham-dem' title='Ổ nệm &amp; Thảm đệm'>Ổ nệm &amp; Thảm đệm</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/y-te-thuoc-cho-meo' title='Y tế &amp; thuốc cho mèo'>Y tế &amp; thuốc cho mèo</a>
+                                                    <span class='Collapsible__Plus'/>
+                                                    <ul class='dropdown-menu'>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/tay-xo-giun-san' title='Tẩy xổ giun &amp; sán'>Tẩy xổ giun &amp; sán</a>
+                                                        </li>
+                                                        <li class='nav-item '>
+                                                            <a class='nav-link' href='/tri-ve-ran-bo-chet' title='Trị ve rận &amp; bọ chét'>Trị ve rận &amp; bọ chét</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class='nav-item '>
+                                                    <a class='nav-link' href='/phu-kien-khuyen-mai' title='Phụ kiện khuyến mãi'>Phụ kiện khuyến mãi</a>
+                                                </li>
+                                            </ul>
+                                            <div class='aside-title margin-top-20'>Tin liên quan</div>
+                                            <div class='evo-list-blogs clearfix' data-label='tin-tuc'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            <script>
+                                //<![CDATA[
+                                window.addEventListener('DOMContentLoaded', function() {
+                                    $(".blog-sidebar .evo-list-blogs").each(function() {
+                                        var blog = $(this);
+                                        var label_cate = blog.attr('data-label');
+                                        $.ajax({
+                                            url: "/feeds/posts/default/-/" + label_cate,
+                                            type: "get",
+                                            data: {
+                                                alt: "json",
+                                                "max-results": 5
+                                            },
+                                            dataType: "jsonp",
+                                            beforeSend: function() {},
+                                            success: function(b) {
+                                                getnewblog(b);
+                                                awe_lazyloadImage();
+                                            }
+                                        })
+
+                                        function getnewblog(e) {
+                                            var entry_post = e.feed.entry;
+                                            if (void 0 !== entry_post) {
+                                                for (var n = 0; n < e.feed.entry.length; n++) {
+                                                    var entry = e.feed.entry[n];
+                                                    for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                                                        if (e.feed.entry[n].link[s].rel === "alternate") {
+                                                            t = e.feed.entry[n].link[s].href;
+                                                            break
+                                                        }
+                                                    }
+                                                    var f = e.feed.entry[n].title.$t;
+                                                    if ("media$thumbnail" in e.feed.entry[n]) {
+                                                        d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w240-h126-p-k-no-nu");
+                                                    } else {
+                                                        d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w240-h126-p-k-no-nu/nth.png"
+                                                    }
+
+                                                    var content = '<article class="has-post-thumbnail clearfix"> <div class="qodef-e-media-image"> <a class="thumb" href="'+t+'" title="'+f+'"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="'+d+'" alt="'+f+'" class="lazy img-responsive mx-auto d-block" /> </a> </div> <div class="qodef-e-content"> <a href="'+t+'" title="'+f+'">'+f+'</a> </div> </article>';
+                                                    blog.append(content)
+                                                }
+                                            } else {
+                                                var content = '<div class="alert alert-warning fade in green-alert show" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có sản phẩm nào trong danh mục này. </div>';
+                                                blog.append(content)
+                                            }
+                                        }
+                                    })
+                                })
+                                //]]>
+                            </script>
+                        </b:if>
+                    </div>
+                </b:if>
+            </div>
+        </b:includable>
+        <b:includable id='postAuthor'>
+    <span class='byline post-author vcard'>
+      <span class='post-author-label'>
+        <data:byline.label/>
+      </span>
+      <span class='fn'>
+        <b:if cond='data:post.author.profileUrl'>
+          <meta expr:content='data:post.author.profileUrl'/>
+          <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+            <span><data:post.author.name/></span>
+          </a>
+        <b:else/>
+          <span><data:post.author.name/></span>
+        </b:if>
+      </span>
+    </span>
+        </b:includable>
+        <b:includable id='postBody' var='post'>
+            <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
+            <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+                <data:post.body/>
+            </div>
+        </b:includable>
+        <b:includable id='postBodySnippet' var='post'>
+            <b:tag class='post_thumb' name='div'>
+                <b:tag expr:title='data:post.title' name='a'>
+                    <b:if cond='data:post.link'>
+                        <b:attr expr:value='data:post.link' name='href'/>
+                        <b:else/>
+                        <b:attr expr:value='data:post.url.canonical' name='href'/>
+                    </b:if>
+                    <b:if cond='data:view.featuredImage.isYouTube'>
+                        <img expr:alt='data:post.title' expr:src='resizeImage(data:view.featuredImage.youtubeMaxResDefaultUrl, 320, &quot;16:9&quot;)'/>
+                        <b:elseif cond='data:post.featuredImage'/>
+                        <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 320, &quot;16:9&quot;)'/>
+                        <b:else/>
+                        <img expr:alt='data:post.title' src='https://4.bp.blogspot.com/-00O66C-eBQs/W0IcokXSnOI/AAAAAAAAL_k/g4KtDm7SkQsoe7_G0vZ_C_nU0Gf_-kyVQCLcBGAs/s320/safe_image.png'/>
+                    </b:if>
+                </b:tag>
+            </b:tag>
+            <b:tag class='post_title' name='div'>
+                <b:tag expr:title='data:post.title' name='a'>
+                    <b:if cond='data:post.link'>
+                        <b:attr expr:value='data:post.link' name='href'/>
+                        <b:else/>
+                        <b:attr expr:value='data:post.url.canonical' name='href'/>
+                    </b:if>
+                    <h2><data:post.title/></h2>
+                </b:tag>
+            </b:tag>
+            <b:include data='post' name='postMeta'/>
+            <b:include data='post' name='snippetedPostByline'/>
+        </b:includable>
+        <b:includable id='postCommentsAndAd' var='post'>
+            <article class='post-outer-container'>
+                <b:comment>Post title and body</b:comment>
+                <div class='post-outer'>
+                    <b:include data='post' name='post'/>
+                </div>
+                <b:comment>Comments</b:comment>
+                <!-- <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/> -->
+                <b:comment>Show ad inside post container, after comments, if single item.</b:comment>
+                <!-- <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/> -->
+            </article>
+            <b:comment>Show ad outside post container (between posts) for feed pages.</b:comment>
+            <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+        </b:includable>
+        <b:includable id='postCommentsLink'>
+            <b:if cond='data:view.isMultipleItems'>
+      <span class='byline post-comment-link container'>
+        <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+        <b:include cond='data:post.commentSource == 1' name='commentsLinkIframe'/>
+      </span>
+            </b:if>
+        </b:includable>
+        <b:includable id='postFooter' var='post'>
+            <div class='post-footer'>
+                <b:include name='footerBylines'/>
+                <b:include data='post' name='postFooterAuthorProfile'/>
+            </div>
+        </b:includable>
+        <b:includable id='postFooterAuthorProfile' var='post'>
+            <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+                <div class='author-profile'>
+                    <b:if cond='data:post.author.authorPhoto.url'>
+                        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+                        <div class='author-about'>
+                            <b:include data='post' name='aboutPostAuthor'/>
+                        </div>
+                        <b:else/>
+                        <b:include data='post' name='aboutPostAuthor'/>
+                    </b:if>
+                </div>
+            </b:if>
+        </b:includable>
+        <b:includable id='postHeader' var='post'>
+            <b:include name='headerByline'/>
+        </b:includable>
+        <b:includable id='postJumpLink' var='post'>
+            <div class='jump-link flat-button'>
+                <a expr:href='data:post.url fragment &quot;more&quot;' expr:title='data:post.title'>
+                    <b:eval expr='data:blog.jumpLinkMessage'/>
+                </a>
+            </div>
+        </b:includable>
+        <b:includable id='postLabels'>
+            <b:if cond='data:widgets.Blog.first.allBylineItems.labels'>
+                <div class='keywords'>
+                    <b:loop values='data:post.labels' var='label'>
+                        <a expr:href='data:blog.searchUrl.canonical + &quot;?label=&quot; + data:label.name + &quot;&amp;max-results=10&quot;' expr:title='data:label.name'><data:label.name/></a>
+                    </b:loop>
+                </div>
+            </b:if>
+        </b:includable>
+        <b:includable id='postLocation'>
+    <span class='byline post-location'>
+      <data:byline.label/>
+      <a expr:href='data:post.location.mapsUrl' target='_blank'><data:post.location.name/></a>
+    </span>
+        </b:includable>
+        <b:includable id='postMeta' var='post'>
+            <b:include data='post' name='postMetadataJSON'/>
+        </b:includable>
+        <b:includable id='postMetadataJSON' var='post'>
+            <script type='application/ld+json'>
+                {
+                    &quot;@context&quot;: &quot;http://schema.org&quot;,
+                &quot;@type&quot;: &quot;BlogPosting&quot;,
+                &quot;mainEntityOfPage&quot;: {
+                &quot;@type&quot;: &quot;WebPage&quot;,
+                &quot;@id&quot;: &quot;<data:post.url.canonical.jsonEscaped/>&quot;
+                },
+                &quot;headline&quot;: &quot;<data:post.title.jsonEscaped/>&quot;,
+                &quot;description&quot;: &quot;<b:eval expr='(data:post.body snippet { length: 150, links: false, linebreaks: false, ellipsis: true }).jsonEscaped'/>&quot;,
+                &quot;datePublished&quot;: &quot;<data:post.date.iso8601.jsonEscaped/>&quot;,
+                &quot;dateModified&quot;: &quot;<data:post.lastUpdated.iso8601.jsonEscaped/>&quot;,
+                &quot;image&quot;: {
+                &quot;@type&quot;: &quot;ImageObject&quot;,
+                &quot;url&quot;: &quot;<b:eval expr='(data:post.featuredImage ? resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;) : &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;).jsonEscaped'/>&quot;,
+                &quot;height&quot;: <b:eval expr='data:post.featuredImage ? 630 : 348'/>,
+                &quot;width&quot;: 1200
+                },
+                &quot;publisher&quot;: {
+                &quot;@type&quot;: &quot;Organization&quot;,
+                &quot;name&quot;: &quot;Blogger&quot;,
+                &quot;logo&quot;: {
+                &quot;@type&quot;: &quot;ImageObject&quot;,
+                &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;,
+                &quot;width&quot;: 206,
+                &quot;height&quot;: 60
+                }
+                },&quot;author&quot;: {
+                &quot;@type&quot;: &quot;Person&quot;,
+                &quot;name&quot;: &quot;<data:post.author.name.jsonEscaped/>&quot;
+                }
+                }
+            </script>
+        </b:includable>
+        <b:includable id='postMetadataJSONImage'>
+            &quot;image&quot;: {
+            &quot;@type&quot;: &quot;ImageObject&quot;,
+            <b:if cond='data:post.featuredImage.isResizable'>
+                &quot;url&quot;: &quot;<b:eval expr='resizeImage(data:post.featuredImage, 1200, &quot;1200:630&quot;)'/>&quot;,
+                &quot;height&quot;: 630,
+                &quot;width&quot;: 1200
+                <b:else/>
+                &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=w1200&quot;,
+                &quot;height&quot;: 348,
+                &quot;width&quot;: 1200
+            </b:if>
+            },
+        </b:includable>
+        <b:includable id='postMetadataJSONPublisher'>
+            &quot;publisher&quot;: {
+            &quot;@type&quot;: &quot;Organization&quot;,
+            &quot;name&quot;: &quot;Blogger&quot;,
+            &quot;logo&quot;: {
+            &quot;@type&quot;: &quot;ImageObject&quot;,
+            &quot;url&quot;: &quot;https://lh3.googleusercontent.com/ULB6iBuCeTVvSjjjU1A-O8e9ZpVba6uvyhtiWRti_rBAs9yMYOFBujxriJRZ-A=h60&quot;,
+            &quot;width&quot;: 206,
+            &quot;height&quot;: 60
+            }
+            },
+        </b:includable>
+        <b:includable id='postPagination'>
+            <div class='blog-pager container' id='blog-pager'>
+                <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+                <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+                <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+            </div>
+        </b:includable>
+        <b:includable id='postQuickEdit' var='post'>
+    <span expr:class='&quot;item-control &quot; + data:post.adminClass'>
+      <a expr:href='&quot;https://draft.blogger.com/blogger.g?blogID=&quot; + data:blog.blogId + &quot;#editor/target=post;postID=&quot; + data:post.id + &quot;;onPublishedMenu=allposts;onClosedMenu=allposts;postNum=0;src=postname&quot;' rel='noopener noffollow' target='_blank' title='Chỉnh sửa bài viết'>
+        <img alt='Chỉnh sửa bài viết' height='18' src='https://2.bp.blogspot.com/-eK9OHjZZ2HY/XSDUlHqDFtI/AAAAAAAARcs/LiidZ68yY3QCmv3Ht1DsK6DhqhheU2P0ACLcBGAs/s1600/quick-edit.gif' width='18'/>
+      </a>
+    </span>
+        </b:includable>
+        <b:includable id='postReactions'>
+            <!-- Reaction feature no longer available. The includable is retained for backwards-compatibility. -->
+        </b:includable>
+        <b:includable id='postSearch'>
+            <div class='col-lg-15 col-md-15 col-sm-3 col-6'>
+                <div class='evo-product-item'>
+                    <div class='thumb-evo'>
+                        <b:loop values='data:post.enclosures' var='enclosure'>
+                            <b:if cond='data:enclosure.url in {&quot;https://giaban.com&quot;,&quot;http://giaban.com&quot;}'>
+
+                                <script>
+                                    var giaban = &quot;<data:enclosure.mimeType/>&quot;
+                                </script>
+                            </b:if>
+                        </b:loop>
+                        <b:loop values='data:post.enclosures' var='enclosure'>
+                            <b:if cond='data:enclosure.mimeType != &quot;empty&quot;'>
+                                <b:if cond='data:enclosure.url in {&quot;https://giacu.com&quot;,&quot;http://giacu.com&quot;}'>
+                                    <script>
+                                        var giacu = &quot;<data:enclosure.mimeType/>&quot;
+                                        //<![CDATA[
+                                        var price = giaban.replace(/[^0-9\.]+/ig, '');
+                                        var old = giacu.replace(/[^0-9\.]+/ig, '');
+                                        var giam = (100 * ((parseInt(price) - parseInt(old)) / parseInt(old))).toFixed(0);
+                                        var sale = '<span class="ant-sale"> '+giam+'%</span>'
+                                        document.write(sale);
+                                        //]]>
+                                    </script>
+                                </b:if></b:if>
+                        </b:loop>
+                        <a class='thumb-img' expr:href='data:post.url' expr:title='data:post.title'>
+  <span class='tt-img'>
+  <img class='lazy' expr:alt='data:post.title' expr:data-src='data:post.featuredImage' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+  </span>
+                            <b:loop index='i' values='data:post.enclosures' var='enclosure'>
+                                <b:if cond='data:enclosure.mimeType in {&quot;image/jpeg&quot;,&quot;image/png&quot;,&quot;image/jpg&quot;}'>
+        <span class='tt-img-roll-over'>
+        <img class='lazy' expr:alt='data:post.title' expr:data-src='data:enclosure.url' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+        </span>
+                                </b:if>
+                            </b:loop>
+                        </a>
+                    </div>
+                    <a class='title' expr:href='data:post.url' expr:title='data:post.title'><data:post.title/></a>
+                    <div class='flex-prices'>
+                        <b:loop values='data:post.enclosures' var='enclosure'>
+                            <b:if cond='data:enclosure.url in {&quot;https://giaban.com&quot;,&quot;http://giaban.com&quot;}'>
+                                <strong class='product-price'>
+                                    <data:enclosure.mimeType/>
+                                </strong>
+                            </b:if>
+                        </b:loop>
+                    </div>
+                </div>
+            </div>
+        </b:includable>
+        <b:includable id='postShareButtons'>
+            <div class='byline post-share-buttons goog-inline-block'>
+                <b:with value='data:sharingId ?: ((data:widget.instanceId ?: &quot;sharing&quot;) + &quot;-&quot; + (data:regionName ?: &quot;byline&quot;) + &quot;-&quot; + data:post.id)' var='sharingId'>
+                    <!-- Note: 'sharingButtons' includable is from the default Sharing widget markup. -->
+                    <b:include data='{                                                sharingId: data:sharingId,                                                originalUrl: data:post.url,                                                platforms: data:this.sharing.platforms,                                                shareUrl: data:post.shareUrl,                                                shareTitle: data:post.title,                                              }' name='sharingButtons'/>
+                </b:with>
+            </div>
+        </b:includable>
+        <b:includable id='postTimestamp'>
+    <span class='byline post-timestamp'>
+      <data:byline.label/>
+      <b:if cond='data:post.url'>
+        <meta expr:content='data:post.url.canonical'/>
+        <a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>
+          <time class='published' expr:datetime='data:post.date.iso8601' expr:title='data:post.date.iso8601'>
+            <data:post.date/>
+          </time>
+        </a>
+      </b:if>
+    </span>
+        </b:includable>
+        <b:includable id='postTitle' var='post'>
+            <a expr:name='data:post.id'/>
+            <b:if cond='data:post.title != &quot;&quot;'>
+                <h3 class='post-title entry-title'>
+                    <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+                        <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
+                        <b:else/>
+                        <data:post.title/>
+                    </b:if>
+                </h3>
+            </b:if>
+        </b:includable>
+        <b:includable id='previousPageLink'>
+            <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+                <data:messages.newerPosts/>
+            </a>
+        </b:includable>
+        <b:includable id='sharingButton'>
+    <span expr:aria-label='data:platform.shareMessage' expr:class='&quot;sharing-platform-button sharing-element-&quot; + data:platform.key' expr:data-href='data:shareUrl + &quot;&amp;target=&quot; + data:platform.target' expr:data-url='data:originalUrl' expr:title='data:platform.shareMessage' role='menuitem' tabindex='-1'>
+      <b:include name='sharingPlatformIcon'/>
+      <span class='platform-sharing-text'><data:platform.name/></span>
+    </span>
+        </b:includable>
+        <b:includable id='sharingButtonContent'>
+            <div class='flat-icon-button ripple'>
+                <b:include name='shareIcon'/>
+            </div>
+        </b:includable>
+        <b:includable id='sharingButtons'>
+            <div class='sharing' expr:aria-owns='&quot;sharing-popup-&quot; + data:sharingId' expr:data-title='data:shareTitle'>
+                <button class='sharing-button touch-icon-button' expr:aria-controls='&quot;sharing-popup-&quot; + data:sharingId' expr:aria-label='data:messages.share.escaped' expr:id='&quot;sharing-button-&quot; + data:sharingId' role='button'>
+                    <b:include name='sharingButtonContent'/>
+                </button>
+                <b:include name='sharingButtonsMenu'/>
+            </div>
+        </b:includable>
+        <b:includable id='sharingButtonsMenu'>
+            <div class='share-buttons-container'>
+                <ul aria-hidden='true' class='share-buttons hidden' expr:aria-label='data:messages.share.escaped' expr:id='&quot;sharing-popup-&quot; + data:sharingId' role='menu'>
+                    <b:loop values='(data:platforms ?: data:blog.sharing.platforms) filter (p =&gt; p.key not in {&quot;blogThis&quot;})' var='platform'>
+                        <li>
+                            <b:include name='sharingButton'/>
+                        </li>
+                    </b:loop>
+                    <li aria-hidden='true' class='hidden'>
+                        <b:include name='otherSharingButton'/>
+                    </li>
+                </ul>
+            </div>
+        </b:includable>
+        <b:includable id='sharingPlatformIcon'>
+            <b:include data='{ iconClass: (&quot;touch-icon sharing-&quot; + data:platform.key) }' expr:name='data:platform.key + &quot;Icon&quot;'/>
+        </b:includable>
+        <b:includable id='threadedCommentForm' var='post'>
+            <div class='comment-form'>
+                <a name='comment-form'/>
+                <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+                <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+                    <p><data:this.messages.blogComment/></p>
+                </b:if>
+                <b:include data='post' name='commentFormIframeSrc'/>
+                <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' title='comment editor' width='100%'/>
+                <data:post.cmtfpIframe/>
+                <script>
+                    BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+                </script>
+            </div>
+        </b:includable>
+        <b:includable id='threadedCommentJs' var='post'>
+            <script>//<![CDATA[
+            $(document).ready(function() {
+                $('.post-comment').click(function(e) {
+                    e.preventDefault()
+                    $('html, body').stop().animate({
+                        scrollTop: ($('#comments').offset().top) - 50
+                    }, 'slow')
+                })
+                $('.avatar-image-container img').attr('src', function(o, n) {
+                    return n.replace('//img1.blogblog.com/img/blank.gif', 'https://lh3.googleusercontent.com/zFdxGE77vvD2w5xHy6jkVuElKv-U9_9qLkRYK8OnbDeJPtjSZ82UPq5w6hJ-SA=s40')
+                })
+                var o = $('#comment-editor-src').attr('href');
+
+                function n(n, t) {
+                    $(n).each(function() {
+                        var n = $(this);
+                        n.on('click', function(e) {
+                            e.preventDefault()
+                            $('.comment-actions').show()
+                            let c = n.parents(t).attr('id').substr(1),
+                                m = o.split('?');
+                            $('#comment-editor')[0].src = m[0] + '?parentID=' + c + '&' + m[1]
+                            $('#comment-editor').appendTo('.commentForm')
+                            n.parent().hide()
+                            n.parents('li').append($('.comment-form')[0])
+                        })
+                    })
+                }
+                $(".comment-block[id]").length ? n("a[o='r']", ".comment-block") : n(".comment-reply", "li")
+                $('#comments a.comment-reply').click(function() {
+                    $('#comments .comment-form').css('margin-left', '50px')
+                })
+            })
+            //]]></script>
+        </b:includable>
+        <b:includable id='threadedComments' var='post'>
+            <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+                <a name='comments'/>
+                <b:include name='commentsTitle'/>
+                <div class='comments-content'>
+                    <div id='comment-holder'>
+                        <data:post.commentHtml/>
+                    </div>
+                </div>
+                <p class='comment-footer'>
+                    <b:if cond='data:post.allowNewComments'>
+                        <b:include data='post' name='threadedCommentForm'/>
+                        <b:else/>
+                        <data:post.noNewCommentsText/>
+                    </b:if>
+                </p>
+                <b:if cond='data:showCmtPopup'>
+                    <div id='comment-popup'>
+                        <iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no' title='comment-actions'/>
+                    </div>
+                </b:if>
+            </section>
+        </b:includable>
+    </b:widget>
+</b:section>

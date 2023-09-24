@@ -1,6 +1,5 @@
 const { CheckerPlugin } = require('awesome-typescript-loader');
 const { join } = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
@@ -17,19 +16,12 @@ module.exports = {
         ],
     },
     output: {
-        path: join(__dirname, '../dist/assets/ts'),
+        path: join(__dirname, '../src/assets/js'),
         filename: '[name].js'
     },
     plugins: [
-        new CheckerPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: join(__dirname, 'assets'),
-                    to: join(__dirname, '../dist/assets/ts/assets')
-                }
-            ]
-        })],
+        new CheckerPlugin()
+    ],
     resolve: {
         extensions: ['.ts', '.js']
     }

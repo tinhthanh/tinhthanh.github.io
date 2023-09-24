@@ -1,0 +1,34 @@
+<b:if cond='data:view.isError'>
+    <section class='bread-crumb'>
+        <div class='container'>
+            <ul class='breadcrumb' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
+                <li class='home' itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                    <a expr:href='data:blog.homepageUrl' itemprop='item' title='Trang chủ'>
+                        <span itemprop='name'>Trang chủ</span>
+                        <meta content='1' itemprop='position'/>
+                    </a>
+                </li>
+                <li itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                    <strong itemprop='name'>404 Không tìm thấy trang</strong>
+                    <meta content='2' itemprop='position'/>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-12'>
+                <div class='page-404 text-center margin-bottom-30 margin-top-20 padding-top-40 padding-bottom-40'>
+                    <div class='image-404'><img alt='404' class='img-responsive center-block' src='https://1.bp.blogspot.com/-xchpqkpYyHk/YLxFoGGDDaI/AAAAAAAAErA/DWt1T5m08ckHHcUWxfEGxP7ka8yPAd_tgCLcBGAsYHQ/s0/404.png'/></div>
+                    <h1>Lỗi không tìm thấy trang</h1>
+                    <p class='land'>Có vẻ như các trang mà bạn đang cố gắng tiếp cận không tồn tại nữa hoặc có thể nó vừa di chuyển.</p>
+                    <div class='mt-5'>
+                        <a class='btn btn-success' expr:href='data:blog.homepageUrl' title='Trang chủ'><i class='ion ion-md-home'/>
+                            Trang chủ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</b:if>

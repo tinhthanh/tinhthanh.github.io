@@ -4,12 +4,7 @@
   "description": "Vet go",
   "scripts": {
     "build:ts": "rimraf dist/ts && webpack --config ts/webpack.config.prod.js",
-    "build-reload:ts": "gulp build-ts",
-    "default": "gulp serve ",
-    "watch": "gulp watch ",
-    "start": "gulp start",
-    "build": "gulp fileinclude",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:ts && gulp fileinclude"
   },
   "author": "VetGo",
   "license": "ISC",

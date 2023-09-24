@@ -1,0 +1,13 @@
+<b:section id='id-top-bar' name='Bạn cần giúp đỡ' showaddelement='no'>
+    <b:widget id='HTML1' locked='true' title='1900 1000' type='HTML' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='content'>khoiromblog@gmail.com</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+            <span>Bạn cần giúp đỡ? Hãy gọi: </span>
+            <a expr:href='&quot;tel:&quot; + data:title' expr:title='data:title'><data:title/></a>
+            <span class='span-or'>hoặc</span>
+            <a expr:href='&quot;mailto:&quot; + data:content' expr:title='data:content'><data:content/></a>
+        </b:includable>
+    </b:widget>
+</b:section>

@@ -1,0 +1,784 @@
+<b:if cond='data:view.isHomepage'>
+    <b:section id='id-the-h1' name='Thẻ H1 cho trang chủ' showaddelement='no'>
+        <b:widget id='HTML4' locked='true' title='Thẻ H1 Cho trang chủ' type='HTML' version='2' visible='true'>
+            <b:widget-settings>
+                <b:widget-setting name='content'>Template blogspot Ant Paws</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+                <h1 class='d-none'><data:content/></h1>
+            </b:includable>
+        </b:widget>
+    </b:section>
+    <section class='awe-section-1'>
+        <b:section id='id-slider' name='Slider' showaddelement='no'>
+            <b:widget id='LinkList5' locked='true' title='Slide Trang Chủ' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='text-0'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='link-0'>https://1.bp.blogspot.com/-JPknbJEhj2E/YLsh0_aJuGI/AAAAAAAAEnM/2Oz0gtkFb_AqmNps-8GY9bBa-La00qCTgCLcBGAsYHQ/s16000/slider_1.jpg</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='section_slider home-slider swiper-container evo-width-slider'>
+                        <div class='swiper-wrapper'>
+                            <b:loop values='data:links' var='link'>
+                                <div class='swiper-slide'>
+                                    <a class='clearfix' expr:href='data:link.name' expr:title='data:blog.title'>
+                                        <img class='img-responsive d-block mx-auto' expr:alt='data:blog.title' expr:src='data:link.target' height='600' width='1808'/>
+                                    </a>
+                                </div>
+                            </b:loop>
+                        </div>
+                        <div class='swiper-pagination'/>
+                    </div>
+                    <script>
+                        //<![CDATA[
+                        var swiper = new Swiper('.home-slider', {
+                            autoplay: {
+                                delay: 4500,
+                                disableOnInteraction: false
+                            },
+                            pagination: {
+                                el: '.swiper-pagination',
+                                clickable: true,
+                            }
+                        });
+                        //]]>
+                    </script>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-2'>
+        <div class='section_search_feature container'>
+            <div class='row'>
+                <div class='col-lg-3 col-md-3 col-6 item item-1'>
+                    <b:section id='id-a' name='Cột 1' showaddelement='no'>
+                        <b:widget id='HTML5' locked='true' title='Miễn phí vận chuyển' type='HTML' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='content'>Ant Paws miễn phí vận chuyển với đơn hàng trên 350.000đ</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='img'>
+                                    <img alt='Miễn phí vận chuyển' class='lazy' data-src='https://1.bp.blogspot.com/-9JvOIOrpXA4/YLt5bXVA-CI/AAAAAAAAEo4/_G5TmONR9GY5CjaE6PZVcP9gUj7G36_UwCLcBGAsYHQ/s0/oto.png' height='100' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='100'/>
+                                </div>
+                                <div class='detail'>
+                                    <a expr:title='data:title' href='#'><data:title/></a>
+                                    <p><data:content/></p>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-md-3 col-6 item item-2'>
+                    <b:section id='id-b' name='Cột 2' showaddelement='no'>
+                        <b:widget id='HTML6' locked='true' title='Đổi trả trong vòng 7 ngày' type='HTML' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='content'>Lỗi là đổi mới trong 1 tháng tận nhà.</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='img'>
+                                    <img alt='Đổi trả trong vòng 7 ngày' class='lazy' data-src='https://1.bp.blogspot.com/-7CVTG8zBKiU/YLt5oTZKmyI/AAAAAAAAEpA/Ny7Wl6A8Hoca_jlv57vda8c4nMqGXpvTQCLcBGAsYHQ/s0/1.png' height='100' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='100'/>
+                                </div>
+                                <div class='detail'>
+                                    <a expr:title='data:title' href='#'><data:title/></a>
+                                    <p><data:content/></p>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-md-3 col-6 item item-3'>
+                    <b:section id='id-c' name='Cột 3' showaddelement='no'>
+                        <b:widget id='HTML7' locked='true' title='Bảo hành chinh hãng' type='HTML' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='content'>Bảo hành chính hãng sản phẩm, có người đến tận nhà</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='img'>
+                                    <img alt='Bảo hành chính hãng' class='lazy' data-src='https://1.bp.blogspot.com/-HD7vTetEmew/YLt50H9u3GI/AAAAAAAAEpE/Y_VXHHSInaYCqYomj2IUZRXOWWq9HEQfQCLcBGAsYHQ/s0/2.png' height='100' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='100'/>
+                                </div>
+                                <div class='detail'>
+                                    <a expr:title='data:title' href='#'><data:title/></a>
+                                    <p><data:content/></p>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-md-3 col-6 item item-4'>
+                    <b:section id='id-d' name='Cột 4' showaddelement='no'>
+                        <b:widget id='HTML8' locked='true' title='Phương thức thanh toán' type='HTML' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='content'>Hỗ trợ thanh toán qua thẻ: Vietcombank, Techcombank, BIDV,...</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='img'>
+                                    <img alt='Phương thức thanh toán' class='lazy' data-src='https://1.bp.blogspot.com/-VadhzVmNjc8/YLt6ErnUabI/AAAAAAAAEpQ/BzcKeYGsIDYZeEi2Vbu8SEO1csMEibzfQCLcBGAsYHQ/s0/3.png' height='100' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='100'/>
+                                </div>
+                                <div class='detail'>
+                                    <a expr:title='data:title' href='#'><data:title/></a>
+                                    <p> <data:content/></p>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class='awe-section-3'>
+        <b:section id='product-sale-days' name='Săn Sale Online mỗi ngày' showaddelement='no'>
+            <b:widget id='LinkList1' locked='true' title='Săn sale mỗi ngày' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='link-5'>vay-mua-nha</b:widget-setting>
+                    <b:widget-setting name='link-3'>nha-chuong-nem</b:widget-setting>
+                    <b:widget-setting name='link-4'>y-te-thuoc-cho-meo</b:widget-setting>
+                    <b:widget-setting name='text-1'><![CDATA[<span class='imgss'><img alt='Vệ sinh, Chăm sóc' src='https://1.bp.blogspot.com/-0ftiPSXmzh0/YLSgFxoIzCI/AAAAAAAAEfk/kYVD_ZfMSlAmsQ7xaPfBuGvLR4eh2lAQwCLcBGAsYHQ/s16000/grooming.jpg'/> </span> Vệ sinh, Chăm sóc]]></b:widget-setting>
+                    <b:widget-setting name='text-0'><![CDATA[<span class='imgss'><img alt='Thức ăn, dinh dưỡng' src='https://1.bp.blogspot.com/-RONKdhShZzg/YLSgF1JmjXI/AAAAAAAAEfg/-6LupbdfxC4FV_5KxNMx1OvaYAxeGXlnQCLcBGAsYHQ/s16000/cat-food.jpg'/> </span> Thức ăn, dinh dưỡng]]></b:widget-setting>
+                    <b:widget-setting name='text-3'><![CDATA[<span class='imgss'><img alt='Nhà, chuồng, nệm' src='https://1.bp.blogspot.com/-kocC1Z1Xqc0/YLt6VxVmktI/AAAAAAAAEpY/KLLeQd4sx9AM0gY8b5xqSiiChxEhOY1EACLcBGAsYHQ/s0/cat-toy.jpg'/></span> Nhà, chuồng, nệm]]></b:widget-setting>
+                    <b:widget-setting name='text-2'><![CDATA[<span class='imgss'>   <img alt='Đồ dùng, Phụ kiện' src='https://1.bp.blogspot.com/-TDeq9GcAw44/YLt6gPKQHtI/AAAAAAAAEpg/ehwyparLDV4qn6ilPqSubicFU8AhNNQdQCLcBGAsYHQ/s0/cat.jpg'/> </span> Đồ dùng, Phụ kiện]]></b:widget-setting>
+                    <b:widget-setting name='text-5'>Vay mua nhà</b:widget-setting>
+                    <b:widget-setting name='text-4'><![CDATA[<span class='imgss'><img alt='Y tế &amp; thuốc cho mèo' src='https://1.bp.blogspot.com/-F6aMigaCBz8/YLt6sMSjwpI/AAAAAAAAEpo/pdH16N6OoJAZGRPhX4EXK18b6Cu-bizGQCLcBGAsYHQ/s0/pharmacy.jpg'/></span> Y tế &amp; thuốc cho mèo]]></b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='link-2'>phu-kien</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner'>
+                        <div class='hotdeal-title'><data:title/></div>
+                        <div class='e-tabs not-dqtab ajax-tab-0'>
+                            <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                <b:loop index='i' values='data:links' var='link'>
+                                    <li class='tab-link ' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                        <b:class cond='data:i in [0]' name='has-content'/>
+                                        <data:link.name/>
+                                    </li>
+                                </b:loop>
+                            </ul>
+                            <b:loop index='i' values='data:links' var='link'>
+                                <div expr:class='&quot;tab-&quot; + (data:i + 1) + &quot; tab-content&quot;'>
+                                    <div class='evo-owl-product3 swiper-container products-view-grid' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                        <div class='swiper-wrapper loader'>
+                                        </div>
+                                        <div class='swiper-button-next'/>
+                                        <div class='swiper-button-prev'/>
+                                    </div>
+                                </div>
+                            </b:loop>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-4'>
+        <b:section id='id-hinh-a' name='Hình' showaddelement='no'>
+            <b:widget id='Image1' locked='true' title='' type='Image' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='displayUrl'>https://1.bp.blogspot.com/-o8ZqwCE_uyI/YLs0goJNGnI/AAAAAAAAEnc/iEc7jatP-SM4MN771AI24Ol20IL4lCmqACLcBGAsYHQ/s1400/feature_banner_0.jpg</b:widget-setting>
+                    <b:widget-setting name='displayHeight'>438</b:widget-setting>
+                    <b:widget-setting name='sectionWidth'>150</b:widget-setting>
+                    <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                    <b:widget-setting name='displayWidth'>1400</b:widget-setting>
+                    <b:widget-setting name='link'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='caption'/>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner_evo_2'>
+                        <a class='banner-img' expr:href='data:link' expr:title='data:title'>
+                            <img class='lazy' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:width='data:width' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'>
+                            </img>
+                        </a> </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-5'>
+        <b:section id='id-block-a' name='Block Sản phẩm A' showaddelement='no'>
+            <b:widget id='LinkList2' locked='true' title='Shop Mèo Cưng' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='text-10'>_Kiến thức vay tiền</b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='link-2'>do-dung-phu-kien</b:widget-setting>
+                    <b:widget-setting name='link-12'>/p/lien-he.html</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                    <b:widget-setting name='link-11'>#</b:widget-setting>
+                    <b:widget-setting name='link-10'>#</b:widget-setting>
+                    <b:widget-setting name='text-9'>_Video hướng dẫn</b:widget-setting>
+                    <b:widget-setting name='link-9'>/search/label/video</b:widget-setting>
+                    <b:widget-setting name='text-8'>_Tin tức</b:widget-setting>
+                    <b:widget-setting name='link-7'>/search/label/tin-tuc</b:widget-setting>
+                    <b:widget-setting name='link-8'>/search/label/tin-tuc</b:widget-setting>
+                    <b:widget-setting name='link-5'>phu-kien-khuyen-mai</b:widget-setting>
+                    <b:widget-setting name='link-6'>/search/label/vay-mua-xe</b:widget-setting>
+                    <b:widget-setting name='link-3'>nha-chuong-nem</b:widget-setting>
+                    <b:widget-setting name='link-4'>y-te-thuoc-cho-meo</b:widget-setting>
+                    <b:widget-setting name='text-1'>Vệ sinh, chăm sóc</b:widget-setting>
+                    <b:widget-setting name='text-0'>Thức ăn, dinh dưỡng</b:widget-setting>
+                    <b:widget-setting name='text-3'>Nhà, chuồng, nệm</b:widget-setting>
+                    <b:widget-setting name='text-2'>Đồ dùng, Phụ kiện</b:widget-setting>
+                    <b:widget-setting name='text-5'>Phụ kiện khuyến mãi</b:widget-setting>
+                    <b:widget-setting name='text-4'><![CDATA[Y tế & thuốc cho mèo]]></b:widget-setting>
+                    <b:widget-setting name='text-7'>Kiến thức</b:widget-setting>
+                    <b:widget-setting name='text-6'>Vay mua xe</b:widget-setting>
+                    <b:widget-setting name='text-11'>__Kiến thức vay tiền online</b:widget-setting>
+                    <b:widget-setting name='text-12'>Liên hệ</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container evo_block-product'>
+                        <div class='e-tabs not-dqtab ajax-tab-1' data-section='ajax-tab-1' data-view='grid_4'>
+                            <div class='content row'>
+                                <div class='col-lg-3 ant-title-tab'>
+                                    <div class='titlecp clearfix'>
+                                        <img expr:alt='data:title' height='60' src='https://1.bp.blogspot.com/-VAvPINgl0sE/YLxEGFRtJ1I/AAAAAAAAEp4/O-JC_qG_eaI8XmMI4LLXVSIzKTvKBr2ZwCLcBGAsYHQ/s0/cat.png' width='60'/>
+                                        <h3><a expr:title='data:title' href='/search/label/san-pham'><data:title/></a></h3>
+                                        <span class='hidden-lg button_show_tab'>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  </span>
+                                    </div>
+                                    <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                        <b:loop index='i' values='data:links' var='link'>
+                                            <li class='tab-link' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                                <b:class cond='data:i in [0]' name='has-content'/>
+                                                <span expr:title='data:link.name'>
+              <data:link.name/>
+            </span>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                    <a class='d-none d-lg-block ant-banner-index-product' expr:title='data:blog.title' href='/collections/all'>
+                                        <img class='lazy img-responsive center-block d-block mx-auto' data-src='https://1.bp.blogspot.com/-bngS4WkOmXk/YLxEPNtQrUI/AAAAAAAAEp8/bq4Jg9zODP8gg9C9lDC0RXwg9Ut52qvygCLcBGAsYHQ/s0/evo_block_product_banner_1.jpg' expr:alt='data:blog.title' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                    </a>
+                                </div>
+                                <div class='col-lg-9'>
+                                    <b:loop index='i' values='data:links' var='link'>
+                                        <div expr:class='&quot;tab-&quot; + (data:i + 1) + &quot; tab-content&quot;' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                            <div class='row loader'/>
+                                        </div>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-6'>
+        <b:section id='id-hinh-b' name='Hình' showaddelement='no'>
+            <b:widget id='Image2' locked='true' title='Sản phẩm nổi bật' type='Image' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='displayUrl'>https://1.bp.blogspot.com/-RN0yGDUHSSI/YLs1i4yqjkI/AAAAAAAAEnk/w3f48V7zY30bxpfdHGAbKtVtZK3hVp7MQCLcBGAsYHQ/s16000/feature_banner_4.jpg</b:widget-setting>
+                    <b:widget-setting name='displayHeight'>438</b:widget-setting>
+                    <b:widget-setting name='sectionWidth'>1071</b:widget-setting>
+                    <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                    <b:widget-setting name='displayWidth'>1400</b:widget-setting>
+                    <b:widget-setting name='link'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='caption'/>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner_evo_2'>
+                        <a class='banner-img' expr:href='data:link' expr:title='data:title'>
+                            <img class='lazy' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:width='data:width' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'>
+                            </img>
+                        </a> </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-7'>
+        <b:section id='id-block-b' name='Block Sản phẩm B' showaddelement='no'>
+            <b:widget id='LinkList3' locked='true' title='Shop Chó Cưng' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='link-5'>phu-kien-khuyen-mai</b:widget-setting>
+                    <b:widget-setting name='link-3'>nha-chuong-nem</b:widget-setting>
+                    <b:widget-setting name='link-4'>y-te-thuoc-cho-meo</b:widget-setting>
+                    <b:widget-setting name='text-1'>Vệ sinh, chăm sóc</b:widget-setting>
+                    <b:widget-setting name='text-0'>Thức ăn, dinh dưỡng</b:widget-setting>
+                    <b:widget-setting name='text-3'>Nhà, chuồng, nệm</b:widget-setting>
+                    <b:widget-setting name='text-2'>Đồ dùng, Phụ kiện</b:widget-setting>
+                    <b:widget-setting name='text-5'>Phụ kiện khuyến mãi</b:widget-setting>
+                    <b:widget-setting name='text-4'><![CDATA[Y tế & thuốc cho mèo]]></b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='link-2'>do-dung-phu-kien</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container evo_block-product'>
+                        <div class='e-tabs not-dqtab ajax-tab-1' data-section='ajax-tab-1' data-view='grid_4'>
+                            <div class='content row'>
+                                <div class='col-lg-3 ant-title-tab'>
+                                    <div class='titlecp clearfix'>
+                                        <img expr:alt='data:title' height='60' src='https://1.bp.blogspot.com/-4RdESAvQInM/YLxEbIUqOWI/AAAAAAAAEqA/OBUqGiZIhUUXW7Zs48WDCC_Qf4Xfuf1UwCLcBGAsYHQ/s0/dog.png' width='60'/>
+                                        <h3><a expr:title='data:title' href='/search/label/san-pham'><data:title/></a></h3>
+                                        <span class='hidden-lg button_show_tab'>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  </span>
+                                    </div>
+                                    <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                        <b:loop index='i' values='data:links' var='link'>
+                                            <li class='tab-link' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                                <b:class cond='data:i in [0]' name='has-content'/>
+                                                <span expr:title='data:link.name'>
+              <data:link.name/>
+            </span>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                    <a class='d-none d-lg-block ant-banner-index-product' expr:title='data:blog.title' href='/collections/all'>
+                                        <img class='lazy img-responsive center-block d-block mx-auto' data-src='https://1.bp.blogspot.com/-REMJf0BOCOE/YLxEmYf7aII/AAAAAAAAEqI/_4Kh2_-DWDwcv9YFNt4wKlX8VaHcZ34YACLcBGAsYHQ/s0/dogdog.jpg' expr:alt='data:blog.title' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                    </a>
+                                </div>
+                                <div class='col-lg-9'>
+
+                                    <b:loop index='i' values='data:links' var='link'>
+                                        <div expr:class='&quot;tab-&quot; +(data:i + 1) + &quot; tab-content&quot;' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                            <div class='row loader'/>
+                                        </div>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-8'>
+        <b:section id='id-hinh-c' name='Hình' showaddelement='no'>
+            <b:widget id='Image4' locked='true' title='Sản phẩm nổi bật' type='Image' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='displayUrl'>https://1.bp.blogspot.com/-RN0yGDUHSSI/YLs1i4yqjkI/AAAAAAAAEnk/w3f48V7zY30bxpfdHGAbKtVtZK3hVp7MQCLcBGAsYHQ/s16000/feature_banner_4.jpg</b:widget-setting>
+                    <b:widget-setting name='displayHeight'>438</b:widget-setting>
+                    <b:widget-setting name='sectionWidth'>1071</b:widget-setting>
+                    <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                    <b:widget-setting name='displayWidth'>1400</b:widget-setting>
+                    <b:widget-setting name='link'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='caption'/>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner_evo_2'>
+                        <a class='banner-img' expr:href='data:link' expr:title='data:title'>
+                            <img class='lazy' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:width='data:width' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'>
+                            </img>
+                        </a> </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-9'>
+        <b:section id='id-block-c' name='Block Sản phẩm C' showaddelement='no'>
+            <b:widget id='LinkList15' locked='true' title='Shop Gà Cưng' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='link-5'>phu-kien-khuyen-mai</b:widget-setting>
+                    <b:widget-setting name='link-3'>nha-chuong-nem</b:widget-setting>
+                    <b:widget-setting name='link-4'>y-te-thuoc-cho-meo</b:widget-setting>
+                    <b:widget-setting name='text-1'>Vệ sinh, chăm sóc</b:widget-setting>
+                    <b:widget-setting name='text-0'>Thức ăn, dinh dưỡng</b:widget-setting>
+                    <b:widget-setting name='text-3'>Nhà, chuồng, nệm</b:widget-setting>
+                    <b:widget-setting name='text-2'>Đồ dùng, Phụ kiện</b:widget-setting>
+                    <b:widget-setting name='text-5'>Phụ kiện khuyến mãi</b:widget-setting>
+                    <b:widget-setting name='text-4'><![CDATA[Y tế & thuốc cho mèo]]></b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='link-2'>do-dung-phu-kien</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container evo_block-product'>
+                        <div class='e-tabs not-dqtab ajax-tab-1' data-section='ajax-tab-1' data-view='grid_4'>
+                            <div class='content row'>
+                                <div class='col-lg-3 ant-title-tab'>
+                                    <div class='titlecp clearfix'>
+                                        <img expr:alt='data:title' height='60' src='https://1.bp.blogspot.com/-4RdESAvQInM/YLxEbIUqOWI/AAAAAAAAEqA/OBUqGiZIhUUXW7Zs48WDCC_Qf4Xfuf1UwCLcBGAsYHQ/s0/dog.png' width='60'/>
+                                        <h3><a expr:title='data:title' href='/search/label/san-pham'><data:title/></a></h3>
+                                        <span class='hidden-lg button_show_tab'>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  </span>
+                                    </div>
+                                    <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                        <b:loop index='i' values='data:links' var='link'>
+                                            <li class='tab-link' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                                <b:class cond='data:i in [0]' name='has-content'/>
+                                                <span expr:title='data:link.name'>
+              <data:link.name/>
+            </span>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                    <a class='d-none d-lg-block ant-banner-index-product' expr:title='data:blog.title' href='/collections/all'>
+                                        <img class='lazy img-responsive center-block d-block mx-auto' data-src='https://1.bp.blogspot.com/-REMJf0BOCOE/YLxEmYf7aII/AAAAAAAAEqI/_4Kh2_-DWDwcv9YFNt4wKlX8VaHcZ34YACLcBGAsYHQ/s0/dogdog.jpg' expr:alt='data:blog.title' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                    </a>
+                                </div>
+                                <div class='col-lg-9'>
+
+                                    <b:loop index='i' values='data:links' var='link'>
+                                        <div expr:class='&quot;tab-&quot; + (data:i + 1) + &quot; tab-content&quot;' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                            <div class='row loader'/>
+                                        </div>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-10'>
+        <b:section id='id-hinh-d' name='Hình' showaddelement='no'>
+            <b:widget id='Image5' locked='true' title='Sản phẩm nổi bật' type='Image' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='displayUrl'>https://1.bp.blogspot.com/-RN0yGDUHSSI/YLs1i4yqjkI/AAAAAAAAEnk/w3f48V7zY30bxpfdHGAbKtVtZK3hVp7MQCLcBGAsYHQ/s16000/feature_banner_4.jpg</b:widget-setting>
+                    <b:widget-setting name='displayHeight'>438</b:widget-setting>
+                    <b:widget-setting name='sectionWidth'>1071</b:widget-setting>
+                    <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                    <b:widget-setting name='displayWidth'>1400</b:widget-setting>
+                    <b:widget-setting name='link'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='caption'/>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner_evo_2'>
+                        <a class='banner-img' expr:href='data:link' expr:title='data:title'>
+                            <img class='lazy' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:width='data:width' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'>
+                            </img>
+                        </a> </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-11'>
+        <b:section id='id-block-d' name='Block Sản phẩm D' showaddelement='no'>
+            <b:widget id='LinkList16' locked='true' title='Shop Chim Cưng' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='text-1'>Vệ sinh, chăm sóc</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='text-0'>Thức ăn, dinh dưỡng</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container evo_block-product'>
+                        <div class='e-tabs not-dqtab ajax-tab-1' data-section='ajax-tab-1' data-view='grid_4'>
+                            <div class='content row'>
+                                <div class='col-lg-3 ant-title-tab'>
+                                    <div class='titlecp clearfix'>
+                                        <img expr:alt='data:title' height='60' src='https://1.bp.blogspot.com/-4RdESAvQInM/YLxEbIUqOWI/AAAAAAAAEqA/OBUqGiZIhUUXW7Zs48WDCC_Qf4Xfuf1UwCLcBGAsYHQ/s0/dog.png' width='60'/>
+                                        <h3><a expr:title='data:title' href='/search/label/san-pham'><data:title/></a></h3>
+                                        <span class='hidden-lg button_show_tab'>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  </span>
+                                    </div>
+                                    <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                        <b:loop index='i' values='data:links' var='link'>
+                                            <li class='tab-link' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                                <b:class cond='data:i in [0]' name='has-content'/>
+                                                <span expr:title='data:link.name'>
+              <data:link.name/>
+            </span>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                    <a class='d-none d-lg-block ant-banner-index-product' expr:title='data:blog.title' href='/collections/all'>
+                                        <img class='lazy img-responsive center-block d-block mx-auto' data-src='https://1.bp.blogspot.com/-REMJf0BOCOE/YLxEmYf7aII/AAAAAAAAEqI/_4Kh2_-DWDwcv9YFNt4wKlX8VaHcZ34YACLcBGAsYHQ/s0/dogdog.jpg' expr:alt='data:blog.title' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                    </a>
+                                </div>
+                                <div class='col-lg-9'>
+                                    <b:loop index='i' values='data:links' var='link'>
+                                        <div expr:class='&quot;tab-&quot; + (data:i + 1) + &quot; tab-content&quot;' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                            <div class='row loader'/>
+                                        </div>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-12'>
+        <b:section id='id-hinh-e' name='Hình' showaddelement='no'>
+            <b:widget id='Image6' locked='true' title='Sản phẩm nổi bật' type='Image' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='displayUrl'>https://1.bp.blogspot.com/-RN0yGDUHSSI/YLs1i4yqjkI/AAAAAAAAEnk/w3f48V7zY30bxpfdHGAbKtVtZK3hVp7MQCLcBGAsYHQ/s16000/feature_banner_4.jpg</b:widget-setting>
+                    <b:widget-setting name='displayHeight'>438</b:widget-setting>
+                    <b:widget-setting name='sectionWidth'>1071</b:widget-setting>
+                    <b:widget-setting name='shrinkToFit'>false</b:widget-setting>
+                    <b:widget-setting name='displayWidth'>1400</b:widget-setting>
+                    <b:widget-setting name='link'>/search/label/san-pham</b:widget-setting>
+                    <b:widget-setting name='caption'/>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container section_banner_evo_2'>
+                        <a class='banner-img' expr:href='data:link' expr:title='data:title'>
+                            <img class='lazy' expr:alt='data:title' expr:data-src='data:sourceUrl' expr:height='data:height' expr:width='data:width' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'>
+                            </img>
+                        </a> </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-13'>
+        <b:section id='id-block-e' name='Block Sản phẩm E' showaddelement='no'>
+            <b:widget id='LinkList17' locked='true' title='Shop Chim Cưng' type='LinkList' version='2' visible='true'>
+                <b:widget-settings>
+                    <b:widget-setting name='link-5'>phu-kien-khuyen-mai</b:widget-setting>
+                    <b:widget-setting name='link-3'>nha-chuong-nem</b:widget-setting>
+                    <b:widget-setting name='link-4'>y-te-thuoc-cho-meo</b:widget-setting>
+                    <b:widget-setting name='text-1'>Vệ sinh, chăm sóc</b:widget-setting>
+                    <b:widget-setting name='text-0'>Thức ăn, dinh dưỡng</b:widget-setting>
+                    <b:widget-setting name='text-3'>Nhà, chuồng, nệm</b:widget-setting>
+                    <b:widget-setting name='text-2'>Đồ dùng, Phụ kiện</b:widget-setting>
+                    <b:widget-setting name='text-5'>Phụ kiện khuyến mãi</b:widget-setting>
+                    <b:widget-setting name='text-4'><![CDATA[Y tế & thuốc cho mèo]]></b:widget-setting>
+                    <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                    <b:widget-setting name='link-1'>ve-sinh-cham-soc</b:widget-setting>
+                    <b:widget-setting name='link-2'>do-dung-phu-kien</b:widget-setting>
+                    <b:widget-setting name='link-0'>thuc-an-dinh-duong</b:widget-setting>
+                </b:widget-settings>
+                <b:includable id='main'>
+                    <b:include name='content'/>
+                </b:includable>
+                <b:includable id='content'>
+                    <div class='container evo_block-product'>
+                        <div class='e-tabs not-dqtab ajax-tab-1' data-section='ajax-tab-1' data-view='grid_4'>
+                            <div class='content row'>
+                                <div class='col-lg-3 ant-title-tab'>
+                                    <div class='titlecp clearfix'>
+                                        <img expr:alt='data:title' height='60' src='https://1.bp.blogspot.com/-4RdESAvQInM/YLxEbIUqOWI/AAAAAAAAEqA/OBUqGiZIhUUXW7Zs48WDCC_Qf4Xfuf1UwCLcBGAsYHQ/s0/dog.png' width='60'/>
+                                        <h3><a expr:title='data:title' href='/search/label/san-pham'><data:title/></a></h3>
+                                        <span class='hidden-lg button_show_tab'>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  <span class='icon-bar'/>
+  </span>
+                                    </div>
+                                    <ul class='tabs tabs-title tab-desktop ajax clearfix evo-close'>
+                                        <b:loop index='i' values='data:links' var='link'>
+                                            <li class='tab-link' expr:data-tab='&quot;tab-&quot; + (data:i + 1)'>
+                                                <b:class cond='data:i in [0]' name='has-content'/>
+                                                <span expr:title='data:link.name'>
+              <data:link.name/>
+            </span>
+                                            </li>
+                                        </b:loop>
+                                    </ul>
+                                    <a class='d-none d-lg-block ant-banner-index-product' expr:title='data:blog.title' href='/collections/all'>
+                                        <img class='lazy img-responsive center-block d-block mx-auto' data-src='https://1.bp.blogspot.com/-REMJf0BOCOE/YLxEmYf7aII/AAAAAAAAEqI/_4Kh2_-DWDwcv9YFNt4wKlX8VaHcZ34YACLcBGAsYHQ/s0/dogdog.jpg' expr:alt='data:blog.title' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC'/>
+                                    </a>
+                                </div>
+                                <div class='col-lg-9'>
+
+                                    <b:loop index='i' values='data:links' var='link'>
+                                        <div expr:class='&quot;tab-&quot; + (data:i + 1) + &quot; tab-content&quot;' expr:data-label='data:link.target' expr:id='&quot;tab-&quot; + (data:i + 1)'>
+                                            <div class='row loader'/>
+                                        </div>
+                                    </b:loop>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </b:includable>
+            </b:widget>
+        </b:section>
+    </section>
+    <section class='awe-section-14'>
+        <div class='container section_three_banner'>
+            <div class='row'>
+                <div class='col-lg-3 col-sm-6 col-10 ant-item-cate-index'>
+                    <b:section id='id-link-a' name='Link 1' showaddelement='no'>
+                        <b:widget id='LinkList6' locked='true' title='Dinh dưỡng' type='LinkList' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='link-5'>/search/label/tin-tuc</b:widget-setting>
+                                <b:widget-setting name='link-6'>/p/lien-he.html</b:widget-setting>
+                                <b:widget-setting name='link-3'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-4'>#</b:widget-setting>
+                                <b:widget-setting name='text-1'>Giới thiệu</b:widget-setting>
+                                <b:widget-setting name='text-0'>Trang chủ</b:widget-setting>
+                                <b:widget-setting name='text-3'>Sản phẩm mới về </b:widget-setting>
+                                <b:widget-setting name='text-2'>Sản phẩm</b:widget-setting>
+                                <b:widget-setting name='text-5'>Tin tức</b:widget-setting>
+                                <b:widget-setting name='text-4'>Khuyến mãi trong ngày </b:widget-setting>
+                                <b:widget-setting name='text-6'>Liên hệ</b:widget-setting>
+                                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                                <b:widget-setting name='link-1'>/p/gioi-thieu.html</b:widget-setting>
+                                <b:widget-setting name='link-2'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-0'>/</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='ant-cate-title'>
+                                    <img expr:alt='data:title' height='100' src='https://1.bp.blogspot.com/-1MlbdDf8on0/YLs2Rj42oxI/AAAAAAAAEns/jb1usRrOjGwkz8rfnK5AdCCbpaHS_pjOQCLcBGAsYHQ/s0/ant-cate-image-1.jpg' width='100'/>
+                                    <span style='background-color: #ff9822'><data:title/></span>
+                                </div>
+                                <b:include name='content'/>
+                            </b:includable>
+                            <b:includable id='content'>
+                                <div class='ant-cate-menu'>
+                                    <b:loop values='data:links' var='link'>
+                                        <a expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a>
+                                    </b:loop>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-sm-6 col-10 ant-item-cate-index'>
+                    <b:section id='id-link-b' name='Link 2' showaddelement='no'>
+                        <b:widget id='LinkList7' locked='true' title='Huấn luyện' type='LinkList' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='link-5'>/search/label/tin-tuc</b:widget-setting>
+                                <b:widget-setting name='link-6'>/p/lien-he.html</b:widget-setting>
+                                <b:widget-setting name='link-3'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-4'>#</b:widget-setting>
+                                <b:widget-setting name='text-1'>Giới thiệu</b:widget-setting>
+                                <b:widget-setting name='text-0'>Trang chủ</b:widget-setting>
+                                <b:widget-setting name='text-3'>Sản phẩm mới về </b:widget-setting>
+                                <b:widget-setting name='text-2'>Sản phẩm</b:widget-setting>
+                                <b:widget-setting name='text-5'>Tin tức</b:widget-setting>
+                                <b:widget-setting name='text-4'>Khuyến mãi trong ngày </b:widget-setting>
+                                <b:widget-setting name='text-6'>Liên hệ</b:widget-setting>
+                                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                                <b:widget-setting name='link-1'>/p/gioi-thieu.html</b:widget-setting>
+                                <b:widget-setting name='link-2'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-0'>/</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='ant-cate-title'>
+                                    <img expr:alt='data:title' height='100' src='https://1.bp.blogspot.com/-BaJfmSKJNtw/YLs714wJiEI/AAAAAAAAEn0/0Kp6gQ9Y61g5iOswtRwp-jf751P6HG6FACLcBGAsYHQ/s0/ant-cate-image-2.jpg' width='100'/>
+                                    <span style='background-color: #65c976'><data:title/></span>
+                                </div>
+                                <b:include name='content'/>
+                            </b:includable>
+                            <b:includable id='content'>
+                                <div class='ant-cate-menu'>
+                                    <b:loop values='data:links' var='link'>
+                                        <a expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a>
+                                    </b:loop>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-sm-6 col-10 ant-item-cate-index'>
+                    <b:section id='id-link-c' name='Link 3' showaddelement='no'>
+                        <b:widget id='LinkList8' locked='true' title='Đời sống' type='LinkList' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='link-5'>/search/label/tin-tuc</b:widget-setting>
+                                <b:widget-setting name='link-6'>/p/lien-he.html</b:widget-setting>
+                                <b:widget-setting name='link-3'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-4'>#</b:widget-setting>
+                                <b:widget-setting name='text-1'>Giới thiệu</b:widget-setting>
+                                <b:widget-setting name='text-0'>Trang chủ</b:widget-setting>
+                                <b:widget-setting name='text-3'>Sản phẩm mới về </b:widget-setting>
+                                <b:widget-setting name='text-2'>Sản phẩm</b:widget-setting>
+                                <b:widget-setting name='text-5'>Tin tức</b:widget-setting>
+                                <b:widget-setting name='text-4'>Khuyến mãi trong ngày </b:widget-setting>
+                                <b:widget-setting name='text-6'>Liên hệ</b:widget-setting>
+                                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                                <b:widget-setting name='link-1'>/p/gioi-thieu.html</b:widget-setting>
+                                <b:widget-setting name='link-2'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-0'>/</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='ant-cate-title'>
+                                    <img expr:alt='data:title' height='100' src='https://1.bp.blogspot.com/-bGY0QtZi6hc/YLs8qV1XbUI/AAAAAAAAEn8/VBAf94VIwcQi8LMQO6WmbIX1rqzN3XUyACLcBGAsYHQ/s0/ant-cate-image-3.jpg' width='100'/>
+                                    <span style='background-color: #8894d0'><data:title/></span>
+                                </div>
+                                <b:include name='content'/>
+                            </b:includable>
+                            <b:includable id='content'>
+                                <div class='ant-cate-menu'>
+                                    <b:loop values='data:links' var='link'>
+                                        <a expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a>
+                                    </b:loop>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+                <div class='col-lg-3 col-sm-6 col-10 ant-item-cate-index'>
+                    <b:section id='id-link-d' name='Link 4' showaddelement='no'>
+                        <b:widget id='LinkList9' locked='true' title='Đời sống' type='LinkList' version='2' visible='true'>
+                            <b:widget-settings>
+                                <b:widget-setting name='link-5'>/search/label/tin-tuc</b:widget-setting>
+                                <b:widget-setting name='link-6'>/p/lien-he.html</b:widget-setting>
+                                <b:widget-setting name='link-3'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-4'>#</b:widget-setting>
+                                <b:widget-setting name='text-1'>Giới thiệu</b:widget-setting>
+                                <b:widget-setting name='text-0'>Trang chủ</b:widget-setting>
+                                <b:widget-setting name='text-3'>Sản phẩm mới về </b:widget-setting>
+                                <b:widget-setting name='text-2'>Sản phẩm</b:widget-setting>
+                                <b:widget-setting name='text-5'>Tin tức</b:widget-setting>
+                                <b:widget-setting name='text-4'>Khuyến mãi trong ngày </b:widget-setting>
+                                <b:widget-setting name='text-6'>Liên hệ</b:widget-setting>
+                                <b:widget-setting name='sorting'>NONE</b:widget-setting>
+                                <b:widget-setting name='link-1'>/p/gioi-thieu.html</b:widget-setting>
+                                <b:widget-setting name='link-2'>/search/label/san-pham</b:widget-setting>
+                                <b:widget-setting name='link-0'>/</b:widget-setting>
+                            </b:widget-settings>
+                            <b:includable id='main'>
+                                <div class='ant-cate-title'>
+                                    <img expr:alt='data:title' height='100' src='https://1.bp.blogspot.com/-3IA093DbMvg/YLs89XiEmvI/AAAAAAAAEoE/9Yzotm9c1WEoDI3Osv-YpsID2gr0j4qzgCLcBGAsYHQ/s0/ant-cate-image-4.jpg' width='100'/>
+                                    <span style='background-color: #ac7dbc'><data:title/></span>
+                                </div>
+                                <b:include name='content'/>
+                            </b:includable>
+                            <b:includable id='content'>
+                                <div class='ant-cate-menu'>
+                                    <b:loop values='data:links' var='link'>
+                                        <a expr:href='data:link.target' expr:title='data:link.name'><data:link.name/></a>
+                                    </b:loop>
+                                </div>
+                            </b:includable>
+                        </b:widget>
+                    </b:section>
+                </div>
+            </div>
+        </div>
+    </section>
+</b:if>

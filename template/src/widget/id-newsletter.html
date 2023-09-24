@@ -1,0 +1,29 @@
+<b:section id='id-newsletter' name='news letter' showaddelement='no'>
+    <b:widget id='HTML9' locked='true' title='entry.1803823395' type='HTML' version='2' visible='true'>
+        <b:widget-settings>
+            <b:widget-setting name='content'>https://docs.google.com/forms/u/0/d/e/1FAIpQLSfe_4xi0WDoTD37k7fUecs9zgs-1HaHuLTXc8Wj4sJU4XYQ5A/formResponse</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main'>
+            <b:attr name='class' value='ant-mailchimp'/>
+            <div class='ant-newsletter-title'>
+                <div class='title'>Đăng ký nhận tin</div>
+                <p>Nhận thông tin sản phẩm mới nhất, tin khuyến mãi và nhiều hơn nữa.</p>
+            </div>
+            <div class='ant-mailchim-form'>
+                <form expr:action='data:content' id='getmail' target='hidden_iframe'>
+                    <input class='form-control' expr:name='data:title' id='mail' placeholder='Email của bạn' required='' type='email' value=''/>
+                    <button id='subscribe' name='subscribe'>Đăng ký</button>
+                </form><iframe class='d-none' id='hidden_iframe' name='hidden_iframe'/>
+                <script>
+                    //<![CDATA[
+                    $(".ant-mailchim-form").each(function() {
+                        $("form#getmail").submit(function() {
+                            $(this).html('<p style = "color:#fff">Bạn đã đăng ký email thành công!</p>');
+                        })
+                    })
+                    //]]>
+                </script>
+            </div>
+        </b:includable>
+    </b:widget>
+</b:section>

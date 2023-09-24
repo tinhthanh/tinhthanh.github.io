@@ -1,0 +1,634 @@
+<b:if cond='data:view.search.label'>
+    <section class='bread-crumb'>
+        <div class='container'>
+            <ul class='breadcrumb' itemscope='' itemtype='https://schema.org/BreadcrumbList'>
+                <li class='home' itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                    <a expr:href='data:blog.homepageUrl' itemprop='item' title='Trang chủ'>
+            <span itemprop='name'>
+              Trang chủ
+            </span>
+                        <meta content='1' itemprop='position'/>
+                    </a>
+                </li>
+                <li itemprop='itemListElement' itemscope='' itemtype='https://schema.org/ListItem'>
+                    <strong>
+                        <b:if cond='data:blog.searchLabel == &quot;san-pham&quot;'>
+                            <span itemprop='name'> Tất cả sản phẩm</span>
+                            <b:elseif cond='data:blog.searchLabel == &quot;all&quot;'/>
+                            <span itemprop='name'> Tất cả sản phẩm</span>
+                            <b:elseif cond='data:blog.searchLabel == &quot;tin-tuc&quot;'/>
+                            <span itemprop='name'> Tất cả tin tức</span>
+                            <b:else/>
+                            <span itemprop='name'>
+                <data:blog.pageName/>
+              </span>
+                        </b:if>
+                        <meta content='2' itemprop='position'/>
+                    </strong>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <div class='container'>
+        <div class='main_container collection margin-bottom-5'>
+            <h1 class='col-title d-none'>Tất cả sản phẩm</h1>
+            <div class='evo-col-banner lazy' data-src='https://1.bp.blogspot.com/-HEPGhQQUXBA/YLxEz5KE0KI/AAAAAAAAEqQ/cR24STQZuZkCewY4yvtB6UgkkpCBMixtwCLcBGAsYHQ/s0/slider-1.jpg'>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/thuc-an-dinh-duong' title='Thức ăn, dinh dưỡng'>
+                        <img alt='Thức ăn, dinh dưỡng' class='lazy' data-src='https://1.bp.blogspot.com/-zCb5kkEEP3c/YLxE8AsqS2I/AAAAAAAAEqY/M6ZyRylTAE8bfwPqRc9P3pI-EZ9YwdULgCLcBGAsYHQ/s0/cat-food.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/thuc-an-dinh-duong' title='Thức ăn, dinh dưỡng'>Thức ăn, dinh dưỡng</a>
+                </div>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/ve-sinh-cham-soc' title='Vệ sinh, Chăm sóc'>
+                        <img alt='Vệ sinh, Chăm sóc' class='lazy' data-src='https://1.bp.blogspot.com/-HEtGfDrJ758/YLxFFX9EduI/AAAAAAAAEqg/DM6Q6rcHYM4M3W6NPenbb5kiYP3SUHA0QCLcBGAsYHQ/s0/grooming.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/ve-sinh-cham-soc' title='Vệ sinh, Chăm sóc'>Vệ sinh, Chăm sóc</a>
+                </div>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/do-dung-phu-kien' title='Đồ dùng, Phụ kiện'>
+                        <img alt='Đồ dùng, Phụ kiện' class='lazy' data-src='https://1.bp.blogspot.com/-qqqQHkOmJfQ/YLxFNH_g2BI/AAAAAAAAEqo/nBMkOJ4k7hE_dUI4-AG9neMrTQRx_4vsACLcBGAsYHQ/s0/cat.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/do-dung-phu-kien' title='Đồ dùng, Phụ kiện'>Đồ dùng, Phụ kiện</a>
+                </div>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/nha-chuong-nem' title='Nhà, chuồng, nệm'>
+                        <img alt='Nhà, chuồng, nệm' class='lazy' data-src='https://1.bp.blogspot.com/-FgfHcoaX0aw/YLxFUMbleHI/AAAAAAAAEqs/6jYg-KuSEb8-2k2z1DuaL-y6xSEp8E1ewCLcBGAsYHQ/s0/cat-toy.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/nha-chuong-nem' title='Nhà, chuồng, nệm'>Nhà, chuồng, nệm</a>
+                </div>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/y-te-thuoc-cho-meo' title='Y tế &amp; thuốc cho mèo'>
+                        <img alt='Y tế &amp; thuốc cho mèo' class='lazy' data-src='https://1.bp.blogspot.com/-SDXDP-LYdFI/YLxFa7A-NlI/AAAAAAAAEq0/0g9mCDGxbjAqGyWiSoEhDfmERcq2-hrZQCLcBGAsYHQ/s0/pharmacy.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/y-te-thuoc-cho-meo' title='Y tế &amp; thuốc cho mèo'>Y tế &amp; thuốc cho mèo</a>
+                </div>
+                <div class='ant-cate-item'>
+                    <a class='ant-img-a' href='/search/label/phu-kien-khuyen-mai' title='Phụ kiện khuyến mãi'>
+                        <img alt='Phụ kiện khuyến mãi' class='lazy' data-src='https://1.bp.blogspot.com/-SDXDP-LYdFI/YLxFa7A-NlI/AAAAAAAAEq0/0g9mCDGxbjAqGyWiSoEhDfmERcq2-hrZQCLcBGAsYHQ/s0/pharmacy.jpg' height='124' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC' width='124'/>
+                    </a>
+                    <a class='ant-title-a' href='/search/label/phu-kien-khuyen-mai' title='Phụ kiện khuyến mãi'>Phụ kiện khuyến mãi</a>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-lg-3 col-md-12 left-content'>
+                    <div class='evo-sidebar-pro'>
+                        <div class='aside-filter group-product d-none clearfix'>
+                            <div class='heading'>Lọc</div>
+                            <div class='aside-hidden-mobile'>
+                                <div class='filter-container'>
+                                    <aside class='aside-item filter-vendor'>
+                                        <div class='aside-title'>Thương hiệu <span class='svg svg1 collapsible-plus'/></div>
+                                        <ul class='aside-content filter-group'>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='ambaby' data-filter='ambaby' for='filter-ambaby'>
+                                                    <input id='filter-ambaby' onclick='location.href=&amp;#39;/search/label/Ambaby&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Ambaby </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='anime' data-filter='anime' for='filter-anime'>
+                                                    <input id='filter-anime' onclick='location.href=&amp;#39;/search/label/Anime&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Anime </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='bobo' data-filter='bobo' for='filter-bobo'>
+                                                    <input id='filter-bobo' onclick='location.href=&amp;#39;/search/label/Bobo&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Bobo </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='elite' data-filter='elite' for='filter-elite'>
+                                                    <input id='filter-elite' onclick='location.href=&amp;#39;/search/label/Elite&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Elite </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='loffee' data-filter='loffee' for='filter-loffee'>
+                                                    <input id='filter-loffee' onclick='location.href=&amp;#39;/search/label/Loffee&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Loffee </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='mypet' data-filter='mypet' for='filter-mypet'>
+                                                    <input id='filter-mypet' onclick='location.href=&amp;#39;/search/label/Mypet&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Mypet </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='paw' data-filter='paw' for='filter-paw'>
+                                                    <input id='filter-paw' onclick='location.href=&amp;#39;/search/label/Paw&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Paw </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green '>
+                                                <label class='petismile' data-filter='petismile' for='filter-petismile'>
+                                                    <input id='filter-petismile' onclick='location.href=&amp;#39;/search/label/Petismile&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Petismile </label>
+                                            </li>
+                                        </ul>
+                                    </aside>
+                                    <aside class='aside-item filter-price'>
+                                        <div class='aside-title'>Giá sản phẩm <span class='svg svg1 collapsible-plus'/></div>
+                                        <ul class='aside-content filter-group'>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-duoi-100-000d'>
+                                                    <input id='filter-duoi-100-000d' onclick='location.href=&amp;#39;/search/label/duoi-100-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Giá dưới 100.000đ </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-100-000d-200-000d'>
+                                                    <input id='filter-100-000d-200-000d' onclick='location.href=&amp;#39;/search/label/100-000d-200-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> 100.000đ - 200.000đ </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-200-000d-300-000d'>
+                                                    <input id='filter-200-000d-300-000d' onclick='location.href=&amp;#39;/search/label/200-000d-300-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> 200.000đ - 300.000đ </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-300-000d-500-000d'>
+                                                    <input id='filter-300-000d-500-000d' onclick='location.href=&amp;#39;/search/label/300-000d-500-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> 300.000đ - 500.000đ </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-500-000d-1-000-000d'>
+                                                    <input id='filter-500-000d-1-000-000d' onclick='location.href=&amp;#39;/search/label/500-000d-1-000-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> 500.000đ - 1.000.000đ </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-tren1-000-000d'>
+                                                    <input id='filter-tren1-000-000d' onclick='location.href=&amp;#39;/search/label/tren1-000-000d&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Giá trên 1.000.000đ </label>
+                                            </li>
+                                        </ul>
+                                    </aside>
+                                    <aside class='aside-item filter-tag-style-1 tag-filtster'>
+                                        <div class='aside-title'>Độ tuổi thú cưng <span class='svg svg1 collapsible-plus'/></div>
+                                        <ul class='aside-content filter-group'>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-duoi-1-tuan'>
+                                                    <input id='filter-duoi-1-tuan' onclick='location.href=&amp;#39;/search/label/duoi-1-tuan&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Dưới 1 tuần </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-tu-2-den-4-tuan'>
+                                                    <input id='filter-tu-2-den-4-tuan' onclick='location.href=&amp;#39;/search/label/tu-2-den-4-tuan&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Từ 2 đến 4 tuần </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-tu-1-den-3-thang'>
+                                                    <input id='filter-tu-1-den-3-thang' onclick='location.href=&amp;#39;/search/label/tu-1-den-3-thang&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Từ 1 đến 3 tháng </label>
+                                            </li>
+                                            <li class='filter-item filter-item--check-box filter-item--green'>
+                                                <label for='filter-tren-3-thang'>
+                                                    <input id='filter-tren-3-thang' onclick='location.href=&amp;#39;/search/label/tren-3-thang&amp;#39;' type='checkbox'/>
+                                                    <i class='fa'/> Trên 3 tháng </label>
+                                            </li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class='aside-item collection-category d-none'>
+                            <div class='aside-title'>Danh mục sản phẩm </div>
+                            <div class='aside-content clearfix'>
+                                <ul class='navbar-pills nav-category'>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/thuc-an-dinh-duong' title='Thức ăn, dinh dưỡng'>Thức ăn, dinh dưỡng</a>
+                                        <span class='Collapsible__Plus'/>
+                                        <ul class='dropdown-menu'>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/thuc-an-hat-kho' title='Thức ăn hạt khô'>Thức ăn hạt khô</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/pate-nuoc-sot' title='Pate &amp; Nước sốt'>Pate &amp; Nước sốt</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/snack-banh-thuong' title='Snack &amp; Bánh thưởng'>Snack &amp; Bánh thưởng</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/vitamin-dinh-duong' title='Vitamin &amp; Dinh dưỡng'>Vitamin &amp; Dinh dưỡng</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/co-meo-catnip' title='Cỏ mèo &amp; Catnip'>Cỏ mèo &amp; Catnip</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/bat-an-binh-uong-nuoc' title='Bát ăn &amp; Bình uống nước'>Bát ăn &amp; Bình uống nước</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/ve-sinh-cham-soc' title='Vệ sinh, Chăm sóc'>Vệ sinh, Chăm sóc</a>
+                                        <span class='Collapsible__Plus'/>
+                                        <ul class='dropdown-menu'>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/khay-nha-ve-sinh' title='Khay &amp; Nhà vệ sinh'>Khay &amp; Nhà vệ sinh</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/cat-ve-sinh-cho-meo' title='Cát vệ sinh cho mèo'>Cát vệ sinh cho mèo</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/sua-tam-xit-duong' title='Sữa tắm &amp; Xịt dưỡng'>Sữa tắm &amp; Xịt dưỡng</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/luoc-chai-long-cat-mong' title='Lược chải lông &amp; Cắt móng'>Lược chải lông &amp; Cắt móng</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/do-dung-phu-kien' title='Đồ dùng, Phụ kiện'>Đồ dùng, Phụ kiện</a>
+                                        <span class='Collapsible__Plus'/>
+                                        <ul class='dropdown-menu'>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/quan-ao-trang-suc' title='Quần áo &amp; Trang sức'>Quần áo &amp; Trang sức</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/vong-co-day-dat' title='Vòng cổ &amp; Dây dắt'>Vòng cổ &amp; Dây dắt</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/tui-xach-long-van-chuyen' title='Túi xách &amp; Lồng vận chuyển'>Túi xách &amp; Lồng vận chuyển</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/do-choi-huan-luyen' title='Đồ chơi &amp; Huấn luyện'>Đồ chơi &amp; Huấn luyện</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/nha-chuong-nem' title='Nhà, chuồng, nệm'>Nhà, chuồng, nệm</a>
+                                        <span class='Collapsible__Plus'/>
+                                        <ul class='dropdown-menu'>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/nha-meo-nha-cay-cattree' title='Nhà mèo &amp; Nhà cây Cattree'>Nhà mèo &amp; Nhà cây Cattree</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/tru-cot-ban-cao-mong' title='Trụ cột &amp; Bàn cào móng'>Trụ cột &amp; Bàn cào móng</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/chuong-meo-1-2-3-tang' title='Chuồng mèo 1, 2, 3 tầng'>Chuồng mèo 1, 2, 3 tầng</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/o-nem-tham-dem' title='Ổ nệm &amp; Thảm đệm'>Ổ nệm &amp; Thảm đệm</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/y-te-thuoc-cho-meo' title='Y tế &amp; thuốc cho mèo'>Y tế &amp; thuốc cho mèo</a>
+                                        <span class='Collapsible__Plus'/>
+                                        <ul class='dropdown-menu'>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/tay-xo-giun-san' title='Tẩy xổ giun &amp; sán'>Tẩy xổ giun &amp; sán</a>
+                                            </li>
+                                            <li class='nav-item '>
+                                                <a class='nav-link' href='/search/label/tri-ve-ran-bo-chet' title='Trị ve rận &amp; bọ chét'>Trị ve rận &amp; bọ chét</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class='nav-item '>
+                                        <a class='nav-link' href='/search/label/phu-kien-khuyen-mai' title='Phụ kiện khuyến mãi'>Phụ kiện khuyến mãi</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                        <aside class='aside-item group-product d-none collection-feature-product'>
+                            <div class='aside-title'><a href='/search/label/san-pham-moi' title='Sản phẩm nổi bật'>Sản phẩm nổi bật</a></div>
+                            <div class='aside-list-product'>
+                            </div>
+                        </aside>
+                        <aside class='aside-item group-blog d-none collection-feature-product'>
+                            <div class='aside-title'><a href='/search/label/tin-tuci' title='Tin mới nhất'>Tin mới nhất</a></div>
+                            <div class='aside-list-product'>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div class='col-lg-9 col-md-12'>
+                    <div class='category-products products category-products-grids evo-list-blog-page clearfix'>
+                        <div class='sort-cate clearfix d-none'>
+                            <div class='sort-cate-left'>
+                                <h3><svg height='12px' style='enable-background:new 0 0 97.761 97.762;' version='1.1' viewBox='0 0 97.761 97.762' width='12px' x='0px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' y='0px'>
+  <path d='M42.761,65.596H34.75V2c0-1.105-0.896-2-2-2H16.62c-1.104,0-2,0.895-2,2v63.596H6.609c-0.77,0-1.472,0.443-1.804,1.137       c-0.333,0.695-0.237,1.519,0.246,2.117l18.076,26.955c0.38,0.473,0.953,0.746,1.558,0.746s1.178-0.273,1.558-0.746L44.319,68.85       c0.482-0.6,0.578-1.422,0.246-2.117C44.233,66.039,43.531,65.596,42.761,65.596z'/>
+  <path d='M93.04,95.098L79.71,57.324c-0.282-0.799-1.038-1.334-1.887-1.334h-3.86c-0.107,0-0.213,0.008-0.318,0.024       c-0.104-0.018-0.21-0.024-0.318-0.024h-3.76c-0.849,0-1.604,0.535-1.887,1.336L54.403,95.1c-0.215,0.611-0.12,1.289,0.255,1.818       s0.983,0.844,1.633,0.844h5.773c0.88,0,1.657-0.574,1.913-1.416l2.536-8.324h14.419l2.536,8.324       c0.256,0.842,1.033,1.416,1.913,1.416h5.771c0.649,0,1.258-0.314,1.633-0.844C93.16,96.387,93.255,95.709,93.04,95.098z       M68.905,80.066c2.398-7.77,4.021-13.166,4.82-16.041l4.928,16.041H68.905z'/>
+  <path d='M87.297,34.053H69.479L88.407,6.848c0.233-0.336,0.358-0.734,0.358-1.143V2.289c0-1.104-0.896-2-2-2H60.694       c-1.104,0-2,0.896-2,2v3.844c0,1.105,0.896,2,2,2h16.782L58.522,35.309c-0.233,0.336-0.358,0.734-0.358,1.146v3.441       c0,1.105,0.896,2,2,2h27.135c1.104,0,2-0.895,2-2v-3.842C89.297,34.947,88.402,34.053,87.297,34.053z'/>
+  </svg> Loại</h3>
+                                <ul>
+                                    <li class='btn-quick-sort alpha-asc'>
+                                        <a href='/search/label/san-pham' title='Tất cả sản phẩm'><i/>Tất cả sản phẩm</a>
+                                    </li>
+                                    <li class='btn-quick-sort alpha-desc'>
+                                        <a href='/search/label/san-pham' title='Tên Nhãn'><i/>Tên Nhãn</a>
+                                    </li>
+                                    <li class='btn-quick-sort position-desc'>
+                                        <a href='/search/label/san-pham' title='Tên Nhãn'><i/>Tên Nhãn</a>
+                                    </li>
+                                    <li class='btn-quick-sort price-asc'>
+                                        <a href='/search/label/san-pham' title='Tên Nhãn'><i/>Tên Nhãn</a>
+                                    </li>
+                                    <li class='btn-quick-sort price-desc'>
+                                        <a href='/search/label/san-pham' title='Tên Nhãn'><i/>Tên Nhãn</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class='evo-filter d-sm-inline-block d-lg-none'>
+                                <a class='btn btn-outline evo-btn-filter' title='Lọc'> Lọc <svg class='svg-filter ml-2' height='12' viewBox='0 0 12 12' width='12' xmlns='http://www.w3.org/2000/svg'>
+                                    <path d='M11.214 0H.504a.503.503 0 0 0-.448.273.51.51 0 0 0 .04.53l3.923 5.522.004.005c.143.193.22.425.22.665v4.501a.5.5 0 0 0 .699.464l2.205-.84a.477.477 0 0 0 .328-.47V6.995c0-.24.078-.472.22-.665l.004-.005L11.623.803a.509.509 0 0 0 .04-.53.503.503 0 0 0-.449-.273z' fill='#666' fill-rule='nonzero'/>
+                                </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <section class='products-view products-view-grid row' expr:data-label='data:blog.pageName'>
+                        </section>
+                        <div class='row'>
+                            <div class='col-lg-12 col-sm-12 col-12 margin-top-20 fix-pag'>
+                                <div id='loadmore'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //<![CDATA[
+        $(document).ready(function($) {
+            $('.evo-btn-filter').click(function() {
+                $(".left-content").toggleClass('active');
+                $(".backdrop__body-backdrop___1rvky").addClass('active');
+            });
+            $('.aside-filter .aside-hidden-mobile .aside-item .aside-title').on('click', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                $this.parents('.aside-filter .aside-hidden-mobile .aside-item').find('.aside-content').stop().slideToggle();
+                $(this).toggleClass('active')
+                return false;
+            });
+            $('.sort-cate-left h3').on('click', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                $this.parents('.sort-cate-left').find('ul').stop().slideToggle();
+                $(this).toggleClass('active');
+                return false;
+            });
+        });
+        //]]>
+    </script>
+    <script>
+        //<![CDATA[
+        function productsearch(e) {
+            console.log(e);
+            var b = e.feed.entry;
+            var linkaff = '';
+            var linkpost = '';
+            if (void 0 !== b) {
+                for (var n = 0; n < e.feed.entry.length; n++) {
+                    var entry = e.feed.entry[n];
+                    for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                        if (e.feed.entry[n].link[s].rel === "alternate") {
+                            t = e.feed.entry[n].link[s].href;
+                            break
+                        }
+                    }
+                    var f = e.feed.entry[n].title.$t;
+                    if ("media$thumbnail" in e.feed.entry[n]) {
+                        d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w480-h480-p-k-no-nu");
+                        image = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w418-h219-p-k-no-nu");
+                    } else {
+                        d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w480-h480-p-k-no-nu/nth.png"
+                        image = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w418-h219-p-k-no-nu/nth.png"
+                    }
+                    var thumb = '';
+                    if ("content" in e.feed.entry[n]) var post = e.feed.entry[n].content.$t;
+                    else post = "summary" in e.feed.entry[n] ? e.feed.entry[n].summary.$t : "";
+                    var post_content = post.replace(/<\S[^>]*>/g, "");
+                    var giaban = '';
+                    for (var c = 0; c < entry.link.length; c++) {
+                        if (entry.link[c].rel == 'enclosure') {
+                            var entry_enclosure = entry.link[c].href;
+                            if (entry_enclosure == "http://giaban.com") {
+                                var giaban = entry.link[c].type
+                            }
+                            if (entry_enclosure == "http://giacu.com") {
+                                if (entry.link[c].type != "empty" && entry.link[c].type != "image/jpeg" && entry.link[c].type != "image/png") {
+                                    var giacu = entry.link[c].type;
+                                    var cu = '<span class="original-price"><s>' + giacu + '</s></span>';
+                                    var price = giaban.replace(/[^0-9\.]+/ig, "");
+                                    var old = giacu.replace(/[^0-9\.]+/ig, "");
+                                    var giam = (100 * ((parseInt(price) - parseInt(old)) / parseInt(old))).toFixed(0);
+                                    var sale = '<span class="ant-sale"> ' + giam + '% </span>';
+                                } else {
+                                    cu = sale = ''
+                                }
+                            }
+                            if (entry_enclosure != "http://giaban.com" && entry_enclosure != "http://giacu.com") {
+                                if (entry.link[c].type == "image/jpeg" || entry.link[c].type == "image/png") {
+                                    thumb += '<span class="tt-img-roll-over"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + entry_enclosure.replace("s16000", "w480-h480-p-k-no-nu") + '" alt="' + f + '" /> </span>';
+                                }
+                            }
+                            if (entry.link[c].type == "aff") {
+                                var afflink = entry.link[c].href;
+                                buy = '<a href = "' + afflink + '" title="Tới gian hàng" class="action add_to_cart" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                linkpost = '<a href = "' + afflink + '" title="Tới gian hàng" class="action cart-button" target = "_blank"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                            } else {
+                                buy = '<a href = "javascript:void(0)" title="Thêm vào giỏ" class="action add_to_cart item_add"><svg x="0px" y="0px" viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve"><path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3 c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1 C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462 H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41 c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"></path></svg></a>';
+                                linkpost = '<a title="Xem chi tiết" href="' + t + '" class="action cart-button"><svg x="0px" y="0px" viewBox="0 0 162.656 162.656" style="enable-background:new 0 0 162.656 162.656;" xml:space="preserve"><path d="M151.764,10.894c-14.522-14.522-38.152-14.525-52.676-0.008l0.003,0.003L76.112,33.872l10.607,10.605l22.983-22.988 l-0.002-0.002c8.678-8.663,22.785-8.658,31.457,0.014c8.673,8.672,8.672,22.786,0,31.461l-34.486,34.484 c-4.201,4.202-9.787,6.516-15.729,6.516c-5.942,0-11.529-2.314-15.73-6.516L64.605,98.052c7.035,7.035,16.389,10.91,26.338,10.91 c9.949,0,19.303-3.875,26.335-10.91l34.487-34.484C166.284,49.043,166.284,25.413,151.764,10.894z"></path><path d="M52.96,141.162L52.96,141.162c-8.675,8.67-22.788,8.668-31.461-0.005c-8.673-8.675-8.673-22.791-0.001-31.465L55.98,75.21 c8.675-8.674,22.789-8.674,31.462,0L98.05,64.604c-14.524-14.523-38.154-14.524-52.676,0L10.89,99.086 c-14.519,14.523-14.519,38.154,0.001,52.678c7.263,7.262,16.801,10.893,26.341,10.892c9.536,0,19.074-3.629,26.333-10.887 l0.002-0.001l22.984-22.99l-10.608-10.606L52.96,141.162z"></path></svg></a>';
+                            }
+                        }
+                    }
+                    var chuoi = e.feed.entry[n].published.$t,
+                        nam = chuoi.substring(0, 4),
+                        thang = chuoi.substring(5, 7),
+                        ngay = chuoi.substring(8, 10),
+                        date = ngay + "/" + thang + "/" + nam;
+                    var link = "location.href = " + "'" + t + "'";
+                    if (giaban.length != 0) {
+                        var blog = '<div class="col-lg-4 col-md-4 col-sm-4 col-6"> <div class="evo-product-item simpleCart_shelfItem"> <div class="thumb-evo"> ' + sale + ' <a class="thumb-img" href="' + t + '" title="' + f + '"> <span class="tt-img"><span class="d-none item_link">' + t + '</span><img class="lazy item_thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + d + '" alt="' + f + '" /> </span> ' + thumb + ' </a> <form class="product-button hidden-sm hidden-xs hidden-md variants form-nut-grid form-ajaxtocart">' + buy + ' ' + linkpost + ' </form> </div> <a href="' + t + '" title="' + f + '" class="title item_name">' + f + '</a> <div class="flex-prices"> <strong class="product-price item_price">' + giaban + '</strong> ' + cu + ' </div> </div> </div>';
+                        $('.evo-sidebar-pro .group-product').removeClass('d-none');
+                        $('.evo-sidebar-pro .collection-category').removeClass('d-none');
+                        $('.sort-cate').removeClass('d-none');
+                        $('.products-view').append(blog);
+                    }
+                    if (giaban.length == 0) {
+                        var blog = '<div class="col-lg-6 col-md-6 col-sm-12 evo-blog-item"><div class="blog-item-image"><a href="' + t + '" title="' + f + '"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="' + image + '" alt="' + f + '" class="lazy img-responsive center-block" /></a> <div class="time-post"> <span class="date">' + ngay + '</span> <span class="month">Thg ' + thang + '</span></div></div><div class="blog-item-author"><h3><a href="' + t + '" title="' + f + '">' + f + '</a></h3><p> ' + post_content.substring(0, 100) + '...</p></div></div>';
+                        $('.evo-sidebar-pro .collection-category').removeClass('d-none');
+                        $('.evo-sidebar-pro .group-blog').removeClass('d-none');
+                        $('.products-view').append(blog)
+                    }
+                }
+            } else $(".products-view").html('<div class="fix-nof"> <div class="alert alert-warning show green-alert margin-bottom-0" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có bài viết nào trong danh mục này. </div> </div>'), $('.collection div.col-lg-9.col-md-12').removeClass('col-lg-9');
+        }
+        $(".category-products-grids .products-view-grid").each(function() {
+            var cur_this = $(this);
+            var total, count = 0,
+                numPost = 9;
+            var label = cur_this.attr('data-label');
+            $.ajax({
+                url: "/feeds/posts/default/-/" + label,
+                type: "get",
+                data: {
+                    alt: "json",
+                    "max-results": numPost
+                },
+                dataType: "jsonp",
+                jsonpCallback: "productsearch",
+                success: function(e) {
+                    if (e.feed.entry) {
+                        awe_lazyloadImage();
+                        cur_this.find('.item_add').click(function() {
+                            $(".cart_sidebar").toggleClass('active');
+                            $(".backdrop__body-backdrop___1rvky").addClass('active');
+                        });
+                        total = e.feed.openSearch$totalResults.$t;
+                        count += e.feed.entry.length;
+                        $('#loadmore').append('<div class="blog-pager" id="blog-pager"> <span class="load-more" id="load-more-link">Xem thêm</span> <span class="loading"><span class="loader"></span></span> </div>');
+                        $('.islabelsearch').removeClass('load');
+                        if (numPost >= total) {
+                            $("#blog-pager").hide()
+                        }
+                        if (count < total) {
+                            $("#load-more-link").on("click", function(e) {
+                                e.preventDefault();
+                                var a = $(this);
+                                count < total && ($("#blog-pager .loading").show(), a.hide(), setTimeout(function() {
+                                    $.ajax({
+                                        url: "/feeds/posts/default/-/" + label,
+                                        type: "get",
+                                        data: {
+                                            alt: "json",
+                                            "max-results": numPost,
+                                            "start-index": count + 1
+                                        },
+                                        dataType: "jsonp",
+                                        jsonpCallback: "productsearch",
+                                        success: function(e) {
+                                            awe_lazyloadImage();
+                                            cur_this.find('.item_add').click(function() {
+                                                $(".cart_sidebar").toggleClass('active');
+                                                $(".backdrop__body-backdrop___1rvky").addClass('active');
+                                            });
+                                            a.show();
+                                            $("#blog-pager .loading").hide();
+                                            (count += e.feed.entry.length) == total && $("#load-more-link").hide()
+                                        }
+                                    })
+                                }, 100))
+                            })
+                        }
+                    }
+                }
+            })
+        })
+        //]]>
+    </script>
+    <script>
+        //<![CDATA[
+        window.addEventListener('DOMContentLoaded', function() {
+            $(".group-product .aside-list-product").each(function() {
+                var cur = $(this);
+                var label_cate = "san-pham";
+                $.ajax({
+                    url: "/feeds/posts/default/-/" + label_cate,
+                    type: "get",
+                    data: {
+                        alt: "json",
+                        "max-results": 5
+                    },
+                    dataType: "jsonp",
+                    beforeSend: function() {},
+                    success: function(b) {
+                        getproductdata(b);
+                        awe_lazyloadImage();
+                    }
+                })
+
+                function getproductdata(e) {
+                    var entry_post = e.feed.entry;
+                    if (void 0 !== entry_post) {
+                        for (var n = 0; n < e.feed.entry.length; n++) {
+                            var entry = e.feed.entry[n];
+                            for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                                if (e.feed.entry[n].link[s].rel === "alternate") {
+                                    t = e.feed.entry[n].link[s].href;
+                                    break
+                                }
+                            }
+                            var f = e.feed.entry[n].title.$t;
+                            if ("media$thumbnail" in e.feed.entry[n]) {
+                                d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w240-h240-p-k-no-nu");
+                            } else {
+                                d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w240-h240-p-k-no-nu/nth.png"
+                            }
+                            for (var c = 0; c < entry.link.length; c++) {
+                                if (entry.link[c].rel == 'enclosure') {
+                                    var entry_enclosure = entry.link[c].href;
+                                    if (entry_enclosure == "http://giaban.com") {
+                                        var giaban = entry.link[c].type
+                                    }
+                                    if (entry_enclosure == "http://giacu.com") {
+                                        if (entry.link[c].type != "empty" && entry.link[c].type != "image/jpeg" && entry.link[c].type != "image/png") {
+                                            var giacu = entry.link[c].type;
+                                            var cu = '<span class="old-price">'+giacu+'</span>';
+                                        } else {
+                                            cu = ''
+                                        }
+                                    }
+                                }
+                            }
+                            var content = '<div class="evo-product-block-item evo-product-block-item-small"> <a href="'+t+'" title="'+f+'" class="product__box-image"> <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="'+d+'" alt="'+f+'" /> </a> <div class="evo-product-right"> <a href="'+t+'" title="'+f+'" class="product__box-name">'+f+'</a> <div class="product__box-price"> <span class="price">'+giaban+'</span> '+cu+' </div> </div> </div>';
+                            cur.append(content)
+                        }
+                    } else {
+                        var content = '<div class="alert alert-warning fade in green-alert show" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có sản phẩm nào trong danh mục này. </div>';
+                        cur.append(content)
+                    }
+                }
+            })
+        })
+        //]]>
+    </script>
+    <script>
+        //<![CDATA[
+        window.addEventListener('DOMContentLoaded', function() {
+            $(".group-blog .aside-list-product").each(function() {
+                var blog = $(this);
+                var label_cate = "tin-tuc";
+                $.ajax({
+                    url: "/feeds/posts/default/-/" + label_cate,
+                    type: "get",
+                    data: {
+                        alt: "json",
+                        "max-results": 5
+                    },
+                    dataType: "jsonp",
+                    beforeSend: function() {},
+                    success: function(b) {
+                        getproductdata(b);
+                        awe_lazyloadImage();
+                    }
+                })
+
+                function getproductdata(e) {
+                    var entry_post = e.feed.entry;
+                    if (void 0 !== entry_post) {
+                        for (var n = 0; n < e.feed.entry.length; n++) {
+                            var entry = e.feed.entry[n];
+                            for (var s = 0; s < e.feed.entry[n].link.length; s++) {
+                                if (e.feed.entry[n].link[s].rel === "alternate") {
+                                    t = e.feed.entry[n].link[s].href;
+                                    break
+                                }
+                            }
+                            var f = e.feed.entry[n].title.$t;
+                            if ("media$thumbnail" in e.feed.entry[n]) {
+                                d = e.feed.entry[n].media$thumbnail.url.replace("s72-c", "w90-h60-p-k-no-nu");
+                            } else {
+                                d = "https://3.bp.blogspot.com/-Yw8BIuvwoSQ/VsjkCIMoltI/AAAAAAAAC4c/s55PW6xEKn0/w90-h60-p-k-no-nu/nth.png"
+                            }
+
+                            var content = '<div class="evo-product-block-item evo-product-block-item-small"> <a href="'+t+'" title="'+f+'" class="product__box-image"> <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" data-src="'+d+'" alt="'+f+'" /> </a> <div class="evo-product-right"> <a style = "padding-top: 14px;" href="'+t+'" title="'+f+'" class="product__box-name">'+f+'</a></div></div>';
+                            blog.append(content)
+                        }
+                    } else {
+                        var content = '<div class="alert alert-warning fade in green-alert show" role="alert"> <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button> Không có sản phẩm nào trong danh mục này. </div>';
+                        blog.append(content)
+                    }
+                }
+            })
+        })
+        //]]>
+    </script>
+</b:if>
