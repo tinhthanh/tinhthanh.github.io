@@ -4,7 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { RadioField } from '../../../form.field';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -59,7 +59,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [TranslateModule, ReactiveFormsModule],
 })
 export class RadioFieldComponent
-  extends FieldAbstractComponent<RadioField>
+  extends FieldComp<RadioField>
   implements OnInit, AfterViewInit
 {
   ngAfterViewInit(): void {

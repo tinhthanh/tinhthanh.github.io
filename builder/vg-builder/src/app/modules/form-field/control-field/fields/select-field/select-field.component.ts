@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { SelectField } from '../../../form.field';
 import { TranslateModule } from '@ngx-translate/core';
 @Component({
@@ -32,7 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule],
 })
 export class SelectFieldComponent
-  extends FieldAbstractComponent<SelectField>
+  extends FieldComp<SelectField>
   implements OnInit
 {
   isOpen = false;

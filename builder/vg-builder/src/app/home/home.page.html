@@ -19,7 +19,12 @@
 <!--    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>-->
 <!--  </div>-->
 <!--</ion-content>-->
-@if(data) {
-    <app-form-group [config]="data" [patchValue]="patchValue"  (submitEvent)="submit($event)" ></app-form-group>
-}
+
+<app-glass-morphism>
+  <app-morphism-app>
+    @if(data) {
+      <app-form-group [config]="data" [patchValue]="patchValue"  (submitEvent)="submit($event)" ></app-form-group>
+    }
+  </app-morphism-app>
+</app-glass-morphism>
 

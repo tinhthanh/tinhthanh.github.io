@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { TextareaField } from '../../../form.field';
 import { ValidatorStr, toValidator } from '../../../form.validation';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +40,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [ReactiveFormsModule, TranslateModule],
 })
 export class TextareaFieldComponent
-  extends FieldAbstractComponent<TextareaField>
+  extends FieldComp<TextareaField>
   implements OnInit
 {
   override ngOnInit(): void {

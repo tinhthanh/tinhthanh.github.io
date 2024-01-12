@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { SwitchBoxField } from '../../../form.field';
 import {ReactiveFormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
@@ -41,7 +41,7 @@ import {TranslateModule} from "@ngx-translate/core";
       }
     </div>
   }
-   
+
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
@@ -49,7 +49,7 @@ import {TranslateModule} from "@ngx-translate/core";
     TranslateModule
   ]
 })
-export class SwitchFieldComponent extends FieldAbstractComponent<SwitchBoxField> implements OnInit {
+export class SwitchFieldComponent extends FieldComp<SwitchBoxField> implements OnInit {
   uuid = Math.random();
  override ngOnInit(): void {
     super.ngOnInit();

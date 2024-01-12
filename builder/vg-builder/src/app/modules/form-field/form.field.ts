@@ -1,7 +1,7 @@
 import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { ValidatorType } from './form.builder';
 import { ValidatorStr } from './form.validation';
-import { FieldAbstractComponent } from "./control-field/fields/field.abstract.component";
+import { FieldComp } from "./control-field/fields/field-comp.directive";
 import { Type } from "@angular/core";
 import { TextFieldComponent } from "./control-field/fields/text-field/text-field.component";
 import { SelectFieldComponent } from "./control-field/fields/select-field/select-field.component";
@@ -65,7 +65,7 @@ export enum ControlType {
   ObjectFields = 'ObjectFields',
   ArrayObject = 'ArrayObject',
 }
-export const cpRegister: Record<ControlType, Type<FieldAbstractComponent<IField>> | null > = {
+export const cpRegister: Record<ControlType, Type<FieldComp<IField>> | null > = {
   [ControlType.Input]: TextFieldComponent,
   [ControlType.Select]: SelectFieldComponent,
   [ControlType.Date] : DateFieldComponent,

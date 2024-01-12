@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { CheckBoxField } from '../../../form.field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -37,7 +37,7 @@ import { TranslateModule } from '@ngx-translate/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxFieldComponent
-  extends FieldAbstractComponent<CheckBoxField>
+  extends FieldComp<CheckBoxField>
   implements OnInit
 {
   override ngOnInit(): void {

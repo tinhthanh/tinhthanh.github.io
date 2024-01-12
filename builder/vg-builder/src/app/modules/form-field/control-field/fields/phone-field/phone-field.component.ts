@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { PhoneField } from '../../../form.field';
 import { toValidator, ValidatorStr } from '../../../form.validation';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +38,7 @@ import { NgxMaskDirective } from 'ngx-mask';
   imports: [ReactiveFormsModule, TranslateModule, NgxMaskDirective],
 })
 export class PhoneFieldComponent
-  extends FieldAbstractComponent<PhoneField>
+  extends FieldComp<PhoneField>
   implements OnInit
 {
   override ngOnInit(): void {

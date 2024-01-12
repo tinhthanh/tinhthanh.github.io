@@ -31,7 +31,7 @@ import { NgClass } from '@angular/common';
       ></app-object-fields>
       }
 
-      <div class="d-flex justify-center">
+      <div class="d-flex justify-content-center">
         <app-ui-button-submit></app-ui-button-submit>
       </div>
     </form>

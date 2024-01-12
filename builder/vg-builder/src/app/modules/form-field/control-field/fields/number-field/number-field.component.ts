@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { InputNumberField } from '../../../form.field';
 import { ValidatorStr, toValidator } from '../../../form.validation';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [ReactiveFormsModule, NgxMaskDirective, TranslateModule],
 })
 export class NumberFieldComponent
-  extends FieldAbstractComponent<InputNumberField>
+  extends FieldComp<InputNumberField>
   implements OnInit
 {
   override ngOnInit(): void {

@@ -4,7 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { format, parse } from 'date-fns';
 import { of } from 'rxjs';
 import { toValidator, ValidatorStr } from '../../../form.validation';
@@ -21,9 +21,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { calendarOutline } from 'ionicons/icons';
-addIcons({
-  'calendar-outline': calendarOutline,
-});
+
 @Component({
   standalone: true,
   selector: 'app-date-field',
@@ -86,7 +84,7 @@ addIcons({
   ],
 })
 export class DateFieldComponent
-  extends FieldAbstractComponent<DateField>
+  extends FieldComp<DateField>
   implements OnInit
 {
   readonly locale = 'vi';
@@ -94,6 +92,9 @@ export class DateFieldComponent
   currentDate: string | null = null;
   constructor(private cdf: ChangeDetectorRef) {
     super();
+    addIcons({
+      'calendar-outline': calendarOutline,
+    });
   }
 
   override ngOnInit(): void {

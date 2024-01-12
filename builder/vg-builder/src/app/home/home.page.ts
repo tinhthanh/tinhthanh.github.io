@@ -13,6 +13,7 @@ import {
 import {FormControl} from "@angular/forms";
 import { addIcons } from "ionicons";
 import { accessibilityOutline } from "ionicons/icons";
+import {GlassMorphismModule} from "../modules/glass-morphism/glass-morphism.module";
 addIcons({
   "accessibility-outline": accessibilityOutline,
 });
@@ -21,7 +22,7 @@ addIcons({
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormFieldModule, IonIcon],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormFieldModule, IonIcon, GlassMorphismModule],
 })
 export class HomePage {
   data = {

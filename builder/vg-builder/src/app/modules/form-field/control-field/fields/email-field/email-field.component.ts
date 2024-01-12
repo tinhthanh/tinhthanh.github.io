@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FieldAbstractComponent } from '../field.abstract.component';
+import { FieldComp } from '../field-comp.directive';
 import { EmailField } from '../../../form.field';
 import { ValidatorStr, toValidator } from '../../../form.validation';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [ReactiveFormsModule, TranslateModule],
 })
 export class EmailFieldComponent
-  extends FieldAbstractComponent<EmailField>
+  extends FieldComp<EmailField>
   implements OnInit
 {
   override ngOnInit(): void {

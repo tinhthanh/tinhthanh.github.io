@@ -148,7 +148,7 @@
       },
       {
         "file": "src/app/modules/form-field/control-field/fields/date-time/date-time-field.component.ts",
-        "hash": "4099496968988627571"
+        "hash": "334957229577207006"
       },
       {
         "file": "src/app/modules/form-field/control-field/fields/email-field/email-field.component.ts",
@@ -231,12 +231,60 @@
         "hash": "4361167608589969420"
       },
       {
-        "file": "src/assets/i18n/en.json",
+        "file": "src/app/modules/glass-morphism/README.md",
+        "hash": "15123694952437322547"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/glass-morphism.module.ts",
+        "hash": "11993411145169953329"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/glass-morphism.scss",
+        "hash": "2960660842062931189"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/glass-morphism/glass-morphism.component.html",
+        "hash": "11276105877545240770"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/glass-morphism/glass-morphism.component.scss",
         "hash": "3244421341483603138"
       },
       {
-        "file": "src/assets/i18n/vi.json",
+        "file": "src/app/modules/glass-morphism/glass-morphism/glass-morphism.component.ts",
+        "hash": "6131656421728657195"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/morphism-app/morphism-app.component.html",
+        "hash": "18210464596908337897"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/morphism-app/morphism-app.component.scss",
         "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/morphism-app/morphism-app.component.ts",
+        "hash": "9194571902251054641"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/ui-bg/ui-bg.component.css",
+        "hash": "16398267829404305918"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/ui-bg/ui-bg.component.html",
+        "hash": "3185906059495392584"
+      },
+      {
+        "file": "src/app/modules/glass-morphism/ui-bg/ui-bg.component.ts",
+        "hash": "825526888386076753"
+      },
+      {
+        "file": "src/assets/i18n/en.json",
+        "hash": "14463945231279738946"
+      },
+      {
+        "file": "src/assets/i18n/vi.json",
+        "hash": "14463945231279738946"
       },
       {
         "file": "src/assets/icon/favicon.png",

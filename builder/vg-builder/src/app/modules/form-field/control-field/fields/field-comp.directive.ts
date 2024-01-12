@@ -6,7 +6,7 @@ import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
 @Directive()
-export abstract class FieldAbstractComponent<T extends IField> implements OnInit, OnDestroy {
+export abstract class FieldComp<T extends IField> implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.$destroy.next();
     this.$destroy.complete();
