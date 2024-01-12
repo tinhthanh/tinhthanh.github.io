@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FieldAbstractComponent } from '../field.abstract.component';
 import { SwitchBoxField } from '../../../form.field';
-import {NgIf} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TranslateModule} from "@ngx-translate/core";
 
@@ -9,8 +8,8 @@ import {TranslateModule} from "@ngx-translate/core";
   standalone: true,
   selector: 'app-switch-field',
   template: `
+  @if (field) {
     <div
-      *ngIf="field"
       class="form-group form-floating"
     >
       <div>
@@ -35,14 +34,17 @@ import {TranslateModule} from "@ngx-translate/core";
           </div>
         </div>
       </div>
-      <div class="error-message" *ngIf="control.invalid && control.errors">
+      @if(control.invalid && control.errors) {
+        <div class="error-message" >
         {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
       </div>
+      }
     </div>
+  }
+   
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgIf,
     ReactiveFormsModule,
     TranslateModule
   ]

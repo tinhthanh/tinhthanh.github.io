@@ -11,7 +11,6 @@ import {
   TextField
 } from '../modules/form-field/form.field';
 import {FormControl} from "@angular/forms";
-import {NgIf} from "@angular/common";
 import { addIcons } from "ionicons";
 import { accessibilityOutline } from "ionicons/icons";
 addIcons({
@@ -22,7 +21,7 @@ addIcons({
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormFieldModule, NgIf, IonIcon],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, FormFieldModule, IonIcon],
 })
 export class HomePage {
   data = {
@@ -149,41 +148,41 @@ export class HomePage {
           name: 'switch',
           label: 'Switch',
         }),
-        // textarea: new TextareaField({
-        //   required: true,
-        //   label: 'Text area',
-        //   name: 'textarea',
-        //   placeholder: 'Text area',
-        //   disabled: false,
-        //   maxLength: 25,
-        //   minLength: 3,
-        // }),
-        // select: new SelectField({
-        //   required: true,
-        //   label: 'Select field',
-        //   name: 'select',
-        //   searchable: true,
-        //   options: [
-        //     {
-        //       label: 'Huỳnh tính thành',
-        //       value: 'Nam',
-        //     },
-        //     {
-        //       label: 'Lệ thị thắm',
-        //       value: 'NU',
-        //     },
-        //   ],
-        //   onChange: (field: SelectField, control: FormControl) => {
-        //    if(control.parent && control.parent.get('textarea')) {
-        //      const textarea = control.parent.get('textarea') as FormControl;
-        //       textarea.setValue(null);
-        //    }
-        //   },
-        // }),
-        // checkbox: new CheckBoxField({
-        //   label: 'Check box field',
-        //   name: 'checkbox',
-        // }),
+        textarea: new TextareaField({
+          required: true,
+          label: 'Text area',
+          name: 'textarea',
+          placeholder: 'Text area',
+          disabled: false,
+          maxLength: 25,
+          minLength: 3,
+        }),
+        select: new SelectField({
+          required: true,
+          label: 'Select field',
+          name: 'select',
+          searchable: true,
+          options: [
+            {
+              label: 'Huỳnh tính thành',
+              value: 'Nam',
+            },
+            {
+              label: 'Lệ thị thắm',
+              value: 'NU',
+            },
+          ],
+          onChange: (field: SelectField, control: FormControl) => {
+           if(control.parent && control.parent.get('textarea')) {
+             const textarea = control.parent.get('textarea') as FormControl;
+              textarea.setValue(null);
+           }
+          },
+        }),
+        checkbox: new CheckBoxField({
+          label: 'Check box field',
+          name: 'checkbox',
+        }),
       },
     }),
     radio: new RadioField({

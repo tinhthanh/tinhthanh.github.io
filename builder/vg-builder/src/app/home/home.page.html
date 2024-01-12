@@ -19,5 +19,7 @@
 <!--    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>-->
 <!--  </div>-->
 <!--</ion-content>-->
-<app-form-group *ngIf="data" [config]="data" [patchValue]="patchValue"  (submitEvent)="submit($event)" ></app-form-group>
+@if(data) {
+    <app-form-group [config]="data" [patchValue]="patchValue"  (submitEvent)="submit($event)" ></app-form-group>
+}
 

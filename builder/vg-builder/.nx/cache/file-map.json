@@ -16,7 +16,12 @@
     "@capacitor/keyboard": "5.0.7",
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.5.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
+    "bootstrap": "^5.3.2",
+    "date-fns": "^3.2.0",
     "ionicons": "^7.2.1",
+    "ngx-mask": "^17.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2",
@@ -79,7 +84,7 @@
       },
       {
         "file": "angular.json",
-        "hash": "3441896567139753889"
+        "hash": "11196489287791985263"
       },
       {
         "file": "capacitor.config.ts",
@@ -95,11 +100,11 @@
       },
       {
         "file": "package-lock.json",
-        "hash": "6498384055287561649"
+        "hash": "12865192138146536578"
       },
       {
         "file": "package.json",
-        "hash": "11918815405759057743"
+        "hash": "12090003690299393448"
       },
       {
         "file": "src/app/app.component.html",
@@ -115,15 +120,123 @@
       },
       {
         "file": "src/app/home/home.page.html",
-        "hash": "3668328913015384273"
+        "hash": "16894357982674777347"
       },
       {
         "file": "src/app/home/home.page.scss",
-        "hash": "14250411118003398491"
+        "hash": "7529705918010212778"
       },
       {
         "file": "src/app/home/home.page.ts",
-        "hash": "8695204198416056090"
+        "hash": "13016300889605224088"
+      },
+      {
+        "file": "src/app/modules/form-field/array-object/array-object.component.ts",
+        "hash": "6880349301501511760"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/control-field.component.ts",
+        "hash": "16807795626831996816"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/checkbox-field/checkbox-field.component.ts",
+        "hash": "11021804316305057815"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/date-field/date-field.component.ts",
+        "hash": "16253508411212535031"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/date-time/date-time-field.component.ts",
+        "hash": "4099496968988627571"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/email-field/email-field.component.ts",
+        "hash": "2161599878680546279"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/field.abstract.component.ts",
+        "hash": "15718073923032262166"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/number-field/number-field.component.ts",
+        "hash": "13098973912997546672"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/phone-field/phone-field.component.ts",
+        "hash": "9050610568395002814"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/radio-field/radio-field.component.scss",
+        "hash": "14687634075504886112"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/radio-field/radio-field.component.ts",
+        "hash": "13294469217064831618"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/select-field/select-field.component.ts",
+        "hash": "2874533460382004652"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/switch-field/switch-field.component.ts",
+        "hash": "8690426341042122094"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/text-field/text-field.component.ts",
+        "hash": "5012391856025074183"
+      },
+      {
+        "file": "src/app/modules/form-field/control-field/fields/textarea-field/textarea-field.component.ts",
+        "hash": "2207460931396280408"
+      },
+      {
+        "file": "src/app/modules/form-field/db-utils.ts",
+        "hash": "14292005698835458745"
+      },
+      {
+        "file": "src/app/modules/form-field/fields.scss",
+        "hash": "6235277730122790009"
+      },
+      {
+        "file": "src/app/modules/form-field/form-field.module.ts",
+        "hash": "6549437249843149884"
+      },
+      {
+        "file": "src/app/modules/form-field/form-group/form-group.component.ts",
+        "hash": "17418864433849200690"
+      },
+      {
+        "file": "src/app/modules/form-field/form.builder.ts",
+        "hash": "2923753026863832935"
+      },
+      {
+        "file": "src/app/modules/form-field/form.field.ts",
+        "hash": "1774885996807054516"
+      },
+      {
+        "file": "src/app/modules/form-field/form.validation.ts",
+        "hash": "7844920384436757548"
+      },
+      {
+        "file": "src/app/modules/form-field/object-fields/object-fields.component.ts",
+        "hash": "15434320403692707424"
+      },
+      {
+        "file": "src/app/modules/form-field/placeholder.directive.ts",
+        "hash": "12786262596689259116"
+      },
+      {
+        "file": "src/app/modules/form-field/ui/ui-button-submit.component.ts",
+        "hash": "4361167608589969420"
+      },
+      {
+        "file": "src/assets/i18n/en.json",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/assets/i18n/vi.json",
+        "hash": "3244421341483603138"
       },
       {
         "file": "src/assets/icon/favicon.png",
@@ -143,15 +256,15 @@
       },
       {
         "file": "src/global.scss",
-        "hash": "16777120732726033300"
+        "hash": "10962786193304256001"
       },
       {
         "file": "src/index.html",
-        "hash": "5962093970713772175"
+        "hash": "17700476656239030458"
       },
       {
         "file": "src/main.ts",
-        "hash": "2176631444493407734"
+        "hash": "5789612656149452940"
       },
       {
         "file": "src/polyfills.ts",
@@ -160,6 +273,10 @@
       {
         "file": "src/test.ts",
         "hash": "12412031923219697029"
+      },
+      {
+        "file": "src/theme/color.scss",
+        "hash": "11987052844054691887"
       },
       {
         "file": "src/theme/variables.scss",
@@ -175,7 +292,7 @@
       },
       {
         "file": "tsconfig.json",
-        "hash": "11182919478073887917"
+        "hash": "11543165090098848082"
       },
       {
         "file": "tsconfig.spec.json",

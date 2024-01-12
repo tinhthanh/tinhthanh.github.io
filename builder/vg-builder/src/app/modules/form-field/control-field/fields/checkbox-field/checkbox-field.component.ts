@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FieldAbstractComponent } from '../field.abstract.component';
 import { CheckBoxField } from '../../../form.field';
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {TranslateModule} from "@ngx-translate/core";
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-checkbox-field',
   template: `
-    <div *ngIf="field" class="form-group form-floating">
+    @if(field) {
+    <div class="form-group form-floating">
       <div>
         <label>
           <input
@@ -22,21 +22,25 @@ import {TranslateModule} from "@ngx-translate/core";
             {{ field.label | translate }}
           </div>
         </label>
-        <div class="error-message" *ngIf="control.invalid && control.errors">
-          {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
+        @if(control.invalid && control.errors) {
+        <div class="error-message">
+          {{
+            control.errors['msg'] | translate : control.errors['params'] || {}
+          }}
         </div>
+        }
       </div>
     </div>
+    }
   `,
-  imports: [
-    ReactiveFormsModule,
-    NgIf,
-    TranslateModule
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [ReactiveFormsModule, TranslateModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CheckboxFieldComponent extends FieldAbstractComponent<CheckBoxField> implements OnInit {
-override  ngOnInit(): void {
+export class CheckboxFieldComponent
+  extends FieldAbstractComponent<CheckBoxField>
+  implements OnInit
+{
+  override ngOnInit(): void {
     super.ngOnInit();
   }
 }

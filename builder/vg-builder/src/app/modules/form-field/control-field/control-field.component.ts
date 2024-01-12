@@ -12,7 +12,6 @@ import {
   Type
 } from "@angular/core";
 import { FieldMode, IField,cpRegister } from '../form.field';
-import {NgIf} from "@angular/common";
 import {PlaceholderDirective} from "../placeholder.directive";
 import {ViewContainerRef} from '@angular/core';
 @Component({
@@ -28,7 +27,6 @@ import {ViewContainerRef} from '@angular/core';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgIf,
     PlaceholderDirective
   ]
 })

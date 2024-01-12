@@ -9,41 +9,49 @@ import { format, parse } from 'date-fns';
 import { of } from 'rxjs';
 import { toValidator, ValidatorStr } from '../../../form.validation';
 import { DateField } from '../../../form.field';
-import {formatDate} from "../../../db-utils";
-import {NgIf} from "@angular/common";
-import {ReactiveFormsModule} from "@angular/forms";
-import {NgxMaskDirective} from "ngx-mask";
-import {TranslateModule} from "@ngx-translate/core";
-import {IonContent, IonDatetime, IonIcon, IonModal} from "@ionic/angular/standalone";
-import { addIcons } from "ionicons";
-import {  calendarOutline } from "ionicons/icons";
+import { formatDate } from '../../../db-utils';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
+import { TranslateModule } from '@ngx-translate/core';
+import {
+  IonContent,
+  IonDatetime,
+  IonIcon,
+  IonModal,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { calendarOutline } from 'ionicons/icons';
 addIcons({
-  "calendar-outline": calendarOutline,
+  'calendar-outline': calendarOutline,
 });
 @Component({
   standalone: true,
   selector: 'app-date-field',
   template: `
     @if (field) {
-      <div  class="form-group form-floating">
-        <input
-          type="tel"
-          class="form-control"
-          [formControl]="control"
-          placeholder="dd/MM/yyyy"
-          [attr.name]="field.name"
-          mask="00/00/0000"
-          [dropSpecialCharacters]="false"
-        />
-        <ion-icon (click)="openModal()" name="calendar-outline"></ion-icon>
-        <label class="form-check-label"
+    <div class="form-group form-floating">
+      <input
+        type="tel"
+        class="form-control"
+        [formControl]="control"
+        placeholder="dd/MM/yyyy"
+        [attr.name]="field.name"
+        mask="00/00/0000"
+        [dropSpecialCharacters]="false"
+      />
+      <ion-icon (click)="openModal()" name="calendar-outline"></ion-icon>
+      <label class="form-check-label"
         >{{ field.label | translate }}
-          <sup *ngIf="field.required">*</sup></label
-        >
-        <div class="error-message" *ngIf="control.invalid && control.errors">
-          {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
+        @if(field.required) {
+        <sup>*</sup>
+        }
+      </label>
+      @if(control.invalid && control.errors) {
+        <div class="error-message">
+        {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
         </div>
-      </div>
+      }
+    </div>
     }
 
     <ion-modal
@@ -68,15 +76,14 @@ addIcons({
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgIf,
     ReactiveFormsModule,
     NgxMaskDirective,
     TranslateModule,
     IonIcon,
     IonModal,
     IonContent,
-    IonDatetime
-  ]
+    IonDatetime,
+  ],
 })
 export class DateFieldComponent
   extends FieldAbstractComponent<DateField>
@@ -84,16 +91,14 @@ export class DateFieldComponent
 {
   readonly locale = 'vi';
   isModalOpen = false;
-  currentDate:string | null = null;
+  currentDate: string | null = null;
   constructor(private cdf: ChangeDetectorRef) {
     super();
   }
 
- override ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
-    this.control.addValidators(
-      toValidator[ValidatorStr.date](this.field)
-    );
+    this.control.addValidators(toValidator[ValidatorStr.date](this.field));
   }
   openModal(): void {
     if (this.control.value && this.control.valid) {
@@ -110,8 +115,10 @@ export class DateFieldComponent
     return of(true).toPromise();
   };
 
-  valueDateChange(value:string | string[] | null | undefined): void {
-    if (!value) {return;}
+  valueDateChange(value: string | string[] | null | undefined): void {
+    if (!value) {
+      return;
+    }
     const date = new Date(value as string);
     const dateStr = format(date, 'dd/MM/yyyy');
     console.log(dateStr);

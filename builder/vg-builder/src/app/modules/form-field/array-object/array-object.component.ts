@@ -1,55 +1,52 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import { ArrayObject, ControlType, FieldMode } from "../form.field";
-import {FormArray, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
+import { ArrayObject, ControlType, FieldMode } from '../form.field';
+import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { toFormGroup, toValueDefault } from '../form.builder';
-import {JsonPipe, KeyValuePipe, NgForOf, NgIf} from "@angular/common";
-import {IonicModule} from "@ionic/angular";
-import {ObjectFieldsComponent} from "../object-fields/object-fields.component";
-import {ControlFieldComponent} from "../control-field/control-field.component";
-import { addIcons } from "ionicons";
-import {  trashOutline } from "ionicons/icons";
-addIcons({
-  "trash-outline": trashOutline,
-});
+import { KeyValuePipe } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { ObjectFieldsComponent } from '../object-fields/object-fields.component';
+import { ControlFieldComponent } from '../control-field/control-field.component';
+import { addIcons } from 'ionicons';
+import { trashOutline } from 'ionicons/icons';
+
 @Component({
   standalone: true,
   selector: 'app-array-object',
   template: `
-    <div class="mb-3" *ngIf="formGroup" [formGroup]="formGroup">
-      <ng-container *ngFor="let form of formGroup.controls; let i = index">
-        <div class="d-flex" [formGroup]="form">
-          <div class="row flex-1">
-            <ng-container *ngFor="let item of arrayObject | keyvalue: orderOriginal">
-              <app-control-field
-                *ngIf="
-                  item.value.type !== controlType.ObjectFields &&
-                  item.value.type !== controlType.ArrayObject
-                "
-                [mode]="fieldMode"
-                [field]="item.value"
-                [formControlName]="item.value.name"
-                [class]="item.value.classes || ''"
-              ></app-control-field>
-              <ng-container
-                *ngIf="
-                  item.value.type === controlType.ObjectFields ||
-                  item.value.type === controlType.ArrayObject
-                "
-              >
-                <app-object-fields
-                  [formGroup]="form"
-                  [fieldMode]="fieldMode"
-                  [objectField]="item.value"
-                ></app-object-fields>
-              </ng-container>
-            </ng-container>
-          </div>
-          <div class="remove-item">
-            <ion-icon (click)="removeItem(i)" name="trash-outline"></ion-icon>
-          </div>
+    @if(formGroup) {
+    <div class="mb-3" [formGroup]="formGroup">
+      @for (form of formGroup.controls; track form; let i = $index) {
+      <div class="d-flex" [formGroup]="form">
+        <div class="row flex-1">
+          @for( item of arrayObject | keyvalue: orderOriginal ; track item) {
+          @if( item.value.type !== controlType.ObjectFields && item.value.type
+          !== controlType.ArrayObject) {
+          <app-control-field
+            [mode]="fieldMode"
+            [field]="item.value"
+            [formControlName]="item.value.name"
+            [class]="item.value.classes || ''"
+          ></app-control-field>
+          } @else if( item.value.type === controlType.ObjectFields ||
+          item.value.type === controlType.ArrayObject ) {
+          <app-object-fields
+            [formGroup]="form"
+            [fieldMode]="fieldMode"
+            [objectField]="item.value"
+          ></app-object-fields>
+          } }
         </div>
-        <div class="dash-line mb-3"></div>
-      </ng-container>
+        <div class="remove-item">
+          <ion-icon (click)="removeItem(i)" name="trash-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="dash-line mb-3"></div>
+      }
       <div class="field-control">
         <div class="last">
           <button type="button" (click)="addItem()" class="btn">
@@ -136,31 +133,37 @@ addIcons({
         </svg>
       </div>
     </div>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    NgIf,
-    NgForOf,
     KeyValuePipe,
     IonicModule,
     forwardRef(() => ObjectFieldsComponent),
     ControlFieldComponent,
-    JsonPipe
-  ]
+  ],
 })
 export class ArrayObjectComponent<T> {
   @Input() fieldMode: FieldMode = FieldMode.CREATE;
-  @Input() arrayObject!: {[key: string]: ArrayObject<T> };
+  @Input() arrayObject!: { [key: string]: ArrayObject<T> };
   @Input() formGroup!: FormGroup | any;
   readonly controlType = ControlType;
+  constructor() {
+    addIcons({
+      'trash-outline': trashOutline,
+    });
+  }
 
   addItem() {
     const formArray = this.formGroup as FormArray;
-    const d = Object.values(this.arrayObject).reduce((pre, curr) => ({
+    const d = Object.values(this.arrayObject).reduce(
+      (pre, curr) => ({
         ...pre,
         [curr.name]: toValueDefault(curr),
-      }), {});
+      }),
+      {}
+    );
     console.log(d);
     formArray.push(toFormGroup(d));
   }

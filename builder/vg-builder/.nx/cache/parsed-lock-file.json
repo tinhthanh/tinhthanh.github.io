@@ -2619,6 +2619,24 @@
         "hash": "sha512-UCiLrV2aLrtR7Wr/jJi0nH2Xzb7ETenrPWU/EcW9V3lnlDun5g1J0y01jRzvcipxNTOmFfI4lqv288nKSmSOAA=="
       }
     },
+    "npm:@ngx-translate/core": {
+      "type": "npm",
+      "name": "npm:@ngx-translate/core",
+      "data": {
+        "version": "15.0.0",
+        "packageName": "@ngx-translate/core",
+        "hash": "sha512-Am5uiuR0bOOxyoercDnAA3rJVizo4RRqJHo8N3RqJ+XfzVP/I845yEnMADykOHvM6HkVm4SZSnJBOiz0Anx5BA=="
+      }
+    },
+    "npm:@ngx-translate/http-loader": {
+      "type": "npm",
+      "name": "npm:@ngx-translate/http-loader",
+      "data": {
+        "version": "8.0.0",
+        "packageName": "@ngx-translate/http-loader",
+        "hash": "sha512-SFMsdUcmHF5OdZkL1CHEoSAwbP5EbAOPTLLboOCRRoOg21P4GJx+51jxGdJeGve6LSKLf4Pay7BkTwmE6vxYlg=="
+      }
+    },
     "npm:@nodelib/fs.scandir": {
       "type": "npm",
       "name": "npm:@nodelib/fs.scandir",
@@ -2923,6 +2941,15 @@
         "version": "0.11.0",
         "packageName": "@pkgjs/parseargs",
         "hash": "sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg=="
+      }
+    },
+    "npm:@popperjs/core": {
+      "type": "npm",
+      "name": "npm:@popperjs/core",
+      "data": {
+        "version": "2.11.8",
+        "packageName": "@popperjs/core",
+        "hash": "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
       }
     },
     "npm:@sigstore/bundle": {
@@ -4203,6 +4230,15 @@
         "hash": "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="
       }
     },
+    "npm:bootstrap": {
+      "type": "npm",
+      "name": "npm:bootstrap",
+      "data": {
+        "version": "5.3.2",
+        "packageName": "bootstrap",
+        "hash": "sha512-D32nmNWiQHo94BKHLmOrdjlL05q1c8oxbtBphQFb9Z5to6eGRDCm0QgeaZ4zFBHzfg2++rqa2JkqCcxDy0sH0g=="
+      }
+    },
     "npm:bplist-parser": {
       "type": "npm",
       "name": "npm:bplist-parser",
@@ -4912,6 +4948,15 @@
         "version": "1.0.1",
         "packageName": "custom-event",
         "hash": "sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg=="
+      }
+    },
+    "npm:date-fns": {
+      "type": "npm",
+      "name": "npm:date-fns",
+      "data": {
+        "version": "3.2.0",
+        "packageName": "date-fns",
+        "hash": "sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg=="
       }
     },
     "npm:date-format": {
@@ -8134,6 +8179,15 @@
         "version": "2.6.2",
         "packageName": "neo-async",
         "hash": "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
+      }
+    },
+    "npm:ngx-mask": {
+      "type": "npm",
+      "name": "npm:ngx-mask",
+      "data": {
+        "version": "17.0.4",
+        "packageName": "ngx-mask",
+        "hash": "sha512-Rfox/zLIcuEc+t8xGvDYL83KYw0P80Ctvx+uy3v/F901XLhzEXKEgPOEFRKNkQu4Eu5Y7SjnX44mGdk/1cqh3w=="
       }
     },
     "npm:nice-napi": {
@@ -14278,6 +14332,41 @@
       "type": "static"
     },
     {
+      "source": "npm:@ngx-translate/core",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/core",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/core",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/http-loader",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/http-loader",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/http-loader",
+      "target": "npm:@ngx-translate/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@ngx-translate/http-loader",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
       "source": "npm:@nodelib/fs.scandir",
       "target": "npm:@nodelib/fs.stat",
       "type": "static"
@@ -15735,6 +15824,11 @@
     {
       "source": "npm:bonjour-service",
       "target": "npm:multicast-dns",
+      "type": "static"
+    },
+    {
+      "source": "npm:bootstrap",
+      "target": "npm:@popperjs/core",
       "type": "static"
     },
     {
@@ -20055,6 +20149,26 @@
     {
       "source": "npm:iconv-lite@0.6.3",
       "target": "npm:safer-buffer",
+      "type": "static"
+    },
+    {
+      "source": "npm:ngx-mask",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:ngx-mask",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:ngx-mask",
+      "target": "npm:@angular/forms",
+      "type": "static"
+    },
+    {
+      "source": "npm:ngx-mask",
+      "target": "npm:tslib",
       "type": "static"
     },
     {
