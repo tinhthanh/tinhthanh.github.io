@@ -14,16 +14,11 @@ import {
 import { FieldMode, IField,cpRegister } from '../form.field';
 import {NgIf} from "@angular/common";
 import {PlaceholderDirective} from "../placeholder.directive";
-
+import {ViewContainerRef} from '@angular/core';
 @Component({
   selector: 'app-control-field',
   standalone: true,
-  template: `
-    <ng-container *ngIf="_field && cp">
-      <ng-template [appPlaceholder]="cp"
-                   [initData]="{field: _field,mode,control:formControl}"></ng-template>
-    </ng-container>
-  `,
+  template: ``,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -39,17 +34,20 @@ import {PlaceholderDirective} from "../placeholder.directive";
 })
 export class ControlFieldComponent implements ControlValueAccessor {
  _field: IField | undefined;
-  cp: Type<any> | undefined;
+  cp!: Type<any> ;
   @Input() set field(field: IField ) {
     if(field) {
       this._field = field;
       // @ts-ignore
-      this.cp = cpRegister[field.type];
+      this.cp = cpRegister[field.type] ;
+      this.viewContainerRef.clear();
+    const instance =  this.viewContainerRef.createComponent(this.cp).instance;
+     Object.assign(instance, {field: this._field,mode: this.mode,control:this.formControl});
     }
   };
   @Input() mode = FieldMode.CREATE;
   // _value: string | number | Date = '';
-  constructor( private formGroupDirective: FormGroupDirective) {}
+  constructor(private viewContainerRef: ViewContainerRef, private formGroupDirective: FormGroupDirective) {}
   get formControl(): AbstractControl | any {
     return this.formGroupDirective.control.get(this._field!!.name);
   }

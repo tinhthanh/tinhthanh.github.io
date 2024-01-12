@@ -13,31 +13,39 @@ import {formatDate} from "../../../db-utils";
 import {NgIf} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskDirective} from "ngx-mask";
-import {IonicModule} from "@ionic/angular";
 import {TranslateModule} from "@ngx-translate/core";
+import {IonContent, IonDatetime, IonIcon, IonModal} from "@ionic/angular/standalone";
+import { addIcons } from "ionicons";
+import {  calendarOutline } from "ionicons/icons";
+addIcons({
+  "calendar-outline": calendarOutline,
+});
 @Component({
   standalone: true,
   selector: 'app-date-field',
   template: `
-    <div *ngIf="field" class="form-group form-floating">
-      <input
-        type="tel"
-        class="form-control"
-        [formControl]="control"
-        placeholder="dd/MM/yyyy"
-        [attr.name]="field.name"
-        mask="00/00/0000"
-        [dropSpecialCharacters]="false"
-      />
-      <ion-icon (click)="openModal()" name="calendar-outline"></ion-icon>
-      <label class="form-check-label"
-      >{{ field.label | translate }}
-        <sup *ngIf="field.required">*</sup></label
-      >
-      <div class="error-message" *ngIf="control.invalid && control.errors">
-        {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
+    @if (field) {
+      <div  class="form-group form-floating">
+        <input
+          type="tel"
+          class="form-control"
+          [formControl]="control"
+          placeholder="dd/MM/yyyy"
+          [attr.name]="field.name"
+          mask="00/00/0000"
+          [dropSpecialCharacters]="false"
+        />
+        <ion-icon (click)="openModal()" name="calendar-outline"></ion-icon>
+        <label class="form-check-label"
+        >{{ field.label | translate }}
+          <sup *ngIf="field.required">*</sup></label
+        >
+        <div class="error-message" *ngIf="control.invalid && control.errors">
+          {{ control.errors['msg'] | translate : control.errors['params'] || {} }}
+        </div>
       </div>
-    </div>
+    }
+
     <ion-modal
       [canDismiss]="closePopup"
       [isOpen]="isModalOpen"
@@ -46,6 +54,7 @@ import {TranslateModule} from "@ngx-translate/core";
       <ng-template>
         <ion-content style=" --background: transparent;">
           <ion-datetime
+            mode="ios"
             #popoverDatetime
             style="margin: 0 auto;"
             [value]="currentDate"
@@ -62,8 +71,11 @@ import {TranslateModule} from "@ngx-translate/core";
     NgIf,
     ReactiveFormsModule,
     NgxMaskDirective,
-    IonicModule,
-    TranslateModule
+    TranslateModule,
+    IonIcon,
+    IonModal,
+    IonContent,
+    IonDatetime
   ]
 })
 export class DateFieldComponent

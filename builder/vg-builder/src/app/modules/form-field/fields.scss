@@ -1,7 +1,7 @@
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
-@import "~@ng-select/ng-select/themes/default.theme.css";
+//@import "node_modules/bootstrap/scss/functions";
+//@import "node_modules/bootstrap/scss/variables";
+//@import "node_modules/bootstrap/scss/mixins";
+//@import "~@ng-select/ng-select/themes/default.theme.css";
   $dark-grey-color: #666670;
 app-switch-field {
   .radio-wrapper {
@@ -167,9 +167,9 @@ app-array-object , app-object-fields , app-control-field , app-form-group {
     > sup {
       color: var(--color5);
     }
-    @include media-breakpoint-up(md) {
-      font-size: 16px;
-    }
+    //@include media-breakpoint-up(md) {
+    //  font-size: 16px;
+    //}
     opacity: 1 !important;
   }
   .form-mode-view {

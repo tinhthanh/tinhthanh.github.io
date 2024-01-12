@@ -13,8 +13,13 @@ import {formatDate} from "../../../db-utils";
 import {NgIf} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxMaskDirective} from "ngx-mask";
-import {IonicModule} from "@ionic/angular";
 import {TranslateModule} from "@ngx-translate/core";
+import {IonContent, IonDatetime, IonIcon, IonModal} from "@ionic/angular/standalone";
+import { addIcons } from "ionicons";
+import {  calendarOutline } from "ionicons/icons";
+addIcons({
+  "calendar-outline": calendarOutline,
+});
 @Component({
   standalone: true,
   selector: 'app-date-time-field',
@@ -46,6 +51,7 @@ import {TranslateModule} from "@ngx-translate/core";
       <ng-template>
         <ion-content style=" --background: transparent;">
           <ion-datetime
+            mode="ios"
             #popoverDatetime
             hourValues="8,9,10,11,12,13,14,15,16,17,18,19,20"
             minuteValues="0,15,30,45"
@@ -69,8 +75,11 @@ import {TranslateModule} from "@ngx-translate/core";
     NgIf,
     ReactiveFormsModule,
     NgxMaskDirective,
-    IonicModule,
-    TranslateModule
+    TranslateModule,
+    IonContent,
+    IonDatetime,
+    IonModal,
+    IonIcon
   ]
 })
 export class DateTimeFieldComponent
@@ -99,7 +108,7 @@ export class DateTimeFieldComponent
       );
     }
     this.isModalOpen = true;
-    this.cdf.markForCheck();
+    this.cdf.detectChanges();
   }
   closePopup = async () => {
     this.isModalOpen = false;

@@ -6,7 +6,11 @@ import {JsonPipe, KeyValuePipe, NgForOf, NgIf} from "@angular/common";
 import {IonicModule} from "@ionic/angular";
 import {ObjectFieldsComponent} from "../object-fields/object-fields.component";
 import {ControlFieldComponent} from "../control-field/control-field.component";
-
+import { addIcons } from "ionicons";
+import {  trashOutline } from "ionicons/icons";
+addIcons({
+  "trash-outline": trashOutline,
+});
 @Component({
   standalone: true,
   selector: 'app-array-object',
@@ -52,15 +56,15 @@ import {ControlFieldComponent} from "../control-field/control-field.component";
             <span> Thêm</span>
             <svg preserveAspectRatio="none" viewBox="0 0 132 45">
               <g clip-path="url(#clip)" filter="url(#goo-big)">
-                <circle class="top-left" cx="49.5" cy="-0.5" r="26.5"/>
-                <circle class="middle-bottom" cx="70.5" cy="40.5" r="26.5"/>
-                <circle class="top-right" cx="104" cy="6.5" r="27"/>
-                <circle class="right-bottom" cx="123.5" cy="36.5" r="26.5"/>
-                <circle class="left-bottom" cx="16.5" cy="28" r="30"/>
+                <circle class="top-left" cx="49.5" cy="-0.5" r="26.5" />
+                <circle class="middle-bottom" cx="70.5" cy="40.5" r="26.5" />
+                <circle class="top-right" cx="104" cy="6.5" r="27" />
+                <circle class="right-bottom" cx="123.5" cy="36.5" r="26.5" />
+                <circle class="left-bottom" cx="16.5" cy="28" r="30" />
               </g>
               <defs>
                 <clipPath id="clip">
-                  <rect width="132" height="45" rx="7"/>
+                  <rect width="132" height="45" rx="7" />
                 </clipPath>
               </defs>
             </svg>
