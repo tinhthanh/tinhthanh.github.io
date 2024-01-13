@@ -11,12 +11,7 @@ import {
   TextField
 } from '../modules/form-field/form.field';
 import {FormControl} from "@angular/forms";
-import { addIcons } from "ionicons";
-import { accessibilityOutline } from "ionicons/icons";
 import {GlassMorphismModule} from "../modules/glass-morphism/glass-morphism.module";
-addIcons({
-  "accessibility-outline": accessibilityOutline,
-});
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
