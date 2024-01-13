@@ -1,0 +1,42 @@
+@if(uiElement) {
+  <ul class="tree">
+    <li>
+      @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
+        <details open>
+          <summary>{{uiElement.label}}</summary>
+          <ul>
+            @for( item of uiElement.children | keyvalue:  orderOriginal; track item ) {
+              <li>
+                <ng-container
+                  *ngTemplateOutlet="inner; context: { children: item.value }">
+                </ng-container>
+              </li>
+            }
+          </ul>
+        </details>
+      } @else {
+        {{uiElement.label}}
+      }
+    </li>
+  </ul>
+  <ng-template #inner let-children="children">
+    @if(children.children && Object.keys(children.children).length > 0) {
+      <details open>
+        <summary>{{children.label}}</summary>
+        <ul>
+          @for( item of children.children | keyvalue:  orderOriginal; track item ) {
+            <li>
+              <ng-container
+                *ngTemplateOutlet="inner; context: { children: item.value }">
+              </ng-container>
+            </li>
+          }
+        </ul>
+      </details>
+    } @else {
+      {{children.label}}
+    }
+  </ng-template>
+}
+
+

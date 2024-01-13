@@ -1,45 +1,77 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { UiElementPage } from "../modules/glass-morphism/pages/ui-element.page";
-import { IElementUi, PageUi } from "../modules/glass-morphism/pages/element.ui";
+import { Column, IElementUi, PageUi } from "../modules/glass-morphism/pages/element.ui";
+import { TreeElementPage } from "./tree-element/tree-element.page";
+import { SettingElementPage } from "./setting-element/setting-element.page";
 
 @Component({
     selector: 'app-ui-builder',
     template: `
-      <app-ui-elemnet [uiElement]="uiElement"></app-ui-elemnet>
+     <div class="d-flex flex-row">
+     <app-tree-element [uiElement]="uiElement"></app-tree-element>
+     <app-ui-elemnet [uiElement]="uiElement"></app-ui-elemnet>
+     <app-setting-element></app-setting-element>
+     </div>
     `,
+    styles: [`
+        :host {
+            color: white;
+        }
+
+        app-ui-elemnet {
+            flex:1
+        }
+        app-tree-element {
+            width: 300px;
+            height: 100vh;
+            border: 1px solid red;
+            overflow: auto;
+        }
+        app-setting-element {
+            width: 300px;
+            height: 100vh;
+            border: 1px solid red;
+            overflow: auto;
+        }
+    `],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        UiElementPage
+        UiElementPage,
+        TreeElementPage,
+        SettingElementPage
     ]
 })
 export class UiBuilderPage {
     uiElement = new PageUi({
         label: 'Login page',
         children: {
-            header : new PageUi({
-                label: 'ddsd',
+            header : new Column({
+                label: 'Column 1',
                 children: {}
             }),
-            header1 : new PageUi({
-                label: 'ddsd',
-                children: { 
+            header1 : new Column({
+                label: 'Column 2',
+                children: {
                     header : new PageUi({
-                    label: 'xxx',
+                    label: 'row',
                     children: {
                         header : new PageUi({
-                            label: 'yyyyy',
+                            label: 'col',
                             children: {}
+                        }),
+                        header2 : new PageUi({
+                          label: '3333',
+                          children: {}
                         }),
                     }
                 }),}
             }),
-            header2 : new PageUi({
-                label: 'ddsd',
-                children: {}
+            header2 : new Column({
+                label: 'Column 3',
+                children: {},
             }),
         }
-        
-    });
 
+    });
 }

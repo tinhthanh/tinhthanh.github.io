@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FieldMode, IElementUi } from './element.ui';
 import { UiElementItemPage } from './ui-element-item.page';
-import { KeyValuePipe } from '@angular/common';
+import { KeyValue, KeyValuePipe } from '@angular/common';
 
 @Component({
   selector: 'app-ui-elemnet',
@@ -28,5 +28,7 @@ import { KeyValuePipe } from '@angular/common';
 export class UiElementPage {
     @Input() fieldMode: FieldMode = FieldMode.LIVE;
     @Input() uiElement!: IElementUi;
-    orderOriginal = () => 0;
+    orderOriginal = (a: KeyValue<string,IElementUi>, b: KeyValue<string,IElementUi>) => {
+        return a.value.order - b.value.order;
+    };
 }
