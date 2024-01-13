@@ -145,7 +145,7 @@ import { trashOutline } from 'ionicons/icons';
   ],
 })
 export class ArrayObjectComponent<T> {
-  @Input() fieldMode: FieldMode = FieldMode.CREATE;
+  @Input() fieldMode: FieldMode = FieldMode.LIVE;
   @Input() arrayObject!: { [key: string]: ArrayObject<T> };
   @Input() formGroup!: FormGroup | any;
   readonly controlType = ControlType;

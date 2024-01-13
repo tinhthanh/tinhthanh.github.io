@@ -93,7 +93,7 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
 })
 export class ObjectFieldsComponent<T> {
-  @Input() fieldMode: FieldMode = FieldMode.CREATE;
+  @Input() fieldMode: FieldMode = FieldMode.LIVE;
   @Input() formGroup!: FormGroup;
   @Input() objectField!: ObjectFields<T> | ArrayObject<T>;
   readonly controlType = ControlType;

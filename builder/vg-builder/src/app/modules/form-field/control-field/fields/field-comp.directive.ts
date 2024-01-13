@@ -14,7 +14,7 @@ export abstract class FieldComp<T extends IField> implements OnInit, OnDestroy {
     console.log('destroy');
   }
   @Input() field!: T;
-  @Input() mode = FieldMode.CREATE;
+  @Input() mode = FieldMode.LIVE;
   @Input() control!: FormControl;
   private readonly cdr = inject(ChangeDetectorRef)
   readonly modeForm = FieldMode;

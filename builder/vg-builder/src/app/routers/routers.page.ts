@@ -13,11 +13,15 @@ export class RoutersPage implements OnInit {
   async routers() {
     this.vcr.clear();
     const path = window.location.pathname;
-    if(path === '/') { // for home page
-        const cp = await import('../home/home.page').then((m) => m.HomePage);
-        this.vcr.createComponent(cp);
+    if (path === '/') {
+      // for home page
+      const cp = await import('../home/home.page').then((m) => m.HomePage);
+      this.vcr.createComponent(cp);
+    } else if (path === '/builder') {
+      // for home page
+      const cp = await import('../builder/builder.page').then((m) => m.UiBuilderPage);
+      this.vcr.createComponent(cp);
     } else {
-
     }
   }
 }

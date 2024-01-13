@@ -47,7 +47,7 @@ import { NgClass } from '@angular/common';
 export class FormGroupComponent<T> implements OnInit {
   @Input() formGroup!: FormGroup;
   data!: ObjectFields<T>;
-  @Input() fieldMode: FieldMode = FieldMode.CREATE;
+  @Input() fieldMode: FieldMode = FieldMode.LIVE;
   @Input() config!: { [K in keyof T]: IField };
   @Input() patchValue!: T;
   @Output() submitEvent = new EventEmitter<T>();

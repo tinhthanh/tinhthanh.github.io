@@ -41,7 +41,7 @@ export class ControlFieldComponent implements ControlValueAccessor {
      Object.assign(instance, {field: this._field,mode: this.mode,control:this.formControl});
     }
   };
-  @Input() mode = FieldMode.CREATE;
+  @Input() mode = FieldMode.LIVE;
   // _value: string | number | Date = '';
   constructor( private formGroupDirective: FormGroupDirective) {}
   get formControl(): AbstractControl | any {

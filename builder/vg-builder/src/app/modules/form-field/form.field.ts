@@ -15,8 +15,8 @@ import { EmailFieldComponent } from "./control-field/fields/email-field/email-fi
 import { NumberFieldComponent } from "./control-field/fields/number-field/number-field.component";
 import { DateTimeFieldComponent } from "./control-field/fields/date-time/date-time-field.component";
 export enum FieldMode {
-  VIEW = 'VIEW',
-  CREATE = 'CREATE',
+  BUILDER = 'BUILDER',
+  LIVE = 'LIVE',
 }
 export interface IField {
   required?: boolean;
