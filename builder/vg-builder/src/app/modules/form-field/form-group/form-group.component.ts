@@ -82,7 +82,7 @@ export class FormGroupComponent<T> implements OnInit {
     let form = this.element.nativeElement;
     let firstInvalidControl = [
       ...form.querySelectorAll(
-        'input.ng-invalid, textarea.ng-invalid ,ng-select.ng-invalid'
+        'input.ng-invalid, textarea.ng-invalid'
       ),
     ].shift();
     if (firstInvalidControl) {

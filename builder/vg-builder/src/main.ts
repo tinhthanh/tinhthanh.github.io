@@ -30,7 +30,8 @@ bootstrapApplication(AppComponent, {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
         deps: [HttpClient],
-      }
+      },
+      defaultLanguage: 'vi'
     }))
   ],
 }).then();

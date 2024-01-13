@@ -12,7 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
         class=" form-control"
         [value]="control.value"
         type="text"
-        placeholder="''"
+        placeholder=""
       />
       <label
         >{{ field.label | translate }}

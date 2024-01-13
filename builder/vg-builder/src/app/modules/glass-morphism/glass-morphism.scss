@@ -868,6 +868,18 @@ app-array-object .form-floating > .form-control, app-array-object .form-floating
     color: #666670;
 }
 app-array-object , app-object-fields , app-control-field , app-form-group {
+   //for input
+  select.form-select:focus,
+  input.form-control:focus,
+  input.form-control:hover,
+  input.form-control:hover {
+    caret-color: var(--theme-color);
+  }
+  textarea.form-control {
+    &:hover, &:focus {
+              caret-color: var(--theme-color);
+          }
+  }
   .dash-line {
     background-image: none;
     border: none;
@@ -878,7 +890,7 @@ app-array-object , app-object-fields , app-control-field , app-form-group {
     color: #666670 !important;
   }
 
-  input.form-check-input[disabled],  input.form-control[disabled] , textarea.form-control[disabled] , ng-select.ng-select-disabled {
+  input.form-check-input[disabled],  input.form-control[disabled] , textarea.form-control[disabled]  {
     color: #666670;
     cursor: not-allowed;
   }
@@ -922,18 +934,7 @@ app-array-object , app-object-fields , app-control-field , app-form-group {
     transition: 0.3s;
     white-space: nowrap;
   }
-  app-select-field {
-    ng-select.ng-select {
-      .ng-value .ng-value-label {
-        color: var(--theme-color) ;
-      }
-    }
-    ng-select.ng-select.ng-select-disabled {
-      .ng-value .ng-value-label {
-        color: #666670;
-      }
-    }
-  }
+
     .form-select input:focus {
       &::placeholder {
         color: #666670 !important;

@@ -48,4 +48,4 @@ export abstract class FieldComp<T extends IField> implements OnInit, OnDestroy {
   markForCheck() {
     this.cdr.markForCheck();
   }
-}
+ }

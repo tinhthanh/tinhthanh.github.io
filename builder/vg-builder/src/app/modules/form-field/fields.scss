@@ -8,6 +8,7 @@ app-switch-field {
     position: absolute;
     left: 38px;
     top: 3px;
+    word-break: normal;
   }
   input[disabled]~.form-check-label, .switch-input[disabled]~.form-check-label {
     cursor: default;
@@ -246,6 +247,12 @@ app-array-object , app-object-fields , app-control-field , app-form-group {
   input.form-control:hover {
     border: 1px solid var(--color2) !important;
     box-shadow: none !important;
+    caret-color: white;
+  }
+  textarea.form-control {
+    &:hover, &:focus {
+              caret-color: white;
+          }
   }
   input.form-control:focus~label {
     color: var(--color2) ;
