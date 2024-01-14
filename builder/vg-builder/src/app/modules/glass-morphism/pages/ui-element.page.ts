@@ -4,9 +4,12 @@ import { UiElementItemPage } from './ui-element-item.page';
 import { KeyValue, KeyValuePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-ui-elemnet',
+  selector: 'app-ui-element',
   template: `
         @if(uiElement) {
+          <div class="label-builder-mode ">
+            {{uiElement.label}}
+          </div>
         <div>
             {{uiElement.label}}
             @if(uiElement.children) {
@@ -16,7 +19,6 @@ import { KeyValue, KeyValuePipe } from '@angular/common';
             }
         </div>
         }
-        
   `,
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,

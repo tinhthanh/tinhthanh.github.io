@@ -1,25 +1,25 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { UiElementPage } from "../modules/glass-morphism/pages/ui-element.page";
-import { Column, IElementUi, PageUi } from "../modules/glass-morphism/pages/element.ui";
+import { Column, PageUi } from "../modules/glass-morphism/pages/element.ui";
 import { TreeElementPage } from "./tree-element/tree-element.page";
 import { SettingElementPage } from "./setting-element/setting-element.page";
+import {ReviewPagePage} from "./review-page/review-page.page";
 
 @Component({
     selector: 'app-ui-builder',
     template: `
-     <div class="d-flex flex-row">
-     <app-tree-element [uiElement]="uiElement"></app-tree-element>
-     <app-ui-elemnet [uiElement]="uiElement"></app-ui-elemnet>
-     <app-setting-element></app-setting-element>
+     <div class="d-flex flex-row ">
+       <app-tree-element [uiElement]="uiElement"></app-tree-element>
+       <app-review-page  [uiElement]="uiElement" ></app-review-page>
+       <app-setting-element></app-setting-element>
      </div>
     `,
     styles: [`
         :host {
-            color: white;
+            color: coral;
         }
-
-        app-ui-elemnet {
-            flex:1
+        app-review-page {
+            flex:1;
+            border: 1px solid red;
         }
         app-tree-element {
             width: 300px;
@@ -36,11 +36,11 @@ import { SettingElementPage } from "./setting-element/setting-element.page";
     `],
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        UiElementPage,
-        TreeElementPage,
-        SettingElementPage
-    ]
+  imports: [
+    TreeElementPage,
+    SettingElementPage,
+    ReviewPagePage
+  ]
 })
 export class UiBuilderPage {
     uiElement = new PageUi({

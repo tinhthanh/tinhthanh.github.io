@@ -27,3 +27,29 @@
 @import "theme/color.scss";
 @import './../src/app/modules/form-field/fields.scss';
 @import "./../src/app/modules/glass-morphism/glass-morphism.scss";
+
+app-review-page {
+    app-ui-element , app-ui-page {
+      position: relative;
+      display: flex;
+      &:hover {
+        border: 1px solid red;
+        & > .label-builder-mode {
+          display: block;
+        }
+      }
+    }
+    .label-builder-mode {
+      display: none;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 12px;
+      font-weight: bold;
+      border: 1px solid orange;
+      border-radius: 0 0 4px 4px;
+      padding: 0 4px 2px 4px;
+      color: white;
+    }
+}

@@ -6,7 +6,7 @@ import { FieldMode, IElementUi } from "./element.ui";
     selector:'app-ui-element-item',
     template: `
          @if(uiElement) {
-            <app-ui-elemnet [fieldMode]="fieldMode" [uiElement]="uiElement"></app-ui-elemnet>
+            <app-ui-element [fieldMode]="fieldMode" [uiElement]="uiElement"></app-ui-element>
          }
     `,
     standalone: true,

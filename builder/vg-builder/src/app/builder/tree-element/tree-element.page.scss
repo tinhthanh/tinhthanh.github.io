@@ -40,6 +40,7 @@
 .tree summary {
   display: block;
   cursor: pointer;
+  user-select: none;
 }
 .tree summary::marker,
 .tree summary::-webkit-details-marker {

@@ -1,0 +1,21 @@
+import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
+import {FieldMode, IElementUi} from "../../modules/glass-morphism/pages/element.ui";
+import {UiPagePage} from "../../modules/glass-morphism/pages/ui-page.page";
+
+@Component({
+  selector: 'app-review-page',
+  template: `
+    @if(uiElement) {
+      <app-ui-page  [uiElement]="uiElement" ></app-ui-page>
+    }
+  `,
+  imports: [
+    UiPagePage
+  ],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class ReviewPagePage {
+  @Input() fieldMode: FieldMode = FieldMode.LIVE;
+  @Input() uiElement!: IElementUi;
+}
