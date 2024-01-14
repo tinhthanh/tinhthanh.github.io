@@ -13,7 +13,13 @@ import {UiPagePage} from "../../modules/glass-morphism/pages/ui-page.page";
     UiPagePage
   ],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: `
+    :host {
+      width: 100%;
+      height: 100%;
+    }
+  `
 })
 export class ReviewPagePage {
   @Input() fieldMode: FieldMode = FieldMode.LIVE;

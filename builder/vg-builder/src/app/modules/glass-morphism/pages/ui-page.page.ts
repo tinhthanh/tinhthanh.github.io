@@ -10,7 +10,7 @@ import {UiElementPage} from "./ui-element.page";
       <div class="label-builder-mode ">
         {{uiElement.label}}
       </div>
-      <app-ui-element [uiElement]="uiElement"></app-ui-element>
+      <app-ui-element  [uiElement]="uiElement"></app-ui-element>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +21,9 @@ import {UiElementPage} from "./ui-element.page";
    :host {
     width: 100%;
     height: 100%;
+   }
+   app-ui-element {
+    width: 100%;
    }
   `]
 })

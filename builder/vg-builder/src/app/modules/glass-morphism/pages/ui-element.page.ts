@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FieldMode, IElementUi } from './element.ui';
 import { UiElementItemPage } from './ui-element-item.page';
-import { KeyValue, KeyValuePipe } from '@angular/common';
+import { KeyValue, KeyValuePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-ui-element',
@@ -10,21 +10,22 @@ import { KeyValue, KeyValuePipe } from '@angular/common';
           <div class="label-builder-mode ">
             {{uiElement.label}}
           </div>
-        <div>
-            {{uiElement.label}}
-            @if(uiElement.children) {
-                @for (item of uiElement.children | keyvalue: orderOriginal ; track item) {
-                    <app-ui-element-item [fieldMode]="fieldMode" [uiElement]="item.value" > </app-ui-element-item>
-                }
-            }
-        </div>
+          <div  [ngClass]="uiElement.classes">
+              {{uiElement.label}}
+              @if(uiElement.children) {
+                  @for (item of uiElement.children | keyvalue: orderOriginal ; track item) {
+                      <app-ui-element-item [fieldMode]="fieldMode" [uiElement]="item.value" > </app-ui-element-item>
+                  }
+              }
+          </div>
         }
   `,
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     UiElementItemPage,
-    KeyValuePipe
+    KeyValuePipe,
+    NgClass
   ]
 })
 export class UiElementPage {
