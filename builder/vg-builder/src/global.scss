@@ -28,18 +28,16 @@
 @import './../src/app/modules/form-field/fields.scss';
 @import "./../src/app/modules/glass-morphism/glass-morphism.scss";
 
-app-review-page {
-    app-ui-element , app-ui-page {
+    .builder-mode {
       position: relative;
-      display: flex;
       &:hover {
         border: 1px solid red;
         & > .label-builder-mode {
           display: block;
         }
       }
-    }
-    .label-builder-mode {
+       .label-builder-mode {
+      width: auto;
       display: none;
       background-color: orange;
       position: absolute;
@@ -52,4 +50,8 @@ app-review-page {
       padding: 0 4px 2px 4px;
       color: white;
     }
-}
+    .min-h-25 {
+      min-height: 25px; 
+    }
+   }
+   

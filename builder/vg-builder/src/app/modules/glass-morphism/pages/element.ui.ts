@@ -30,10 +30,10 @@ export class PageUi implements IElementUi { // for root page
 }
 export class Row implements IElementUi {
     type: UiType = UiType.column;
-    label: string = 'row';
+    label: string = 'row ';
     order:number  = -1;
     children?: {[key: string]: IElementUi };
-    classes?: string = 'd-flex flex-row ';
+    classes?: string = 'row min-h-25';
     constructor(options: {
         label?: string,
         order?:number;
@@ -48,7 +48,7 @@ export class Column implements IElementUi {
     label: string = 'Column';
     order:number  = -1;
     children?: {[key: string]: IElementUi };
-    classes?: string = 'd-flex flex-column';
+    classes?: string = 'col min-h-25';
     constructor(options: {
         label?: string,
         order?:number;
@@ -62,7 +62,7 @@ export class Container implements IElementUi {
     type: UiType = UiType.container;
     label: string = 'Container';
     order:number  = -1;
-    classes?: string = 'container';
+    classes?: string = 'container min-h-25';
     children?: { [key: string]: IElementUi };
     constructor(options: {
         label?: string,

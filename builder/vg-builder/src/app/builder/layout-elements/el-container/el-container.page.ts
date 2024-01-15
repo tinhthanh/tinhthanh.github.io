@@ -7,11 +7,11 @@ import { IElementUi } from "../../../modules/glass-morphism/pages/element.ui";
     selector: 'app-el-container',
     template: `
     @if(uiElement) {
-        <div >
-            container nek
+        <div>
+         {{ uiElement.label }}
             <ng-content></ng-content>
         </div>
-    }
+    } 
     `,
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush
