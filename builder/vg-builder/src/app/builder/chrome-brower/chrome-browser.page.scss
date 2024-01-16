@@ -334,11 +334,12 @@ background: radial-gradient(circle, #34c749 0%, #36ce4c 100%);
 .the-website {
   background-color: #555;
   height: 90vh;
-  height: calc( 100vh - (45px + 38px) );
+  height: calc( 100vh - (45px + 38px + 40px) );
   display: flex;
   flex-grow: 1;
 /*   flex-direction: column; */
   width: 100%;
+  overflow-y: auto;
 }
 
 iframe {

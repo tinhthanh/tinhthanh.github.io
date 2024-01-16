@@ -1,3 +1,8 @@
+import { Type } from "@angular/core";
+import { ElBase } from "src/app/builder/el-base";
+import { UiPagePage } from "./ui-page.page";
+import { UiImagePage } from "src/app/builder/base-elements/ui-image/ui-image.page";
+
 export enum FieldMode {
     BUILDER = 'BUILDER',
     LIVE = 'LIVE',
@@ -5,10 +10,11 @@ export enum FieldMode {
 export enum UiType {
     page = 'page',
     column = 'column',
-    container = 'container'
+    container = 'container',
+    image = 'image'
 }
 export interface IElementUi {
-    type: string;
+    type: UiType;
     label: string;
     order:number ;
     classes?: string;
@@ -71,4 +77,27 @@ export class Container implements IElementUi {
     }) {
         Object.assign(this, options);
     }
+}
+export class UiImage implements IElementUi {
+    type: UiType = UiType.image;
+    label: string = 'image';
+    order:number  = -1;
+    src?: string;
+    children?: {[key: string]: IElementUi };
+    classes?: string = '';
+    constructor(options: {
+        label?: string,
+        order?:number;
+        src: string
+    }) {
+        Object.assign(this, options);
+    }
+}
+
+
+export const elRegister: Record<UiType,Type<ElBase<IElementUi>> | null>  = {
+    [UiType.page] : UiPagePage,
+    [UiType.column] :null,
+    [UiType.container] : null,
+    [UiType.image]: UiImagePage
 }

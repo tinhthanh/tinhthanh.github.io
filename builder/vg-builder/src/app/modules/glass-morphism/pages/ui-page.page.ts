@@ -1,11 +1,13 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {FieldMode, IElementUi} from "./element.ui";
+import {Container, FieldMode, IElementUi} from "./element.ui";
 import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/common";
+import { BuilderFactoryPage } from "../../../builder/builder-factory/builder-factory.page";
+import { ElBase } from "src/app/builder/el-base";
 
 @Component({
-  standalone: true,
-  selector: 'app-ui-page',
-  template: `
+    standalone: true,
+    selector: 'app-ui-page',
+    template: `
    @if(uiElement) {
     <div [ngClass]="uiElement.classes" class="builder-mode"> 
       <div class="label-builder-mode ">
@@ -20,7 +22,7 @@ import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/comm
             </div>
             }
       } @else {
-        {{uiElement.label}}
+        <app-builder-factory [fieldMode]="fieldMode" [uiElement]="uiElement" ></app-builder-factory>
       }
      </div>
   <ng-template #inner let-children="children">
@@ -36,14 +38,13 @@ import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/comm
             </div>
           }
     } @else {
-      {{children.label}}
+      <app-builder-factory [fieldMode]="fieldMode" [uiElement]="children" ></app-builder-factory>
     }
   </ng-template>
 }
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [KeyValuePipe, NgClass, NgTemplateOutlet],
-  styles: [`
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [`
    :host {
     width: 100%;
     height: 100%;
@@ -51,16 +52,7 @@ import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/comm
    app-ui-element {
     width: 100%;
    }
-  `]
+  `],
+    imports: [KeyValuePipe, NgClass, NgTemplateOutlet, BuilderFactoryPage]
 })
-export class UiPagePage {
-  protected readonly Object = Object;
-  @Input() fieldMode: FieldMode = FieldMode.LIVE;
-  @Input() uiElement!: IElementUi;
-  orderOriginal = (
-    a: KeyValue<string, IElementUi>,
-    b: KeyValue<string, IElementUi>
-  ) => {
-    return a.value.order - b.value.order;
-  };
-}
+export class UiPagePage extends ElBase<Container> {}

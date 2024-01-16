@@ -4,6 +4,7 @@ import {
   Container,
   PageUi,
   Row,
+  UiImage,
 } from '../modules/glass-morphism/pages/element.ui';
 import { TreeElementPage } from './tree-element/tree-element.page';
 import { SettingElementPage } from './setting-element/setting-element.page';
@@ -96,7 +97,9 @@ export class UiBuilderPage {
           }),
           footer: new Row({
             label: 'footer',
-            children: {},
+            children: {
+              img: new UiImage({src : "https://assets.vetgo.vn/images/v2/home.png"})
+            },
           }),
         },
       }),
