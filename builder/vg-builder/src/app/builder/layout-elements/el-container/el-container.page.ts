@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { FieldMode } from "../../../modules/form-field/form.field";
-import { IElementUi } from "../../../modules/glass-morphism/pages/element.ui";
+import { IElementUi } from "../../element.ui";
 
 
 @Component({
@@ -11,7 +11,7 @@ import { IElementUi } from "../../../modules/glass-morphism/pages/element.ui";
          {{ uiElement.label }}
             <ng-content></ng-content>
         </div>
-    } 
+    }
     `,
     standalone: true,
     changeDetection: ChangeDetectionStrategy.OnPush

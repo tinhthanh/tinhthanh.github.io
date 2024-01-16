@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import { FieldMode, IElementUi } from "../../modules/glass-morphism/pages/element.ui";
+import { FieldMode, IElementUi } from "../element.ui";
 import {KeyValuePipe, NgTemplateOutlet} from "@angular/common";
 
 @Component({

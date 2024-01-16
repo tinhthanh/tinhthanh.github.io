@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {Container, FieldMode, IElementUi} from "./element.ui";
+import {Container, FieldMode, IElementUi} from "../element.ui";
 import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/common";
-import { BuilderFactoryPage } from "../../../builder/builder-factory/builder-factory.page";
+import { BuilderFactoryPage } from "../builder-factory/builder-factory.page";
 import { ElBase } from "src/app/builder/el-base";
 
 @Component({
@@ -9,7 +9,7 @@ import { ElBase } from "src/app/builder/el-base";
     selector: 'app-ui-page',
     template: `
    @if(uiElement) {
-    <div [ngClass]="uiElement.classes" class="builder-mode"> 
+    <div [ngClass]="uiElement.classes" class="builder-mode">
       <div class="label-builder-mode ">
         {{ uiElement.label }}
       </div>

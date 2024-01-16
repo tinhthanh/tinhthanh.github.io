@@ -5,7 +5,7 @@ import {
   PageUi,
   Row,
   UiImage,
-} from '../modules/glass-morphism/pages/element.ui';
+} from './element.ui';
 import { TreeElementPage } from './tree-element/tree-element.page';
 import { SettingElementPage } from './setting-element/setting-element.page';
 import { ReviewPagePage } from './review-page/review-page.page';

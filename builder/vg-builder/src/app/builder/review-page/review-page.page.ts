@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {FieldMode, IElementUi, PageUi} from "../../modules/glass-morphism/pages/element.ui";
-import {UiPagePage} from "../../modules/glass-morphism/pages/ui-page.page";
+import {FieldMode, IElementUi, PageUi} from "../element.ui";
+import {UiPagePage} from "../page-elements/ui-page.page";
 
 @Component({
   selector: 'app-review-page',

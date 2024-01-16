@@ -1,7 +1,7 @@
 import { Type } from "@angular/core";
-import { ElBase } from "src/app/builder/el-base";
-import { UiPagePage } from "./ui-page.page";
-import { UiImagePage } from "src/app/builder/base-elements/ui-image/ui-image.page";
+import { ElBase } from "./el-base";
+import { UiPagePage } from "./page-elements/ui-page.page";
+import { UiImagePage } from "./base-elements/ui-image/ui-image.page";
 
 export enum FieldMode {
     BUILDER = 'BUILDER',

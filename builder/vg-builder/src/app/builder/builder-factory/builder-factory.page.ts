@@ -6,13 +6,11 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { FieldMode } from '../../modules/form-field/form.field';
 import {
   IElementUi,
   UiType,
-  elRegister,
-} from '../../modules/glass-morphism/pages/element.ui';
-import { ElContainerPage } from '../layout-elements/el-container/el-container.page';
+  elRegister, FieldMode,
+} from '../element.ui';
 
 @Component({
   selector: 'app-builder-factory',
@@ -20,8 +18,7 @@ import { ElContainerPage } from '../layout-elements/el-container/el-container.pa
     <ng-container #vcr></ng-container>
   `,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ElContainerPage],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BuilderFactoryPage {
   readonly UiType = UiType;

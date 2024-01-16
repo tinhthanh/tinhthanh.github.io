@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ElBase } from "../../el-base";
-import { UiImage } from "src/app/modules/glass-morphism/pages/element.ui";
+import { UiImage } from "./../../element.ui";
 
 @Component({
     selector: 'app-ui-image',
