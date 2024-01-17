@@ -6,7 +6,7 @@ import { UiImage } from "./../../element.ui";
     selector: 'app-ui-image',
     template: `
         @if(uiElement) {
-            <img [src]="uiElement.src" alt="">
+            <img [src]="uiElement.src" >
         }
     `,
     styleUrls: ['ui-image.page.scss']

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {FieldMode, IElementUi, PageUi} from "../element.ui";
+import {FieldMode, PageUi} from "../element.ui";
 import {UiPagePage} from "../page-elements/ui-page.page";
 
 @Component({
