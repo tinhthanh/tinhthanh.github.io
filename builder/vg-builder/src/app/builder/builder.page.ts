@@ -267,6 +267,8 @@ const patchValue = {
     `
       :host {
         color: coral;
+        background-color: white;
+
       }
       .builder-review {
         flex: 1;

@@ -3,7 +3,8 @@
     <li>
       @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
         <details open>
-          <summary>{{uiElement.label}}</summary>
+          <summary (click)="presentPopover($event)" >
+          {{uiElement.label}}</summary>
           <ul>
             @for( item of uiElement.children | keyvalue:  orderOriginal; track item ) {
               <li>
@@ -22,7 +23,7 @@
   <ng-template #inner let-children="children">
     @if(children.children && Object.keys(children.children).length > 0) {
       <details open>
-        <summary>{{children.label}}</summary>
+        <summary (click)="presentPopover($event)">{{children.label}}</summary>
         <ul>
           @for( item of children.children | keyvalue:  orderOriginal; track item ) {
             <li>
@@ -35,6 +36,17 @@
       </details>
     } @else {
       {{children.label}}
+      @if(children.children) {
+        <div class="position-relative">
+          <div class="position-absolute" >
+            <div class="row">
+              <div class="col">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     }
   </ng-template>
 }
