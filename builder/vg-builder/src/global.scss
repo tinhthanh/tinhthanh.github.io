@@ -28,6 +28,7 @@
 @import './../src/app/modules/form-field/fields.scss';
 @import "./../src/app/modules/glass-morphism/glass-morphism.scss";
 
+@import "theme/tailwind.scss";
     .builder-mode {
       position: relative;
       &:hover {
@@ -51,7 +52,7 @@
       color: white;
     }
     .min-h-25 {
-      min-height: 25px; 
+      min-height: 25px;
     }
    }
-   
+
