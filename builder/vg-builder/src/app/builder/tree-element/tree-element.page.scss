@@ -46,13 +46,15 @@
   height: calc(2 * var(--radius));
   border-radius: 50%;
   background: var(--marker-bg-default);
-  
+
 }
 .icon-collapse {
-    position: absolute;
-    left: 10px;
-    top: 2px;
-    z-index: 1;
+  position: absolute;
+  left: 9px;
+  top: 0px;
+  z-index: 1;
+  font-size: 27px;
+  color: var(--ion-color-primary);
 }
 
 @REM .tree .summary {

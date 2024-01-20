@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
 import {
   Column,
   Container,
@@ -18,6 +18,10 @@ import { FormControl } from '@angular/forms';
 import { EmailField, PhoneField, InputNumberField, DateTimeField, TextField, RadioField, ArrayObject, CheckBoxField, ObjectFields, SwitchBoxField, TextareaField, SelectField, DateField } from '../modules/form-field/form.field';
 import { generateUuid4 } from '../modules/form-field/db-utils';
 import { EventBusService } from './node-state/event-bus.service';
+import { IonIcon } from "@ionic/angular/standalone";
+import { addIcons } from 'ionicons';
+import { desktopOutline,sunnyOutline, moonOutline, phonePortraitOutline  } from 'ionicons/icons';
+import {NgClass} from "@angular/common";
 const data = {
   email: new EmailField({
     required: true,
@@ -250,19 +254,38 @@ const patchValue = {
   dateField: '04/02/1995',
   listObject: [{ textField2: '123', listOfList: [{ name: '123' }] }],
 };
+export enum DeviceType {
+  'MOBILE' = 'MOBILE',
+  'DESKTOP' = 'DESKTOP'
+}
+export enum ThemeType {
+  'LIGHT' = 'LIGHT',
+  'DARK' = 'DARK'
+}
 @Component({
   selector: 'app-ui-builder',
   template: `
     @if(uiElement) {
       <div class="d-flex flex-row ">
       <app-tree-element (vgaddNode)="addNode($event)" (vgRemoveNode)="removeNode($event)" [uiElement]="uiElement"></app-tree-element>
-      <div class="builder-review">
-        <app-device-iphone>
-        <app-review-page [uiElement]="uiElement" ></app-review-page>
-        </app-device-iphone>
-<!--        <app-chrome-browser>-->
-<!--          <app-review-page [uiElement]="uiElement"></app-review-page>-->
-<!--        </app-chrome-browser>-->
+        <div class="builder-review relative">
+          <div class="absolute flex items-center space-x-4 z-50 right-3 rounded-4 p-2 bg-gray-900  ">
+            <ion-icon [ngClass]="{'active' : DeviceType.MOBILE === device()}"  (click)="changeDevice(DeviceType.MOBILE)" name="phone-portrait-outline" class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
+            <ion-icon [ngClass]="{'active' : DeviceType.DESKTOP === device()}"  (click)="changeDevice(DeviceType.DESKTOP)" name="desktop-outline" class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
+            <ion-icon [ngClass]="{'active' : ThemeType.DARK === theme()}"  (click)="changeTheme(ThemeType.DARK)" name="sunny-outline" class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
+            <ion-icon [ngClass]="{'active' : ThemeType.LIGHT === theme()}"  (click)="changeTheme(ThemeType.LIGHT)" name="moon-outline"  class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
+          </div>
+          @if(device() == DeviceType.DESKTOP) {
+            <app-chrome-browser>
+              <app-review-page [uiElement]="uiElement"></app-review-page>
+            </app-chrome-browser>
+          }
+          @if(device() == DeviceType.MOBILE) {
+            <app-device-iphone>
+              <app-review-page [uiElement]="uiElement" ></app-review-page>
+            </app-device-iphone>
+          }
+
       </div>
       <app-setting-element></app-setting-element>
     </div>
@@ -271,26 +294,29 @@ const patchValue = {
   styles: [
     `
       :host {
-        color: coral;
+        color: white;
         background-color: white;
 
       }
+      .active {
+        background-color: grey;
+      }
       .builder-review {
         flex: 1;
-        border: 1px solid red;
-        padding: 20px;
+        padding: 10px;
+
       }
       app-tree-element {
         width: 300px;
         height: 100vh;
-        border: 1px solid red;
         overflow: auto;
+        border-right: 1px solid #222428;
       }
       app-setting-element {
         width: 300px;
         height: 100vh;
-        border: 1px solid red;
         overflow: auto;
+        border-left: 1px solid #222428;
       }
     `,
   ],
@@ -302,15 +328,35 @@ const patchValue = {
     ReviewPagePage,
     ChromeBrowserPage,
     DeviceIphonePage,
+    IonIcon,
+    NgClass
   ],
 })
 export class UiBuilderPage  implements OnInit{
+ readonly DeviceType = DeviceType;
+ readonly ThemeType = ThemeType;
+  device = signal<DeviceType>(DeviceType.DESKTOP);
+  theme = signal<ThemeType>(ThemeType.LIGHT);
+
   private eventBus = inject(EventBusService);
+  constructor() {
+    addIcons({
+    'desktop-outline' : desktopOutline,
+    'sunny-outline': sunnyOutline,
+     'moon-outline': moonOutline,
+     'phone-portrait-outline': phonePortraitOutline});
+  }
   uiElement!:IElementUi ;
   removeNode(node: IElementUi ) {
     // TODO giúp tôi remove node trong root và return về root
     this.uiElement = removeNodeEl({...this.uiElement} , node) as IElementUi;
     console.log('remove', node)
+  }
+  changeDevice(device: DeviceType): void {
+    this.device.update(value => device);
+  }
+  changeTheme(theme: ThemeType): void {
+    this.theme.update(value => theme);
   }
   ngOnInit(): void {
     this.uiElement  = addUuidToElement(new PageUi({

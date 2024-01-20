@@ -29,10 +29,20 @@
 @import "./../src/app/modules/glass-morphism/glass-morphism.scss";
 
 @import "theme/tailwind.scss";
+:root.theme-dark {
+  color-scheme: dark;
+}
+
+.preview-iframe {
+  /* tell browsers to make the iframe opaque
+     for documents with color-scheme:dark */
+  color-scheme: light;
+  background-color: white;
+}
     .builder-mode {
       position: relative;
       &:hover {
-        border: 1px solid red;
+        border: 0.01px solid orange;
         & > .label-builder-mode {
           display: block;
         }
