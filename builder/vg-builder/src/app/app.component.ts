@@ -4,7 +4,8 @@ import {HomePage} from "./home/home.page";
 import { RoutersPage } from "./routers/routers.page";
 
 @Component({
-    selector: 'app-root',
+  // eslint-disable-next-line @angular-eslint/component-selector
+    selector: '[id=app]',
     templateUrl: 'app.component.html',
     standalone: true,
     imports: [IonApp, HomePage, RoutersPage]

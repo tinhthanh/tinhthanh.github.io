@@ -257,12 +257,12 @@ const patchValue = {
       <div class="d-flex flex-row ">
       <app-tree-element (vgaddNode)="addNode($event)" (vgRemoveNode)="removeNode($event)" [uiElement]="uiElement"></app-tree-element>
       <div class="builder-review">
-        <!-- <app-device-iphone>
+        <app-device-iphone>
         <app-review-page [uiElement]="uiElement" ></app-review-page>
-        </app-device-iphone> -->
-        <app-chrome-browser>
-          <app-review-page [uiElement]="uiElement"></app-review-page>
-        </app-chrome-browser>
+        </app-device-iphone>
+<!--        <app-chrome-browser>-->
+<!--          <app-review-page [uiElement]="uiElement"></app-review-page>-->
+<!--        </app-chrome-browser>-->
       </div>
       <app-setting-element></app-setting-element>
     </div>
@@ -392,7 +392,7 @@ export class UiBuilderPage  implements OnInit{
                   }
               }
           }
-  
+
           return false; // Không tìm thấy parent trong cây
       };
       // Bắt đầu đệ quy từ root
@@ -411,7 +411,7 @@ export const addUuidToElement = <T extends IElementUi>(element: T, parent: T | n
       // Nếu có children, thực hiện đệ quy để thêm id và parent cho từng child
       newElement.children = {};
       Object.keys(element.children).forEach((key) => {
-        if(element.children && element.children[key] && !element.id) { 
+        if(element.children && element.children[key] && !element.id) {
            (newElement.children as any)[key] = addUuidToElement(element.children[key], newElement);
         }
       });
@@ -436,7 +436,7 @@ export const removeNodeEl = (root: IElementUi, node:  IElementUi): IElementUi | 
           let updatedChild
           if(root.children) {
              updatedChild = removeNodeEl(root.children[key], node);
-          } 
+          }
           // Chỉ thêm child vào danh sách nếu nó không bị xóa
           if (updatedChild) {
               updatedChildren[key] = updatedChild;

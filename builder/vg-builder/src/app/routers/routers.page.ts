@@ -21,7 +21,6 @@ export class RoutersPage implements OnInit {
       // for home page
       const cp = await import('../builder/builder.page').then((m) => m.UiBuilderPage);
       this.vcr.createComponent(cp);
-    } else {
     }
   }
 }
