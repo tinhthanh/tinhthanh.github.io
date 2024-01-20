@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input} from "@angular/core";
-import {Container, FieldMode, IElementUi} from "../element.ui";
-import { KeyValue, KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/common";
+import {ChangeDetectionStrategy, Component, OnInit} from "@angular/core";
+import {Container} from "../element.ui";
+import { KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/common";
 import { BuilderFactoryPage } from "../builder-factory/builder-factory.page";
 import { ElBase } from "src/app/builder/el-base";
 
@@ -55,4 +55,8 @@ import { ElBase } from "src/app/builder/el-base";
   `],
     imports: [KeyValuePipe, NgClass, NgTemplateOutlet, BuilderFactoryPage]
 })
-export class UiPagePage extends ElBase<Container> {}
+export class UiPagePage extends ElBase<Container> implements OnInit{
+   override ngOnInit(): void {
+      super.ngOnInit();
+  }
+}

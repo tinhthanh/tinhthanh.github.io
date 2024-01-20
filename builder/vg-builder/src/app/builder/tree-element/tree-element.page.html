@@ -1,20 +1,29 @@
 @if(uiElement) {
+  {{log()}}
   <ul class="tree">
     <li>
       @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
-        <details open>
-          <summary (click)="presentPopover($event)" >
-          {{uiElement.label}}</summary>
-          <ul>
-            @for( item of uiElement.children | keyvalue:  orderOriginal; track item ) {
-              <li>
-                <ng-container
-                  *ngTemplateOutlet="inner; context: { children: item.value }">
-                </ng-container>
-              </li>
-            }
-          </ul>
-        </details>
+        @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {
+          <ion-icon (click)="collapse(uiElement, false)" class="icon-collapse text-2xl cursor-pointer" name="remove-circle-outline" ></ion-icon>
+        } @else { 
+          <ion-icon (click)="collapse(uiElement, true)" class="icon-collapse text-2xl cursor-pointer" name="add-circle-outline" ></ion-icon>
+        }
+
+        <div class="details" open>
+          <div claass="summary " >
+          {{uiElement.label}}</div>
+          @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {  
+            <ul>
+              @for( item of uiElement.children | keyvalue:  orderOriginal; track item ) {
+                <li>
+                  <ng-container
+                    *ngTemplateOutlet="inner; context: { children: item.value }">
+                  </ng-container>
+                </li>
+              }
+            </ul>
+          }
+        </div>
       } @else {
         {{uiElement.label}}
       }
@@ -22,30 +31,51 @@
   </ul>
   <ng-template #inner let-children="children">
     @if(children.children && Object.keys(children.children).length > 0) {
-      <details open>
-        <summary (click)="presentPopover($event)">{{children.label}}</summary>
-        <ul>
-          @for( item of children.children | keyvalue:  orderOriginal; track item ) {
-            <li>
-              <ng-container
-                *ngTemplateOutlet="inner; context: { children: item.value }">
-              </ng-container>
-            </li>
-          }
-        </ul>
-      </details>
-    } @else {
-      {{children.label}}
-      @if(children.children) {
-        <div class="position-relative">
-          <div class="position-absolute" >
-            <div class="row">
-              <div class="col">
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </div>
-            </div>
+      @if(children.htmlAttributes && children.htmlAttributes['open'] ) {
+        <ion-icon (click)="collapse(children, false)" class="icon-collapse text-2xl cursor-pointer" name="remove-circle-outline" ></ion-icon>
+      } @else { 
+        <ion-icon (click)="collapse(children, true)" class="icon-collapse text-2xl cursor-pointer" name="add-circle-outline" ></ion-icon>
+      }
+      <div class="details" open>
+        <div class="group ">
+          <div class="flex items-center cursor-pointer summary">
+            {{children.label}}
+            <ion-icon (click)="removeNode(children)"  name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
+          </div>
+          <div (click)="presentPopover(children ,$event)" class="hidden group-hover:flex items-center cursor-pointer">
+            <ion-icon name="add-circle-outline" class="mr-2 text-2xl"></ion-icon>
+            <div >Thêm thành phần</div>
           </div>
         </div>
+        @if(children.htmlAttributes && children.htmlAttributes['open'] ) { 
+          <ul >
+            @for( item of children.children | keyvalue:  orderOriginal; track item ) {
+              <li>
+                <ng-container
+                  *ngTemplateOutlet="inner; context: { children: item.value }">
+                </ng-container>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    } @else {
+    
+      @if(children.children) {
+        <div class="details" class="group ">
+          <!-- Thẻ chính -->
+          <div class="flex items-center cursor-pointer summary">
+            {{children.label}}
+            <ion-icon (click)="removeNode(children)" name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
+          </div>
+          <!-- Thẻ hiển thị khi hover -->
+          <div (click)="presentPopover(children,$event)" class="hidden group-hover:flex items-center cursor-pointer">
+            <ion-icon name="add-circle-outline" class="mr-2 text-2xl"></ion-icon>
+            <div >Thêm thành phần</div>
+          </div>
+        </div>
+      } @else { 
+        {{children.label}}
       }
     }
   </ng-template>

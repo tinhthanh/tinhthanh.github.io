@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
   Type,
   ViewChild,
   ViewContainerRef,
@@ -9,8 +11,9 @@ import {
 import {
   IElementUi,
   UiType,
-  elRegister, FieldMode,
+  elRegister,
 } from '../element.ui';
+import { ElBase } from '../el-base';
 
 @Component({
   selector: 'app-builder-factory',
@@ -20,21 +23,22 @@ import {
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BuilderFactoryPage {
+export class BuilderFactoryPage extends ElBase<IElementUi> implements OnChanges, OnInit{
   readonly UiType = UiType;
   @ViewChild('vcr', { static: true, read: ViewContainerRef })
   vcr!: ViewContainerRef;
   cp!: Type<any> | null;
-  _uiElement!: IElementUi;
-  @Input() fieldMode: FieldMode = FieldMode.LIVE;
-  @Input() set uiElement(el: IElementUi) {
-    this._uiElement = el;
-    if (el) {
-      this.cp = elRegister[el.type];
+   override ngOnInit(): void {
+    console.log(this.uiElement.id)
+        super.ngOnInit();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.uiElement) {
+      this.cp = elRegister[this.uiElement.type];
       this.vcr.clear();
       if (this.cp) {
         const instance = this.vcr.createComponent(this.cp).instance;
-        Object.assign(instance, { fieldMode: this.fieldMode, uiElement: el });
+        Object.assign(instance, { fieldMode: this.fieldMode, uiElement: this.uiElement });
       }
     }
   }

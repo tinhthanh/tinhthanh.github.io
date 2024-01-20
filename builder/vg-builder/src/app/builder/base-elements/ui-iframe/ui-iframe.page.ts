@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ElBase } from "../../el-base";
 import { UiIframe } from "../../element.ui";
 import {SafeResourceUrl, DomSanitizer } from "@angular/platform-browser";
+import { EventBusService } from "../../node-state/event-bus.service";
 
 @Component({
     selector: 'app-ui-iframe',
@@ -17,7 +18,8 @@ export class UiIframePage extends ElBase<UiIframe> implements OnInit {
     constructor(public sanitizer: DomSanitizer) {
         super();
     }
-    ngOnInit(): void {
+    override ngOnInit(): void {
+        super.ngOnInit();    
         if(this.uiElement && this.uiElement.src) {
             this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.uiElement.src);
         }
