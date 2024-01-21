@@ -44,7 +44,7 @@
       &:hover {
         border: 0.01px solid orange;
         & > .label-builder-mode {
-          display: block;
+          display: flex;
         }
       }
        .label-builder-mode {
