@@ -24,7 +24,7 @@ export enum GroupType {
     base = 'base',
     page = 'page',
     form = 'form',
-    
+
 }
 export interface IElementUi {
     id?: string;
@@ -142,7 +142,6 @@ export class UiImage implements IElementUi {
     groupType = GroupType.base;
     order:number  = -1;
     src?: string;
-    children?: {[key: string]: IElementUi };
     classes?: string = '';
     htmlAttributes?: {
         [key: string]: any;
@@ -232,4 +231,4 @@ export const registerBuilder: Record<UiType, IElementUi | null > = {
     [UiType.image]: new UiImage({src : "https://storage.test.finos.asia/hdi-public-test-bucket-static-resource/2023/01/Group-1238-1.png"}),
     [UiType.iframe]: new UiIframe({src : "https://assets.vetgo.vn/iframe/baner/kippo-hover/"}),
     [UiType.form]: null
-} 
+}

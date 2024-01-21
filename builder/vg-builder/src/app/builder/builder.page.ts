@@ -294,8 +294,8 @@ export enum ThemeType {
   styles: [
     `
       :host {
-        color: white;
-        background-color: white;
+        //color: white;
+        //background-color: #f8f8f9 ;
 
       }
       .active {
@@ -310,13 +310,13 @@ export enum ThemeType {
         width: 300px;
         height: 100vh;
         overflow: auto;
-        border-right: 1px solid #222428;
+        border-right: 1px solid #eaebee;
       }
       app-setting-element {
         width: 300px;
         height: 100vh;
         overflow: auto;
-        border-left: 1px solid #222428;
+        border-left: 1px solid #eaebee;
       }
     `,
   ],
@@ -416,7 +416,7 @@ export class UiBuilderPage  implements OnInit{
     addNode(data:Readonly<{parent:IElementUi,node: IElementUi}>) {
       const root: IElementUi = this.uiElement;
       const id = generateUuid4();
-      const nodeNew: IElementUi = { ...(data.node),id, children: {},parent: data.parent };
+      const nodeNew: IElementUi = { ...(data.node),id,parent: data.parent };
       // Hàm đệ quy để tìm và thêm node vào cây
       const findAndAddNode = (currentNode: IElementUi): boolean => {
           if (currentNode.id === data.parent.id) {

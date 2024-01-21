@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Directive, Input, OnInit, inject } from "@angular/core";
+import {ChangeDetectorRef, Directive, Input, OnInit, inject, OnDestroy} from "@angular/core";
 import { FieldMode, IElementUi } from "./element.ui";
 import { KeyValue } from "@angular/common";
 import { EventBusService } from "./node-state/event-bus.service";
 
 @Directive()
-export abstract class ElBase<T extends IElementUi> implements OnInit {
+export abstract class ElBase<T extends IElementUi> implements OnInit, OnDestroy {
+
     private cdf = inject(ChangeDetectorRef);
     private eventBus = inject(EventBusService);
     protected readonly Object = Object;
@@ -24,4 +25,10 @@ export abstract class ElBase<T extends IElementUi> implements OnInit {
           });
         }
     }
+  ngOnDestroy(): void {
+    if(this.uiElement.id) {
+      console.log('destroy', this.uiElement.id);
+      this.eventBus.unsubscribeChange(this.uiElement.id);
+    }
+  }
 }

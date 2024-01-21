@@ -3,7 +3,54 @@
       <ion-item slot="header" color="light">
         <ion-label>Container Properties</ion-label>
       </ion-item>
-      <div class="ion-padding" slot="content">First Content</div>
+      <div class="ion-padding" slot="content">
+       <ion-grid>
+            <ion-row>
+              <ion-col size-md="6">
+                  <ion-input label="Width" labelPlacement="stacked" placeholder="0px"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                  <ion-input label="Height" labelPlacement="stacked" placeholder="0px"></ion-input>
+              </ion-col>
+
+              <ion-col size-md="6">
+                <ion-input label="Fill Color" labelPlacement="stacked" placeholder="#22577e"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-input label="Border Color" labelPlacement="stacked" placeholder="#22577e"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-range  style="padding-top: 0" mode="ios" [pin]="true" [pinFormatter]="pxFormatter">
+                  <div slot="label">Border Radius</div>
+                </ion-range>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input label="Border width" labelPlacement="stacked" placeholder="1px"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+
+              <ion-col size-md="auto">
+                    Responsive
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-icon class="text-2xl" name="phone-portrait-outline"></ion-icon>
+                <ion-icon class="text-2xl"  name="desktop-outline"></ion-icon>
+<!--                   <ion-icon class="text-2xl"  name="phone-portrait"></ion-icon>-->
+<!--                   <ion-icon  class="text-2xl"  name="desktop"></ion-icon>-->
+                 </ion-col>
+               </ion-row>
+            <ion-row>
+              <ion-col size-md="12">
+                <ion-range style="padding-top: 0"  mode="ios" [pin]="true" [pinFormatter]="pinFormatter">
+                  <div slot="label">Opacity</div>
+                  <ion-icon slot="start" name="sunny-outline"></ion-icon>
+                  <ion-icon slot="end" name="sunny-outline"></ion-icon>
+                </ion-range>
+              </ion-col>
+            </ion-row>
+       </ion-grid>
+      </div>
     </ion-accordion>
     <ion-accordion value="2">
       <ion-item slot="header" color="light">
@@ -54,23 +101,8 @@
     </ion-item>
     <div class="ion-padding" slot="content">Third Content</div>
   </ion-accordion>
+
   <ion-accordion value="5">
-    <ion-item slot="header" color="light">
-      <ion-label>Visibility</ion-label>
-    </ion-item>
-    <div class="ion-padding" slot="content">
-      <ion-grid>
-        <ion-row>
-          <ion-col size-md="12">
-            <ion-range></ion-range>
-          </ion-col>
-          <ion-col size-md="6">1</ion-col>
-          <ion-col size-md="6">2</ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-  </ion-accordion>
-  <ion-accordion value="6">
     <ion-item slot="header" color="light">
       <ion-label>Child</ion-label>
     </ion-item>

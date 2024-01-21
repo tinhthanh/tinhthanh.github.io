@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from "@angular/core";
 import { FieldMode, IElementUi } from "../element.ui";
 import {KeyValuePipe, NgTemplateOutlet} from "@angular/common";
-import {IonContent, IonIcon, IonPopover, PopoverController} from "@ionic/angular/standalone"
+import {IonContent, IonIcon, IonPopover, IonSearchbar, PopoverController} from "@ionic/angular/standalone"
 import {SelectUiPage} from "../common/select-el/select-ui.page";
 import {addIcons} from "ionicons";
-import {addCircleOutline ,trashOutline, removeCircleOutline } from 'ionicons/icons';
+import {chevronForwardCircle, chevronDownCircle, trashOutline, removeCircle, addCircle} from 'ionicons/icons';
 import { take } from "rxjs";
 @Component({
   standalone: true,
@@ -12,7 +12,7 @@ import { take } from "rxjs";
   templateUrl: './tree-element.page.html',
   styleUrls: ['./tree-element.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [KeyValuePipe, NgTemplateOutlet, IonPopover, IonContent, IonIcon]
+  imports: [KeyValuePipe, NgTemplateOutlet, IonPopover, IonContent, IonIcon, IonSearchbar]
 })
 export class TreeElementPage {
   @Input() fieldMode: FieldMode = FieldMode.LIVE;
@@ -22,7 +22,12 @@ export class TreeElementPage {
   orderOriginal = () => 0;
   protected readonly Object = Object;
   constructor(public popoverController: PopoverController) {
-    addIcons({'add-circle-outline' : addCircleOutline, 'trash-outline': trashOutline, 'remove-circle-outline': removeCircleOutline});
+    addIcons({
+    'chevron-forward-circle' : chevronForwardCircle,
+    'chevron-down-circle': chevronDownCircle,
+    'trash-outline': trashOutline,
+    'add-circle': addCircle
+    });
   }
   async presentPopover(parent:IElementUi,e: Event) {
   // Xử lý logic bạn muốn thực hiện khi click vào phần tử
@@ -38,7 +43,7 @@ export class TreeElementPage {
       console.log(it);
       this.addNode(parent,it);
       this.popoverController.dismiss();
-     }) 
+     })
     await popover.present();
 
     const { role } = await popover.onDidDismiss();
