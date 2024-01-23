@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PageUi } from '../element.ui';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { IElementUi, PageUi } from '../element.ui';
 import { UiPagePage } from '../page-elements/ui-page.page';
 import { ElBase } from '../el-base';
+import { BuilderSignals } from '../signals/builder.signals';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { ElBase } from '../el-base';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewPagePage extends ElBase<PageUi> {
+  
   log() {
     console.log('app-review-page');
   }

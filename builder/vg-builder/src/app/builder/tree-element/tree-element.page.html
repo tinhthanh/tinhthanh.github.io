@@ -1,8 +1,8 @@
 @if(uiElement) {
   {{log()}}
-  <div class="flex flex-column">
+  <div class="flex flex-column  ">
     <ion-searchbar mode="ios" show-clear-button="always"></ion-searchbar>
-    <ul class="tree">
+    <ul class="tree h-[calc(100vh_-_60px)] overflow-y-auto">
       <li>
         @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
           @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {
@@ -10,13 +10,13 @@
           } @else {
             <ion-icon (click)="collapse(uiElement, true)" class="icon-collapse text-2xl cursor-pointer" name="chevron-forward-circle" ></ion-icon>
           }
-
           <div class="details" >
-            <div class="summary " >
-              {{uiElement.label}}</div>
+            <div (click)="selectEl($event,uiElement)" class="summary {{currentNodeActive()?.id === uiElement.id ? 'active' : ''}}" >
+              {{uiElement.label}}
+            </div>
             @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {
               <ul>
-                @for( item of uiElement.children | keyvalue:  orderOriginal; track item ) {
+                @for( item of uiElement.children | keyvalue:  orderOriginal; track item.value.id ) {
                   <li>
                     <ng-container
                       *ngTemplateOutlet="inner; context: { children: item.value }">
@@ -27,7 +27,9 @@
             }
           </div>
         } @else {
+          <div (click)="selectEl($event,uiElement)" class="{{currentNodeActive()?.id === uiElement.id ? 'active' : ''}}">
           {{uiElement.label}}
+          </div>
         }
       </li>
     </ul>
@@ -41,7 +43,9 @@
         <div class="details">
           <div class="group ">
             <div class="flex items-center cursor-pointer summary">
-              {{children.label}}
+              <div (click)="selectEl($event,children)" class="{{currentNodeActive()?.id === children.id ? 'active' : ''}}">
+                {{children.label}}
+              </div>
               <ion-icon (click)="removeNode(children)"  name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
             </div>
             <div (click)="presentPopover(children ,$event)" class="hidden group-hover:flex items-center cursor-pointer">
@@ -51,7 +55,7 @@
           </div>
           @if(children.htmlAttributes && children.htmlAttributes['open'] ) {
             <ul >
-              @for( item of children.children | keyvalue:  orderOriginal; track item ) {
+              @for( item of children.children | keyvalue:  orderOriginal; track $any(item.value).id ) {
                 <li>
                   <ng-container
                     *ngTemplateOutlet="inner; context: { children: item.value }">
@@ -66,8 +70,10 @@
         @if(children.children) {
           <div class="group ">
             <!-- Thẻ chính -->
-            <div class="flex items-center cursor-pointer summary">
-              {{children.label}}
+            <div  class="flex items-center cursor-pointer summary">
+              <div (click)="selectEl($event,children)" class="{{currentNodeActive()?.id === children.id ? 'active' : ''}}">
+                {{children.label}}
+              </div>
               <ion-icon (click)="removeNode(children)" name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
             </div>
             <!-- Thẻ hiển thị khi hover -->
@@ -78,7 +84,9 @@
           </div>
         } @else {
           <div class="group flex items-center cursor-pointer">
+            <div (click)="selectEl($event,children)" class="{{currentNodeActive()?.id === children.id ? 'active' : ''}}">
             {{children.label}}
+            </div>
             <ion-icon (click)="removeNode(children)"  name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
           </div>
 

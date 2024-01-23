@@ -1,5 +1,6 @@
 :host {
---ion-padding: 8px
+--ion-padding: 8px;
+color: var(--ion-text-color, #000);
 }
 ion-radio {
   --border-radius: 4px;

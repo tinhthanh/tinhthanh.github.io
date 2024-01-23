@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+  signal,
+} from '@angular/core';
 import {
   Column,
   Container,
@@ -15,13 +21,33 @@ import { ReviewPagePage } from './review-page/review-page.page';
 import { ChromeBrowserPage } from './chrome-brower/chrome-browser.page';
 import { DeviceIphonePage } from './device-iphone/device-iphone.page';
 import { FormControl } from '@angular/forms';
-import { EmailField, PhoneField, InputNumberField, DateTimeField, TextField, RadioField, ArrayObject, CheckBoxField, ObjectFields, SwitchBoxField, TextareaField, SelectField, DateField } from '../modules/form-field/form.field';
+import {
+  EmailField,
+  PhoneField,
+  InputNumberField,
+  DateTimeField,
+  TextField,
+  RadioField,
+  ArrayObject,
+  CheckBoxField,
+  ObjectFields,
+  SwitchBoxField,
+  TextareaField,
+  SelectField,
+  DateField,
+} from '../modules/form-field/form.field';
 import { generateUuid4 } from '../modules/form-field/db-utils';
-import { EventBusService } from './node-state/event-bus.service';
-import { IonIcon } from "@ionic/angular/standalone";
+import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { desktopOutline,sunnyOutline, moonOutline, phonePortraitOutline  } from 'ionicons/icons';
-import {NgClass} from "@angular/common";
+import {
+  desktopOutline,
+  sunnyOutline,
+  moonOutline,
+  phonePortraitOutline,
+} from 'ionicons/icons';
+import { NgClass } from '@angular/common';
+import { AngularSplitModule } from 'angular-split';
+import { BuilderSignals } from './signals/builder.signals';
 const data = {
   email: new EmailField({
     required: true,
@@ -44,7 +70,7 @@ const data = {
     name: 'balance',
     min: 10,
     max: 1000,
-    placeholder: 'Công nợ'
+    placeholder: 'Công nợ',
   }),
   dateTime: new DateTimeField({
     required: true,
@@ -57,7 +83,7 @@ const data = {
     name: 'userName',
     maxLength: 25,
     minLength: 3,
-    placeholder: 'Ten khach nek'
+    placeholder: 'Ten khach nek',
   }),
   radio2: new RadioField({
     required: true,
@@ -171,10 +197,10 @@ const data = {
           },
         ],
         onChange: (field: SelectField, control: FormControl) => {
-         if(control.parent && control.parent.get('textarea')) {
-           const textarea = control.parent.get('textarea') as FormControl;
+          if (control.parent && control.parent.get('textarea')) {
+            const textarea = control.parent.get('textarea') as FormControl;
             textarea.setValue(null);
-         }
+          }
         },
       }),
       checkbox: new CheckBoxField({
@@ -256,47 +282,78 @@ const patchValue = {
 };
 export enum DeviceType {
   'MOBILE' = 'MOBILE',
-  'DESKTOP' = 'DESKTOP'
+  'DESKTOP' = 'DESKTOP',
 }
 export enum ThemeType {
   'LIGHT' = 'LIGHT',
-  'DARK' = 'DARK'
+  'DARK' = 'DARK',
 }
 @Component({
   selector: 'app-ui-builder',
   template: `
     @if(uiElement) {
-      <div class="d-flex flex-row ">
-      <app-tree-element (vgaddNode)="addNode($event)" (vgRemoveNode)="removeNode($event)" [uiElement]="uiElement"></app-tree-element>
+    <as-split direction="horizontal">
+      <as-split-area [minSize]="20" [size]="20">
+        <app-tree-element
+          (vgaddNode)="addNode($event)"
+          (vgRemoveNode)="removeNode($event)"
+          [uiElement]="uiElement"
+        ></app-tree-element>
+      </as-split-area>
+      <as-split-area [size]="60">
         <div class="builder-review relative">
-          <div class="absolute flex items-center space-x-4 z-50 right-3 rounded-4 p-2 bg-gray-900  ">
-            <ion-icon [ngClass]="{'active' : DeviceType.MOBILE === device()}"  (click)="changeDevice(DeviceType.MOBILE)" name="phone-portrait-outline" class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
-            <ion-icon [ngClass]="{'active' : DeviceType.DESKTOP === device()}"  (click)="changeDevice(DeviceType.DESKTOP)" name="desktop-outline" class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
-            <ion-icon [ngClass]="{'active' : ThemeType.DARK === theme()}"  (click)="changeTheme(ThemeType.DARK)" name="sunny-outline" class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
-            <ion-icon [ngClass]="{'active' : ThemeType.LIGHT === theme()}"  (click)="changeTheme(ThemeType.LIGHT)" name="moon-outline"  class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"></ion-icon>
+          <div
+            class="tab-device absolute flex items-center space-x-4 z-50 right-3 rounded-4 p-2 bg-gray-900  "
+          >
+            <ion-icon
+              [ngClass]="{ active: DeviceType.MOBILE === device() }"
+              (click)="changeDevice(DeviceType.MOBILE)"
+              name="phone-portrait-outline"
+              class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"
+            ></ion-icon>
+            <ion-icon
+              [ngClass]="{ active: DeviceType.DESKTOP === device() }"
+              (click)="changeDevice(DeviceType.DESKTOP)"
+              name="desktop-outline"
+              class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"
+            ></ion-icon>
+            <ion-icon
+              [ngClass]="{ active: ThemeType.DARK === theme() }"
+              (click)="changeTheme(ThemeType.DARK)"
+              name="sunny-outline"
+              class="text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"
+            ></ion-icon>
+            <ion-icon
+              [ngClass]="{ active: ThemeType.LIGHT === theme() }"
+              (click)="changeTheme(ThemeType.LIGHT)"
+              name="moon-outline"
+              class="active text-2xl border border-gray-500 rounded-full p-2 hover:bg-gray-500 active:bg-gray-500 cursor-pointer"
+            ></ion-icon>
           </div>
           @if(device() == DeviceType.DESKTOP) {
-            <app-chrome-browser>
-              <app-review-page [uiElement]="uiElement"></app-review-page>
-            </app-chrome-browser>
+          <app-chrome-browser>
+            <app-review-page [uiElement]="uiElement"></app-review-page>
+          </app-chrome-browser>
+          } @if(device() == DeviceType.MOBILE) {
+          <app-device-iphone>
+            <app-review-page [uiElement]="uiElement"></app-review-page>
+          </app-device-iphone>
           }
-          @if(device() == DeviceType.MOBILE) {
-            <app-device-iphone>
-              <app-review-page [uiElement]="uiElement" ></app-review-page>
-            </app-device-iphone>
-          }
-
-      </div>
-      <app-setting-element></app-setting-element>
-    </div>
+        </div>
+      </as-split-area>
+      <as-split-area [minSize]="20" [size]="20">
+        <app-setting-element></app-setting-element>
+      </as-split-area>
+    </as-split>
     }
   `,
   styles: [
-    `
+    ` .tab-device {
+        color: var(--ion-text-color, #000);
+      }
       :host {
         //color: white;
         //background-color: #f8f8f9 ;
-
       }
       .active {
         background-color: grey;
@@ -304,19 +361,6 @@ export enum ThemeType {
       .builder-review {
         flex: 1;
         padding: 10px;
-
-      }
-      app-tree-element {
-        width: 300px;
-        height: 100vh;
-        overflow: auto;
-        border-right: 1px solid #eaebee;
-      }
-      app-setting-element {
-        width: 300px;
-        height: 100vh;
-        overflow: auto;
-        border-left: 1px solid #eaebee;
       }
     `,
   ],
@@ -329,37 +373,40 @@ export enum ThemeType {
     ChromeBrowserPage,
     DeviceIphonePage,
     IonIcon,
-    NgClass
+    NgClass,
+    AngularSplitModule,
   ],
+  providers: [BuilderSignals]
 })
-export class UiBuilderPage  implements OnInit{
- readonly DeviceType = DeviceType;
- readonly ThemeType = ThemeType;
+export class UiBuilderPage implements OnInit {
+  readonly DeviceType = DeviceType;
+  readonly ThemeType = ThemeType;
   device = signal<DeviceType>(DeviceType.DESKTOP);
   theme = signal<ThemeType>(ThemeType.LIGHT);
 
-  private eventBus = inject(EventBusService);
   constructor() {
     addIcons({
-    'desktop-outline' : desktopOutline,
-    'sunny-outline': sunnyOutline,
-     'moon-outline': moonOutline,
-     'phone-portrait-outline': phonePortraitOutline});
+      'desktop-outline': desktopOutline,
+      'sunny-outline': sunnyOutline,
+      'moon-outline': moonOutline,
+      'phone-portrait-outline': phonePortraitOutline,
+    });
   }
-  uiElement!:IElementUi ;
-  removeNode(node: IElementUi ) {
+  uiElement!: IElementUi;
+  removeNode(node: IElementUi) {
     // TODO giúp tôi remove node trong root và return về root
-    this.uiElement = removeNodeEl({...this.uiElement} , node) as IElementUi;
-    console.log('remove', node)
+    this.uiElement = removeNodeEl({ ...this.uiElement }, node) as IElementUi;
+    console.log('remove', node);
   }
   changeDevice(device: DeviceType): void {
-    this.device.update(value => device);
+    this.device.update((value) => device);
   }
   changeTheme(theme: ThemeType): void {
-    this.theme.update(value => theme);
+    this.theme.update((value) => theme);
   }
   ngOnInit(): void {
-    this.uiElement  = addUuidToElement(new PageUi({
+    this.uiElement = addUuidToElement(
+      new PageUi({
         label: 'Login page',
         children: {
           header: new Container({
@@ -371,10 +418,10 @@ export class UiBuilderPage  implements OnInit{
                   col: new Column({
                     label: 'col 1',
                     children: {
-                      c: new  Container({
+                      c: new Container({
                         label: 'Container chil',
-                        children: {}
-                      })
+                        children: {},
+                      }),
                     },
                   }),
                   col2: new Column({
@@ -394,105 +441,118 @@ export class UiBuilderPage  implements OnInit{
               iframe: new Row({
                 label: 'iframe',
                 children: {
-                  img: new UiIframe({src : "https://assets.vetgo.vn/iframe/baner/kippo-hover/"})
+                  img: new UiIframe({
+                    src: 'https://assets.vetgo.vn/iframe/baner/kippo-hover/',
+                  }),
                 },
               }),
-              form:  new UiForm({
+              form: new UiForm({
                 label: 'form',
                 config: data,
-                patchValue: patchValue
+                patchValue: patchValue,
               }),
               footer: new Row({
                 label: 'footer',
                 children: {
-                  img: new UiImage({src : "https://storage.test.finos.asia/hdi-public-test-bucket-static-resource/2023/01/Group-1238-1.png"})
+                  img: new UiImage({
+                    src: 'https://storage.test.finos.asia/hdi-public-test-bucket-static-resource/2023/01/Group-1238-1.png',
+                  }),
                 },
               }),
             },
           }),
         },
-      }));
-    }
-    addNode(data:Readonly<{parent:IElementUi,node: IElementUi}>) {
-      const root: IElementUi = this.uiElement;
-      const id = generateUuid4();
-      const nodeNew: IElementUi = { ...(data.node),id,parent: data.parent };
-      // Hàm đệ quy để tìm và thêm node vào cây
-      const findAndAddNode = (currentNode: IElementUi): boolean => {
-          if (currentNode.id === data.parent.id) {
-              // Nếu tìm thấy parent, thêm node vào danh sách children của parent
-              if (!currentNode.children) {
-                  currentNode.children = {};
-              }
-              if(currentNode.children && nodeNew.id) {
-                currentNode.children[nodeNew.id] = nodeNew;
-              }
-              return true; // Kết thúc đệ quy vì đã thêm node vào cây
+      })
+    );
+  }
+  addNode(data: Readonly<{ parent: IElementUi; node: IElementUi }>) {
+    const root: IElementUi = this.uiElement;
+    const id = generateUuid4();
+    const nodeNew: IElementUi = { ...data.node, id, parent: data.parent };
+    // Hàm đệ quy để tìm và thêm node vào cây
+    const findAndAddNode = (currentNode: IElementUi): boolean => {
+      if (currentNode.id === data.parent.id) {
+        // Nếu tìm thấy parent, thêm node vào danh sách children của parent
+        if (!currentNode.children) {
+          currentNode.children = {};
+        }
+        if (currentNode.children && nodeNew.id) {
+          currentNode.children[nodeNew.id] = nodeNew;
+        }
+        return true; // Kết thúc đệ quy vì đã thêm node vào cây
+      }
+      if (currentNode.children) {
+        // Duyệt qua từng child nếu có
+        for (const key in currentNode.children) {
+          if (findAndAddNode(currentNode.children[key])) {
+            return true; // Nếu tìm thấy và thêm node, kết thúc đệ quy
           }
-          if (currentNode.children) {
+        }
+      }
 
-              // Duyệt qua từng child nếu có
-              for (const key in currentNode.children) {
-                  if (findAndAddNode(currentNode.children[key])) {
-                      return true; // Nếu tìm thấy và thêm node, kết thúc đệ quy
-                  }
-              }
-          }
-
-          return false; // Không tìm thấy parent trong cây
-      };
-      // Bắt đầu đệ quy từ root
-      findAndAddNode(root);
-      this.uiElement = {...root};
-    }
+      return false; // Không tìm thấy parent trong cây
+    };
+    // Bắt đầu đệ quy từ root
+    findAndAddNode(root);
+    this.uiElement = { ...root };
+  }
 }
-export const addUuidToElement = <T extends IElementUi>(element: T, parent: T | null = null): T => {
+export const addUuidToElement = <T extends IElementUi>(
+  element: T,
+  parent: T | null = null
+): T => {
   const newElement: T = {
-      ...element,
-      id: generateUuid4(),
-      parent: parent,
-      htmlAttributes: {open: true,...(element.htmlAttributes || {})}
+    ...element,
+    id: generateUuid4(),
+    parent: parent,
+    htmlAttributes: { open: true, ...(element.htmlAttributes || {}) },
   };
   if (element.children) {
-      // Nếu có children, thực hiện đệ quy để thêm id và parent cho từng child
-      newElement.children = {};
-      Object.keys(element.children).forEach((key) => {
-        if(element.children && element.children[key] && !element.id) {
-           (newElement.children as any)[key] = addUuidToElement(element.children[key], newElement);
-        }
-      });
+    // Nếu có children, thực hiện đệ quy để thêm id và parent cho từng child
+    newElement.children = {};
+    Object.keys(element.children).forEach((key) => {
+      if (element.children && element.children[key] && !element.id) {
+        (newElement.children as any)[key] = addUuidToElement(
+          element.children[key],
+          newElement
+        );
+      }
+    });
   }
   return newElement;
-}
-export const removeNodeEl = (root: IElementUi, node:  IElementUi): IElementUi | null => {
+};
+export const removeNodeEl = (
+  root: IElementUi,
+  node: IElementUi
+): IElementUi | null => {
   // Kiểm tra nếu root hoặc node là null
   if (!root || !node) {
-      return root;
+    return root;
   }
   // Kiểm tra nếu root chính là node cần xóa
   if (root === node) {
-      return null; // Trả về null để chỉ ra rằng node đã được loại bỏ
+    return null; // Trả về null để chỉ ra rằng node đã được loại bỏ
   }
   // Kiểm tra nếu có children và kiểm tra từng child
   if (root.children) {
-      const updatedChildren: { [key: string]: IElementUi } = {};
-      // Duyệt qua từng child
-      Object.keys(root.children).forEach((key) => {
-          // Gọi đệ quy để xóa node từ children và cập nhật lại danh sách children
-          let updatedChild
-          if(root.children) {
-             updatedChild = removeNodeEl(root.children[key], node);
-          }
-          // Chỉ thêm child vào danh sách nếu nó không bị xóa
-          if (updatedChild) {
-              updatedChildren[key] = updatedChild;
-          }
-      });
-      // Cập nhật lại children của root
-      root.children = updatedChildren;
-      // Trả về root đã được cập nhật
-      return root;
+    const updatedChildren: { [key: string]: IElementUi } = {};
+    // Duyệt qua từng child
+    Object.keys(root.children).forEach((key) => {
+      // Gọi đệ quy để xóa node từ children và cập nhật lại danh sách children
+      let updatedChild;
+      if (root.children) {
+        updatedChild = removeNodeEl(root.children[key], node);
+      }
+      // Chỉ thêm child vào danh sách nếu nó không bị xóa
+      if (updatedChild) {
+        updatedChildren[key] = updatedChild;
+      }
+    });
+    // Cập nhật lại children của root
+    root.children = updatedChildren;
+    // Trả về root đã được cập nhật
+    return root;
   }
   // Trường hợp không có children, trả về root ban đầu vì không có gì thay đổi
   return root;
-}
+};

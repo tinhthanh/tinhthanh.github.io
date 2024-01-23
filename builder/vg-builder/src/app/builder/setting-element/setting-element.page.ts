@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import {
   IonLabel,
   IonItem,
@@ -11,6 +11,7 @@ import {
 } from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
 import {sunnyOutline, phonePortrait, phonePortraitOutline, desktopOutline, desktop}  from 'ionicons/icons';
+import { BuilderSignals } from "../signals/builder.signals";
 @Component({
     selector: 'app-setting-element',
     styleUrls: ['./setting-element.page.scss'],
@@ -22,6 +23,7 @@ import {sunnyOutline, phonePortrait, phonePortraitOutline, desktopOutline, deskt
   ]
 })
 export class SettingElementPage {
+  readonly bSignals = inject(BuilderSignals);
 constructor() {
  addIcons({
    'sunny-outline': sunnyOutline,
@@ -36,5 +38,8 @@ constructor() {
   }
   pxFormatter(value: number) {
     return `${value}px`;
+  }
+  log() {
+    console.log('render app-setting-element');
   }
 }

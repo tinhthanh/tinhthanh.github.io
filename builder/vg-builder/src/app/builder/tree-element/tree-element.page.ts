@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject} from "@angular/core";
 import { FieldMode, IElementUi } from "../element.ui";
 import {KeyValuePipe, NgTemplateOutlet} from "@angular/common";
 import {IonContent, IonIcon, IonPopover, IonSearchbar, PopoverController} from "@ionic/angular/standalone"
@@ -6,6 +6,7 @@ import {SelectUiPage} from "../common/select-el/select-ui.page";
 import {addIcons} from "ionicons";
 import {chevronForwardCircle, chevronDownCircle, trashOutline, removeCircle, addCircle} from 'ionicons/icons';
 import { take } from "rxjs";
+import { BuilderSignals } from "../signals/builder.signals";
 @Component({
   standalone: true,
   selector: 'app-tree-element',
@@ -21,6 +22,8 @@ export class TreeElementPage {
   @Output() vgaddNode = new EventEmitter<{parent:IElementUi, node:IElementUi}>();
   orderOriginal = () => 0;
   protected readonly Object = Object;
+  readonly builderSignals = inject(BuilderSignals);
+  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
   constructor(public popoverController: PopoverController) {
     addIcons({
     'chevron-forward-circle' : chevronForwardCircle,
@@ -59,6 +62,12 @@ export class TreeElementPage {
   }
   log() {
     console.log('rennder app-tree-element')
+  }
+  selectEl($event: Event,uiElement: IElementUi)  {
+    $event.preventDefault();
+    // console.log(uiElement)
+    this.currentNodeActive.set(uiElement);
+    // this.uiElement = uiElement;
   }
   collapse(node: IElementUi, status: boolean) {
     node.htmlAttributes = {...(node.htmlAttributes || {}) , open: status };

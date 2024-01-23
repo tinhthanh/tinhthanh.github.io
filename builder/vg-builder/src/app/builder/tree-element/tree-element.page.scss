@@ -1,6 +1,4 @@
-:host {
-  display: flex;
-}
+
 .tree {
   --spacing: 1.5rem;
   --radius: 10px;
@@ -8,6 +6,10 @@
   --marker-bg-haschild: #6b9abb;
   line-height: 2rem;
   --color-hover: orange;
+  color: var(--ion-text-color, #000);
+  .active {
+    color: var(--color-hover);
+  }
 
 }
 .tree li {
@@ -58,35 +60,3 @@
   font-size: 27px;
   color: var(--ion-color-primary);
 }
-
-@REM .tree .summary {
-@REM   display: block;
-@REM   cursor: pointer;
-@REM   user-select: none;
-@REM }
-@REM .tree .summary::marker,
-@REM .tree .summary::-webkit-details-marker {
-@REM   display: none;
-@REM }
-@REM .tree .summary:focus {
-@REM   outline: none;
-@REM }
-@REM .tree .summary:focus-visible {
-@REM   outline: 1px dotted #000;
-@REM }
-
-
-
-@REM .tree .summary::before {
-@REM   content: '+';
-@REM   z-index: 1;
-@REM   background: var(--marker-bg-haschild);
-@REM   color: #fff;
-@REM   line-height: calc(2 * var(--radius));
-@REM   text-align: center;
-@REM }
-@REM .tree .details[open] > .summary::before {
-@REM   content: '−';
-@REM }
-
-  @REM background: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160M336 256H176"/></svg>');
