@@ -70,6 +70,6 @@ export class TreeElementPage {
     // this.uiElement = uiElement;
   }
   collapse(node: IElementUi, status: boolean) {
-    node.htmlAttributes = {...(node.htmlAttributes || {}) , open: status };
+    node.attributes = {...(node.attributes || {}) , open: status };
   }
 }

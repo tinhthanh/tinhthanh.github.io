@@ -505,7 +505,7 @@ export const addUuidToElement = <T extends IElementUi>(
     ...element,
     id: generateUuid4(),
     parent: parent,
-    htmlAttributes: { open: true, ...(element.htmlAttributes || {}) },
+    attributes: { open: true, ...(element.attributes || {}) },
   };
   if (element.children) {
     // Nếu có children, thực hiện đệ quy để thêm id và parent cho từng child

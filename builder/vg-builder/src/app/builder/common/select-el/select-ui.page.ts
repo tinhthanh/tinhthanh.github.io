@@ -33,6 +33,6 @@ export class SelectUiPage {
   }
   @Output() vgSelect: EventEmitter<IElementUi> = new EventEmitter();
  selectEl(item: IElementUi) {
-   this.vgSelect.emit({...item, htmlAttributes: {open: true}});
+   this.vgSelect.emit({...item, attributes: {open: true}});
  }
 }

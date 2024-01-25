@@ -5,7 +5,7 @@
     <ul class="tree h-[calc(100vh_-_60px)] overflow-y-auto">
       <li>
         @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
-          @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {
+          @if(uiElement.attributes && uiElement.attributes['open'] ) {
             <ion-icon (click)="collapse(uiElement, false)" class="icon-collapse text-2xl cursor-pointer" name="chevron-down-circle" ></ion-icon>
           } @else {
             <ion-icon (click)="collapse(uiElement, true)" class="icon-collapse text-2xl cursor-pointer" name="chevron-forward-circle" ></ion-icon>
@@ -14,7 +14,7 @@
             <div (click)="selectEl($event,uiElement)" class="summary {{currentNodeActive()?.id === uiElement.id ? 'active' : ''}}" >
               {{uiElement.label}}
             </div>
-            @if(uiElement.htmlAttributes && uiElement.htmlAttributes['open'] ) {
+            @if(uiElement.attributes && uiElement.attributes['open'] ) {
               <ul>
                 @for( item of uiElement.children | keyvalue:  orderOriginal; track item.value.id ) {
                   <li>
@@ -35,7 +35,7 @@
     </ul>
     <ng-template #inner let-children="children">
       @if(children.children && Object.keys(children.children).length > 0) {
-        @if(children.htmlAttributes && children.htmlAttributes['open'] ) {
+        @if(children.attributes && children.attributes['open'] ) {
           <ion-icon (click)="collapse(children, false)" class="icon-collapse text-2xl cursor-pointer" name="chevron-down-circle" ></ion-icon>
         } @else {
           <ion-icon (click)="collapse(children, true)" class="icon-collapse text-2xl cursor-pointer" name="chevron-forward-circle" ></ion-icon>
@@ -53,7 +53,7 @@
               <div >Add element</div>
             </div>
           </div>
-          @if(children.htmlAttributes && children.htmlAttributes['open'] ) {
+          @if(children.attributes && children.attributes['open'] ) {
             <ul >
               @for( item of children.children | keyvalue:  orderOriginal; track $any(item.value).id ) {
                 <li>

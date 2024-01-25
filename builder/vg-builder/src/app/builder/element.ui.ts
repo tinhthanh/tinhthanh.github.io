@@ -37,7 +37,7 @@ export interface IElementUi {
     children?: {[key: string]: IElementUi };
     width?: string;
     height?: string;
-    htmlAttributes?: {
+    attributes?: {
         [key: string]: any;
     };
 }
@@ -49,7 +49,7 @@ export class PageUi implements IElementUi { // for root page
     order:number  = -1;
     children?: {[key: string]: IElementUi };
     classes?: string = 'w-100';
-    htmlAttributes?: {
+    attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -57,7 +57,7 @@ export class PageUi implements IElementUi { // for root page
         label?: string,
         order?:number;
         children: {[key: string]: IElementUi };
-        htmlAttributes?: {
+        attributes?: {
             [key: string]: any;
         }
     }) {
@@ -72,7 +72,7 @@ export class Row implements IElementUi {
     order:number  = -1;
     children?: {[key: string]: IElementUi };
     classes?: string = 'row min-h-25';
-    htmlAttributes?: {
+    attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -80,7 +80,7 @@ export class Row implements IElementUi {
         label?: string,
         order?:number;
         children: {[key: string]: IElementUi };
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
@@ -96,7 +96,7 @@ export class Column implements IElementUi {
     order:number  = -1;
     children?: {[key: string]: IElementUi };
     classes?: string = 'col min-h-25';
-    htmlAttributes?: {
+    attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -104,7 +104,7 @@ export class Column implements IElementUi {
         label?: string,
         order?:number;
         children: {[key: string]: IElementUi };
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
@@ -120,7 +120,7 @@ export class Container implements IElementUi {
     order:number  = -1;
     classes?: string = 'container min-h-25';
     children?: { [key: string]: IElementUi };
-    htmlAttributes?: {
+  attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -128,7 +128,7 @@ export class Container implements IElementUi {
         label?: string,
         order?:number;
         children: {[key: string]: IElementUi };
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
@@ -143,7 +143,7 @@ export class UiImage implements IElementUi {
     order:number  = -1;
     src?: string;
     classes?: string = '';
-    htmlAttributes?: {
+  attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -151,7 +151,7 @@ export class UiImage implements IElementUi {
         label?: string,
         order?:number;
         src: string;
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
@@ -169,7 +169,7 @@ export class UiIframe implements IElementUi {
     classes?: string = '';
     width: string = '100%';
     height: string = '100%';
-    htmlAttributes?: {
+  attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -179,7 +179,7 @@ export class UiIframe implements IElementUi {
         src: string;
         width?: string;
         height?: string;
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
@@ -196,7 +196,7 @@ export class UiForm<T> implements IElementUi {
     classes?: string = '';
     config?:  { [K in keyof T]: IField }
     patchValue?: T;
-    htmlAttributes?: {
+  attributes?: {
         [key: string]: any;
     }
     constructor(options: {
@@ -206,7 +206,7 @@ export class UiForm<T> implements IElementUi {
         classes?: string;
         config:  { [K in keyof T]: IField },
         patchValue: T;
-        htmlAttributes?: {
+      attributes?: {
             [key: string]: any;
         }
     }) {
