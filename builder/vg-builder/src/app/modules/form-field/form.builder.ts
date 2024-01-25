@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { ArrayObject, ControlType, IField, ObjectFields } from "./form.field";
 import { ValidatorStr } from './form.validation';
-
+export type BuilderType<T> = keyof T;
 export type FormType<T extends Record<string, any>> = FormGroup<ControlsOf<T>>;
 export type ValidatorType =
   | ValidatorStr

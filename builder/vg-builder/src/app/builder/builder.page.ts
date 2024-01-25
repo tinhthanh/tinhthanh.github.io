@@ -303,7 +303,7 @@ export enum ThemeType {
       <as-split-area [size]="60">
         <div class="builder-review relative">
           <div
-            class="tab-device absolute flex items-center space-x-4 z-50 right-3 rounded-4 p-2 bg-gray-900  "
+            class="tab-device absolute flex items-center space-x-4 z-50 right-3 rounded-4 p-2 bg-[#ededed] "
           >
             <ion-icon
               [ngClass]="{ active: DeviceType.MOBILE === device() }"
