@@ -40,6 +40,7 @@ export interface IElementUi {
     attributes?: {
         [key: string]: any;
     };
+    style?: CSSStyleDeclaration; // for tool builder
 }
 export class PageUi implements IElementUi { // for root page
     id?:string;
@@ -120,9 +121,10 @@ export class Container implements IElementUi {
     order:number  = -1;
     classes?: string = 'container min-h-25';
     children?: { [key: string]: IElementUi };
-  attributes?: {
+    attributes?: {
         [key: string]: any;
     }
+    style?: CSSStyleDeclaration; // for tool builder
     constructor(options: {
         id?:string;
         label?: string,
@@ -130,7 +132,8 @@ export class Container implements IElementUi {
         children: {[key: string]: IElementUi };
       attributes?: {
             [key: string]: any;
-        }
+        },
+        style?: CSSStyleDeclaration; // for tool builder
     }) {
         Object.assign(this, options);
     }

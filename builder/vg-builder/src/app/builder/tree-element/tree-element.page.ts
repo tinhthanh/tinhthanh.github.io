@@ -7,6 +7,7 @@ import {addIcons} from "ionicons";
 import {chevronForwardCircle, chevronDownCircle, trashOutline, removeCircle, addCircle} from 'ionicons/icons';
 import { take } from "rxjs";
 import { BuilderSignals } from "../signals/builder.signals";
+import { GlobalBuilderFields } from "../types";
 @Component({
   standalone: true,
   selector: 'app-tree-element',
@@ -23,7 +24,7 @@ export class TreeElementPage {
   orderOriginal = () => 0;
   protected readonly Object = Object;
   readonly builderSignals = inject(BuilderSignals);
-  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
+  readonly currentNodeActive = this.builderSignals.select(GlobalBuilderFields.currentNodeActive);
   constructor(public popoverController: PopoverController) {
     addIcons({
     'chevron-forward-circle' : chevronForwardCircle,
@@ -66,7 +67,7 @@ export class TreeElementPage {
   selectEl($event: Event,uiElement: IElementUi)  {
     $event.preventDefault();
     // console.log(uiElement)
-    this.currentNodeActive.set(uiElement);
+    this.builderSignals.set(GlobalBuilderFields.currentNodeActive, uiElement);
     // this.uiElement = uiElement;
   }
   collapse(node: IElementUi, status: boolean) {

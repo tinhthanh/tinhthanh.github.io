@@ -1,25 +1,27 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, forwardRef, inject} from "@angular/core";
+import {ChangeDetectionStrategy, Component, OnInit, inject} from "@angular/core";
 import {Container, IElementUi} from "../element.ui";
-import { KeyValuePipe, NgClass, NgTemplateOutlet } from "@angular/common";
+import { KeyValuePipe, NgClass, NgComponentOutlet, NgTemplateOutlet } from "@angular/common";
 import { BuilderFactoryPage } from "../builder-factory/builder-factory.page";
 import { ElBase } from "src/app/builder/el-base";
 import {addIcons} from 'ionicons';
 import {IonIcon, IonLabel} from '@ionic/angular/standalone';
 import { createOutline }  from 'ionicons/icons';
 import { BuilderSignals } from "../signals/builder.signals";
+import { GlobalBuilderFields } from "../types";
+import { ApplyStylesDirective } from "../directives/apply-styles.directives";
 @Component({
     standalone: true,
     selector: 'app-ui-page',
     template: `
    @if(uiElement) {
-    <div class="builder-mode {{currentNodeActive()?.id === uiElement.id ? 'active' : ''}}">
+    <div [appStyles]="uiElement" class="builder-mode {{currentNodeActive()?.id === uiElement.id ? 'active' : ''}}">
       <div class="flex flex-row align-items-center gap-1 label-builder-mode">
         <ion-label> {{ uiElement.label }}</ion-label>
         <ion-icon class="text-2xl cursor-pointer" (click)="selectEl($event,uiElement)" name="create-outline"></ion-icon>
       </div>
       @if(uiElement.children && Object.keys(uiElement.children).length > 0) {
             @for( item of uiElement.children | keyvalue:  orderOriginal; track item.value.id;) {
-              <div [ngClass]="item.value.classes" class="builder-mode {{currentNodeActive()?.id === item.value.id ? 'active' : ''}}">
+              <div [appStyles]="item.value" [ngClass]="item.value.classes" class="builder-mode {{currentNodeActive()?.id === item.value.id ? 'active' : ''}}">
                 <ng-container
                   *ngTemplateOutlet="inner; context: { children: item.value }">
                 </ng-container>
@@ -36,10 +38,10 @@ import { BuilderSignals } from "../signals/builder.signals";
       </div>
     @if(children.children && Object.keys(children.children).length > 0) {
           @for( item of children.children | keyvalue:  orderOriginal; track item.value.id; ) {
-            <div [ngClass]="item.value.classes" class="builder-mode {{currentNodeActive()?.id === item.value.id ? 'active' : ''}}">
-                <ng-container
+            <div [appStyles]="item.value" [ngClass]="item.value.classes" class="builder-mode {{currentNodeActive()?.id === item.value.id ? 'active' : ''}}">
+                <ng-template
                   *ngTemplateOutlet="inner; context: { children: item.value }">
-                </ng-container>
+                </ng-template>
             </div>
           }
     } @else {
@@ -58,11 +60,12 @@ import { BuilderSignals } from "../signals/builder.signals";
     width: 100%;
    }
   `],
-  imports: [KeyValuePipe, NgClass, NgTemplateOutlet, BuilderFactoryPage, IonIcon, IonLabel],
+  imports: [ApplyStylesDirective, NgComponentOutlet,KeyValuePipe, NgClass, NgTemplateOutlet, BuilderFactoryPage, IonIcon, IonLabel],
 })
 export class UiPagePage extends ElBase<Container> implements OnInit{
   readonly builderSignals = inject(BuilderSignals);
-  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
+  readonly currentNodeActive = this.builderSignals.select(GlobalBuilderFields.currentNodeActive);
+  factoryCp = BuilderFactoryPage;
 
 constructor() {
   super();
@@ -74,7 +77,7 @@ constructor() {
   selectEl($event: Event,uiElement: IElementUi)  {
     $event.preventDefault();
     // console.log(uiElement)
-    this.currentNodeActive.set(uiElement);
+    this.builderSignals.set(GlobalBuilderFields.currentNodeActive, uiElement);
     // this.uiElement = uiElement;
   }
 

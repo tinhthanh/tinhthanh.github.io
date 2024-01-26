@@ -342,7 +342,7 @@ export enum ThemeType {
         </div>
       </as-split-area>
       <as-split-area [minSize]="20" [size]="20">
-        <app-setting-element></app-setting-element>
+        <app-setting-element (vgUpdateNode)="updateNode($event)"></app-setting-element>
       </as-split-area>
     </as-split>
     }
@@ -397,12 +397,22 @@ export class UiBuilderPage implements OnInit {
     // TODO giúp tôi remove node trong root và return về root
     this.uiElement = removeNodeEl({ ...this.uiElement }, node) as IElementUi;
     console.log('remove', node);
+    this.uiElement = { ...this.uiElement };
+  }
+  updateNode(node: IElementUi) {
+    console.log(node);
+    const id = node.id || '';
+    const root = this.uiElement;
+    const updatedElement = updateNodeFc({ ...root } ,id, node) as IElementUi;
+    this.uiElement = { ...updatedElement };
+
+    console.log('update', updatedElement);
   }
   changeDevice(device: DeviceType): void {
-    this.device.update((value) => device);
+    this.device.set(device);
   }
   changeTheme(theme: ThemeType): void {
-    this.theme.update((value) => theme);
+    this.theme.set(theme);
   }
   ngOnInit(): void {
     this.uiElement = addUuidToElement(
@@ -521,6 +531,7 @@ export const addUuidToElement = <T extends IElementUi>(
   }
   return newElement;
 };
+// https://chat.openai.com/c/e62b4e54-987e-4463-bb77-0aab90800738
 export const removeNodeEl = (
   root: IElementUi,
   node: IElementUi
@@ -556,3 +567,76 @@ export const removeNodeEl = (
   // Trường hợp không có children, trả về root ban đầu vì không có gì thay đổi
   return root;
 };
+
+export const updateNodeEl = (
+  root: IElementUi,
+  node: IElementUi
+): IElementUi | null => {
+  // Kiểm tra nếu root hoặc node là null
+  if (!root || !node) {
+    return root;
+  }
+  // Kiểm tra nếu root chính là node cần xóa
+  if (root === node) {
+    return null; // Trả về null để chỉ ra rằng node đã được loại bỏ
+  }
+  // Kiểm tra nếu có children và kiểm tra từng child
+  if (root.children) {
+    const updatedChildren: { [key: string]: IElementUi } = {};
+    // Duyệt qua từng child
+    Object.keys(root.children).forEach((key) => {
+      // Gọi đệ quy để xóa node từ children và cập nhật lại danh sách children
+      let updatedChild;
+      if (root.children) {
+        updatedChild = updateNodeEl(root.children[key], node);
+      }
+      // Chỉ thêm child vào danh sách nếu nó không bị xóa
+      if (updatedChild) {
+        updatedChildren[key] = updatedChild;
+      }
+    });
+    // Cập nhật lại children của root
+    root.children = updatedChildren;
+    // Trả về root đã được cập nhật
+    return root;
+  }
+  // Trường hợp không có children, trả về root ban đầu vì không có gì thay đổi
+  return root;
+};
+const  updateNodeFc = (root: IElementUi, nodeId: string, updatedData: Partial<IElementUi>): IElementUi | null => {
+  // Hàm đệ quy để tìm và cập nhật node
+  const findAndUpdateNode = (currentNode: IElementUi): IElementUi | null => {
+      if (currentNode.id === nodeId) {
+          // Nếu tìm thấy node, cập nhật thông tin và trả về node đã cập nhật
+          return {
+              ...currentNode,
+              ...updatedData,
+          };
+      }
+
+      if (currentNode.children) {
+          // Duyệt qua từng child nếu có
+          for (const key in currentNode.children) {
+              const updatedChild = findAndUpdateNode(currentNode.children[key]);
+              if (updatedChild) {
+                  // Nếu child đã được cập nhật, cập nhật lại danh sách children
+                  currentNode.children[key] = updatedChild;
+                  return currentNode; // Trả về node cha đã được cập nhật
+              }
+          }
+      }
+
+      return null; // Không tìm thấy node cần cập nhật
+  };
+
+  // Bắt đầu đệ quy từ root
+  const updatedRoot = findAndUpdateNode(root);
+
+  if (updatedRoot) {
+      // Nếu node cần cập nhật là root, trả về root đã được cập nhật
+      return updatedRoot;
+  } else {
+      // Nếu không tìm thấy node cần cập nhật, trả về null
+      return null;
+  }
+}

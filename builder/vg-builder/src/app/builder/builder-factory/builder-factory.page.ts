@@ -33,6 +33,11 @@ export class BuilderFactoryPage extends ElBase<IElementUi> implements OnChanges,
         super.ngOnInit();
   }
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['uiElement'] && changes['uiElement'].previousValue != changes['uiElement'].currentValue) {
+      this.render();
+    }
+  }
+  render() {
     if (this.uiElement) {
       this.cp = elRegister[this.uiElement.type];
       this.vcr.clear();

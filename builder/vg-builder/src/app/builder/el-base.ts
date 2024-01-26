@@ -21,7 +21,7 @@ export abstract class ElBase<T extends IElementUi> implements OnInit, OnDestroy 
         if(this.uiElement.id) {
           this.eventBus.listenChange(this.uiElement.id).subscribe((item) => {
             console.log(item);
-            this.cdf.detectChanges();
+            // this.cdf.detectChanges();
           });
         }
     }

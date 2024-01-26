@@ -6,7 +6,6 @@ import { GlobalBuilderState } from "../types";
 export class BuilderSignals  extends EventBusSignals<GlobalBuilderState>  {
     constructor() {
         super();
-     console.log('init BuilderSignals');   
+     console.log('init BuilderSignals');
     }
-
 }

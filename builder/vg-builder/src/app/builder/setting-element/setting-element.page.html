@@ -1,111 +1,275 @@
 {{log()}}
 <div class="h-screen overflow-y-auto">
   @if(currentNodeActive()) {
-    <form [formGroup]="formGroup">
-      <ion-accordion-group  [multiple]="true" [value]="['1', '2', '3' ,'4', '5']">
-        <ion-accordion value="1">
-          <ion-item slot="header" color="light">
-            <ion-label>{{currentNodeActive()?.label}} Properties</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-           <ion-grid>
-                <ion-row>
-                  <ion-col size-md="6">
-                      <ion-input label="Width" [formControlName]="DefaultSettingFields.width" labelPlacement="stacked" placeholder="0px"></ion-input>
-                  </ion-col>
-                  <ion-col size-md="6">
-                      <ion-input label="Height" [formControlName]="DefaultSettingFields.height" labelPlacement="stacked"  placeholder="0px"></ion-input>
-                  </ion-col>
-                  <ion-col size-md="6">
-                    <ion-input appColorPic readonly [formControlName]="DefaultSettingFields.fillColor"  label="Fill Color" labelPlacement="stacked" placeholder="#"></ion-input>
-                  </ion-col>
-                  <ion-col size-md="6">
-                    <ion-input  appColorPic readonly [formControlName]="DefaultSettingFields.borderColor" label="Border Color" labelPlacement="stacked" placeholder="#"></ion-input>
-                  </ion-col>
-                  <ion-col size-md="12">
-                    <ion-range  style="padding-top: 0" mode="ios" [pin]="true" [pinFormatter]="pxFormatter">
+  <form [formGroup]="formGroup">
+    <ion-accordion-group [multiple]="true" [value]="['1', '2', '3' ,'4', '5']">
+      <ion-accordion value="1">
+        <ion-item slot="header" color="light">
+          <ion-label>{{currentNodeActive()?.label}} Properties</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="6">
+                <ion-input label="Width" [formControlName]="DefaultSettingFields.width" labelPlacement="stacked"
+                  placeholder="0px"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-input label="Height" [formControlName]="DefaultSettingFields.height" labelPlacement="stacked"
+                  placeholder="0px"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-input appColorPic readonly [formControlName]="DefaultSettingFields.webkitTextFillColor"
+                  label="Fill Color" labelPlacement="stacked" placeholder="#"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-input appColorPic readonly [formControlName]="DefaultSettingFields.borderColor"
+                  label="Border Color" labelPlacement="stacked" placeholder="#"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input appColorPic readonly [formControlName]="DefaultSettingFields.backgroundColor"
+                  label="Background Color" labelPlacement="stacked" placeholder="#"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input label="Border Radius" [formControlName]="DefaultSettingFields.borderRadius"
+                  labelPlacement="stacked" placeholder="0px"></ion-input>
+                <!-- <ion-range [formControlName]="DefaultSettingFields.borderRadius"   style="padding-top: 0" mode="ios" [pin]="true" [pinFormatter]="pxFormatter">
                       <div slot="label">Border Radius</div>
-                    </ion-range>
-                  </ion-col>
-                  <ion-col size-md="12">
-                    <ion-input label="Border width" [formControlName]="DefaultSettingFields.borderWidth" labelPlacement="stacked" placeholder="1px"></ion-input>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
+                    </ion-range> -->
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input label="Border width" [formControlName]="DefaultSettingFields.borderWidth"
+                  labelPlacement="stacked" placeholder="1px"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input label="Padding" [formControlName]="DefaultSettingFields.padding" labelPlacement="stacked"
+                  placeholder="1px"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-input label="Margin" [formControlName]="DefaultSettingFields.margin" labelPlacement="stacked"
+                  placeholder="1px"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-range style="padding-top: 0" [min]="0" [max]="1" [formControlName]="DefaultSettingFields.opacity"
+                  mode="ios" [pin]="true" step="0.1" [pinFormatter]="pinFormatter">
+                  <div slot="label">Opacity</div>
+                  <ion-icon slot="start" name="sunny-outline"></ion-icon>
+                  <ion-icon slot="end" name="sunny-outline"></ion-icon>
+                </ion-range>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size-md="auto"> Responsive </ion-col>
+              <ion-col size-md="6">
+                <ion-icon class="text-2xl" name="phone-portrait-outline"></ion-icon>
+                <ion-icon class="text-2xl" name="desktop-outline"></ion-icon>
+                <!--                   <ion-icon class="text-2xl"  name="phone-portrait"></ion-icon>-->
+                <!--                   <ion-icon  class="text-2xl"  name="desktop"></ion-icon>-->
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size-md="12"> </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="2">
+        <ion-item slot="header" color="light">
+          <ion-label>Padding & Alignment</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="12">
+                <ion-input mode="ios" label="Flex" type="number" placeholder="00"></ion-input>
+              </ion-col>
 
-                  <ion-col size-md="auto">
-                        Responsive
-                  </ion-col>
-                  <ion-col size-md="6">
-                    <ion-icon class="text-2xl" name="phone-portrait-outline"></ion-icon>
-                    <ion-icon class="text-2xl"  name="desktop-outline"></ion-icon>
-    <!--                   <ion-icon class="text-2xl"  name="phone-portrait"></ion-icon>-->
-    <!--                   <ion-icon  class="text-2xl"  name="desktop"></ion-icon>-->
-                     </ion-col>
-                   </ion-row>
-                <ion-row>
-                  <ion-col size-md="12">
-                    <ion-range style="padding-top: 0"  mode="ios" [pin]="true" [pinFormatter]="pinFormatter">
-                      <div slot="label">Opacity</div>
-                      <ion-icon slot="start" name="sunny-outline"></ion-icon>
-                      <ion-icon slot="end" name="sunny-outline"></ion-icon>
-                    </ion-range>
-                  </ion-col>
-                </ion-row>
-           </ion-grid>
-          </div>
-        </ion-accordion>
-        <ion-accordion value="2">
-          <ion-item slot="header" color="light">
-            <ion-label>Padding & Alignment</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            <ion-grid>
-              <ion-row>
-                <ion-col size-md="12">
-                  <ion-input mode="ios" label="Flex" type="number" placeholder="00"></ion-input>
-                </ion-col>
-                <ion-col size-md="12">
-                  <ion-toggle mode="ios" [checked]="true">Padding </ion-toggle>
-                </ion-col>
+              <ion-col size-md="12">
+                <ion-range mode="ios"></ion-range>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-label>Alignment</ion-label>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-radio-group value="custom-checked">
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom-checked"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                </ion-radio-group>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="3">
+        <ion-item slot="header" color="light">
+          <ion-label>Flex container</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="display" placeholder="Select type" [formControlName]="DefaultSettingFields.display">
+                  <ion-select-option value="flex">flex</ion-select-option>
+                  <ion-select-option value="inline-flex">inline-flex</ion-select-option>
+                </ion-select>
+              </ion-col>
 
-                <ion-col size-md="12">
-                  <ion-range  mode="ios" ></ion-range>
-                </ion-col>
-                <ion-col size-md="12">
-                  <ion-label>Alignment</ion-label>
-                </ion-col>
-                <ion-col size-md="12">
-                  <ion-radio-group value="custom-checked">
-                    <ion-radio value="custom" ></ion-radio>
-                    <ion-radio value="custom-checked"></ion-radio>
-                    <ion-radio value="custom"></ion-radio>
-                    <ion-radio value="custom" ></ion-radio>
-                    <ion-radio value="custom"></ion-radio>
-                    <ion-radio value="custom" ></ion-radio>
-                    <ion-radio value="custom"></ion-radio>
-                    <ion-radio value="custom" ></ion-radio>
-                    <ion-radio value="custom" ></ion-radio>
-                  </ion-radio-group>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </ion-accordion>
-        <ion-accordion value="3">
-          <ion-item slot="header" color="light">
-            <ion-label>Background Image</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">Third Content</div>
-        </ion-accordion>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="flex-direction" placeholder="Select type "
+                  [formControlName]="DefaultSettingFields.flexDirection">
+                  <ion-select-option value="row">row</ion-select-option>
+                  <ion-select-option value="row-reverse">row-reverse</ion-select-option>
+                  <ion-select-option value="column">column</ion-select-option>
+                  <ion-select-option value="column-reverse">column-reverse</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="flex-wrap" placeholder="Select type " [formControlName]="DefaultSettingFields.flexWrap">
+                  <ion-select-option value="nowrap">nowrap</ion-select-option>
+                  <ion-select-option value="wrap">wrap</ion-select-option>
+                  <ion-select-option value="wrap-reverse">wrap-reverse</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="flex-wrap" placeholder="Select type " [formControlName]="DefaultSettingFields.flexWrap">
+                  <ion-select-option value="nowrap">nowrap</ion-select-option>
+                  <ion-select-option value="wrap">wrap</ion-select-option>
+                  <ion-select-option value="wrap-reverse">wrap-reverse</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="justify-content" placeholder="Select type "
+                  [formControlName]="DefaultSettingFields.justifyContent">
+                  <ion-select-option value="flex-start">flex-start</ion-select-option>
+                  <ion-select-option value="flex-end">flex-end</ion-select-option>
+                  <ion-select-option value="center">center</ion-select-option>
+                  <ion-select-option value="space-between">space-between</ion-select-option>
+                  <ion-select-option value="space-around">space-around</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="align-items" placeholder="Select type " [formControlName]="DefaultSettingFields.alignItems">
+                  <ion-select-option value="flex-start">flex-start</ion-select-option>
+                  <ion-select-option value="flex-end">flex-end</ion-select-option>
+                  <ion-select-option value="center">center</ion-select-option>
+                  <ion-select-option value="baseline">baseline</ion-select-option>
+                  <ion-select-option value="stretch">stretch</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="align-content" placeholder="Select type "
+                  [formControlName]="DefaultSettingFields.alignContent">
+                  <ion-select-option value="flex-start">flex-start</ion-select-option>
+                  <ion-select-option value="flex-end">flex-end</ion-select-option>
+                  <ion-select-option value="center">center</ion-select-option>
+                  <ion-select-option value="space-between">space-between</ion-select-option>
+                  <ion-select-option value="space-around">space-around</ion-select-option>
+                  <ion-select-option value="stretch">stretch</ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-accordion>
       <ion-accordion value="4">
+        <ion-item slot="header" color="light">
+          <ion-label>Flex items</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="6">
+                <ion-input label="order" [formControlName]="DefaultSettingFields.order" labelPlacement="stacked"
+                  placeholder="0"></ion-input>
+              </ion-col>
+              <ion-col size-md="6">
+                <ion-input label="flex" [formControlName]="DefaultSettingFields.flex" labelPlacement="stacked"
+                  placeholder="0"></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                  label="align-content" placeholder="Select type " [formControlName]="DefaultSettingFields.alignSelf">
+                  <ion-select-option value="auto">auto</ion-select-option>
+                  <ion-select-option value="flex-start">flex-start</ion-select-option>
+                  <ion-select-option value="flex-end">flex-end</ion-select-option>
+                  <ion-select-option value="center">center</ion-select-option>
+                  <ion-select-option value="baseline">baseline</ion-select-option>
+                  <ion-select-option value="stretch">stretch</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-accordion>
+      <ion-accordion value="5">
         <ion-item slot="header" color="light">
           <ion-label>Background Image</ion-label>
         </ion-item>
-        <div class="ion-padding" slot="content">Third Content</div>
+        <div class="ion-padding" slot="content">
+          <ion-grid>
+            <ion-row>
+              <ion-col size-md="12">
+                <ion-input label="background-image" [formControlName]="DefaultSettingFields.backgroundImage" labelPlacement="stacked"
+                  placeholder='url("paper.gif")'></ion-input>
+              </ion-col>
+
+              <ion-col size-md="12">
+                <ion-input label="position" [formControlName]="DefaultSettingFields.backgroundPosition" labelPlacement="stacked"
+                placeholder='top right'></ion-input>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                label="size" placeholder="Select type " [formControlName]="DefaultSettingFields.backgroundSize">
+                <ion-select-option value="contain">contain</ion-select-option>
+                <ion-select-option value="cover">cover</ion-select-option>
+              </ion-select>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                label="repeat" placeholder="Select type " [formControlName]="DefaultSettingFields.backgroundRepeat">
+                <ion-select-option value="repeat">repeat</ion-select-option>
+                <ion-select-option value="no-repeat">no-repeat</ion-select-option>
+                <ion-select-option value="repeat-x">repeat-x</ion-select-option>
+                <ion-select-option value="space">space</ion-select-option>
+                <ion-select-option value="round">round</ion-select-option>
+                <ion-select-option value="space repeat">space repeat</ion-select-option>
+              </ion-select>
+              </ion-col>
+              <ion-col size-md="12">
+                <ion-select mode="ios" class="never-flip" toggleIcon="caret-down-sharp" interface="popover"
+                label="attachment" placeholder="Select type " [formControlName]="DefaultSettingFields.backgroundAttachment">
+                <ion-select-option value="scroll">scroll</ion-select-option>
+                <ion-select-option value="fixed">fixed</ion-select-option>
+                <ion-select-option value="local">local</ion-select-option>
+              </ion-select>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </div>
       </ion-accordion>
 
-      <ion-accordion value="5">
+      <!-- <ion-accordion value="6">
         <ion-item slot="header" color="light">
           <ion-label>Child</ion-label>
         </ion-item>
@@ -117,30 +281,23 @@
               </ion-col>
               <ion-col size-md="12">
                 <ion-radio-group value="custom-checked">
-                  <ion-radio value="custom" ></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
                   <ion-radio value="custom-checked"></ion-radio>
                   <ion-radio value="custom"></ion-radio>
-                  <ion-radio value="custom" ></ion-radio>
                   <ion-radio value="custom"></ion-radio>
-                  <ion-radio value="custom" ></ion-radio>
                   <ion-radio value="custom"></ion-radio>
-                  <ion-radio value="custom" ></ion-radio>
-                  <ion-radio value="custom" ></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
+                  <ion-radio value="custom"></ion-radio>
                 </ion-radio-group>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
-      </ion-accordion>
-      </ion-accordion-group>
-    </form>
+      </ion-accordion> -->
+    </ion-accordion-group>
+  </form>
 
-  } @else {
-    Vui lòng chọn thẻ
-  }
-
-
-
-
+  } @else { Vui lòng chọn thẻ }
 </div>
-
