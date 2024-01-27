@@ -7,7 +7,6 @@ import {addIcons} from 'ionicons';
 import {IonIcon, IonLabel} from '@ionic/angular/standalone';
 import { createOutline }  from 'ionicons/icons';
 import { BuilderSignals } from "../signals/builder.signals";
-import { GlobalBuilderFields } from "../types";
 import { ApplyStylesDirective } from "../directives/apply-styles.directives";
 @Component({
     standalone: true,
@@ -64,7 +63,7 @@ import { ApplyStylesDirective } from "../directives/apply-styles.directives";
 })
 export class UiPagePage extends ElBase<Container> implements OnInit{
   readonly builderSignals = inject(BuilderSignals);
-  readonly currentNodeActive = this.builderSignals.select(GlobalBuilderFields.currentNodeActive);
+  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
   factoryCp = BuilderFactoryPage;
 
 constructor() {
@@ -77,7 +76,7 @@ constructor() {
   selectEl($event: Event,uiElement: IElementUi)  {
     $event.preventDefault();
     // console.log(uiElement)
-    this.builderSignals.set(GlobalBuilderFields.currentNodeActive, uiElement);
+    this.builderSignals.set('currentNodeActive', uiElement);
     // this.uiElement = uiElement;
   }
 

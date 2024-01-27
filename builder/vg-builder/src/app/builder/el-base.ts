@@ -10,7 +10,7 @@ export abstract class ElBase<T extends IElementUi> implements OnInit, OnDestroy 
     private eventBus = inject(EventBusService);
     protected readonly Object = Object;
     @Input() fieldMode: FieldMode = FieldMode.LIVE;
-    @Input() uiElement!: T;
+    @Input() uiElement!: T | null;
     orderOriginal = (
       a: KeyValue<string, IElementUi>,
       b: KeyValue<string, IElementUi>
@@ -18,7 +18,7 @@ export abstract class ElBase<T extends IElementUi> implements OnInit, OnDestroy 
       return a.value.order - b.value.order;
     };
     ngOnInit(): void {
-        if(this.uiElement.id) {
+        if(this.uiElement && this.uiElement.id) {
           this.eventBus.listenChange(this.uiElement.id).subscribe((item) => {
             console.log(item);
             // this.cdf.detectChanges();
@@ -26,7 +26,7 @@ export abstract class ElBase<T extends IElementUi> implements OnInit, OnDestroy 
         }
     }
   ngOnDestroy(): void {
-    if(this.uiElement.id) {
+    if(this.uiElement &&this.uiElement.id) {
       console.log('destroy', this.uiElement.id);
       this.eventBus.unsubscribeChange(this.uiElement.id);
     }

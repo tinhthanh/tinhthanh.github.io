@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Injector, Output, effect, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Injector, Output, Signal, effect, inject } from "@angular/core";
 import {
   IonLabel,
   IonItem,
@@ -14,12 +14,11 @@ import {
   IonSelectOption
 } from "@ionic/angular/standalone";
 import {addIcons} from "ionicons";
-import {sunnyOutline, phonePortrait, phonePortraitOutline, desktopOutline, desktop}  from 'ionicons/icons';
+import {sunnyOutline, phonePortrait, phonePortraitOutline, desktopOutline, desktop, caretDownSharp, caretUpSharp}  from 'ionicons/icons';
 import { BuilderSignals } from "../signals/builder.signals";
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn } from "@angular/forms";
 import { ControlsOf, FormType, BuilderType } from "../../modules/form-field/form.builder";
 import { ColorPicModule } from "../color-picker/color-pic.module";
-import { GlobalBuilderFields } from "../types";
 import { debounceTime, distinctUntilChanged, map } from "rxjs";
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { isEqual } from "../fuc-utils";
@@ -79,7 +78,7 @@ export const DefaultSettingFields  : { [K in keyof Partial<CSSStyleDeclaration>]
 export class SettingElementPage  {
   readonly DefaultSettingFields = DefaultSettingFields as { [K in keyof CSSStyleDeclaration]: BuilderType<CSSStyleDeclaration> };
   readonly builderSignals = inject(BuilderSignals);
-  readonly currentNodeActive = this.builderSignals.select(GlobalBuilderFields.currentNodeActive);
+  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
   @Output() vgUpdateNode = new EventEmitter<IElementUi>();
   formGroup: FormType<Partial<CSSStyleDeclaration>> = new FormGroup<ControlsOf<Partial<CSSStyleDeclaration>>>(Object.keys(DefaultSettingFields).reduce((pre, curr ) => ({...pre, [curr]: new FormControl<CssProperty>(null, [cssValidator(curr as keyof CSSStyleDeclaration )] )}), {}));
   constructor() {
@@ -88,7 +87,9 @@ export class SettingElementPage  {
    'phone-portrait-outline': phonePortraitOutline,
    'phone-portrait': phonePortrait,
    'desktop-outline': desktopOutline,
-   'desktop': desktop
+   'desktop': desktop,
+   'caret-down-sharp' : caretDownSharp,
+   'caret-up-sharp' : caretUpSharp
  });
  // watch current node change
  toObservable(this.currentNodeActive).pipe(
@@ -121,7 +122,7 @@ this.formGroup.valueChanges.pipe(
     takeUntilDestroyed()
  ).subscribe( (it) => {
   console.log(it);
-  const activeNode: IElementUi | null = this.currentNodeActive();
+  const activeNode: IElementUi | null = this.currentNodeActive() as IElementUi; ;
   if(activeNode) {
     this.vgUpdateNode.emit({...activeNode, style: it})
     console.log(this.currentNodeActive())

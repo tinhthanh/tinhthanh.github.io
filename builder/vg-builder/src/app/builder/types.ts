@@ -1,10 +1,17 @@
-import { BuilderType } from "../modules/form-field/form.builder";
 import { IElementUi } from "./element.ui";
-
+export enum DeviceType {
+  'MOBILE' = 'MOBILE',
+  'DESKTOP' = 'DESKTOP',
+}
+export enum ThemeType {
+  'LIGHT' = 'LIGHT',
+  'DARK' = 'DARK',
+}
 // State for node
-export type GlobalBuilderState = {
+export interface GlobalBuilderState {
+    parentNode: IElementUi | null;
     currentNodeActive: IElementUi | null;
+    deviceMode: DeviceType | null;
+    themeMode : ThemeType | null;
 }
-export const GlobalBuilderFields: { [K in keyof GlobalBuilderState]: BuilderType<GlobalBuilderState> } = {
-    currentNodeActive: 'currentNodeActive'
-}
+

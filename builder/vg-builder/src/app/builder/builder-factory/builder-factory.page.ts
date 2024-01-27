@@ -29,7 +29,6 @@ export class BuilderFactoryPage extends ElBase<IElementUi> implements OnChanges,
   vcr!: ViewContainerRef;
   cp!: Type<any> | null;
    override ngOnInit(): void {
-    console.log(this.uiElement.id)
         super.ngOnInit();
   }
   ngOnChanges(changes: SimpleChanges): void {

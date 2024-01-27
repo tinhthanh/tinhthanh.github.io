@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, inject} from "@angular/core";
 import { FieldMode, IElementUi } from "../element.ui";
 import {KeyValuePipe, NgTemplateOutlet} from "@angular/common";
 import {IonContent, IonIcon, IonPopover, IonSearchbar, PopoverController} from "@ionic/angular/standalone"
@@ -7,7 +7,6 @@ import {addIcons} from "ionicons";
 import {chevronForwardCircle, chevronDownCircle, trashOutline, removeCircle, addCircle} from 'ionicons/icons';
 import { take } from "rxjs";
 import { BuilderSignals } from "../signals/builder.signals";
-import { GlobalBuilderFields } from "../types";
 @Component({
   standalone: true,
   selector: 'app-tree-element',
@@ -18,13 +17,13 @@ import { GlobalBuilderFields } from "../types";
 })
 export class TreeElementPage {
   @Input() fieldMode: FieldMode = FieldMode.LIVE;
-  @Input() uiElement!: IElementUi;
+  @Input() uiElement!: IElementUi | null;
   @Output() vgRemoveNode = new EventEmitter<IElementUi>();
   @Output() vgaddNode = new EventEmitter<{parent:IElementUi, node:IElementUi}>();
   orderOriginal = () => 0;
   protected readonly Object = Object;
   readonly builderSignals = inject(BuilderSignals);
-  readonly currentNodeActive = this.builderSignals.select(GlobalBuilderFields.currentNodeActive);
+  readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
   constructor(public popoverController: PopoverController) {
     addIcons({
     'chevron-forward-circle' : chevronForwardCircle,
@@ -67,7 +66,7 @@ export class TreeElementPage {
   selectEl($event: Event,uiElement: IElementUi)  {
     $event.preventDefault();
     // console.log(uiElement)
-    this.builderSignals.set(GlobalBuilderFields.currentNodeActive, uiElement);
+    this.builderSignals.set('currentNodeActive', uiElement);
     // this.uiElement = uiElement;
   }
   collapse(node: IElementUi, status: boolean) {

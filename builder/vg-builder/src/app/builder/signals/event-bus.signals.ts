@@ -31,7 +31,7 @@ export class EventBusSignals<E> {
       if (!this.events.has(key)) {
         this.events.set(key, signal<E[K]| null>(null));
       }
-      return (this.events.get(key) as WritableSignal<E[K]>).asReadonly();
+      return (this.events.get(key) as WritableSignal<E[K]>).asReadonly() ;
     }
 
     unsubscribeChange(nameArr: keyof E): void;
