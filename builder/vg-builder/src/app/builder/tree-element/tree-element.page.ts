@@ -7,6 +7,7 @@ import {addIcons} from "ionicons";
 import {chevronForwardCircle, chevronDownCircle, trashOutline, removeCircle, addCircle} from 'ionicons/icons';
 import { take } from "rxjs";
 import { BuilderSignals } from "../signals/builder.signals";
+import { NodeUtils } from "../signals/node.util";
 @Component({
   standalone: true,
   selector: 'app-tree-element',
@@ -17,13 +18,12 @@ import { BuilderSignals } from "../signals/builder.signals";
 })
 export class TreeElementPage {
   @Input() fieldMode: FieldMode = FieldMode.LIVE;
-  @Input() uiElement!: IElementUi | null;
-  @Output() vgRemoveNode = new EventEmitter<IElementUi>();
-  @Output() vgaddNode = new EventEmitter<{parent:IElementUi, node:IElementUi}>();
+
   orderOriginal = () => 0;
   protected readonly Object = Object;
   readonly builderSignals = inject(BuilderSignals);
   readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
+  readonly parentNode = this.builderSignals.select('parentNode');
   constructor(public popoverController: PopoverController) {
     addIcons({
     'chevron-forward-circle' : chevronForwardCircle,
@@ -53,12 +53,21 @@ export class TreeElementPage {
   }
   addNode(parent:IElementUi,node: IElementUi) {
     if(parent.children) {
-      this.vgaddNode.emit({parent, node})
+      const root = this.parentNode();
+    if(root) {
+      NodeUtils.addNode(root, {parent, node});
+      // this.uiElement = { ...root };
+      this.builderSignals.set('parentNode', { ...root });
+      }
     }
   }
   removeNode(node: IElementUi) {
-    console.log(node);
-    this.vgRemoveNode.emit(node);
+    const root = this.parentNode();
+    if(root) {
+     const temp = NodeUtils.removeNode({ ...root }, node) as IElementUi;
+     console.log('remove', node);
+     this.builderSignals.set('parentNode', temp);
+    }
   }
   log() {
     console.log('rennder app-tree-element')

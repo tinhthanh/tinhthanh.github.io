@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Injector, Output, Signal, effect, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import {
   IonLabel,
   IonItem,
@@ -24,6 +24,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { isEqual } from "../fuc-utils";
 import { IElementUi } from "../element.ui";
 import { toObservable } from '@angular/core/rxjs-interop';
+import { NodeUtils } from "../signals/node.util";
 type CssProperty = string | any;
 
 export const DefaultSettingFields  : { [K in keyof Partial<CSSStyleDeclaration>]: BuilderType<Partial<CSSStyleDeclaration>> } = {
@@ -79,7 +80,7 @@ export class SettingElementPage  {
   readonly DefaultSettingFields = DefaultSettingFields as { [K in keyof CSSStyleDeclaration]: BuilderType<CSSStyleDeclaration> };
   readonly builderSignals = inject(BuilderSignals);
   readonly currentNodeActive = this.builderSignals.select('currentNodeActive');
-  @Output() vgUpdateNode = new EventEmitter<IElementUi>();
+  readonly parentNode = this.builderSignals.select('parentNode');
   formGroup: FormType<Partial<CSSStyleDeclaration>> = new FormGroup<ControlsOf<Partial<CSSStyleDeclaration>>>(Object.keys(DefaultSettingFields).reduce((pre, curr ) => ({...pre, [curr]: new FormControl<CssProperty>(null, [cssValidator(curr as keyof CSSStyleDeclaration )] )}), {}));
   constructor() {
   addIcons({
@@ -124,7 +125,15 @@ this.formGroup.valueChanges.pipe(
   console.log(it);
   const activeNode: IElementUi | null = this.currentNodeActive() as IElementUi; ;
   if(activeNode) {
-    this.vgUpdateNode.emit({...activeNode, style: it})
+    const node =({...activeNode, style: it})
+    console.log(node);
+    const id = node.id || '';
+    const root = this.parentNode();
+    if(root) {
+      const updatedElement = NodeUtils.updateNode({ ...root } ,id, node) as IElementUi;
+      this.builderSignals.set('parentNode', { ...updatedElement });
+     console.log('update', updatedElement);
+    }
     console.log(this.currentNodeActive())
   }
  });

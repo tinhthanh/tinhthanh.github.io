@@ -25,21 +25,16 @@ import { NgClass } from '@angular/common';
 import { AngularSplitModule } from 'angular-split';
 import { BuilderSignals } from './signals/builder.signals';
 import { NodeUtils } from './signals/node.util';
-import { mockPage } from './signals/mock.data';
 import { DeviceType, ThemeType } from './types';
 
 
 @Component({
   selector: 'app-ui-builder',
   template: `
-    @if(uiElement()) {
+    @if(parentNode(); as uiElement) {
     <as-split direction="horizontal">
       <as-split-area [minSize]="20" [size]="20">
-        <app-tree-element
-          (vgaddNode)="addNode($event)"
-          (vgRemoveNode)="removeNode($event)"
-          [uiElement]="uiElement()"
-        ></app-tree-element>
+        <app-tree-element></app-tree-element>
       </as-split-area>
       <as-split-area [size]="60">
         <div class="builder-review relative">
@@ -73,17 +68,17 @@ import { DeviceType, ThemeType } from './types';
           </div>
           @if(deviceMode() == DeviceType.DESKTOP) {
           <app-chrome-browser>
-            <app-review-page [uiElement]="uiElement()"></app-review-page>
+            <app-review-page [uiElement]="uiElement"></app-review-page>
           </app-chrome-browser>
           } @if(deviceMode() == DeviceType.MOBILE) {
           <app-device-iphone>
-            <app-review-page [uiElement]="uiElement()"></app-review-page>
+            <app-review-page [uiElement]="uiElement"></app-review-page>
           </app-device-iphone>
           }
         </div>
       </as-split-area>
       <as-split-area [minSize]="20" [size]="20">
-        <app-setting-element (vgUpdateNode)="updateNode($event)"></app-setting-element>
+        <app-setting-element></app-setting-element>
       </as-split-area>
     </as-split>
     }
@@ -125,7 +120,7 @@ export class UiBuilderPage implements OnInit {
   readonly builderSignals = inject(BuilderSignals);
   readonly deviceMode = this.builderSignals.select('deviceMode');
   readonly themeMode = this.builderSignals.select('themeMode');
-  readonly uiElement = this.builderSignals.select('parentNode');
+  readonly parentNode = this.builderSignals.select('parentNode');
 
   constructor() {
     addIcons({
@@ -135,21 +130,11 @@ export class UiBuilderPage implements OnInit {
       'phone-portrait-outline': phonePortraitOutline,
     });
   }
-  removeNode(node: IElementUi) {
-    // TODO giúp tôi remove node trong root và return về root
-    const root = this.uiElement();
-     if(root) {
-      const temp = NodeUtils.removeNode({ ...root }, node) as IElementUi;
-      console.log('remove', node);
-      this.builderSignals.set('parentNode', temp);
-     }
 
-    // this.uiElement = { ...this.uiElement };
-  }
   updateNode(node: IElementUi) {
     console.log(node);
     const id = node.id || '';
-    const root = this.uiElement();
+    const root = this.parentNode();
     if(root) {
       const updatedElement = NodeUtils.updateNode({ ...root } ,id, node) as IElementUi;
       this.builderSignals.set('parentNode', { ...updatedElement });
@@ -166,14 +151,6 @@ export class UiBuilderPage implements OnInit {
     // this.uiElement = mockPage;
     console.log('init');
   }
-  addNode(data: Readonly<{ parent: IElementUi; node: IElementUi }>) {
-    const root = this.uiElement();
-    if(root) {
-      NodeUtils.addNode(root, data);
-      // this.uiElement = { ...root };
-      this.builderSignals.set('parentNode', { ...root });
-    }
 
-  }
 }
 
