@@ -33,7 +33,7 @@ export const mockForm = {
     name: 'email',
     placeholder: 'Email',
     classes: 'col-12 col-xs-12 col-sm-6',
-    onChange: (field: EmailField, control: FormControl) => {},
+    // onChange: (field: EmailField, control: FormControl) => {},
   }),
   phone: new PhoneField({
     required: true,
@@ -174,12 +174,12 @@ export const mockForm = {
             value: 'NU',
           },
         ],
-        onChange: (field: SelectField, control: FormControl) => {
-          if (control.parent && control.parent.get('textarea')) {
-            const textarea = control.parent.get('textarea') as FormControl;
-            textarea.setValue(null);
-          }
-        },
+        // onChange: (field: SelectField, control: FormControl) => {
+        //   if (control.parent && control.parent.get('textarea')) {
+        //     const textarea = control.parent.get('textarea') as FormControl;
+        //     textarea.setValue(null);
+        //   }
+        // },
       }),
       checkbox: new CheckBoxField({
         label: 'Check box field',

@@ -14,9 +14,12 @@ export class ApplyStylesDirective implements OnChanges {
     if(changes['appStyles']) {
       this.clearStyles();
       this.renderStyles();
+      this.applyAttributes();
     }
   }
+
   private clearStyles() {
+    // Xóa tất cả các thuộc tính CSS
     for (let i = 0; i < this.el.nativeElement.style.length; i++) {
       const property = this.el.nativeElement.style[i];
       this.renderer.removeStyle(this.el.nativeElement, property);
@@ -28,6 +31,14 @@ export class ApplyStylesDirective implements OnChanges {
       console.log(styles);
       Object.keys(styles).forEach((property: string) => {
           this.renderer.setStyle(this.el.nativeElement, property, styles[property]);
+      });
+    }
+  }
+  private applyAttributes() {
+    if (this.appStyles && this.appStyles?.attributes) {
+      const attributes: any = this.appStyles?.attributes || {};
+      Object.keys(attributes).forEach((attribute: string) => {
+        this.renderer.setAttribute(this.el.nativeElement, attribute, attributes[attribute]);
       });
     }
   }

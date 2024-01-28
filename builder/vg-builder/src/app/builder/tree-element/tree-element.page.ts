@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, Signal, inject} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input,inject} from "@angular/core";
 import { FieldMode, IElementUi } from "../element.ui";
 import {KeyValuePipe, NgTemplateOutlet} from "@angular/common";
 import {IonContent, IonIcon, IonPopover, IonSearchbar, PopoverController} from "@ionic/angular/standalone"
@@ -56,7 +56,6 @@ export class TreeElementPage {
       const root = this.parentNode();
     if(root) {
       NodeUtils.addNode(root, {parent, node});
-      // this.uiElement = { ...root };
       this.builderSignals.set('parentNode', { ...root });
       }
     }
@@ -74,11 +73,11 @@ export class TreeElementPage {
   }
   selectEl($event: Event,uiElement: IElementUi)  {
     $event.preventDefault();
-    // console.log(uiElement)
     this.builderSignals.set('currentNodeActive', uiElement);
-    // this.uiElement = uiElement;
   }
   collapse(node: IElementUi, status: boolean) {
+    // internal update collapse
     node.attributes = {...(node.attributes || {}) , open: status };
+
   }
 }

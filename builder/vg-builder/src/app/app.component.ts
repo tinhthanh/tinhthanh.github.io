@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IonApp } from '@ionic/angular/standalone';
 import {HomePage} from "./home/home.page";
 import { RoutersPage } from "./routers/routers.page";
@@ -8,7 +8,8 @@ import { RoutersPage } from "./routers/routers.page";
     selector: '[id=app]',
     templateUrl: 'app.component.html',
     standalone: true,
-    imports: [IonApp, HomePage, RoutersPage]
+    imports: [IonApp, HomePage, RoutersPage],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   constructor() {}

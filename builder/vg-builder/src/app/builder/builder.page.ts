@@ -4,9 +4,6 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import {
-  IElementUi,
-} from './element.ui';
 import { TreeElementPage } from './tree-element/tree-element.page';
 import { SettingElementPage } from './setting-element/setting-element.page';
 import { ReviewPagePage } from './review-page/review-page.page';
@@ -24,14 +21,11 @@ import {
 import { NgClass } from '@angular/common';
 import { AngularSplitModule } from 'angular-split';
 import { BuilderSignals } from './signals/builder.signals';
-import { NodeUtils } from './signals/node.util';
 import { DeviceType, ThemeType } from './types';
-
-
+import { mockPage } from './signals/mock.data';
 @Component({
   selector: 'app-ui-builder',
   template: `
-    @if(parentNode(); as uiElement) {
     <as-split direction="horizontal">
       <as-split-area [minSize]="20" [size]="20">
         <app-tree-element></app-tree-element>
@@ -68,11 +62,11 @@ import { DeviceType, ThemeType } from './types';
           </div>
           @if(deviceMode() == DeviceType.DESKTOP) {
           <app-chrome-browser>
-            <app-review-page [uiElement]="uiElement"></app-review-page>
+            <app-review-page (loaded)="iframeLoaded()"></app-review-page>
           </app-chrome-browser>
           } @if(deviceMode() == DeviceType.MOBILE) {
           <app-device-iphone>
-            <app-review-page [uiElement]="uiElement"></app-review-page>
+            <app-review-page (loaded)="iframeLoaded()"></app-review-page>
           </app-device-iphone>
           }
         </div>
@@ -81,15 +75,10 @@ import { DeviceType, ThemeType } from './types';
         <app-setting-element></app-setting-element>
       </as-split-area>
     </as-split>
-    }
   `,
   styles: [
     ` .tab-device {
         color: var(--ion-text-color, #000);
-      }
-      :host {
-        //color: white;
-        //background-color: #f8f8f9 ;
       }
       .active {
         background-color: grey;
@@ -120,7 +109,7 @@ export class UiBuilderPage implements OnInit {
   readonly builderSignals = inject(BuilderSignals);
   readonly deviceMode = this.builderSignals.select('deviceMode');
   readonly themeMode = this.builderSignals.select('themeMode');
-  readonly parentNode = this.builderSignals.select('parentNode');
+
 
   constructor() {
     addIcons({
@@ -129,17 +118,9 @@ export class UiBuilderPage implements OnInit {
       'moon-outline': moonOutline,
       'phone-portrait-outline': phonePortraitOutline,
     });
-  }
-
-  updateNode(node: IElementUi) {
-    console.log(node);
-    const id = node.id || '';
-    const root = this.parentNode();
-    if(root) {
-      const updatedElement = NodeUtils.updateNode({ ...root } ,id, node) as IElementUi;
-      this.builderSignals.set('parentNode', { ...updatedElement });
-     console.log('update', updatedElement);
-    }
+    this.builderSignals.set('deviceMode', DeviceType.DESKTOP);
+    this.builderSignals.set('themeMode', ThemeType.LIGHT);
+    this.builderSignals.set('parentNode' ,mockPage );
   }
   changeDevice(device: DeviceType): void {
     this.builderSignals.set('deviceMode', device);
@@ -148,9 +129,14 @@ export class UiBuilderPage implements OnInit {
     this.builderSignals.set('themeMode', theme);
   }
   ngOnInit(): void {
-    // this.uiElement = mockPage;
     console.log('init');
   }
-
+  iframeLoaded() {
+    console.log('iframeLoaded');
+    const parentNode = this.builderSignals.select('parentNode');
+    this.builderSignals.set('deviceMode',this.deviceMode());
+    this.builderSignals.set('themeMode', this.themeMode());
+    this.builderSignals.set('parentNode' ,parentNode() );
+  }
 }
 

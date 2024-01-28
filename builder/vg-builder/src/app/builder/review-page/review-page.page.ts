@@ -1,16 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { IElementUi, PageUi } from '../element.ui';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { UiPagePage } from '../page-elements/ui-page.page';
-import { ElBase } from '../el-base';
-import { BuilderSignals } from '../signals/builder.signals';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   standalone: true,
   selector: 'app-review-page',
   template: `
-    @if(uiElement) {
+    @if(urlSafe) {
     {{ log() }}
-    <app-ui-page [uiElement]="uiElement"></app-ui-page>
+    <iframe (load)="iframeLoaded()" [src]="urlSafe" [height]="'100%'" [width]="'100%'"></iframe>
     }
   `,
   imports: [UiPagePage],
@@ -23,9 +21,15 @@ import { BuilderSignals } from '../signals/builder.signals';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReviewPagePage extends ElBase<PageUi> {
-  
+export class ReviewPagePage  {
+  readonly url: string = '/embedded';
+  readonly sanitizer = inject(DomSanitizer);
+  urlSafe: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+  @Output() loaded = new EventEmitter<void>();
   log() {
     console.log('app-review-page');
+  }
+  iframeLoaded() {
+    this.loaded.emit();
   }
 }
