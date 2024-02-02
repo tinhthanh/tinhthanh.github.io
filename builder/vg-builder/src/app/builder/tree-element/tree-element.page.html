@@ -46,11 +46,8 @@
               <div (click)="selectEl($event,children)" class="{{currentNodeActive()?.id === children.id ? 'active' : ''}}">
                 {{children.label}}
               </div>
-              <ion-icon (click)="removeNode(children)"  name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
-            </div>
-            <div (click)="presentPopover(children ,$event)" class="hidden group-hover:flex items-center cursor-pointer">
-              <ion-icon name="add-circle" class="mr-2 text-2xl"></ion-icon>
-              <div >Add element</div>
+              <ion-icon (click)="presentPopover(children,$event)" name="add-circle" class="hidden group-hover:flex ml-1 text-2xl"></ion-icon>
+              <ion-icon (click)="removeNode(children)"  name="trash-outline" class="hidden group-hover:flex text-2xl cursor-pointer"></ion-icon>
             </div>
           </div>
           @if(children.attributes && children.attributes['open'] ) {
@@ -74,12 +71,8 @@
               <div (click)="selectEl($event,children)" class="{{currentNodeActive()?.id === children.id ? 'active' : ''}}">
                 {{children.label}}
               </div>
-              <ion-icon (click)="removeNode(children)" name="trash-outline" class="hidden group-hover:flex ml-2 text-2xl cursor-pointer"></ion-icon>
-            </div>
-            <!-- Thẻ hiển thị khi hover -->
-            <div (click)="presentPopover(children,$event)" class="hidden group-hover:flex items-center cursor-pointer">
-              <ion-icon name="add-circle" class="mr-2 text-2xl"></ion-icon>
-              <div >Add element</div>
+              <ion-icon (click)="presentPopover(children,$event)" name="add-circle" class="hidden group-hover:flex ml-1 text-2xl"></ion-icon>
+              <ion-icon (click)="removeNode(children)" name="trash-outline" class="hidden group-hover:flex  text-2xl cursor-pointer"></ion-icon>
             </div>
           </div>
         } @else {

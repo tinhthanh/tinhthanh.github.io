@@ -1,244 +1,4 @@
-
-import { FormControl } from '@angular/forms';
-import {
-  EmailField,
-  PhoneField,
-  InputNumberField,
-  DateTimeField,
-  TextField,
-  RadioField,
-  ArrayObject,
-  CheckBoxField,
-  ObjectFields,
-  SwitchBoxField,
-  TextareaField,
-  SelectField,
-  DateField,
-} from '../../modules/form-field/form.field';
-import {
-  Column,
-  Container,
-  IElementUi,
-  PageUi,
-  Row,
-  UiForm,
-  UiIframe,
-  UiImage,
-} from '../element.ui';
 import { NodeUtils } from './node.util';
-export const mockForm = {
-  email: new EmailField({
-    required: true,
-    label: 'Email',
-    name: 'email',
-    placeholder: 'Email',
-    classes: 'col-12 col-xs-12 col-sm-6',
-    // onChange: (field: EmailField, control: FormControl) => {},
-  }),
-  phone: new PhoneField({
-    required: true,
-    label: 'Số điện thoại',
-    name: 'phone',
-    placeholder: '(090) 000 0000',
-    classes: 'col-12 col-xs-12 col-sm-6',
-  }),
-  balance: new InputNumberField({
-    required: true,
-    label: 'Công nợ',
-    name: 'balance',
-    min: 10,
-    max: 1000,
-    placeholder: 'Công nợ',
-  }),
-  dateTime: new DateTimeField({
-    required: true,
-    label: 'Date time',
-    name: 'dateTime',
-  }),
-  userName: new TextField({
-    required: true,
-    label: 'Tên khách hàng',
-    name: 'userName',
-    maxLength: 25,
-    minLength: 3,
-    placeholder: 'Ten khach nek',
-  }),
-  radio2: new RadioField({
-    required: true,
-    name: 'radio2',
-    label: 'Danh sách',
-    options: [
-      {
-        label: 'Chọn không',
-        value: false,
-      },
-      {
-        label: 'Chọn có',
-        value: true,
-      },
-    ],
-  }),
-  pets: new ArrayObject({
-    name: 'pets',
-    label: 'Danh sach thu cung',
-    property: {
-      petName: new TextField({
-        required: true,
-        label: 'Tên thú cưng',
-        name: 'petName',
-      }),
-      petHistory: new ArrayObject({
-        name: 'petHistory',
-        label: 'Lich Su Kham Benh',
-        property: {
-          type: new TextField({
-            required: true,
-            label: 'Loi',
-            name: 'type',
-            classes: 'col-6',
-          }),
-          triuTrung: new TextField({
-            required: true,
-            label: 'Triu chung',
-            name: 'triuTrung',
-            classes: 'col-6',
-          }),
-          loiDan: new TextField({
-            required: true,
-            label: 'Loi Dan',
-            name: 'loiDan',
-          }),
-          booking: new ArrayObject({
-            name: 'booking',
-            label: 'Danh sach booking',
-            property: {
-              type: new TextField({
-                required: true,
-                label: 'Loi',
-                name: 'type',
-              }),
-              triuTrung: new TextField({
-                required: true,
-                label: 'Triu chung',
-                name: 'triuTrung',
-              }),
-              loiDan: new TextField({
-                required: true,
-                label: 'Loi Dan',
-                name: 'loiDan',
-              }),
-            },
-          }),
-        },
-      }),
-    },
-  }),
-  checkbox2: new CheckBoxField({
-    required: true,
-    label: 'Check box field',
-    name: 'checkbox2',
-  }),
-  checkbox3: new CheckBoxField({
-    label: 'Check box field 3',
-    name: 'checkbox3',
-  }),
-  details: new ObjectFields({
-    name: 'details',
-    label: 'Thông tin khách hàng',
-    property: {
-      switch: new SwitchBoxField({
-        name: 'switch',
-        label: 'Switch',
-      }),
-      textarea: new TextareaField({
-        required: true,
-        label: 'Text area',
-        name: 'textarea',
-        placeholder: 'Text area',
-        disabled: false,
-        maxLength: 25,
-        minLength: 3,
-      }),
-      select: new SelectField({
-        required: true,
-        label: 'Select field',
-        name: 'select',
-        searchable: true,
-        options: [
-          {
-            label: 'Huỳnh tính thành',
-            value: 'Nam',
-          },
-          {
-            label: 'Lệ thị thắm',
-            value: 'NU',
-          },
-        ],
-        // onChange: (field: SelectField, control: FormControl) => {
-        //   if (control.parent && control.parent.get('textarea')) {
-        //     const textarea = control.parent.get('textarea') as FormControl;
-        //     textarea.setValue(null);
-        //   }
-        // },
-      }),
-      checkbox: new CheckBoxField({
-        label: 'Check box field',
-        name: 'checkbox',
-      }),
-    },
-  }),
-  radio: new RadioField({
-    name: 'radio',
-    options: [
-      {
-        label: 'Chọn không',
-        value: false,
-      },
-      {
-        label: 'Chọn có',
-        value: true,
-      },
-    ],
-  }),
-  dateField: new DateField({
-    required: true,
-    label: 'Date Field',
-    name: 'dateField',
-  }),
-  listObject: new ArrayObject({
-    name: 'listObject',
-    label: 'List Object',
-    property: {
-      textField2: new TextField({
-        required: true,
-        label: 'Text Field 2',
-        name: 'textField2',
-      }),
-      textField22: new ObjectFields({
-        name: 'textField22',
-        label: 'Thông tin khách hàng',
-        property: {
-          textField22: new TextField({
-            required: true,
-            label: 'Text Field 22',
-            name: 'textField22',
-          }),
-        },
-      }),
-      listOfList: new ArrayObject({
-        name: 'listOfList',
-        label: 'List Object',
-        property: {
-          name: new TextField({
-            required: true,
-            label: 'Text name',
-            name: 'name',
-          }),
-        },
-      }),
-    },
-  }),
-};
 export const mockPatchValue = {
   // "email": "k40cntt@gmial.com",
   phone: '0981772762',
@@ -260,61 +20,409 @@ export const mockPatchValue = {
 };
 
 export const mockPage = NodeUtils.addUuidToElement(
-  new PageUi({
-    label: 'Login page',
-    children: {
-      header: new Container({
-        label: 'Container',
-        children: {
-          header: new Row({
-            label: 'row nenk',
-            children: {
-              col: new Column({
-                label: 'col 1',
-                children: {
-                  c: new Container({
-                    label: 'Container chil',
-                    children: {},
-                  }),
+  {
+    "type": "page",
+    "label": "Login page",
+    "groupType": "page",
+    "order": -1,
+    "classes": "w-100",
+    "children": {
+        "header": {
+            "type": "container",
+            "label": "Container",
+            "groupType": "layout",
+            "order": -1,
+            "classes": "container min-h-25",
+            "children": {
+                "header": {
+                    "type": "row",
+                    "label": "row nenk",
+                    "groupType": "layout",
+                    "order": -1,
+                    "classes": "row min-h-25",
+                    "children": {
+                        "col": {
+                            "type": "column",
+                            "label": "col 1",
+                            "groupType": "layout",
+                            "order": -1,
+                            "classes": "col min-h-25",
+                            "children": {
+                                "c": {
+                                    "type": "container",
+                                    "label": "Container chil",
+                                    "groupType": "layout",
+                                    "order": -1,
+                                    "classes": "container min-h-25",
+                                    "children": {}
+                                }
+                            }
+                        },
+                        "col2": {
+                            "type": "column",
+                            "label": "col 2",
+                            "groupType": "layout",
+                            "order": -1,
+                            "classes": "col min-h-25",
+                            "children": {}
+                        },
+                        "col3": {
+                            "type": "column",
+                            "label": "col 3 ",
+                            "groupType": "layout",
+                            "order": -1,
+                            "classes": "col min-h-25",
+                            "children": {}
+                        }
+                    }
                 },
-              }),
-              col2: new Column({
-                label: 'col 2',
-                children: {},
-              }),
-              col3: new Column({
-                label: 'col 3 ',
-                children: {},
-              }),
-            },
-          }),
-          content: new Row({
-            label: 'content',
-            children: {},
-          }),
-          iframe: new Row({
-            label: 'iframe',
-            children: {
-              img: new UiIframe({
-                src: 'https://assets.vetgo.vn/iframe/baner/kippo-hover/',
-              }),
-            },
-          }),
-          form: new UiForm({
-            label: 'form',
-            config: mockForm,
-            patchValue: mockPatchValue,
-          }),
-          footer: new Row({
-            label: 'footer',
-            children: {
-              img: new UiImage({
-                src: 'https://storage.test.finos.asia/hdi-public-test-bucket-static-resource/2023/01/Group-1238-1.png',
-              }),
-            },
-          }),
-        },
-      }),
-    },
-  })
+                "content": {
+                    "type": "row",
+                    "label": "content",
+                    "groupType": "layout",
+                    "order": -1,
+                    "classes": "row min-h-25",
+                    "children": {}
+                },
+                "iframe": {
+                    "type": "row",
+                    "label": "iframe",
+                    "groupType": "layout",
+                    "order": -1,
+                    "classes": "row min-h-25",
+                    "children": {
+                        "img": {
+                            "type": "iframe",
+                            "label": "iframe",
+                            "groupType": "base",
+                            "order": -1,
+                            "classes": "",
+                            "width": "100%",
+                            "height": "100%",
+                            "src": "https://assets.vetgo.vn/iframe/baner/kippo-hover/"
+                        }
+                    }
+                },
+                "form": {
+                    "type": "form",
+                    "label": "form",
+                    "groupType": "form",
+                    "order": -1,
+                    "classes": "",
+                    "config": {
+                        "email": {
+                            "required": true,
+                            "name": "email",
+                            "placeholder": "Email",
+                            "type": "email",
+                            "label": "Email",
+                            "classes": "col-12 col-xs-12 col-sm-6"
+                        },
+                        "phone": {
+                            "name": "phone",
+                            "type": "phone",
+                            "placeholder": "(090) 000 0000",
+                            "label": "Số điện thoại",
+                            "required": true,
+                            "classes": "col-12 col-xs-12 col-sm-6"
+                        },
+                        "balance": {
+                            "name": "balance",
+                            "type": "number",
+                            "placeholder": "Công nợ",
+                            "label": "Công nợ",
+                            "required": true,
+                            "min": 10,
+                            "max": 1000
+                        },
+                        "dateTime": {
+                            "required": true,
+                            "name": "dateTime",
+                            "type": "dateTime",
+                            "label": "Date time"
+                        },
+                        "userName": {
+                            "required": true,
+                            "name": "userName",
+                            "placeholder": "Ten khach nek",
+                            "type": "text",
+                            "maxLength": 25,
+                            "minLength": 3,
+                            "label": "Tên khách hàng"
+                        },
+                        "radio2": {
+                            "name": "radio2",
+                            "type": "radio",
+                            "options": [
+                                {
+                                    "label": "Chọn không",
+                                    "value": false
+                                },
+                                {
+                                    "label": "Chọn có",
+                                    "value": true
+                                }
+                            ],
+                            "label": "Danh sách",
+                            "required": true
+                        },
+                        "pets": {
+                            "name": "pets",
+                            "type": "ArrayObject",
+                            "label": "Danh sach thu cung",
+                            "property": {
+                                "petName": {
+                                    "required": true,
+                                    "name": "petName",
+                                    "placeholder": "",
+                                    "type": "text",
+                                    "maxLength": 255,
+                                    "minLength": null,
+                                    "label": "Tên thú cưng"
+                                },
+                                "petHistory": {
+                                    "name": "petHistory",
+                                    "type": "ArrayObject",
+                                    "label": "Lich Su Kham Benh",
+                                    "property": {
+                                        "type": {
+                                            "required": true,
+                                            "name": "type",
+                                            "placeholder": "",
+                                            "type": "text",
+                                            "maxLength": 255,
+                                            "minLength": null,
+                                            "label": "Loi",
+                                            "classes": "col-6"
+                                        },
+                                        "triuTrung": {
+                                            "required": true,
+                                            "name": "triuTrung",
+                                            "placeholder": "",
+                                            "type": "text",
+                                            "maxLength": 255,
+                                            "minLength": null,
+                                            "label": "Triu chung",
+                                            "classes": "col-6"
+                                        },
+                                        "loiDan": {
+                                            "required": true,
+                                            "name": "loiDan",
+                                            "placeholder": "",
+                                            "type": "text",
+                                            "maxLength": 255,
+                                            "minLength": null,
+                                            "label": "Loi Dan"
+                                        },
+                                        "booking": {
+                                            "name": "booking",
+                                            "type": "ArrayObject",
+                                            "label": "Danh sach booking",
+                                            "property": {
+                                                "type": {
+                                                    "required": true,
+                                                    "name": "type",
+                                                    "placeholder": "",
+                                                    "type": "text",
+                                                    "maxLength": 255,
+                                                    "minLength": null,
+                                                    "label": "Loi"
+                                                },
+                                                "triuTrung": {
+                                                    "required": true,
+                                                    "name": "triuTrung",
+                                                    "placeholder": "",
+                                                    "type": "text",
+                                                    "maxLength": 255,
+                                                    "minLength": null,
+                                                    "label": "Triu chung"
+                                                },
+                                                "loiDan": {
+                                                    "required": true,
+                                                    "name": "loiDan",
+                                                    "placeholder": "",
+                                                    "type": "text",
+                                                    "maxLength": 255,
+                                                    "minLength": null,
+                                                    "label": "Loi Dan"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "checkbox2": {
+                            "name": "checkbox2",
+                            "type": "checkbox",
+                            "label": "Check box field",
+                            "required": true
+                        },
+                        "checkbox3": {
+                            "name": "checkbox3",
+                            "type": "checkbox",
+                            "label": "Check box field 3"
+                        },
+                        "details": {
+                            "name": "details",
+                            "type": "ObjectFields",
+                            "label": "Thông tin khách hàng",
+                            "property": {
+                                "switch": {
+                                    "name": "switch",
+                                    "type": "switch",
+                                    "label": "Switch"
+                                },
+                                "textarea": {
+                                    "required": true,
+                                    "name": "textarea",
+                                    "type": "textarea",
+                                    "label": "Text area",
+                                    "placeholder": "Text area",
+                                    "minHeight": 104,
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                    "disabled": false
+                                },
+                                "select": {
+                                    "name": "select",
+                                    "type": "select",
+                                    "options": [
+                                        {
+                                            "label": "Huỳnh tính thành",
+                                            "value": "Nam"
+                                        },
+                                        {
+                                            "label": "Lệ thị thắm",
+                                            "value": "NU"
+                                        }
+                                    ],
+                                    "searchable": true,
+                                    "label": "Select field",
+                                    "required": true
+                                },
+                                "checkbox": {
+                                    "name": "checkbox",
+                                    "type": "checkbox",
+                                    "label": "Check box field"
+                                }
+                            }
+                        },
+                        "radio": {
+                            "name": "radio",
+                            "type": "radio",
+                            "options": [
+                                {
+                                    "label": "Chọn không",
+                                    "value": false
+                                },
+                                {
+                                    "label": "Chọn có",
+                                    "value": true
+                                }
+                            ],
+                            "label": ""
+                        },
+                        "dateField": {
+                            "required": true,
+                            "name": "dateField",
+                            "type": "date",
+                            "label": "Date Field"
+                        },
+                        "listObject": {
+                            "name": "listObject",
+                            "type": "ArrayObject",
+                            "label": "List Object",
+                            "property": {
+                                "textField2": {
+                                    "required": true,
+                                    "name": "textField2",
+                                    "placeholder": "",
+                                    "type": "text",
+                                    "maxLength": 255,
+                                    "minLength": null,
+                                    "label": "Text Field 2"
+                                },
+                                "textField22": {
+                                    "name": "textField22",
+                                    "type": "ObjectFields",
+                                    "label": "Thông tin khách hàng",
+                                    "property": {
+                                        "textField22": {
+                                            "required": true,
+                                            "name": "textField22",
+                                            "placeholder": "",
+                                            "type": "text",
+                                            "maxLength": 255,
+                                            "minLength": null,
+                                            "label": "Text Field 22"
+                                        }
+                                    }
+                                },
+                                "listOfList": {
+                                    "name": "listOfList",
+                                    "type": "ArrayObject",
+                                    "label": "List Object",
+                                    "property": {
+                                        "name": {
+                                            "required": true,
+                                            "name": "name",
+                                            "placeholder": "",
+                                            "type": "text",
+                                            "maxLength": 255,
+                                            "minLength": null,
+                                            "label": "Text name"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "patchValue": {
+                        "phone": "0981772762",
+                        "balance": 12,
+                        "dateTime": "04/03/2023 12:12",
+                        "userName": "Thanh",
+                        "checkbox2": true,
+                        "checkbox3": null,
+                        "details": {
+                            "switch": true,
+                            "textarea": "22222",
+                            "checkbox": null
+                        },
+                        "radio": null,
+                        "dateField": "04/02/1995",
+                        "listObject": [
+                            {
+                                "textField2": "123",
+                                "listOfList": [
+                                    {
+                                        "name": "123"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "footer": {
+                    "type": "row",
+                    "label": "footer",
+                    "groupType": "layout",
+                    "order": -1,
+                    "classes": "row min-h-25",
+                    "children": {
+                        "img": {
+                            "type": "image",
+                            "label": "image",
+                            "groupType": "base",
+                            "order": -1,
+                            "classes": "",
+                            "src": "https://storage.test.finos.asia/hdi-public-test-bucket-static-resource/2023/01/Group-1238-1.png"
+                        }
+                    }
+                }
+            }
+        }
+    }
+} as any
 );

@@ -22,7 +22,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReviewPagePage  {
-  readonly url: string = '/embedded';
+  readonly url: string = `${window.location.origin}/embedded`;
   readonly sanitizer = inject(DomSanitizer);
   urlSafe: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
   @Output() loaded = new EventEmitter<void>();

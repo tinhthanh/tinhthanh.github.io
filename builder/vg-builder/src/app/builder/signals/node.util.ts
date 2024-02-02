@@ -77,6 +77,7 @@ export const addUuidToElement = <T extends IElementUi>(
   element: T,
   parent: T | null = null
 ): T => {
+  console.log(element);
   const newElement: T = {
     ...element,
     id: element?.id || generateUuid4(),

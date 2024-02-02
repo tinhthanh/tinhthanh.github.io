@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, signal } from "@angular/core";
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -12,9 +12,9 @@ import {NgClass} from "@angular/common";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MorphismAppComponent {
-  darkMode = false;
+  darkMode =  signal(false) ;
 
   changeDarkMode(): void {
-    this.darkMode = !this.darkMode;
+    this.darkMode.update( old => !old) ;
   }
 }

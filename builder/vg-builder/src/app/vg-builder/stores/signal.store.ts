@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import type { VgAnyRecord } from '../types';
 
-const STORE_COMPUTED_KEY = '__ngt_store_computed__' as const;
+const STORE_COMPUTED_KEY = '__vg_store_computed__' as const;
 
 @Injectable()
 export class SignalStore<T extends object> {

@@ -66,7 +66,7 @@ import { mockPage } from './signals/mock.data';
           </app-chrome-browser>
           } @if(deviceMode() == DeviceType.MOBILE) {
           <app-device-iphone>
-            <app-review-page (loaded)="iframeLoaded()"></app-review-page>
+            <app-review-page style=" border-radius: 34px;" (loaded)="iframeLoaded()"></app-review-page>
           </app-device-iphone>
           }
         </div>
@@ -121,6 +121,7 @@ export class UiBuilderPage implements OnInit {
     this.builderSignals.set('deviceMode', DeviceType.DESKTOP);
     this.builderSignals.set('themeMode', ThemeType.LIGHT);
     this.builderSignals.set('parentNode' ,mockPage );
+    console.log(mockPage);
   }
   changeDevice(device: DeviceType): void {
     this.builderSignals.set('deviceMode', device);
