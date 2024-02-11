@@ -1,0 +1,51 @@
+<div class="content-section">
+  <div class="content-section-title flex flex-row">
+    <div>
+      Application you created
+    </div>
+    <ion-icon (click)="onCrud()" class="text-2xl ml-1 cursor-pointer btn-primary" name="add-circle"></ion-icon>
+  </div>
+  <div class="apps-card row">
+    @for( item of list(); track $index ) {
+     <div class=" col-12 col-md-6 pb-4">
+       <div class="app-card">
+         <span>
+           <img  class="object-cover rounded-md w-9 h-9" [src]="item.icon | viewImg: 'w100'" >
+          <div class="pl-2">
+           {{item.name}}
+          </div>
+         </span>
+         <div class="app-card__subtext">
+           <div class="pb-2">
+             {{item.description}}
+           </div>
+           <div
+           class="color-family-outline flex  flex-row overflow-hidden relative space-x-1  space-y-0 rounded-lg">
+            @for( attr of item.attributes | keyvalue : orderOriginal ; track $index ) {
+              @if($index % 2 == 0) {
+               <div class="h-8  w-8 rounded-lg p-4 flex justify-center  relative"
+               [ngStyle]="{'--background-color': attr.value}" style="background-color:var(--background-color) ; color: rgb(230, 240, 248);">
+                <div class="px-4 md:px-0 md:mt-auto cursor-pointer flex items-center justify-between md:block">
+                  <div style="color: rgb(230, 240, 248);">
+                    <!-- <div class="text-center text-sm font-medium">950</div>
+                    <div class="text-center text-xs uppercase opacity-90">15293c</div> -->
+                  </div>
+                </div>
+              </div>
+              }
+            }
+           </div>
+         </div>
+         <div class="app-card-buttons">
+           <button  class="content-button status-button">Cập nhật</button>
+           <div class="h-[30px] flex align-items-center " (click)="btn.click()" >
+            <div #btn (click)="presentPopover($event, item)" class="menu"> </div>
+           </div>
+         </div>
+       </div>
+     </div>
+    }
+ </div>
+</div>
+
+

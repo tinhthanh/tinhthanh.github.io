@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter,  Output, ViewEncapsulation, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter,  Output, ViewEncapsulation, inject, signal } from '@angular/core';
 import { VgLoginComponent } from 'vg-web-ui';
-import { UserRegister, VgAuthService, VgStore } from 'vg-web-sdk';
-const clientKey = "AKfycbwjothv_MjUfNyuy2k0wqy-mJFSIoGAN3FnjRZ_f_uSHMwVPiyM8EoTlwnuuiKE9wTZOw";
+import { UserRegister } from 'vg-web-sdk';
 import { IonToast} from '@ionic/angular/standalone'
+import { AuthService } from '../../auth/auth.service';
+import { RoutersService } from '../../routers/routers.service';
 interface UserModel {
   name?: string;
   email: string;
@@ -28,12 +29,13 @@ interface UserModel {
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class LoginComponent {
+  readonly router = inject(RoutersService);
+  auth = inject(AuthService);
   loading = signal(false);
   isToastOpen = signal(false);
   message = signal('');
   signUp(data: UserModel) {
     console.log(data);
-    const api = new VgAuthService(clientKey);
     this.loading.set(true);
     const user: UserRegister = {
       id: null || '',
@@ -41,7 +43,7 @@ export class LoginComponent {
       email: data.email,
       password: data.password,
     } as UserRegister;
-    api.register(user).then((rs ) => {
+    this.auth.register(user).then((rs ) => {
        console.log(rs);
        this.loading.set(false);
        if(rs.status !== 200) {
@@ -50,7 +52,7 @@ export class LoginComponent {
           this.message.set(rs.errors['message']);
          }
        } else {
-
+        this.router.push('home');
        }
     })
   }
@@ -58,9 +60,8 @@ export class LoginComponent {
     this.isToastOpen.set(isOpen);
   }
   signIn(data: any) {
-    const api = new VgAuthService(clientKey);
     this.loading.set(true);
-    api.login(data.email, data.password).then((rs ) => {
+    this.auth.login(data.email, data.password).then((rs ) => {
        console.log(rs);
        this.loading.set(false);
        if(rs.status !== 200) {
@@ -68,6 +69,8 @@ export class LoginComponent {
          if(rs.errors) {
           this.message.set(rs.errors['message']);
          }
+       } else {
+        this.router.push('home');
        }
     })
   }

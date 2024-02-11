@@ -1,0 +1,9 @@
+.btn-primary {
+  color: var(--btn-primary);
+}
+.menu:hover {
+  > .dropdown {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
