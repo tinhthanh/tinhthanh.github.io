@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .mermaid {
+      display: none;
+    }
+    .mermaid[data-processed="true"] {
+      display: block;
+    }
+    </style>
+</head>
+<body>
+  <div class="diagram"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.8.0/mermaid.min.js" ></script>
+  <script>
+    let input = {text: ''}; // input
+    let output = {init: { funcName: 'init' , params: {text: ''} }}; // output
+
+    let broadCast = null
+      function init(text = '') {
+        const el =  document.querySelector('.diagram');
+        el.innerHTML = '';
+        const child = document.createElement('div');
+        child.classList.add("vg-diagram");
+
+        child.textContent = text.trim();
+        el.appendChild(child);
+        mermaid.init({}, ".vg-diagram");
+        mermaid.initialize({startOnLoad: true, theme: 'forest'});
+
+      }
+       // add an event listener to run when a message is received
+     window.addEventListener("message", ({ data, source }) => {
+       const { parentId } = JSON.parse(data);
+       if(parentId && !this.broadCast) {
+              // frist init
+              this.broadCast =  new BroadcastChannel(parentId);
+              this.broadCast.postMessage({ output });
+              // wait for event
+              this.broadCast.onmessage = ({data}) => {
+                  if(this[data.funcName]) {
+                    this[data.funcName](data.params)
+                  }
+              }
+        }
+      });
+  </script>
+</body>
+
+</html>
