@@ -1,0 +1,1 @@
+import{ti as e,ui as t}from"./vendor-DHE9l6ck.js";import{Gr as n}from"./index-xxshr9u5.js";function r({className:r,render:i,...a}){let o={className:n(`inline-flex items-center gap-2 font-medium text-base/4.5 text-foreground sm:text-sm/4`,r),"data-slot":`label`};return e({defaultTagName:`label`,props:t(o,a),render:i})}export{r as t};

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Răng Sáng</title>
+    <!-- The appearance the last theme had (themes/apply.ts keeps it in
+         app.appearance), or the system's, before the first paint: no flash of
+         the wrong colours while the app starts. -->
+    <script>
+      (function () {
+        var dark = true;
+        try {
+          var saved = localStorage.getItem("app.appearance");
+          dark = saved ? saved === '"dark"' : matchMedia("(prefers-color-scheme: dark)").matches;
+        } catch (e) {}
+        document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-xxshr9u5.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-XKyaHtl9.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-DHE9l6ck.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DCXo0SZI.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Runtime configuration, written by the host (public/config.js; docs/deploy.md). -->
+    <script src="./config.js"></script>
+  </body>
+</html>
