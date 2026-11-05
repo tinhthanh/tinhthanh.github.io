@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-XKyaHtl9.js";import{la as t}from"./vendor-CAnRUhA9.js";var n=e(t(),1),r;function i(e,t){r={attr:e,id:t}}function a(e){return(0,n.useEffect)(()=>{if(r?.attr!==e)return;let t=document.querySelector(`[${e}="${CSS.escape(r.id)}"]`);t&&(t.focus(),r=void 0)}),r?.attr===e?r.id:void 0}export{a as n,i as t};

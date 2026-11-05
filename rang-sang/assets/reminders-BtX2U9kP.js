@@ -1,1 +1,0 @@
-import{Dn as e,Wn as t,Xn as n,lt as r}from"./index-xxshr9u5.js";function i(){let i=r(),a=n(`auto.message.view`),o=i&&a,s=e(e=>o?t.autoSettings({signal:e}):Promise.resolve(void 0),[o],{key:o?`auto:settings`:void 0});if(o&&s.status===`ready`&&s.data)return{appointment:s.data.appointmentOn&&s.data.zns!==`none`,aftercare:s.data.aftercareOn&&s.data.zns!==`none`}}export{i as t};
