@@ -1,1 +1,0 @@
-import{Vn as e,ir as t,lt as n,ur as r}from"./index-C25ot-t0.js";function i(){let i=n(),a=r(`auto.message.view`),o=i&&a,s=e(e=>o?t.autoSettings({signal:e}):Promise.resolve(void 0),[o],{key:o?`auto:settings`:void 0});if(o&&s.status===`ready`&&s.data)return{appointment:s.data.appointmentOn&&s.data.zns!==`none`,aftercare:s.data.aftercareOn&&s.data.zns!==`none`}}export{i as t};
