@@ -1,1 +1,0 @@
-import{Fr as e,fr as t,kr as n,lt as r}from"./index-BlGr71w0.js";function i(){let i=r(),a=e(`auto.message.view`),o=i&&a,s=t(e=>o?n.autoSettings({signal:e}):Promise.resolve(void 0),[o],{key:o?`auto:settings`:void 0});if(o&&s.status===`ready`&&s.data)return{appointment:s.data.appointmentOn&&s.data.zns!==`none`,aftercare:s.data.aftercareOn&&s.data.zns!==`none`}}export{i as t};
